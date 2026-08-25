@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+logs/
+*.log
+.DS_Store
+coverage/
+
+# Локальні дані Docker (bind mounts) — ніколи не комітити
+docker-data/

@@ -1,0 +1,123 @@
+version: '3.9'
+
+# ──────────────────────────────────────────────────────────────────────────────
+# MealPrepRoulette — повний стек
+#
+# Структура:
+#   AI-App/
+#   ├── docker-compose.yml    ← ви тут
+#   ├── .env                  ← один файл змінних для всього
+#   ├── frontend/
+#   │   └── Dockerfile        ← скопіювати з frontend.Dockerfile
+#   ├── backend/
+#   │   └── Dockerfile        ← вже є
+#   └── docker-data/
+#       ├── postgres/
+#       ├── redis/
+#       └── logs/
+#
+# Перший запуск:
+#   1. cp .env.example .env  →  заповніть паролі та JWT секрети
+#   2. copy frontend.Dockerfile frontend\Dockerfile
+#   3. mkdir docker-data\postgres docker-data\redis docker-data\logs
+#   4. docker-compose up -d --build
+# ──────────────────────────────────────────────────────────────────────────────
+
+services:
+
+  # ── PostgreSQL ───────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: mealprep_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       ${DB_NAME}
+      POSTGRES_USER:     ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./docker-data/postgres:/var/lib/postgresql/data
+      - ./backend/src/utils/migrate.sql:/docker-entrypoint-initdb.d/01_migrate.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_USER} -d ${DB_NAME}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mealprep_net
+
+  # ── Redis ────────────────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: mealprep_redis
+    restart: unless-stopped
+    command: >
+      redis-server
+      --save 60 1
+      --save 300 10
+      --appendonly yes
+      --appendfsync everysec
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./docker-data/redis:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mealprep_net
+
+  # ── Backend API (Express) ────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mealprep_backend
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    env_file:
+      - .env
+    environment:
+      NODE_ENV:      production
+      DB_HOST:       postgres
+      DB_PORT:       5432
+      REDIS_HOST:    redis
+      REDIS_PORT:    6379
+      # Comma-separated list of browser origins allowed to call the API directly
+      # (the frontend's own /api proxy bypasses this — see vite.config.ts —
+      # this is only for direct backend access, e.g. testing with curl/Postman)
+      FRONTEND_URL:  http://localhost:8080,http://localhost:5173
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./docker-data/logs:/app/logs
+    networks:
+      - mealprep_net
+
+  # ── Frontend (TanStack Start SSR) ────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mealprep_frontend
+    restart: unless-stopped
+    ports:
+      - '8080:3000'
+    environment:
+      NODE_ENV: production
+      PORT:     3000
+    depends_on:
+      - backend
+    networks:
+      - mealprep_net
+
+networks:
+  mealprep_net:
+    driver: bridge

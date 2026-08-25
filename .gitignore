@@ -1,0 +1,10 @@
+.env
+docker-data/
+
+node_modules/
+dist/
+.output/
+*.log
+logs/
+.DS_Store
+coverage/

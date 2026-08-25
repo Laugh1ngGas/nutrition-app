@@ -1,0 +1,79 @@
+version: '3.9'
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Дані зберігаються у папці ./docker-data/ поруч з цим файлом.
+# Вони НІКОЛИ не зникають — ні від docker-compose down, ні від down -v,
+# ні від перевстановлення Docker. Видалити можна лише вручну:
+#   rm -rf ./docker-data
+# ──────────────────────────────────────────────────────────────────────────────
+
+services:
+  # ── PostgreSQL ──────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: mealprepdb
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mealprepdb
+      POSTGRES_USER: mealprep_user
+      POSTGRES_PASSWORD: your_strong_password_here
+    ports:
+      - '5432:5432'
+    volumes:
+      # Дані БД → локальна папка (bind mount, не Docker volume)
+      - ./docker-data/postgres:/var/lib/postgresql/data
+      # SQL-міграція запускається автоматично при першому старті
+      - ./src/utils/migrate.sql:/docker-entrypoint-initdb.d/01_migrate.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U mealprep_user -d mealprepdb']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis ───────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: mealprep_redis
+    restart: unless-stopped
+    command: >
+      redis-server
+      --save 60 1
+      --save 300 10
+      --appendonly yes
+      --appendfsync everysec
+    ports:
+      - '6379:6379'
+    volumes:
+      # Redis AOF + RDB snapshots → локальна папка
+      - ./docker-data/redis:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Backend API ─────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mealprep_api
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      DB_HOST: postgres
+      DB_PORT: 5432
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      # Логи API → локальна папка
+      - ./docker-data/logs:/app/logs
