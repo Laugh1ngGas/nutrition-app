@@ -1,0 +1,64 @@
+# Render Blueprint — deploys backend + frontend as free web services.
+#
+# Postgres and Redis are NOT defined here: Render's free tier has no private
+# services and its own free managed Postgres expires after 30 days, so this
+# stack uses external free-tier providers instead — Neon or Supabase for
+# Postgres, Upstash for Redis. Create those first, then fill in the
+# DATABASE_URL / REDIS_URL secrets below when deploying this blueprint.
+#
+# Free-tier web services can SEND private-network requests but can't RECEIVE
+# them, so frontend reaches backend over its public HTTPS URL rather than an
+# internal address — see BACKEND_HOST below and frontend/vite.config.ts.
+
+services:
+  - type: web
+    name: nutrimind-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Paste the full connection string from Neon/Supabase (requires
+      # sslmode=require or equivalent — already handled in database.ts).
+      - key: DATABASE_URL
+        sync: false
+      # Paste the full rediss:// connection string from Upstash.
+      - key: REDIS_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 15m
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 7d
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "900000"
+      - key: RATE_LIMIT_MAX
+        value: "100"
+      # Defense-in-depth only — the browser never calls the backend directly,
+      # it goes through the frontend's /api proxy, so this doesn't gate the
+      # main flow. Update to the real frontend URL after first deploy if it
+      # differs from this guess.
+      - key: FRONTEND_URL
+        value: https://nutrimind-frontend.onrender.com
+
+  - type: web
+    name: nutrimind-frontend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: BACKEND_HOST
+        fromService:
+          name: nutrimind-backend
+          type: web
+          property: host
