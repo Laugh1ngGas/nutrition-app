@@ -42,10 +42,14 @@ services:
         value: "100"
       # Defense-in-depth only — the browser never calls the backend directly,
       # it goes through the frontend's /api proxy, so this doesn't gate the
-      # main flow. Update to the real frontend URL after first deploy if it
-      # differs from this guess.
+      # main flow. Render appends a random suffix to onrender.com hostnames
+      # (confirmed: -uisq/-8kgv on this deploy), so this must come from
+      # fromService rather than a guessed literal URL.
       - key: FRONTEND_URL
-        value: https://nutrition-app-frontend.onrender.com
+        fromService:
+          name: nutrition-app-frontend
+          type: web
+          property: host
 
   - type: web
     name: nutrition-app-frontend

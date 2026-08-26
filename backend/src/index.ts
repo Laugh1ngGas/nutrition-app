@@ -37,6 +37,10 @@ const limiter = rateLimit({
   max: parseInt(process.env.RATE_LIMIT_MAX || '100'),
   standardHeaders: true,
   legacyHeaders: false,
+  // Hosting platforms (Render, etc.) poll the health check frequently while
+  // verifying a deploy — without this it can exceed the limit and get rate
+  // limited, which the platform then reads as the service being down.
+  skip: (req) => req.originalUrl === '/api/v1/health',
   message: { success: false, message: 'Too many requests, please try again later' },
 });
 
