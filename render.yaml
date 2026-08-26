@@ -9,6 +9,14 @@
 # Free-tier web services can SEND private-network requests but can't RECEIVE
 # them, so frontend reaches backend over its public HTTPS URL rather than an
 # internal address — see BACKEND_HOST below and frontend/vite.config.ts.
+#
+# fromService's "host" property resolves to Render's PRIVATE network
+# hostname (unreachable — free services can't receive private traffic), not
+# the public onrender.com one, and there's no blueprint mechanism to pull
+# another service's RENDER_EXTERNAL_URL. So BACKEND_HOST/FRONTEND_URL below
+# are hardcoded to the actual assigned hostnames (confirmed via the Render
+# dashboard) rather than derived — these are stable for the service's
+# lifetime, only need updating if a service is deleted and recreated.
 
 services:
   - type: web
@@ -42,14 +50,9 @@ services:
         value: "100"
       # Defense-in-depth only — the browser never calls the backend directly,
       # it goes through the frontend's /api proxy, so this doesn't gate the
-      # main flow. Render appends a random suffix to onrender.com hostnames
-      # (confirmed: -uisq/-8kgv on this deploy), so this must come from
-      # fromService rather than a guessed literal URL.
+      # main flow.
       - key: FRONTEND_URL
-        fromService:
-          name: nutrition-app-frontend
-          type: web
-          property: host
+        value: https://nutrition-app-frontend-uisq.onrender.com
 
   - type: web
     name: nutrition-app-frontend
@@ -62,7 +65,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: BACKEND_HOST
-        fromService:
-          name: nutrition-app-backend
-          type: web
-          property: host
+        value: nutrition-app-backend-8kgv.onrender.com
