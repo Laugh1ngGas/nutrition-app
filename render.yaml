@@ -12,7 +12,7 @@
 
 services:
   - type: web
-    name: nutrimind-backend
+    name: nutrition-app-backend
     runtime: docker
     plan: free
     dockerfilePath: ./backend/Dockerfile
@@ -45,10 +45,10 @@ services:
       # main flow. Update to the real frontend URL after first deploy if it
       # differs from this guess.
       - key: FRONTEND_URL
-        value: https://nutrimind-frontend.onrender.com
+        value: https://nutrition-app-frontend.onrender.com
 
   - type: web
-    name: nutrimind-frontend
+    name: nutrition-app-frontend
     runtime: docker
     plan: free
     dockerfilePath: ./frontend/Dockerfile
@@ -59,6 +59,6 @@ services:
         value: production
       - key: BACKEND_HOST
         fromService:
-          name: nutrimind-backend
+          name: nutrition-app-backend
           type: web
           property: host
