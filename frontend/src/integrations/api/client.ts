@@ -37,7 +37,10 @@ export const tokenStorage = {
 export const apiClient = axios.create({
   baseURL: API_URL,
   headers: { 'Content-Type': 'application/json' },
-  timeout: 15_000,
+  // 30s, not 15s — free-tier hosting (Render) cold-starts a spun-down
+  // service in up to ~50-60s; this needs to comfortably outlast a single
+  // cold-start response rather than time out mid-boot.
+  timeout: 30_000,
 });
 
 // ── Request interceptor — додає Bearer токен ──────────────────────────────────
@@ -63,10 +66,26 @@ const processPendingQueue = (error: unknown, token: string | null) => {
   pendingQueue = [];
 };
 
+const RETRYABLE_STATUSES = [502, 503, 504];
+
 apiClient.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
-    const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
+    const originalRequest = error.config as InternalAxiosRequestConfig & {
+      _retry?: boolean;
+      _transientRetry?: boolean;
+    };
+
+    // Cold-start gateway errors (Render free-tier spin-down) or a request
+    // that timed out entirely (no response at all) — retry once after a
+    // short delay, since a service mid-boot usually finishes within a few
+    // seconds of the first failed attempt.
+    const isTransientFailure = !error.response || RETRYABLE_STATUSES.includes(error.response.status);
+    if (isTransientFailure && !originalRequest._transientRetry) {
+      originalRequest._transientRetry = true;
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      return apiClient(originalRequest);
+    }
 
     if (error.response?.status !== 401 || originalRequest._retry) {
       return Promise.reject(error);

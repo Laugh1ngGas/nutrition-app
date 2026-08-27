@@ -15,6 +15,14 @@ import routes from './routes';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Backend always sits behind exactly one reverse proxy hop now — Render's
+// own edge in production, and the frontend's /api proxy in every
+// environment (including local docker-compose). Without this,
+// express-rate-limit can't safely trust X-Forwarded-For and throws
+// ERR_ERL_UNEXPECTED_X_FORWARDED_FOR on every request instead of correctly
+// identifying each client.
+app.set('trust proxy', 1);
+
 // ── Security & Middleware ────────────────────────────────────────────
 const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173')
   .split(',')
