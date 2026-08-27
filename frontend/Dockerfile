@@ -3,6 +3,12 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 
+# Render auto-translates its dashboard/render.yaml env vars into Docker build
+# args, but only for names declared here — without this ARG, BACKEND_HOST is
+# invisible to `npm run build` even though it's set on the service.
+ARG BACKEND_HOST
+ENV BACKEND_HOST=$BACKEND_HOST
+
 COPY . .
 RUN npm run build
 
