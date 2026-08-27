@@ -177,16 +177,16 @@ npm run dev
 ```powershell
 # Резервна копія БД
 $date = Get-Date -Format "yyyyMMdd_HHmm"
-docker exec mealprep_postgres pg_dump -U mealprep_user mealprepdb > "backup_$date.sql"
+docker exec nutrition-app-postgres pg_dump -U mealprep_user mealprepdb > "backup_$date.sql"
 
 # Відновлення з бекапу
-Get-Content backup_20240101_1200.sql | docker exec -i mealprep_postgres psql -U mealprep_user -d mealprepdb
+Get-Content backup_20240101_1200.sql | docker exec -i nutrition-app-postgres psql -U mealprep_user -d mealprepdb
 
 # Увійти в PostgreSQL
-docker exec -it mealprep_postgres psql -U mealprep_user -d mealprepdb
+docker exec -it nutrition-app-postgres psql -U mealprep_user -d mealprepdb
 
 # Увійти в Redis CLI
-docker exec -it mealprep_redis redis-cli
+docker exec -it nutrition-app-redis redis-cli
 
 # Статус контейнерів
 docker-compose ps

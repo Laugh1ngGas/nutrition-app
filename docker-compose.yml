@@ -28,7 +28,7 @@ services:
   # ── PostgreSQL ───────────────────────────────────────────────────────────────
   postgres:
     image: postgres:16-alpine
-    container_name: mealprep_postgres
+    container_name: nutrition-app-postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB:       ${DB_NAME}
@@ -45,12 +45,12 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - mealprep_net
+      - nutrition-app-net
 
   # ── Redis ────────────────────────────────────────────────────────────────────
   redis:
     image: redis:7-alpine
-    container_name: mealprep_redis
+    container_name: nutrition-app-redis
     restart: unless-stopped
     command: >
       redis-server
@@ -68,14 +68,14 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - mealprep_net
+      - nutrition-app-net
 
   # ── Backend API (Express) ────────────────────────────────────────────────────
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: mealprep_backend
+    container_name: nutrition-app-backend
     restart: unless-stopped
     ports:
       - '3001:3001'
@@ -99,14 +99,14 @@ services:
     volumes:
       - ./docker-data/logs:/app/logs
     networks:
-      - mealprep_net
+      - nutrition-app-net
 
   # ── Frontend (TanStack Start SSR) ────────────────────────────────────────────
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: mealprep_frontend
+    container_name: nutrition-app-frontend
     restart: unless-stopped
     ports:
       - '8080:3000'
@@ -116,8 +116,8 @@ services:
     depends_on:
       - backend
     networks:
-      - mealprep_net
+      - nutrition-app-net
 
 networks:
-  mealprep_net:
+  nutrition-app-net:
     driver: bridge

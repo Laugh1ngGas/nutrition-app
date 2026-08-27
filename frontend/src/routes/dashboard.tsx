@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
 import { ExpiryBadge } from "@/components/fridge/ExpiryBadge";
-import { fridgeItems, recipes, expiryStatus, user } from "@/lib/mock-data";
+import { fridgeItems, recipes, expiryStatus } from "@/lib/mock-data";
+import { useAuth } from "@/lib/auth-context";
 import { Button } from "@/components/ui/button";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import {
@@ -39,14 +40,16 @@ const meals = [
 ];
 
 function Dashboard() {
+  const { user } = useAuth();
   const [water, setWater] = useState(4);
   const expiring = fridgeItems.filter((i) => expiryStatus(i.daysToExpiry) !== "fresh");
   const suggestions = recipes.slice(0, 3);
+  const firstName = user?.first_name || user?.name?.split(" ")[0] || "there";
 
   return (
     <AppShell>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold">Good morning, {user.name.split(" ")[0]} 👋</h1>
+        <h1 className="text-2xl font-bold">Good morning, {firstName}</h1>
         <p className="mt-1 text-sm text-muted-foreground">Here's your kitchen for today.</p>
       </div>
 
