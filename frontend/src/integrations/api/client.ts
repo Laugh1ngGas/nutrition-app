@@ -67,23 +67,28 @@ const processPendingQueue = (error: unknown, token: string | null) => {
 };
 
 const RETRYABLE_STATUSES = [502, 503, 504];
+// Render's edge returns a 502 immediately (not a slow timeout) for any
+// request that arrives before a spun-down service passes its first health
+// check — measured cold start ~23s, platform states "up to 50s or more".
+// A single quick retry lands on the same still-waking backend and fails
+// again, so this needs several retries spaced out, not a longer timeout —
+// a *warm* backend responds in milliseconds once it's actually up.
+const MAX_TRANSIENT_RETRIES = 8;
+const TRANSIENT_RETRY_DELAY_MS = 4000;
 
 apiClient.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
     const originalRequest = error.config as InternalAxiosRequestConfig & {
       _retry?: boolean;
-      _transientRetry?: boolean;
+      _transientRetryCount?: number;
     };
 
-    // Cold-start gateway errors (Render free-tier spin-down) or a request
-    // that timed out entirely (no response at all) — retry once after a
-    // short delay, since a service mid-boot usually finishes within a few
-    // seconds of the first failed attempt.
     const isTransientFailure = !error.response || RETRYABLE_STATUSES.includes(error.response.status);
-    if (isTransientFailure && !originalRequest._transientRetry) {
-      originalRequest._transientRetry = true;
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+    const retryCount = originalRequest._transientRetryCount ?? 0;
+    if (isTransientFailure && retryCount < MAX_TRANSIENT_RETRIES) {
+      originalRequest._transientRetryCount = retryCount + 1;
+      await new Promise((resolve) => setTimeout(resolve, TRANSIENT_RETRY_DELAY_MS));
       return apiClient(originalRequest);
     }
 
