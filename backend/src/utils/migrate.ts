@@ -22,11 +22,11 @@ async function migrate() {
   const sql = fs.readFileSync(sqlPath, 'utf-8');
   const client = await pool.connect();
   try {
-    console.log('🚀 Running database migrations...');
+    console.log('Running database migrations...');
     await client.query(sql);
-    console.log('✅ Migrations completed successfully!');
+    console.log('Migrations completed successfully!');
   } catch (err) {
-    console.error('❌ Migration failed:', err);
+    console.error('Migration failed:', err);
     process.exit(1);
   } finally {
     client.release();
