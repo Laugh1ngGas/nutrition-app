@@ -9,6 +9,12 @@ RUN npm ci
 ARG BACKEND_HOST
 ENV BACKEND_HOST=$BACKEND_HOST
 
+# VITE_-prefixed vars are inlined into the client bundle by Vite at build
+# time — this is the backend's public URL, used only for the browser-side
+# direct wake-up ping in auth-context.tsx (see comment there for why).
+ARG VITE_BACKEND_URL
+ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+
 COPY . .
 RUN npm run build
 

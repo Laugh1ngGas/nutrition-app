@@ -48,9 +48,11 @@ services:
         value: "900000"
       - key: RATE_LIMIT_MAX
         value: "100"
-      # Defense-in-depth only — the browser never calls the backend directly,
-      # it goes through the frontend's /api proxy, so this doesn't gate the
-      # main flow.
+      # Mostly defense-in-depth for the main app flow (browser talks to the
+      # frontend's /api proxy, not this directly) — EXCEPT the browser-side
+      # wake-up ping in auth-context.tsx does call this backend URL directly
+      # from the frontend's origin, so this origin being allowed is what
+      # makes that ping not get silently blocked by CORS.
       - key: FRONTEND_URL
         value: https://nutrition-app-frontend-uisq.onrender.com
 
@@ -66,3 +68,11 @@ services:
         value: production
       - key: BACKEND_HOST
         value: nutrition-app-backend-8kgv.onrender.com
+      # Backend's public URL, inlined into the client bundle so the browser
+      # can ping it directly on page load — a request proxied through this
+      # frontend does NOT reliably wake a fully spun-down backend (confirmed
+      # by testing: frontend warm + polling only the proxy for 4+ minutes
+      # never woke backend, while one direct hit woke it immediately), but a
+      # genuine external request from the browser does.
+      - key: VITE_BACKEND_URL
+        value: https://nutrition-app-backend-8kgv.onrender.com
