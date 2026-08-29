@@ -54,7 +54,7 @@ function Landing() {
             <a href="#testimonials" className="hover:text-foreground">Reviews</a>
           </nav>
           <div className="flex items-center gap-2">
-            <Link to="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+            <Link to="/sign-in" className="text-sm font-medium text-muted-foreground hover:text-foreground">
               Sign in
             </Link>
             <Button asChild>
