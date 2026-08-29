@@ -69,12 +69,14 @@ const processPendingQueue = (error: unknown, token: string | null) => {
 const RETRYABLE_STATUSES = [502, 503, 504];
 // Render's edge returns a 502 immediately (not a slow timeout) for any
 // request that arrives before a spun-down service passes its first health
-// check — measured cold start ~23s, platform states "up to 50s or more".
-// A single quick retry lands on the same still-waking backend and fails
-// again, so this needs several retries spaced out, not a longer timeout —
-// a *warm* backend responds in milliseconds once it's actually up.
-const MAX_TRANSIENT_RETRIES = 8;
-const TRANSIENT_RETRY_DELAY_MS = 4000;
+// check. Measured cold starts: ~23s once, ~50s another time (a real observed
+// outage window, not a guess) — Render's own UI states "50 seconds or more"
+// as the general case, so this budgets well past that rather than just the
+// faster case we happened to measure first. A *warm* backend responds in
+// milliseconds once it's actually up, so this only adds latency during an
+// actual cold start — 20 retries * 5s = 100s of headroom.
+const MAX_TRANSIENT_RETRIES = 20;
+const TRANSIENT_RETRY_DELAY_MS = 5000;
 
 apiClient.interceptors.response.use(
   (response) => response,

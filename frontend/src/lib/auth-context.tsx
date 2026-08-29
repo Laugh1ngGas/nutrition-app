@@ -40,6 +40,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    // Fire-and-forget: ping the backend the moment any page loads, not only
+    // once a user submits a form — a cold Render instance gets a head start
+    // (however long the visitor spends reading/typing) instead of only
+    // starting to wake up the moment a real request needs it. Result and
+    // errors are both ignored; this never affects the real auth flow.
+    apiClient.get('/health').catch(() => {});
+
     const initAuth = async () => {
       const token = tokenStorage.getAccess();
       if (!token) { setLoading(false); setHydrated(true); return; }
