@@ -122,7 +122,8 @@ function FridgePage() {
                   <button
                     onClick={() => handleRemove(item)}
                     disabled={removingId === item.id}
-                    className="rounded-md p-1.5 text-muted-foreground opacity-0 transition hover:bg-destructive/10 hover:text-destructive group-hover:opacity-100 disabled:opacity-100"
+                    aria-label={`Remove ${item.name}`}
+                    className="rounded-md p-1.5 text-muted-foreground transition hover:bg-destructive/10 hover:text-destructive"
                   >
                     {removingId === item.id ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
                   </button>

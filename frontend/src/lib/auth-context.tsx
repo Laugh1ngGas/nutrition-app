@@ -46,13 +46,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // starting to wake up the moment a real request needs it. Result and
     // errors are both ignored; this never affects the real auth flow.
     //
-    // This must hit the backend's own public URL directly, NOT the /api
-    // proxy — confirmed by testing that a request proxied through the
-    // frontend does not trigger Render's wake-up for a fully spun-down
-    // backend, while a direct external hit does. VITE_BACKEND_URL is only
-    // set in production (see frontend/Dockerfile + render.yaml); this is a
-    // no-op locally, where there's no spin-down to work around.
-    apiClient.get('/health').catch(() => {});
+    // Must hit the backend's own public URL directly, NOT the /api proxy —
+    // confirmed by testing that a request proxied through the frontend does
+    // not trigger Render's wake-up for a fully spun-down backend, while a
+    // direct external hit does (an earlier version of this ping went
+    // through the proxy and didn't actually work for that reason).
+    // VITE_BACKEND_URL is only set in production (see frontend/Dockerfile +
+    // render.yaml); this is a no-op locally, where there's no spin-down to
+    // work around.
     const directBackendUrl = import.meta.env.VITE_BACKEND_URL;
     if (directBackendUrl) {
       fetch(`${directBackendUrl}/api/v1/health`).catch(() => {});
