@@ -85,11 +85,63 @@ export async function getFoodById(req: Request, res: Response, next: NextFunctio
   }
 }
 
+// Open Food Facts — free, no API key. On a local miss we look the barcode
+// up there and, if found, create a real `foods` row from it (real nutrition
+// data, unlike the calories=0 placeholders on TheMealDB-sourced rows) so
+// every subsequent scan of the same barcode is served locally, no repeat
+// API call. Returns null on any miss/error — callers fall back to 404,
+// same as before this existed.
+interface OpenFoodFactsProduct {
+  product_name?: string;
+  brands?: string;
+  image_url?: string;
+  categories_tags?: string[];
+  nutriments?: Record<string, number>;
+}
+
+async function fetchFromOpenFoodFacts(barcode: string): Promise<OpenFoodFactsProduct | null> {
+  try {
+    const res = await fetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(barcode)}.json`, {
+      headers: { 'User-Agent': 'NutritionApp - ZNU thesis project - https://github.com/Laugh1ngGas/nutrition-app' },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as { status: number; product?: OpenFoodFactsProduct };
+    if (data.status !== 1 || !data.product?.product_name) return null;
+    return data.product;
+  } catch {
+    return null; // network hiccup, timeout, malformed response — treat as a miss
+  }
+}
+
 export async function getFoodByBarcode(req: Request, res: Response, next: NextFunction) {
   try {
-    const result = await query('SELECT * FROM foods WHERE barcode = $1', [req.params.barcode]);
-    if (!result.rowCount || result.rowCount === 0) throw new AppError('Food not found by barcode', 404);
-    res.json({ success: true, data: result.rows[0] });
+    const barcode = req.params.barcode;
+    const result = await query('SELECT * FROM foods WHERE barcode = $1', [barcode]);
+    if (result.rowCount && result.rowCount > 0) {
+      res.json({ success: true, data: result.rows[0] });
+      return;
+    }
+
+    const offProduct = await fetchFromOpenFoodFacts(barcode);
+    if (!offProduct) throw new AppError('Food not found by barcode', 404);
+
+    const n = offProduct.nutriments || {};
+    const category = offProduct.categories_tags?.[0]?.replace(/^\w\w:/, '').replace(/-/g, ' ') || null;
+    const created = await query(
+      `INSERT INTO foods (name, brand, barcode, category, calories, protein_g, carbs_g,
+         fat_g, fiber_g, sugar_g, sodium_mg, saturated_fat_g, image_url, source)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,'openfoodfacts')
+       RETURNING *`,
+      [
+        offProduct.product_name, offProduct.brands || null, barcode, category,
+        n['energy-kcal_100g'] || 0, n['proteins_100g'] || 0, n['carbohydrates_100g'] || 0,
+        n['fat_100g'] || 0, n['fiber_100g'] || 0, n['sugars_100g'] || 0,
+        n['sodium_100g'] != null ? Math.round(n['sodium_100g'] * 1000) : 0,
+        n['saturated-fat_100g'] || 0, offProduct.image_url || null,
+      ]
+    );
+    res.json({ success: true, data: created.rows[0] });
   } catch (err) {
     next(err);
   }
