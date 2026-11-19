@@ -95,13 +95,15 @@ export async function getDailyNutrition(userId: string, date: string): Promise<D
 
   const logs = logsResult.rows as FoodLog[];
 
+  // pg returns DECIMAL columns as strings: without Number() the + below
+  // concatenates them ("0350.0120.0") and the totals come out as NaN
   const totals = logs.reduce(
     (acc, log) => ({
-      calories: acc.calories + (log.calories || 0),
-      protein_g: acc.protein_g + (log.protein_g || 0),
-      carbs_g: acc.carbs_g + (log.carbs_g || 0),
-      fat_g: acc.fat_g + (log.fat_g || 0),
-      fiber_g: acc.fiber_g + (log.fiber_g || 0),
+      calories: acc.calories + Number(log.calories || 0),
+      protein_g: acc.protein_g + Number(log.protein_g || 0),
+      carbs_g: acc.carbs_g + Number(log.carbs_g || 0),
+      fat_g: acc.fat_g + Number(log.fat_g || 0),
+      fiber_g: acc.fiber_g + Number(log.fiber_g || 0),
     }),
     { calories: 0, protein_g: 0, carbs_g: 0, fat_g: 0, fiber_g: 0 }
   );
@@ -114,7 +116,7 @@ export async function getDailyNutrition(userId: string, date: string): Promise<D
       return {
         meal_type: mealType,
         entries,
-        subtotal_calories: Math.round(entries.reduce((s, e) => s + (e.calories || 0), 0)),
+        subtotal_calories: Math.round(entries.reduce((s, e) => s + Number(e.calories || 0), 0)),
       };
     })
     .filter((m) => m.entries.length > 0);

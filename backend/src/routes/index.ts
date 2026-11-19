@@ -11,6 +11,7 @@ import * as fridgeCtrl from '../controllers/fridge.controller';
 import * as shoppingCtrl from '../controllers/shoppingList.controller';
 import * as recipesCtrl from '../controllers/recipes.controller';
 import * as aiCtrl from '../controllers/ai.controller';
+import * as waterCtrl from '../controllers/water.controller';
 
 const router = Router();
 
@@ -43,6 +44,10 @@ router.get('/logs', authenticate, foodLogsCtrl.getDailyLog);
 router.get('/logs/weekly', authenticate, foodLogsCtrl.getWeeklyStats);
 router.post('/logs', authenticate, foodLogsCtrl.logFoodValidation, validate, foodLogsCtrl.addFoodLog);
 router.delete('/logs/:id', authenticate, foodLogsCtrl.removeFoodLog);
+
+// ── Water ────────────────────────────────────────────────────────────
+router.get('/water', authenticate, waterCtrl.getWaterValidation, validate, waterCtrl.getWater);
+router.put('/water', authenticate, waterCtrl.setWaterValidation, validate, waterCtrl.setWater);
 
 // ── Fridge ───────────────────────────────────────────────────────────
 router.get('/fridge', authenticate, fridgeCtrl.getFridgeItems);
