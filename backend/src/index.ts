@@ -53,14 +53,25 @@ const limiter = rateLimit({
   message: { success: false, message: 'Too many requests, please try again later' },
 });
 
-const authLimiter = rateLimit({
+// Brute-force protection for login: 10 failed attempts per account per 15 min.
+// Keyed by email, not IP: every request reaches the backend through the
+// frontend's /api proxy (and Render's edge), so users can share an IP and an
+// IP-based limit could lock everyone out at once. Successful logins don't
+// count, so a user who finally types the right password isn't blocked.
+const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 10,
-  message: { success: false, message: 'Too many login attempts' },
+  skipSuccessfulRequests: true,
+  keyGenerator: (req) => `login:${String(req.body?.email ?? '').trim().toLowerCase() || req.ip}`,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: 'Too many failed login attempts. Please try again in 15 minutes.' },
 });
 
 app.use('/api', limiter);
-app.use('/api/auth', authLimiter);
+// Before the routes, so it runs ahead of the login handler (express.json above
+// has already parsed the body it reads the email from)
+app.post('/api/v1/auth/login', loginLimiter);
 
 // ── Routes ───────────────────────────────────────────────────────────
 app.use('/api/v1', routes);

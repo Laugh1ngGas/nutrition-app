@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { query } from '../config/database';
@@ -57,8 +58,11 @@ function signAccessToken(userId: string, email: string): string {
 function signRefreshToken(userId: string): string {
   const secret    = process.env.JWT_REFRESH_SECRET!;
   const expiresIn = process.env.JWT_REFRESH_EXPIRES_IN || '7d';
+  // jwtid: without it two tokens for the same user issued in the same second
+  // are identical (iat has 1 s resolution), the unique token column rejects
+  // the second one and that login or refresh fails with a 500
   // @ts-ignore
-  return jwt.sign({ sub: userId }, secret, { expiresIn });
+  return jwt.sign({ sub: userId }, secret, { expiresIn, jwtid: randomUUID() });
 }
 
 // ── Service functions ──────────────────────────────────────────────────────────
