@@ -42,7 +42,9 @@ app.use(morgan('dev'));
 // ── Rate limiting ────────────────────────────────────────────────────
 const limiter = rateLimit({
   windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'),
-  max: parseInt(process.env.RATE_LIMIT_MAX || '100'),
+  // 100 was too low: one dashboard load alone makes ~6 requests, and users
+  // behind the same proxy IP share this budget
+  max: parseInt(process.env.RATE_LIMIT_MAX || '1000'),
   standardHeaders: true,
   legacyHeaders: false,
   // Hosting platforms (Render, etc.) poll the health check frequently while

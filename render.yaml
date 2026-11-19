@@ -47,7 +47,7 @@ services:
       - key: RATE_LIMIT_WINDOW_MS
         value: "900000"
       - key: RATE_LIMIT_MAX
-        value: "100"
+        value: "1000"
       # Mostly defense-in-depth for the main app flow (browser talks to the
       # frontend's /api proxy, not this directly) — EXCEPT the browser-side
       # wake-up ping in auth-context.tsx does call this backend URL directly
