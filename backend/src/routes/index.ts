@@ -10,6 +10,7 @@ import * as foodLogsCtrl from '../controllers/foodLogs.controller';
 import * as fridgeCtrl from '../controllers/fridge.controller';
 import * as shoppingCtrl from '../controllers/shoppingList.controller';
 import * as recipesCtrl from '../controllers/recipes.controller';
+import * as aiCtrl from '../controllers/ai.controller';
 
 const router = Router();
 
@@ -63,5 +64,10 @@ router.post('/shopping/:id/items', authenticate, shoppingCtrl.addItemToList);
 router.patch('/shopping/:id/items/:itemId/toggle', authenticate, shoppingCtrl.toggleItemPurchased);
 router.delete('/shopping/:id/items/:itemId', authenticate, shoppingCtrl.removeItemFromList);
 router.post('/shopping/generate-from-plan', authenticate, shoppingCtrl.generateFromPlan);
+
+// ── AI assistant ─────────────────────────────────────────────────────
+router.get('/ai/status', authenticate, aiCtrl.getStatus);
+router.post('/ai/chat', authenticate, aiCtrl.chatValidation, validate, aiCtrl.chat);
+router.post('/ai/recognize', authenticate, aiCtrl.recognizeValidation, validate, aiCtrl.recognize);
 
 export default router;

@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { body } from 'express-validator';
 import * as authService from '../services/auth.service';
+import * as aiService from '../services/ai.service';
 
 export const registerValidation = [
   body('email').isEmail().normalizeEmail().withMessage('Valid email is required'),
@@ -18,6 +19,7 @@ export async function register(req: Request, res: Response, next: NextFunction) 
   try {
     const { email, password, first_name, last_name } = req.body;
     const { user, tokens } = await authService.registerUser(email, password, first_name, last_name);
+    aiService.wake();
     res.status(201).json({ success: true, data: { user, tokens } });
   } catch (err) {
     next(err);
@@ -28,6 +30,7 @@ export async function login(req: Request, res: Response, next: NextFunction) {
   try {
     const { email, password } = req.body;
     const { user, tokens } = await authService.loginUser(email, password);
+    aiService.wake();
     res.json({ success: true, data: { user, tokens } });
   } catch (err) {
     next(err);
@@ -42,6 +45,8 @@ export async function refresh(req: Request, res: Response, next: NextFunction) {
       return;
     }
     const tokens = await authService.refreshTokens(refresh_token);
+    // Returning users with a saved session never hit login, so wake here too
+    aiService.wake();
     res.json({ success: true, data: tokens });
   } catch (err) {
     next(err);
