@@ -67,6 +67,8 @@ router.post('/shopping/generate-from-plan', authenticate, shoppingCtrl.generateF
 
 // ── AI assistant ─────────────────────────────────────────────────────
 router.get('/ai/status', authenticate, aiCtrl.getStatus);
+router.get('/ai/messages', authenticate, aiCtrl.getMessages);
+router.delete('/ai/messages', authenticate, aiCtrl.clearMessages);
 router.post('/ai/chat', authenticate, aiCtrl.chatValidation, validate, aiCtrl.chat);
 router.post('/ai/recognize', authenticate, aiCtrl.recognizeValidation, validate, aiCtrl.recognize);
 

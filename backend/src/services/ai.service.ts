@@ -33,16 +33,27 @@ export function wake(): void {
   getStatus().then((status) => logger.info(`AI service wake ping: ${status}`));
 }
 
+// After a quiet spell Modal starts a fresh container, which answers 503 for
+// the ~25 s the model takes to load. Waiting that out (up to 90 s) beats
+// failing the first message of every session.
+const WARMUP_RETRY_MS = 5_000;
+const WARMUP_RETRIES = 18;
+
 async function post<T>(path: string, body: string | FormData, contentType?: string): Promise<T> {
-  const res = await fetch(`${AI_SERVICE_URL}${path}`, {
-    method: 'POST',
-    headers: { ...headers(), ...(contentType ? { 'Content-Type': contentType } : {}) },
-    body,
-    // CPU inference is slow — a photo can take over a minute
-    signal: AbortSignal.timeout(180_000),
-  }).catch(() => {
-    throw new AppError('AI assistant is offline, please try again in a minute', 503);
-  });
+  let res: Response;
+  for (let attempt = 0; ; attempt++) {
+    res = await fetch(`${AI_SERVICE_URL}${path}`, {
+      method: 'POST',
+      headers: { ...headers(), ...(contentType ? { 'Content-Type': contentType } : {}) },
+      body,
+      // The local CPU version can take over a minute for a photo
+      signal: AbortSignal.timeout(180_000),
+    }).catch(() => {
+      throw new AppError('AI assistant is offline, please try again in a minute', 503);
+    });
+    if (res.status !== 503 || attempt >= WARMUP_RETRIES) break;
+    await new Promise((resolve) => setTimeout(resolve, WARMUP_RETRY_MS));
+  }
 
   if (res.status === 503) throw new AppError('AI assistant is warming up, please try again in a minute', 503);
   if (!res.ok) {
@@ -57,8 +68,13 @@ export interface ChatMessage {
   content: string;
 }
 
-export async function chat(messages: ChatMessage[]): Promise<string> {
-  const { reply } = await post<{ reply: string }>('/v1/chat', JSON.stringify({ messages }), 'application/json');
+// context: the user's profile and fridge (see aiContext.service.ts)
+export async function chat(messages: ChatMessage[], context?: string): Promise<string> {
+  const { reply } = await post<{ reply: string }>(
+    '/v1/chat',
+    JSON.stringify({ messages, context }),
+    'application/json'
+  );
   return reply;
 }
 

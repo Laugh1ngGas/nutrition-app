@@ -68,6 +68,18 @@ TOOL_RULES = {
           "Не перепитуй про необов'язкові деталі: пропусти їх або візьми зі слів користувача.",
 }
 
+# Added when the backend sends the user's profile and fridge. Allergies are
+# repeated as a hard rule because a suggestion with an allergen is the one
+# mistake that can actually hurt someone.
+CONTEXT_HEADER = {
+    "en": "\n\nWhat you know about this user (use it to personalise answers; never suggest "
+          "anything with their allergens; prefer what is in their fridge, especially items "
+          "that expire soon):\n",
+    "uk": "\n\nЩо ти знаєш про цього користувача (використовуй це, щоб персоналізувати "
+          "відповіді; ніколи не пропонуй продуктів з його алергенами; надавай перевагу тому, "
+          "що є в холодильнику, особливо продуктам, у яких скоро спливає термін):\n",
+}
+
 CYRILLIC = set("абвгґдеєжзиіїйклмнопрстуфхцчшщьюя")
 
 
@@ -159,6 +171,8 @@ class ChatRequest(BaseModel):
     stream: bool = False
     # OpenAI-style tool definitions; the model may answer with tool_calls instead of text
     tools: list[dict] | None = None
+    # The user's profile, allergies and fridge as plain text lines
+    context: str | None = None
 
 
 @app.post("/v1/chat", dependencies=[Depends(require_key), Depends(require_ready)])
@@ -167,11 +181,13 @@ async def chat(body: ChatRequest):
     lang = detect_language(last_user)
     prompt = SYSTEM_PROMPTS[lang]
     extra = {"max_tokens": CHAT_MAX_TOKENS}
+    system = prompt[0]["content"]
     if body.tools:
         extra["tools"] = body.tools
-        system = {**prompt[0], "content": prompt[0]["content"] + TOOL_RULES[lang]}
-        prompt = [system] + prompt[1:]
-    messages = prompt + [m.model_dump() for m in body.messages]
+        system += TOOL_RULES[lang]
+    if body.context:
+        system += CONTEXT_HEADER[lang] + body.context.strip()
+    messages = [{**prompt[0], "content": system}] + prompt[1:] + [m.model_dump() for m in body.messages]
 
     if not body.stream:
         result = await llama.chat(messages, **extra)

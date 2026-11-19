@@ -4,14 +4,18 @@ import { AuthRequest } from '../middleware/auth';
 import { query } from '../config/database';
 import { AppError } from '../middleware/errorHandler';
 import * as aiService from '../services/ai.service';
+import { buildUserContext } from '../services/aiContext.service';
 
-// Keep prompts small — on a 2-vCPU Space every extra token costs time
+// Messages sent to the model with each question: enough to follow the
+// conversation, short enough to fit 2 users x 8K tokens of context
 const MAX_HISTORY = 20;
+// Messages shown when the chat opens
+const HISTORY_PAGE = 100;
 
 export const chatValidation = [
-  body('messages').isArray({ min: 1 }),
-  body('messages.*.role').isIn(['user', 'assistant']),
-  body('messages.*.content').isString().trim().isLength({ min: 1, max: 4000 }),
+  body('message').isString().trim().isLength({ min: 1, max: 4000 }),
+  // The user's local date; optional so older clients still work
+  body('today').optional().isISO8601({ strict: true }).isLength({ min: 10, max: 10 }),
 ];
 
 export const recognizeValidation = [
@@ -26,11 +30,59 @@ export async function getStatus(_req: AuthRequest, res: Response, next: NextFunc
   }
 }
 
+export async function getMessages(req: AuthRequest, res: Response, next: NextFunction) {
+  try {
+    const result = await query(
+      `SELECT id, role, content, created_at FROM (
+         SELECT * FROM ai_chat_messages WHERE user_id = $1
+         ORDER BY created_at DESC LIMIT $2
+       ) latest ORDER BY created_at`,
+      [req.user!.id, HISTORY_PAGE]
+    );
+    res.json({ success: true, data: result.rows });
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function chat(req: AuthRequest, res: Response, next: NextFunction) {
   try {
-    const messages: aiService.ChatMessage[] = req.body.messages.slice(-MAX_HISTORY);
-    const reply = await aiService.chat(messages);
-    res.json({ success: true, data: { reply } });
+    const userId = req.user!.id;
+    const message: string = req.body.message;
+    const today: string = req.body.today ?? new Date().toISOString().slice(0, 10);
+
+    const [history, context] = await Promise.all([
+      query(
+        `SELECT role, content FROM ai_chat_messages WHERE user_id = $1
+         ORDER BY created_at DESC LIMIT $2`,
+        [userId, MAX_HISTORY - 1]
+      ),
+      buildUserContext(userId, today),
+    ]);
+    const messages: aiService.ChatMessage[] = [...history.rows.reverse(), { role: 'user', content: message }];
+
+    const reply = (await aiService.chat(messages, context)).trim();
+    if (!reply) throw new AppError('AI assistant returned an empty answer, please try again', 502);
+
+    // Saved only once the answer exists, so a failed attempt leaves no
+    // unanswered question behind and can simply be sent again
+    const saved = await query(
+      `INSERT INTO ai_chat_messages (user_id, role, content, created_at)
+       VALUES ($1, 'user', $2, NOW()), ($1, 'assistant', $3, NOW() + INTERVAL '1 millisecond')
+       RETURNING id, role, content, created_at`,
+      [userId, message, reply]
+    );
+    const [question, answer] = [...saved.rows].sort((a, b) => a.created_at - b.created_at);
+    res.json({ success: true, data: { question, answer } });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function clearMessages(req: AuthRequest, res: Response, next: NextFunction) {
+  try {
+    await query('DELETE FROM ai_chat_messages WHERE user_id = $1', [req.user!.id]);
+    res.json({ success: true });
   } catch (err) {
     next(err);
   }

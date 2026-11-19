@@ -17,7 +17,7 @@ and English chat, tool calls, 9 labelled photos). See `benchmark/results/report.
 | Method | Path | Auth | Purpose |
 |---|---|---|---|
 | GET | `/health` | none | `{"status": "loading" \| "ready" \| "error"}`, also wakes the service |
-| POST | `/v1/chat` | `X-AI-Key` | `{"messages": [...], "stream": false, "tools": [...]}` → `{"reply", "tool_calls", "timings"}` (or SSE with `stream: true`) |
+| POST | `/v1/chat` | `X-AI-Key` | `{"messages": [...], "context": "...", "stream": false, "tools": [...]}` → `{"reply", "tool_calls", "timings"}` (or SSE with `stream: true`). `context` = the user's profile, allergies and fridge as text lines, added to the system prompt |
 | POST | `/v1/recognize` | `X-AI-Key` | multipart `image` → `{"ingredients": [{"name", "name_uk", "confidence"}], "timings"}` |
 
 ## Environment variables

@@ -18,11 +18,13 @@ const pool = process.env.DATABASE_URL
     });
 
 async function migrate() {
-  const sqlPath = path.join(__dirname, 'migrate.sql');
+  // Default: the full schema for a fresh database. A path argument runs one
+  // migration file instead, e.g. src/utils/migrations/001_ai_chat_messages.sql
+  const sqlPath = process.argv[2] ? path.resolve(process.argv[2]) : path.join(__dirname, 'migrate.sql');
   const sql = fs.readFileSync(sqlPath, 'utf-8');
   const client = await pool.connect();
   try {
-    console.log('Running database migrations...');
+    console.log(`Running ${path.basename(sqlPath)}...`);
     await client.query(sql);
     console.log('Migrations completed successfully!');
   } catch (err) {
