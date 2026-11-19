@@ -14,6 +14,7 @@ import {
   Settings,
   LogOut,
   Moon,
+  Sparkles,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -25,6 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
+import { AiChatBubble } from "@/components/ai/AiChatBubble";
 
 const nav = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -33,6 +35,7 @@ const nav = [
   { to: "/recipes", label: "Recipes", icon: UtensilsCrossed },
   // { to: "/shopping", label: "Shopping List", icon: ShoppingCart, dot: true },
   { to: "/progress", label: "Progress", icon: TrendingUp },
+  { to: "/assistant", label: "AI Assistant", icon: Sparkles },
   { to: "/profile", label: "Profile", icon: UserIcon },
 ];
 
@@ -142,6 +145,8 @@ export function AppShell({ children }: { children: ReactNode }) {
 
         <main className="min-w-0 flex-1 p-4 lg:p-8">{children}</main>
       </div>
+
+      {path !== "/assistant" && <AiChatBubble />}
     </div>
   );
 }

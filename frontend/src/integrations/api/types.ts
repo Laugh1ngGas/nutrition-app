@@ -286,3 +286,15 @@ export interface ShoppingList {
   purchased_count?: number;
   items?:           ShoppingListItem[];
 }
+
+// ── AI Assistant ──────────────────────────────────────────────────────────────
+
+// ready = model loaded; loading = waking up; offline = unreachable or crashed
+export type AiStatus = 'ready' | 'loading' | 'offline';
+
+export interface AiChatMessage {
+  id:         string;
+  role:       'user' | 'assistant';
+  content:    string;
+  created_at: string;
+}

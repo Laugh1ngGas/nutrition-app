@@ -9,6 +9,7 @@ import type {
   FridgeItem,
   ShoppingList, ShoppingListItem,
   ProfileWithUser, Allergen,
+  AiStatus, AiChatMessage,
 } from './types';
 
 // ── Утиліта ───────────────────────────────────────────────────────────────────
@@ -254,6 +255,67 @@ export async function toggleShoppingItem(
 
 export async function removeShoppingItem(listId: string, itemId: string): Promise<void> {
   await apiClient.delete(`/shopping/${listId}/items/${itemId}`);
+}
+
+// ── AI Assistant ──────────────────────────────────────────────────────────────
+
+// How often to re-check while the model wakes up, and for how long at most.
+// Polling stops once it's ready: every check reaches the GPU service and
+// would otherwise keep it awake (and billed) for as long as the page is open.
+const AI_STATUS_POLL_MS = 3000;
+const AI_STATUS_MAX_POLL_MS = 3 * 60_000;
+
+export async function getAiStatus(): Promise<AiStatus> {
+  const { data } = await apiClient.get('/ai/status');
+  return data.data.status;
+}
+
+export function useAiStatus(enabled = true) {
+  const [status, setStatus] = useState<AiStatus | null>(null);
+
+  useEffect(() => {
+    if (!enabled) return;
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout>;
+    const startedAt = Date.now();
+
+    const check = async () => {
+      const next = await getAiStatus().catch((): AiStatus => 'offline');
+      if (cancelled) return;
+      setStatus(next);
+      if (next !== 'ready' && Date.now() - startedAt < AI_STATUS_MAX_POLL_MS) {
+        timer = setTimeout(check, AI_STATUS_POLL_MS);
+      }
+    };
+    check();
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [enabled]);
+
+  return { status, setStatus };
+}
+
+export async function getAiMessages(): Promise<AiChatMessage[]> {
+  const { data } = await apiClient.get('/ai/messages');
+  return data.data;
+}
+
+export async function sendAiMessage(
+  message: string
+): Promise<{ question: AiChatMessage; answer: AiChatMessage }> {
+  // An answer takes ~5-10 s, but the first one after a quiet spell also waits
+  // for the model to load (the backend waits up to 90 s for that)
+  // The user's local date, so "expires tomorrow" means the user's tomorrow
+  const now = new Date();
+  const today = new Date(now.getTime() - now.getTimezoneOffset() * 60_000).toISOString().slice(0, 10);
+  const { data } = await apiClient.post('/ai/chat', { message, today }, { timeout: 150_000 });
+  return data.data;
+}
+
+export async function clearAiMessages(): Promise<void> {
+  await apiClient.delete('/ai/messages');
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
