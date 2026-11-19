@@ -1,0 +1,117 @@
+{
+  "label": "gemma4-e4b-toolfix",
+  "model": "gemma-4-E4B-it-Q4_K_M.gguf",
+  "started": "2026-11-01 06:43",
+  "chat": [],
+  "tools": [
+    {
+      "id": "swap_uk",
+      "text": "Заміни мені вечерю в середу на щось без м'яса.",
+      "tool_calls": [],
+      "reply": "Я можу це зробити. Для якої саме страви в середу Ви бажаєте замінити вечерю і що Ви хотіли б, щоб вона була?",
+      "seconds": 33.9,
+      "correct_tool": false,
+      "correct_args": false,
+      "valid_json": true
+    },
+    {
+      "id": "swap_en",
+      "text": "Swap my Friday breakfast for something with more protein.",
+      "tool_calls": [],
+      "reply": "What kind of protein-rich breakfast would you prefer for Friday? For example, something like Greek yogurt, eggs, or cottage cheese?",
+      "seconds": 20.9,
+      "correct_tool": false,
+      "correct_args": false,
+      "valid_json": true
+    },
+    {
+      "id": "find_uk",
+      "text": "Що я можу приготувати з яєць, помідорів і сиру за 15 хвилин?",
+      "tool_calls": [],
+      "reply": "Ви можете приготувати **Яєчню з помідорами та сиром**.\n\nЦе дуже швидка і ситна страва. Вам знадобиться:\n\n1.  Яйця\n2.  Помідори (нарізані кубиками)\n3.  Сир (натертий)\n4.  Сіль та перець\n\n**Процес:**\n1.  На сковороді трохи злегка обсмажте помідори.\n2.  Влийте збиті яйця.\n3.  Коли яйця почнуть застигати, посипте сиром та прикрийте кришкою, щоб сир розплавився.\n\nЦе займе близько 15 хвилин.",
+      "seconds": 45.8,
+      "correct_tool": false,
+      "correct_args": false,
+      "valid_json": true
+    },
+    {
+      "id": "find_en",
+      "text": "Find me a recipe using potatoes and mushrooms.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "find_recipes",
+            "arguments": "{\"ingredients\":[\"potatoes\",\"mushrooms\"]}"
+          },
+          "id": "2rMSpZaAGb0lnjBKZ3DgaENAp3NbZFd7"
+        }
+      ],
+      "reply": "",
+      "seconds": 6.1,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "shop_uk",
+      "text": "Додай молоко, хліб і банани до списку покупок.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "add_to_shopping_list",
+            "arguments": "{\"items\":[\"молоко\",\"хліб\",\"банани\"]}"
+          },
+          "id": "eaGHE8oGmJU8qyQ2u1WYKsD8bIiydepk"
+        }
+      ],
+      "reply": "",
+      "seconds": 8.1,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "shop_en",
+      "text": "Put olive oil and garlic on my shopping list.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "add_to_shopping_list",
+            "arguments": "{\"items\":[\"olive oil\",\"garlic\"]}"
+          },
+          "id": "syXSkHql7mYluqOw9UdCkTm73Pa6Ph1B"
+        }
+      ],
+      "reply": "",
+      "seconds": 6.2,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "no_tool_uk",
+      "text": "Привіт! Чим ти можеш мені допомогти?",
+      "tool_calls": [],
+      "reply": "Вітаю! Я NutriMind — ваш помічник у світі здорового харчування та планування раціону.\n\nЯ можу:\n*   Допомогти знайти рецепти на основі інгредієнтів, які у вас є.\n*   Додати необхідні продукти до вашого списку покупок.\n*   Пропонувати ідеї для страв на день.\n*   Внести зміни у ваш існуючий план харчування.\n\nЧим я можу бути корисним саме зараз?",
+      "seconds": 24.4,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "no_tool_en",
+      "text": "Is it bad to eat late at night?",
+      "tool_calls": [],
+      "reply": "That's a common question! Eating late at night isn't inherently \"bad,\" but the timing and what you eat really matter.\n\nHere are a few things to consider:\n\n*   **Digestion:** Your body's digestive processes slow down as you get closer to bedtime, which can lead to discomfort if you eat a large, heavy meal late.\n*   **Sleep Quality:** Eating too close to sleep can sometimes interfere with your sleep patterns.\n*   **Blood Sugar:** For some people, eating late can affect blood sugar levels overnight.\n*   **What you eat matters:** A small, light snack (like yogurt or a piece of fruit) is different from a heavy, high-fat meal.\n\nOverall, listening to your body is key!",
+      "seconds": 37.4,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    }
+  ],
+  "photos": [],
+  "finished": "2026-11-01 06:47"
+}

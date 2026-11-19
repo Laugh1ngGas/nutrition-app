@@ -1,0 +1,996 @@
+{
+  "label": "qwen3.5-27b-l4",
+  "model": "Qwen3.5-27B-Q4_K_M.gguf",
+  "started": "2026-11-19 22:21",
+  "chat": [
+    {
+      "id": "breakfast",
+      "lang": "uk",
+      "question": "Порадь швидкий білковий сніданок.",
+      "reply": "Ось кілька ідей для швидкого білкового сніданку:\n\n- **Яєчня або омлет** — зваріть 2 яйця за 5 хвилин, додайте трохи цибулі та зелені.\n- **Сирний тост** — на шматок цільнозернового хліба покладіть шматочок твердого сиру або кисломолочного сиру.\n- **Кисломолочний сир з горіхами** — 150 г сиру, жменя волоських горіхів та кілька ягід.\n- **Смузі з протеїном** — змішайте кефір або молоко, банан і трохи мигдалю у блендері.\n- **Варена курка з овочами** — якщо залишилося філе від вчорашньої вечері, просто наріжте його свіжим огірком.\n\nЦі варіанти займають не більше 10 хвилин і дають стійке відчуття ситості.",
+      "seconds": 10.6,
+      "prompt_tokens": 26,
+      "prompt_tok_s": 147.2,
+      "output_tokens": 246,
+      "output_tok_s": 24.85,
+      "checks": {
+        "russian_letters": 0,
+        "russisms": [],
+        "latin_share": 0.0
+      }
+    },
+    {
+      "id": "breakfast",
+      "lang": "en",
+      "question": "Suggest a quick high-protein breakfast.",
+      "reply": "Here are some quick, high-protein breakfast ideas using real, well-known dishes:\n\n*   **Scrambled Eggs with Spinach**: Whisk 2–3 eggs with fresh spinach and serve with a slice of whole-grain toast for fiber.\n*   **Greek Yogurt Parfait**: Layer plain Greek yogurt with berries and a sprinkle of nuts or seeds for a creamy, protein-packed start.\n*   **Cottage Cheese Bowl**: Top a cup of cottage cheese with sliced fruit (like peaches or pineapple) and chia seeds.\n*   **Oatmeal with Protein Powder**: Stir a scoop of unflavored or vanilla protein powder into hot oatmeal made with milk or water.\n*   **Turkey Sausage and Eggs**: Cook pre-made turkey sausage links alongside two eggs for a savory, filling meal ready in minutes.\n\nThese options generally offer between 15–30 grams of protein per serving, depending on portion sizes.",
+      "seconds": 8.9,
+      "prompt_tokens": 21,
+      "prompt_tok_s": 119.9,
+      "output_tokens": 198,
+      "output_tok_s": 24.55,
+      "checks": {
+        "cyrillic_share": 0.0
+      }
+    },
+    {
+      "id": "dinner",
+      "lang": "uk",
+      "question": "Що приготувати на вечерю з курки, рису та броколі?",
+      "reply": "Ось ідеальний варіант для вашого раціону:\n\n- **Запечене філе з овочами** — шматочки курячого м'яса змішайте з суцвіттями броколі та відвареним рисом, додайте трохи спецій та запекліть у духовці.\n- **Легка паста-мікс** — на сковорідці підсмажте курку з броколі до золотистого кольору, змішайте з гарячим рисом та полийте невеликою кількістю вершкового масла.\n- **Суп із куркою та броколі** — приготовте бульйон, додайте овочі та м'ясо, а рис ввідрядно додайте у тарілку як гарнір або прямо в суп для ситості.\n\nЦі страви легко засвоюються перед сном. Точні показники калорійності залежать від кількості олії та спецій, які ви використаєте.",
+      "seconds": 10.6,
+      "prompt_tokens": 31,
+      "prompt_tok_s": 173.0,
+      "output_tokens": 238,
+      "output_tok_s": 24.9,
+      "checks": {
+        "russian_letters": 0,
+        "russisms": [],
+        "latin_share": 0.0
+      }
+    },
+    {
+      "id": "dinner",
+      "lang": "en",
+      "question": "What can I cook for dinner with chicken, rice and broccoli?",
+      "reply": "Hello! Here are three delicious and real dish ideas using chicken, rice, and broccoli:\n\n*   **Classic Chicken Fried Rice**: Sauté cooked chicken and chopped broccoli with day-old rice, soy sauce, garlic, and a beaten egg for a quick stir-fry.\n*   **Creamy Garlic Chicken & Broccoli**: Pan-sear chicken breasts, then simmer them with steamed broccoli florets in a light garlic cream or coconut milk sauce, served over steamed white rice.\n*   **Asian-Style Steamed Rice Bowl**: Place raw rice in a pot, top with seasoned chicken thighs and broccoli chunks, add broth, and steam until everything is tender and flavorful (similar to *Hainanese Chicken Rice*).\n\nEnjoy your dinner! Let me know if you need help adjusting these for specific dietary needs.",
+      "seconds": 7.7,
+      "prompt_tokens": 25,
+      "prompt_tok_s": 142.0,
+      "output_tokens": 169,
+      "output_tok_s": 24.5,
+      "checks": {
+        "cyrillic_share": 0.0
+      }
+    },
+    {
+      "id": "meals_a_day",
+      "lang": "uk",
+      "question": "Я хочу схуднути. Скільки разів на день краще їсти?",
+      "reply": "Ось основні рекомендації щодо режиму харчування для схуднення:\n\n- **Частота не є вирішальною** — важливий загальний добовий раціон (дефіцит калорій), а не кількість прийомів їжі.\n- **3–4 рази на день** — класичний варіант для більшості людей: сніданок, обід, вечеря та легкий перекус за потреби.\n- **Уникайте нічних перекусів** — останній прийом їжі бажано робити за 2–3 години до сну, щоб організм спав у стані відновлення.\n- **Слухайте свій голод** — якщо після трьох повноцінних страв ви не відчуваєте голоду, додаткові перекуси не потрібні.\n- **Регулярність допомагає контролювати апетит** — стабільний графік сприяє меншим перепадам рівня цукру в крові та відсутності надмірного бажання з'їсти щось шкідливе.\n\nПам'ятайте, що найкращий режим — той, який вам комфортно дотримуватися довго без стресу.",
+      "seconds": 12.6,
+      "prompt_tokens": 30,
+      "prompt_tok_s": 167.1,
+      "output_tokens": 287,
+      "output_tok_s": 24.78,
+      "checks": {
+        "russian_letters": 0,
+        "russisms": [],
+        "latin_share": 0.0
+      }
+    },
+    {
+      "id": "meals_a_day",
+      "lang": "en",
+      "question": "I want to lose weight. How many times a day should I eat?",
+      "reply": "Hello! As NutriMind, here are some quick tips on meal frequency for weight loss:\n\n*   There is no single \"magic number\"; the best frequency depends on your personal hunger cues and lifestyle.\n*   Many people find success with 3 balanced meals, while others prefer 5–6 smaller meals to manage cravings.\n*   Focus on consistency and total daily calorie intake rather than obsessing over how many times you eat.\n*   Try eating when you are genuinely hungry and stop when you feel comfortably full to avoid overeating.\n*   Whichever schedule you choose, prioritize nutrient-dense foods like vegetables, lean proteins, and whole grains.\n\nRemember, the goal is a sustainable habit that fits your life!",
+      "seconds": 7.2,
+      "prompt_tokens": 27,
+      "prompt_tok_s": 150.2,
+      "output_tokens": 151,
+      "output_tok_s": 24.48,
+      "checks": {
+        "cyrillic_share": 0.0
+      }
+    },
+    {
+      "id": "sugar",
+      "lang": "uk",
+      "question": "Чим замінити цукор у випічці?",
+      "reply": "Ось перевірені альтернативи для солодощів:\n- **Мед** — ідеально для кексів та млинців, додає ніжний аромат. Зменшіть кількість на 10–15% порівняно з цукром.\n- **Кленовий сироп** — чудово підходить для панкейків та бисквітів.\n- **Фруктове пюре** — яблучне, персикове або бананове додає вологості та солодкості без зайвих калорій.\n- **Стевія** — рослинний підсолоджувач без калорій, але потребує обережності з дозуванням, щоб уникнути гіркоти.\n- **Агар-агар із сухофруктами** — для дієтичних варення та начинки, якщо потрібно замінити цукор у повному обсязі.\n\nПам'ятайте, що заміна може трохи змінити текстуру або колір випічки.",
+      "seconds": 11.1,
+      "prompt_tokens": 27,
+      "prompt_tok_s": 153.8,
+      "output_tokens": 247,
+      "output_tok_s": 24.76,
+      "checks": {
+        "russian_letters": 0,
+        "russisms": [],
+        "latin_share": 0.0
+      }
+    },
+    {
+      "id": "sugar",
+      "lang": "en",
+      "question": "What can I use instead of sugar in baking?",
+      "reply": "Hello! Here are some great real-world alternatives to sugar for your baking adventures:\n\n*   **Honey or Maple Syrup**: These natural sweeteners add moisture and flavor, though you may need to slightly reduce other liquids in the recipe.\n*   **Mashed Ripe Bananas or Applesauce**: Perfect for cakes and muffins, they provide sweetness while cutting down on refined sugar content.\n*   **Date Paste**: Blended dates create a rich, caramel-like sweetness ideal for cookies and brownies.\n*   **Stevia or Erythritol**: These are zero-calorie options that mimic sugar's sweetness without the glycemic impact, often used in low-carb baking.\n*   **Coconut Sugar**: Made from coconut palm sap, it has a lower glycemic index than white sugar and works well as a 1:1 substitute in most recipes.\n\nRemember, swapping sweeteners can change texture and browning, so keep an eye on your oven!",
+      "seconds": 9.4,
+      "prompt_tokens": 22,
+      "prompt_tok_s": 121.7,
+      "output_tokens": 205,
+      "output_tok_s": 24.49,
+      "checks": {
+        "cyrillic_share": 0.0
+      }
+    },
+    {
+      "id": "vegetarian",
+      "lang": "uk",
+      "question": "Склади меню на один день для вегетаріанця.",
+      "reply": "Ось збалансований вегетаріанський раціон:\n\n*   **Сніданок:** Вівсяна каша на воді або рослинному молоці з яблуком та горіхами.\n*   **Обід:** Горохова юшка із зеленню та густий овочевий суп-пюре з гарбуза.\n*   **Полудень:** Яблучко та невелика порція кисломолочного сиру (або тофу).\n*   **Вечеря:** Запечена картопля з цільнозерновим хлібом, тушкованими овочами та сиром.\n*   **Перекуси:** Горіхи, насіння або свіжі фрукти за потребою.\n\nЦей раціон багатий на клітковину та рослинні білки. Точна калорійність залежить від ваги порцій та конкретних продуктів.",
+      "seconds": 9.5,
+      "prompt_tokens": 27,
+      "prompt_tok_s": 152.2,
+      "output_tokens": 215,
+      "output_tok_s": 24.88,
+      "checks": {
+        "russian_letters": 0,
+        "russisms": [],
+        "latin_share": 0.0
+      }
+    },
+    {
+      "id": "vegetarian",
+      "lang": "en",
+      "question": "Make a one-day menu for a vegetarian.",
+      "reply": "Hello! Here is a balanced, real-food one-day menu for a vegetarian:\n\n*   **Breakfast**: Oatmeal made with milk or a plant-based alternative, topped with fresh berries and a sprinkle of chia seeds for fiber.\n*   **Lunch**: A hearty Quinoa Salad with chickpeas, cucumber, cherry tomatoes, feta cheese, and a lemon-olive oil dressing.\n*   **Snack**: An apple paired with a small handful of almonds or a cup of hummus with carrot sticks.\n*   **Dinner**: Classic Margherita Pizza on whole-wheat dough, featuring fresh mozzarella, tomato sauce, and basil leaves.\n*   **Hydration**: Water infused with lemon or cucumber throughout the day to stay refreshed.\n\nEnjoy your nutritious day! Remember that portion sizes will affect total energy intake, so listen to your body's hunger cues.",
+      "seconds": 8.6,
+      "prompt_tokens": 21,
+      "prompt_tok_s": 119.7,
+      "output_tokens": 184,
+      "output_tok_s": 24.5,
+      "checks": {
+        "cyrillic_share": 0.0
+      }
+    },
+    {
+      "id": "nut_allergy",
+      "lang": "uk",
+      "question": "У мене алергія на горіхи. Які перекуси мені підійдуть?",
+      "reply": "Ось безпечні та корисні варіанти перекусів без горіхів:\n\n- **Кисломолочний сир з ягодами** — відмінне джерело білка, не містить алергенів.\n- **Нарізана морква або огірок** — свіжі овочі дадуть відчуття ситості та вітаміни.\n- **Яблуко з цільнозерновим хлібом** — простий, але насичений вуглеводами перекус.\n- **Варене яйце** — легко засвоюваний білок, ідеально для швидкого перекусу.\n- **Натуральний йогурт без добавок** — слідкуйте лише за складом, щоб уникнути слідів горіхів.\n\nЗавжди перевіряйте етикетки на наявність попередження про виробництво в одному цеху з горіхами.",
+      "seconds": 9.8,
+      "prompt_tokens": 34,
+      "prompt_tok_s": 169.9,
+      "output_tokens": 219,
+      "output_tok_s": 24.81,
+      "checks": {
+        "russian_letters": 0,
+        "russisms": [],
+        "latin_share": 0.0
+      }
+    },
+    {
+      "id": "nut_allergy",
+      "lang": "en",
+      "question": "I'm allergic to nuts. What snacks are good for me?",
+      "reply": "Hello! As NutriMind, I'm happy to suggest some delicious, nut-free snack options for you:\n\n*   **Fresh Fruit with Greek Yogurt**: Apple slices or berries paired with plain yogurt offer a great balance of fiber and protein.\n*   **Rice Cakes with Avocado**: Top whole-grain rice cakes with mashed avocado and a pinch of salt for healthy fats.\n*   **Hard-Boiled Eggs**: A portable, high-protein option that requires no cooking equipment to eat on the go.\n*   **Homemade Popcorn**: Air-popped corn seasoned with herbs or nutritional yeast is a satisfying, crunchy alternative to nuts.\n*   **Hummus and Veggie Sticks**: Carrots, cucumbers, or bell peppers dipped in store-bought hummus (always check labels for cross-contamination warnings).\n\nAlways double-check packaging labels to ensure no nut processing facilities were used!",
+      "seconds": 8.9,
+      "prompt_tokens": 25,
+      "prompt_tok_s": 63.0,
+      "output_tokens": 192,
+      "output_tok_s": 24.4,
+      "checks": {
+        "cyrillic_share": 0.0
+      }
+    },
+    {
+      "id": "protein_fact",
+      "lang": "uk",
+      "question": "Скільки білка в 100 г курячої грудки?",
+      "reply": "Ось орієнтовні дані для **вареної або запеченої** курячої грудки без шкірки (у сирому вигляді білків менше через вміст води):\n\n*   У 100 г готового м'яса міститься приблизно **26–30 г білка**.\n*   Це один із найкращих джерел якісного протеїну з мінімальною кількістю жиру.\n*   Точний показник може змінюватися залежно від того, скільки води випарувалося під час приготування: чим сухіше м'ясо, тим вища концентрація білка на 100 г.\n\nДля точного розрахунку калорій та БЖВ у конкретному рецепті варто враховувати вагу продукту **до** термічної обробки.",
+      "seconds": 9.3,
+      "prompt_tokens": 29,
+      "prompt_tok_s": 143.6,
+      "output_tokens": 203,
+      "output_tok_s": 24.79,
+      "checks": {
+        "russian_letters": 0,
+        "russisms": [],
+        "latin_share": 0.0
+      }
+    },
+    {
+      "id": "protein_fact",
+      "lang": "en",
+      "question": "How much protein is in 100 g of chicken breast?",
+      "reply": "Hello! As NutriMind, here's what you need to know about chicken breast:\n\n*   Raw chicken breast typically contains roughly 23 grams of protein per 100 grams.\n*   Cooked chicken breast is more concentrated, offering approximately 31 grams of protein per 100 grams due to water loss during cooking.\n*   Exact numbers vary slightly based on the specific bird and cooking method used.\n*   It is an excellent lean source of high-quality protein for muscle building and repair.\n*   For precise tracking, I recommend checking your specific brand's nutrition label or a verified food database.",
+      "seconds": 6.6,
+      "prompt_tokens": 26,
+      "prompt_tok_s": 66.3,
+      "output_tokens": 131,
+      "output_tok_s": 24.78,
+      "checks": {
+        "cyrillic_share": 0.0
+      }
+    },
+    {
+      "id": "buckwheat",
+      "lang": "uk",
+      "question": "Що можна приготувати з гречки, крім каші?",
+      "reply": "Ось кілька цікавих ідей для використання гречки:\n\n- **Гречаникі** — котлети з вареної гречки, яйця та цибулі. Їх можна смажити або запікати в духовці.\n- **Суп із грибами** — додайте сирну кашу у бульйон із печеними грибами та морквою для насиченості.\n- **Гречана котлетка з фаршем** — змішайте варену крупу з м'ясним фаршем, часником та спеціями.\n- **Салат із квасолею** — поєднайте відварену гречку з консервованою квасолею, огірком та зеленню.\n- **Запеканка** — змішайте гречку з яйцями, сиром та овочами, додайте трохи вершків і запікайте до рум'яної скоринки.\n\nЦі страви легкі у приготуванні та дуже поживні.",
+      "seconds": 10.9,
+      "prompt_tokens": 29,
+      "prompt_tok_s": 140.6,
+      "output_tokens": 241,
+      "output_tok_s": 24.86,
+      "checks": {
+        "russian_letters": 0,
+        "russisms": [],
+        "latin_share": 0.0
+      }
+    },
+    {
+      "id": "buckwheat",
+      "lang": "en",
+      "question": "What can I make from buckwheat besides porridge?",
+      "reply": "Hello! Buckwheat is incredibly versatile beyond just porridge. Here are some delicious, real dishes you can try:\n\n*   **Buckwheat Pancakes (Soboro or Blini):** A classic breakfast or snack option where buckwheat flour is mixed with eggs and milk for a nutty, hearty texture.\n*   **Soba Noodles:** These traditional Japanese noodles are perfect for cold salads with soy dressing or warm soups like Tonkotsu.\n*   **Kasha Pilaf:** A savory Eastern European side dish made by sautéing roasted buckwheat groats with onions, mushrooms, and broth until fluffy.\n*   **Buckwheat Salad:** Use cooked groats as a base for a grain bowl mixed with fresh vegetables, feta cheese, and a lemon vinaigrette.\n*   **Buckwheat Bread or Muffins:** Add buckwheat flour to your favorite bread recipe to create dense, flavorful loaves or sweet muffins.\n\nEnjoy experimenting with these nutritious options!",
+      "seconds": 9.5,
+      "prompt_tokens": 24,
+      "prompt_tok_s": 121.1,
+      "output_tokens": 216,
+      "output_tok_s": 24.77,
+      "checks": {
+        "cyrillic_share": 0.0
+      }
+    }
+  ],
+  "tools": [
+    {
+      "id": "swap_uk",
+      "text": "Заміни мені вечерю в середу на щось без м'яса.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "swap_meal",
+            "arguments": "{\"day\":\"wednesday\",\"meal_type\":\"dinner\",\"preference\":\"без м'яса\"}"
+          },
+          "id": "ZR7y43mbAuINyDJQNgGXwV6qgtT5C7lq"
+        }
+      ],
+      "reply": "",
+      "seconds": 4.0,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "swap_en",
+      "text": "Swap my Friday breakfast for something with more protein.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "swap_meal",
+            "arguments": "{\"day\":\"friday\",\"meal_type\":\"breakfast\",\"preference\":\"something with more protein\"}"
+          },
+          "id": "ER1j6pM9YTc5jPCf2wu89gIUYzDHkgCa"
+        }
+      ],
+      "reply": "",
+      "seconds": 3.6,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "find_uk",
+      "text": "Що я можу приготувати з яєць, помідорів і сиру за 15 хвилин?",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "find_recipes",
+            "arguments": "{\"ingredients\":[\"яйця\", \"помідори\", \"сир\"],\"max_time_min\":15}"
+          },
+          "id": "WqzblTahNE7Z77BFQgDmbDnu1Ccqd0PJ"
+        }
+      ],
+      "reply": "",
+      "seconds": 3.3,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "find_en",
+      "text": "Find me a recipe using potatoes and mushrooms.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "find_recipes",
+            "arguments": "{\"ingredients\":[\"potatoes\", \"mushrooms\"]}"
+          },
+          "id": "RgLKEmnIDOtFU1aWt5ANRwsoLlBdtVpB"
+        }
+      ],
+      "reply": "",
+      "seconds": 2.4,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "shop_uk",
+      "text": "Додай молоко, хліб і банани до списку покупок.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "add_to_shopping_list",
+            "arguments": "{\"items\":[\"молоко\", \"хліб\", \"банани\"]}"
+          },
+          "id": "YcKmb3hLnyMVbgsDJwX4E4rc8h5fyGJq"
+        }
+      ],
+      "reply": "",
+      "seconds": 2.7,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "shop_en",
+      "text": "Put olive oil and garlic on my shopping list.",
+      "tool_calls": [
+        {
+          "type": "function",
+          "function": {
+            "name": "add_to_shopping_list",
+            "arguments": "{\"items\":[\"olive oil\", \"garlic\"]}"
+          },
+          "id": "9LRNmyGkIsSt3q0RNYI2OJeKtJGlCsy2"
+        }
+      ],
+      "reply": "",
+      "seconds": 2.3,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "no_tool_uk",
+      "text": "Привіт! Чим ти можеш мені допомогти?",
+      "tool_calls": [],
+      "reply": "Вітаю! Я — NutriMind, ваш помічник у плануванні харчування. Ось що я можу зробити:\n\n*   **Підібрати рецепти** на основі продуктів, які є у вас вдома.\n*   **Змінити страву** у вашому плані харчування на будь-який день тижня.\n*   **Додати продукти** до вашого списку покупок для зручності.\n\nПросто скажіть, що потрібно: знайти рецепт, змінити вечерю чи оновити список продуктів!",
+      "seconds": 6.5,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    },
+    {
+      "id": "no_tool_en",
+      "text": "Is it bad to eat late at night?",
+      "tool_calls": [],
+      "reply": "Eating late at night isn't inherently \"bad,\" but it can affect your health depending on what and how much you eat. Here are a few key points:\n\n*   **Digestion:** Lying down soon after eating can cause acid reflux or indigestion, especially with heavy or spicy meals.\n*   **Sleep Quality:** Large meals can disrupt sleep by keeping your body busy digesting instead of resting.\n*   **Calorie Intake:** Late-night snacking often leads to consuming extra calories that aren't burned off, potentially contributing to weight gain over time.\n*   **Blood Sugar:** Eating high-sugar or high-carb foods late can cause blood sugar spikes and crashes, affecting energy levels the next morning.\n*   **Better Choices:** If you're hungry, opt for light, protein-rich snacks like Greek yogurt or a handful of nuts instead of heavy meals.\n\nListening to your body's hunger cues is more important than the clock!",
+      "seconds": 9.2,
+      "correct_tool": true,
+      "correct_args": true,
+      "valid_json": true
+    }
+  ],
+  "photos": [
+    {
+      "file": "veg_table.jpg",
+      "seconds": 6.9,
+      "prompt_tokens": 575,
+      "prompt_tok_s": 773.6,
+      "output_tokens": 119,
+      "output_tok_s": 24.54,
+      "predictions": [
+        {
+          "name": "cherry tomato",
+          "name_uk": "помідор чері",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "cucumber",
+          "name_uk": "огірок",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "lemon",
+          "name_uk": "лимон",
+          "confidence": "high",
+          "status": "wrong",
+          "uk_ok": null
+        },
+        {
+          "name": "banana",
+          "name_uk": "банан",
+          "confidence": "medium",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "orange",
+          "name_uk": "апельсин",
+          "confidence": "medium",
+          "status": "required",
+          "uk_ok": true
+        }
+      ],
+      "missed_required": [
+        "bread",
+        "cherry"
+      ],
+      "required_total": 6,
+      "required_found": 4,
+      "precision": 0.8,
+      "recall": 0.667,
+      "uk_names_correct": 4,
+      "uk_names_total": 4
+    },
+    {
+      "file": "soup_zucchini.jpg",
+      "seconds": 9.8,
+      "prompt_tokens": 623,
+      "prompt_tok_s": 767.5,
+      "output_tokens": 197,
+      "output_tok_s": 24.48,
+      "predictions": [
+        {
+          "name": "garlic",
+          "name_uk": "часник",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "basil leaves",
+          "name_uk": "листя базиліка",
+          "confidence": "medium",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "oil",
+          "name_uk": "олія",
+          "confidence": "medium",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "milk",
+          "name_uk": "молоко",
+          "confidence": "medium",
+          "status": "wrong",
+          "uk_ok": null
+        },
+        {
+          "name": "yellow squash",
+          "name_uk": "жовта цукіні",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "zucchini",
+          "name_uk": "цукіні",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "red onion",
+          "name_uk": "червона цибуля",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "apple",
+          "name_uk": "яблуко",
+          "confidence": "high",
+          "status": "wrong",
+          "uk_ok": null
+        }
+      ],
+      "missed_required": [
+        "potato"
+      ],
+      "required_total": 5,
+      "required_found": 4,
+      "precision": 0.75,
+      "recall": 0.8,
+      "uk_names_correct": 6,
+      "uk_names_total": 6
+    },
+    {
+      "file": "chicken_soup.jpg",
+      "seconds": 9.5,
+      "prompt_tokens": 623,
+      "prompt_tok_s": 779.2,
+      "output_tokens": 194,
+      "output_tok_s": 24.51,
+      "predictions": [
+        {
+          "name": "green bell pepper",
+          "name_uk": "зелений перець",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "tomato",
+          "name_uk": "помідор",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "carrot",
+          "name_uk": "морква",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "onion",
+          "name_uk": "цибуля",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "garlic",
+          "name_uk": "часник",
+          "confidence": "high",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "potato",
+          "name_uk": "картопля",
+          "confidence": "medium",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "pumpkin",
+          "name_uk": "гарбуз",
+          "confidence": "medium",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "meatball",
+          "name_uk": "м'ясна кулька",
+          "confidence": "medium",
+          "status": "wrong",
+          "uk_ok": null
+        }
+      ],
+      "missed_required": [
+        "chicken"
+      ],
+      "required_total": 6,
+      "required_found": 5,
+      "precision": 0.875,
+      "recall": 0.833,
+      "uk_names_correct": 7,
+      "uk_names_total": 7
+    },
+    {
+      "file": "eggs_kitchen.jpg",
+      "seconds": 18.6,
+      "prompt_tokens": 575,
+      "prompt_tok_s": 781.1,
+      "output_tokens": 421,
+      "output_tok_s": 24.7,
+      "predictions": [
+        {
+          "name": "egg",
+          "name_uk": "яйце",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "milk",
+          "name_uk": "молоко",
+          "confidence": "medium",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "honey",
+          "name_uk": "мед",
+          "confidence": "high",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "cherry",
+          "name_uk": "вишня",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "bread",
+          "name_uk": "хліб",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "cucumber",
+          "name_uk": "огірок",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "tomato",
+          "name_uk": "томат",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "banana",
+          "name_uk": "банан",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "avocado",
+          "name_uk": "авокадо",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "orange",
+          "name_uk": "апельсин",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "lemon",
+          "name_uk": "лимон",
+          "confidence": "high",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "pear",
+          "name_uk": "груша",
+          "confidence": "high",
+          "status": "optional",
+          "uk_ok": true
+        }
+      ],
+      "missed_required": [],
+      "required_total": 8,
+      "required_found": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "uk_names_correct": 12,
+      "uk_names_total": 12
+    },
+    {
+      "file": "vegs_soup.jpg",
+      "seconds": 8.0,
+      "prompt_tokens": 623,
+      "prompt_tok_s": 776.8,
+      "output_tokens": 148,
+      "output_tok_s": 24.48,
+      "predictions": [
+        {
+          "name": "Brussels sprouts",
+          "name_uk": "брюссельська капуста",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "carrot",
+          "name_uk": "морква",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "onion",
+          "name_uk": "цибуля",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "celery",
+          "name_uk": "селера",
+          "confidence": "high",
+          "status": "wrong",
+          "uk_ok": null
+        },
+        {
+          "name": "pumpkin",
+          "name_uk": "гарбуз",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "mushroom",
+          "name_uk": "гриб",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        }
+      ],
+      "missed_required": [
+        "leek"
+      ],
+      "required_total": 6,
+      "required_found": 5,
+      "precision": 0.833,
+      "recall": 0.833,
+      "uk_names_correct": 5,
+      "uk_names_total": 5
+    },
+    {
+      "file": "pea_soup.jpg",
+      "seconds": 10.8,
+      "prompt_tokens": 623,
+      "prompt_tok_s": 779.4,
+      "output_tokens": 219,
+      "output_tok_s": 24.58,
+      "predictions": [
+        {
+          "name": "celery",
+          "name_uk": "селера",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "leek",
+          "name_uk": "порей",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "sweet potato",
+          "name_uk": "солодка картопля",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": false
+        },
+        {
+          "name": "shallot",
+          "name_uk": "шалот",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "garlic",
+          "name_uk": "часник",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "carrot",
+          "name_uk": "морква",
+          "confidence": "high",
+          "status": "duplicate",
+          "uk_ok": null
+        },
+        {
+          "name": "cilantro",
+          "name_uk": "коріандр",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "dill",
+          "name_uk": "кріп",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "green split peas",
+          "name_uk": "зелені розщеплені горошини",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": false
+        }
+      ],
+      "missed_required": [],
+      "required_total": 8,
+      "required_found": 8,
+      "precision": 1.0,
+      "recall": 1.0,
+      "uk_names_correct": 6,
+      "uk_names_total": 8
+    },
+    {
+      "file": "board_cut.jpg",
+      "seconds": 10.2,
+      "prompt_tokens": 575,
+      "prompt_tok_s": 778.0,
+      "output_tokens": 210,
+      "output_tok_s": 24.57,
+      "predictions": [
+        {
+          "name": "orange",
+          "name_uk": "апельсин",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "bell pepper",
+          "name_uk": "перець солодкий",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "cucumber",
+          "name_uk": "огірок",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "tomato",
+          "name_uk": "помідор",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "avocado",
+          "name_uk": "авокадо",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "banana",
+          "name_uk": "банан",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "lemon",
+          "name_uk": "лимон",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "egg",
+          "name_uk": "яйце",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "bread",
+          "name_uk": "хліб",
+          "confidence": "medium",
+          "status": "required",
+          "uk_ok": true
+        }
+      ],
+      "missed_required": [],
+      "required_total": 9,
+      "required_found": 9,
+      "precision": 1.0,
+      "recall": 1.0,
+      "uk_names_correct": 9,
+      "uk_names_total": 9
+    },
+    {
+      "file": "fridge2.jpg",
+      "seconds": 7.8,
+      "prompt_tokens": 527,
+      "prompt_tok_s": 761.0,
+      "output_tokens": 152,
+      "output_tok_s": 24.48,
+      "predictions": [
+        {
+          "name": "lemon",
+          "name_uk": "лимон",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "hummus",
+          "name_uk": "хумус",
+          "confidence": "medium",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "olives",
+          "name_uk": "оливки",
+          "confidence": "high",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "pickle",
+          "name_uk": "огірок",
+          "confidence": "medium",
+          "status": "optional",
+          "uk_ok": true
+        }
+      ],
+      "missed_required": [],
+      "required_total": 1,
+      "required_found": 1,
+      "precision": 1.0,
+      "recall": 1.0,
+      "uk_names_correct": 4,
+      "uk_names_total": 4
+    },
+    {
+      "file": "fridge1.jpg",
+      "seconds": 4.7,
+      "prompt_tokens": 575,
+      "prompt_tok_s": 780.2,
+      "output_tokens": 74,
+      "output_tok_s": 24.05,
+      "predictions": [
+        {
+          "name": "lettuce",
+          "name_uk": "салат",
+          "confidence": "high",
+          "status": "optional",
+          "uk_ok": true
+        },
+        {
+          "name": "lemon",
+          "name_uk": "лимон",
+          "confidence": "high",
+          "status": "required",
+          "uk_ok": true
+        },
+        {
+          "name": "mayonnaise",
+          "name_uk": "майонез",
+          "confidence": "medium",
+          "status": "wrong",
+          "uk_ok": null
+        }
+      ],
+      "missed_required": [],
+      "required_total": 1,
+      "required_found": 1,
+      "precision": 0.667,
+      "recall": 1.0,
+      "uk_names_correct": 2,
+      "uk_names_total": 2
+    }
+  ],
+  "finished": "2026-11-19 22:25"
+}

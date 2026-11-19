@@ -1,0 +1,198 @@
+{
+  "chat": [
+    {"id": "breakfast",   "uk": "Порадь швидкий білковий сніданок.",                          "en": "Suggest a quick high-protein breakfast."},
+    {"id": "dinner",      "uk": "Що приготувати на вечерю з курки, рису та броколі?",          "en": "What can I cook for dinner with chicken, rice and broccoli?"},
+    {"id": "meals_a_day", "uk": "Я хочу схуднути. Скільки разів на день краще їсти?",          "en": "I want to lose weight. How many times a day should I eat?"},
+    {"id": "sugar",       "uk": "Чим замінити цукор у випічці?",                              "en": "What can I use instead of sugar in baking?"},
+    {"id": "vegetarian",  "uk": "Склади меню на один день для вегетаріанця.",                  "en": "Make a one-day menu for a vegetarian."},
+    {"id": "nut_allergy", "uk": "У мене алергія на горіхи. Які перекуси мені підійдуть?",      "en": "I'm allergic to nuts. What snacks are good for me?"},
+    {"id": "protein_fact","uk": "Скільки білка в 100 г курячої грудки?",                       "en": "How much protein is in 100 g of chicken breast?"},
+    {"id": "buckwheat",   "uk": "Що можна приготувати з гречки, крім каші?",                   "en": "What can I make from buckwheat besides porridge?"}
+  ],
+
+  "tools": {
+    "definitions": [
+      {"type": "function", "function": {
+        "name": "swap_meal",
+        "description": "Replace one meal in the user's current meal plan.",
+        "parameters": {"type": "object", "properties": {
+          "day": {"type": "string", "enum": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]},
+          "meal_type": {"type": "string", "enum": ["breakfast", "lunch", "dinner", "snack"]},
+          "preference": {"type": "string", "description": "What the new meal should be like, in the user's words"}
+        }, "required": ["day", "meal_type"]}
+      }},
+      {"type": "function", "function": {
+        "name": "find_recipes",
+        "description": "Search recipes that use the given ingredients.",
+        "parameters": {"type": "object", "properties": {
+          "ingredients": {"type": "array", "items": {"type": "string"}},
+          "max_time_min": {"type": "integer", "description": "Maximum total cooking time in minutes"}
+        }, "required": ["ingredients"]}
+      }},
+      {"type": "function", "function": {
+        "name": "add_to_shopping_list",
+        "description": "Add items to the user's shopping list.",
+        "parameters": {"type": "object", "properties": {
+          "items": {"type": "array", "items": {"type": "string"}}
+        }, "required": ["items"]}
+      }}
+    ],
+    "cases": [
+      {"id": "swap_uk",     "text": "Заміни мені вечерю в середу на щось без м'яса.",
+       "expect": {"name": "swap_meal", "args": {"day": "wednesday", "meal_type": "dinner"}}},
+      {"id": "swap_en",     "text": "Swap my Friday breakfast for something with more protein.",
+       "expect": {"name": "swap_meal", "args": {"day": "friday", "meal_type": "breakfast"}}},
+      {"id": "find_uk",     "text": "Що я можу приготувати з яєць, помідорів і сиру за 15 хвилин?",
+       "expect": {"name": "find_recipes", "ingredients_count": 3, "args": {"max_time_min": 15}}},
+      {"id": "find_en",     "text": "Find me a recipe using potatoes and mushrooms.",
+       "expect": {"name": "find_recipes", "ingredients_count": 2}},
+      {"id": "shop_uk",     "text": "Додай молоко, хліб і банани до списку покупок.",
+       "expect": {"name": "add_to_shopping_list", "items_count": 3}},
+      {"id": "shop_en",     "text": "Put olive oil and garlic on my shopping list.",
+       "expect": {"name": "add_to_shopping_list", "items_count": 2}},
+      {"id": "no_tool_uk",  "text": "Привіт! Чим ти можеш мені допомогти?",
+       "expect": {"name": null}},
+      {"id": "no_tool_en",  "text": "Is it bad to eat late at night?",
+       "expect": {"name": null}}
+    ]
+  },
+
+  "_photos_note": "Labels by Claude from viewing each photo (provisional — replace with the user's own labelled phone photos). 'required' = clearly visible, scored for recall. 'optional' = ambiguous; finding one counts as correct, missing one is not penalized. Each item: English aliases, then Ukrainian stems for checking name_uk.",
+  "photos": [
+    {"file": "veg_table.jpg", "license": "Wikimedia Commons",
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Fresh_fruits_and_vegetables_placed_on_a_kitchen_table_with_jars_and_bowls.jpg/1280px-Fresh_fruits_and_vegetables_placed_on_a_kitchen_table_with_jars_and_bowls.jpg",
+     "required": [
+       {"en": ["orange"], "uk": ["апельсин"]},
+       {"en": ["cucumber"], "uk": ["огір"]},
+       {"en": ["tomato"], "uk": ["помідор", "томат"]},
+       {"en": ["banana"], "uk": ["банан"]},
+       {"en": ["bread", "rye bread", "toast"], "uk": ["хліб"]},
+       {"en": ["cherry", "sweet cherry"], "uk": ["черешн", "вишн"]}
+     ],
+     "optional": [
+       {"en": ["red currant", "currant", "berry", "berries"], "uk": ["смородин", "порічк", "ягод"]},
+       {"en": ["bell pepper", "pepper", "green pepper"], "uk": ["перець", "перц"]},
+       {"en": ["honey", "syrup"], "uk": ["мед", "сироп"]},
+       {"en": ["avocado"], "uk": ["авокадо"]},
+       {"en": ["milk", "juice"], "uk": ["молок", "сік"]}
+     ]},
+
+    {"file": "soup_zucchini.jpg", "license": "CC BY-SA 2.0",
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Soup_zucchini%2C_yellow_squash%2C_potaoes%2C_garlic_cloves%2C_tomato_paste%2C_basil%2C_onions.jpg/1280px-Soup_zucchini%2C_yellow_squash%2C_potaoes%2C_garlic_cloves%2C_tomato_paste%2C_basil%2C_onions.jpg",
+     "required": [
+       {"en": ["zucchini", "courgette", "cucumber"], "uk": ["кабач", "цукіні"]},
+       {"en": ["yellow squash", "squash", "yellow zucchini"], "uk": ["кабач", "цукіні", "гарбуз", "патисон"]},
+       {"en": ["potato", "red potato"], "uk": ["картопл"]},
+       {"en": ["onion", "red onion"], "uk": ["цибул"]},
+       {"en": ["garlic"], "uk": ["часник"]}
+     ],
+     "optional": [
+       {"en": ["tomato paste", "canned tomato", "tomato"], "uk": ["томат", "помідор"]},
+       {"en": ["basil", "dried basil"], "uk": ["базилік"]},
+       {"en": ["oil", "vegetable oil", "corn oil"], "uk": ["олі"]},
+       {"en": ["broth", "stock"], "uk": ["бульйон"]}
+     ]},
+
+    {"file": "chicken_soup.jpg", "license": "CC BY-SA 4.0",
+     "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Eli%27s_Jewish_Chicken_Soup_-_Ingredients_03.jpg",
+     "required": [
+       {"en": ["chicken", "chicken wing", "chicken meat"], "uk": ["кур", "курятин"]},
+       {"en": ["carrot"], "uk": ["морк"]},
+       {"en": ["onion"], "uk": ["цибул"]},
+       {"en": ["bell pepper", "green pepper", "pepper"], "uk": ["перець", "перц"]},
+       {"en": ["tomato"], "uk": ["помідор", "томат"]},
+       {"en": ["pumpkin", "squash", "butternut squash", "sweet potato"], "uk": ["гарбуз", "батат"]}
+     ],
+     "optional": [
+       {"en": ["garlic"], "uk": ["часник"]},
+       {"en": ["parsnip", "turnip", "celery root", "celeriac", "potato", "shallot"], "uk": ["пастернак", "ріп", "селер", "картопл", "шалот"]},
+       {"en": ["tomato sauce", "sauce"], "uk": ["соус"]}
+     ]},
+
+    {"file": "eggs_kitchen.jpg", "license": "CC BY 2.0",
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Person_prepares_food_with_eggs_fruits_and_vegetables_in_a_kitchen.jpg/1280px-Person_prepares_food_with_eggs_fruits_and_vegetables_in_a_kitchen.jpg",
+     "required": [
+       {"en": ["egg"], "uk": ["яйц", "яєць"]},
+       {"en": ["cherry", "sweet cherry"], "uk": ["черешн", "вишн"]},
+       {"en": ["bread", "rye bread", "toast"], "uk": ["хліб"]},
+       {"en": ["cucumber"], "uk": ["огір"]},
+       {"en": ["tomato"], "uk": ["помідор", "томат"]},
+       {"en": ["banana"], "uk": ["банан"]},
+       {"en": ["orange"], "uk": ["апельсин"]},
+       {"en": ["avocado"], "uk": ["авокадо"]}
+     ],
+     "optional": [
+       {"en": ["lemon"], "uk": ["лимон"]},
+       {"en": ["bell pepper", "pepper", "pear"], "uk": ["перець", "перц", "груш"]},
+       {"en": ["honey", "syrup", "juice"], "uk": ["мед", "сироп", "сік"]},
+       {"en": ["milk"], "uk": ["молок"]}
+     ]},
+
+    {"file": "vegs_soup.jpg", "license": "CC BY 3.0",
+     "url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Vegs_soup_ingredients.jpg",
+     "required": [
+       {"en": ["brussels sprout", "brussels sprouts"], "uk": ["брюссельськ"]},
+       {"en": ["mushroom", "white mushroom", "button mushroom", "champignon"], "uk": ["гриб", "печериц", "шампін"]},
+       {"en": ["onion", "yellow onion"], "uk": ["цибул"]},
+       {"en": ["carrot"], "uk": ["морк"]},
+       {"en": ["pumpkin", "squash"], "uk": ["гарбуз"]},
+       {"en": ["leek"], "uk": ["порей"]}
+     ],
+     "optional": []},
+
+    {"file": "pea_soup.jpg", "license": "CC BY-SA 4.0",
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Liat_Portal_for_Foodie_Disorder_-_Ingredients_for_green_split_pea_soup.jpg/1280px-Liat_Portal_for_Foodie_Disorder_-_Ingredients_for_green_split_pea_soup.jpg",
+     "required": [
+       {"en": ["split pea", "green split pea", "pea", "dried pea"], "uk": ["горох", "горошок"]},
+       {"en": ["celery"], "uk": ["селер"]},
+       {"en": ["leek"], "uk": ["порей"]},
+       {"en": ["carrot", "sweet potato"], "uk": ["морк", "батат"]},
+       {"en": ["shallot", "onion", "red onion"], "uk": ["цибул", "шалот"]},
+       {"en": ["garlic"], "uk": ["часник"]},
+       {"en": ["cilantro", "parsley", "coriander"], "uk": ["петрушк", "кінз", "коріандр"]},
+       {"en": ["dill"], "uk": ["кріп", "кропу"]}
+     ],
+     "optional": []},
+
+    {"file": "board_cut.jpg", "license": "CC BY 2.0",
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Businesswoman_cuts_vegetables_and_fruits_on_a_wooden_board_in_a_kitchen.jpg/1280px-Businesswoman_cuts_vegetables_and_fruits_on_a_wooden_board_in_a_kitchen.jpg",
+     "required": [
+       {"en": ["tomato"], "uk": ["помідор", "томат"]},
+       {"en": ["cucumber"], "uk": ["огір"]},
+       {"en": ["bell pepper", "pepper", "green pepper", "sweet pepper"], "uk": ["перець", "перц"]},
+       {"en": ["banana"], "uk": ["банан"]},
+       {"en": ["avocado"], "uk": ["авокадо"]},
+       {"en": ["orange"], "uk": ["апельсин"]},
+       {"en": ["lemon"], "uk": ["лимон"]},
+       {"en": ["egg"], "uk": ["яйц", "яєць"]},
+       {"en": ["bread", "rye bread", "toast"], "uk": ["хліб"]}
+     ],
+     "optional": [
+       {"en": ["cereal", "muesli", "granola", "oat"], "uk": ["пластів", "мюслі", "гранол", "вівс"]}
+     ]},
+
+    {"file": "fridge2.jpg", "license": "Public domain",
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Food_Safety_-_Cut_Waste_in_Refrigerators_%2820200605-FSIS-LSC-0090%29.jpg/1280px-Food_Safety_-_Cut_Waste_in_Refrigerators_%2820200605-FSIS-LSC-0090%29.jpg",
+     "required": [
+       {"en": ["lemon"], "uk": ["лимон"]}
+     ],
+     "optional": [
+       {"en": ["hummus", "dip", "peanut butter"], "uk": ["хумус", "соус", "арахісов"]},
+       {"en": ["pesto", "sauce", "guacamole"], "uk": ["песто", "соус", "гуакамоле"]},
+       {"en": ["olive", "green olive", "grape", "pea"], "uk": ["оливк", "маслин", "виноград", "горош"]},
+       {"en": ["cucumber", "pickle"], "uk": ["огір"]},
+       {"en": ["pineapple", "mango", "melon"], "uk": ["ананас", "манго", "диня"]}
+     ]},
+
+    {"file": "fridge1.jpg", "license": "Public domain",
+     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Food_Safety_-_Cut_Waste_in_Refrigerators_%2820200605-FSIS-LSC-0066%29.jpg/1280px-Food_Safety_-_Cut_Waste_in_Refrigerators_%2820200605-FSIS-LSC-0066%29.jpg",
+     "required": [
+       {"en": ["lemon"], "uk": ["лимон"]}
+     ],
+     "optional": [
+       {"en": ["lettuce", "celery", "green onion", "greens", "cabbage"], "uk": ["салат", "селер", "цибул", "зелен", "капуст"]},
+       {"en": ["hummus", "dip", "yogurt"], "uk": ["хумус", "соус", "йогурт"]},
+       {"en": ["milk", "juice", "drink"], "uk": ["молок", "сік", "напій"]}
+     ]}
+  ]
+}
