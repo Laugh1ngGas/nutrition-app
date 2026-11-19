@@ -143,7 +143,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           />
         )}
 
-        <main className="min-w-0 flex-1 p-4 lg:p-8">{children}</main>
+        {/* Extra bottom padding keeps the floating chat button off the last content */}
+        <main className={cn("min-w-0 flex-1 p-4 lg:p-8", path !== "/assistant" && "pb-24 lg:pb-24")}>{children}</main>
       </div>
 
       {path !== "/assistant" && <AiChatBubble />}

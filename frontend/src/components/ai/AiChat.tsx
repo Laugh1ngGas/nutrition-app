@@ -55,15 +55,18 @@ export function AiChat({
   variant,
   headerActions,
   className,
+  initialInput = "",
 }: {
   variant: "page" | "panel";
   headerActions?: ReactNode;
   className?: string;
+  // Pre-filled into the input box, not sent: the user can still edit it
+  initialInput?: string;
 }) {
   const { user } = useAuth();
   const { status, setStatus } = useAiStatus();
   const [messages, setMessages] = useState<AiChatMessage[] | null>(null);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(initialInput);
   const [pending, setPending] = useState<string | null>(null);
   const [slow, setSlow] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);

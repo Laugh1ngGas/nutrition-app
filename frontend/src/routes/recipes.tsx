@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { AppShell } from "@/components/layout/AppShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,14 +9,19 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Search, Heart, Flame, Clock, Users, Check, Loader2, Star } from "lucide-react";
+import { Search, Heart, Flame, Clock, Users, Check, Loader2, Star, CircleCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { useRecipeSearch, useRecipe, toggleRecipeFavorite } from "@/integrations/api/hooks";
-import type { DietType, Recipe } from "@/integrations/api/types";
+import { useRecipeSearch, useRecipe, toggleRecipeFavorite, addFoodLog } from "@/integrations/api/hooks";
+import type { DietType, MealType, Recipe } from "@/integrations/api/types";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/recipes")({ component: RecipesPage });
+// ?recipe=<id> opens that recipe's details, e.g. from the dashboard
+export const Route = createFileRoute("/recipes")({
+  component: RecipesPage,
+  validateSearch: (search: Record<string, unknown>): { recipe?: string } =>
+    typeof search.recipe === "string" ? { recipe: search.recipe } : {},
+});
 
 const DIET_FILTERS: { label: string; value: DietType }[] = [
   { label: "Vegetarian", value: "vegetarian" },
@@ -32,7 +37,15 @@ function RecipesPage() {
   const [matchOnly, setMatchOnly] = useState(false);
   const [sortByMatch, setSortByMatch] = useState(true);
   const [activeDiet, setActiveDiet] = useState<DietType | null>(null);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const { recipe: linkedId } = Route.useSearch();
+  const navigate = useNavigate();
+  const [selectedId, setSelectedId] = useState<string | null>(linkedId ?? null);
+
+  const closeRecipe = () => {
+    setSelectedId(null);
+    // Drop ?recipe= so a reload doesn't reopen it
+    if (linkedId) navigate({ to: "/recipes", search: {}, replace: true });
+  };
 
   useEffect(() => {
     const t = setTimeout(() => setQuery(rawQuery), 300);
@@ -105,7 +118,7 @@ function RecipesPage() {
         </div>
       )}
 
-      <RecipeDetailSheet id={selectedId} onClose={() => setSelectedId(null)} />
+      <RecipeDetailSheet id={selectedId} onClose={closeRecipe} />
     </AppShell>
   );
 }
@@ -191,6 +204,63 @@ function FavoriteButton({ recipeId, initialFavorite }: { recipeId: string; initi
   );
 }
 
+const MEAL_TYPES: { value: MealType; label: string }[] = [
+  { value: "breakfast", label: "Breakfast" },
+  { value: "lunch", label: "Lunch" },
+  { value: "dinner", label: "Dinner" },
+  { value: "snack", label: "Snack" },
+];
+
+function mealTypeForNow(): MealType {
+  const hour = new Date().getHours();
+  if (hour < 11) return "breakfast";
+  if (hour < 16) return "lunch";
+  if (hour < 21) return "dinner";
+  return "snack";
+}
+
+// "I ate this": logs one serving for today, shown on the dashboard
+function LogMeal({ recipeId }: { recipeId: string }) {
+  const [mealType, setMealType] = useState<MealType>(mealTypeForNow);
+  const [busy, setBusy] = useState(false);
+
+  const log = async () => {
+    setBusy(true);
+    try {
+      await addFoodLog({ recipe_id: recipeId, meal_type: mealType, servings: 1 });
+      const label = MEAL_TYPES.find((m) => m.value === mealType)!.label.toLowerCase();
+      toast.success(`Logged as ${label}`, { description: "You'll find it under Today's Meals on the dashboard." });
+    } catch {
+      toast.error("Couldn't log this meal — please try again");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="mt-5 rounded-xl border border-border p-3">
+      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Ate this today?</p>
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        {MEAL_TYPES.map((m) => (
+          <button
+            key={m.value}
+            onClick={() => setMealType(m.value)}
+            className={cn(
+              "rounded-full border px-3 py-1 text-xs font-semibold transition",
+              mealType === m.value ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary/40"
+            )}
+          >
+            {m.label}
+          </button>
+        ))}
+      </div>
+      <Button className="mt-3 w-full" onClick={log} disabled={busy}>
+        {busy ? <Loader2 className="animate-spin" /> : <CircleCheck />} I ate this
+      </Button>
+    </div>
+  );
+}
+
 function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => void }) {
   const { data: recipe, isLoading } = useRecipe(id);
 
@@ -230,6 +300,8 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
               <Users className="h-4 w-4" /> Serves {recipe.servings}
               {recipe.cuisine_type && <span>· {recipe.cuisine_type}</span>}
             </div>
+
+            <LogMeal recipeId={recipe.id} />
 
             {haveIngredients.length > 0 && (
               <div className="mt-6">

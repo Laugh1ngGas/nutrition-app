@@ -68,8 +68,14 @@ export async function updateUserAllergens(allergenIds: number[]) {
 
 // ── Daily Nutrition Log ───────────────────────────────────────────────────────
 
+// The user's local date (YYYY-MM-DD). toISOString() alone gives the UTC date,
+// which in Ukraine is still "yesterday" between midnight and 2-3 am.
+export function localDate(d = new Date()): string {
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60_000).toISOString().slice(0, 10);
+}
+
 export function useDailyLog(date?: string) {
-  const today = date || new Date().toISOString().split('T')[0];
+  const today = date || localDate();
   return useApiCall<DailyNutrition>(async () => {
     const { data } = await apiClient.get(`/logs?date=${today}`);
     return data.data;
@@ -93,7 +99,7 @@ export async function addFoodLog(payload: {
   note?: string;
   log_date?: string;
 }): Promise<FoodLog> {
-  const { data } = await apiClient.post('/logs', payload);
+  const { data } = await apiClient.post('/logs', { log_date: localDate(), ...payload });
   return data.data;
 }
 
@@ -308,14 +314,34 @@ export async function sendAiMessage(
   // An answer takes ~5-10 s, but the first one after a quiet spell also waits
   // for the model to load (the backend waits up to 90 s for that)
   // The user's local date, so "expires tomorrow" means the user's tomorrow
-  const now = new Date();
-  const today = new Date(now.getTime() - now.getTimezoneOffset() * 60_000).toISOString().slice(0, 10);
-  const { data } = await apiClient.post('/ai/chat', { message, today }, { timeout: 150_000 });
+  const { data } = await apiClient.post('/ai/chat', { message, today: localDate() }, { timeout: 150_000 });
   return data.data;
 }
 
 export async function clearAiMessages(): Promise<void> {
   await apiClient.delete('/ai/messages');
+}
+
+// ── Water ─────────────────────────────────────────────────────────────────────
+
+export interface WaterDay {
+  date:     string;
+  total_ml: number;
+  cups:     number;
+}
+
+export function useWater(date?: string) {
+  const day = date || localDate();
+  return useApiCall<WaterDay>(async () => {
+    const { data } = await apiClient.get(`/water?date=${day}`);
+    return data.data;
+  }, [day]);
+}
+
+// Sets the day's total in cups (250 ml each)
+export async function setWater(cups: number, date = localDate()): Promise<WaterDay> {
+  const { data } = await apiClient.put('/water', { date, cups });
+  return data.data;
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -324,5 +350,5 @@ function getMonday(): string {
   const d = new Date();
   const day = d.getDay();
   d.setDate(d.getDate() - day + (day === 0 ? -6 : 1));
-  return d.toISOString().split('T')[0];
+  return localDate(d);
 }
