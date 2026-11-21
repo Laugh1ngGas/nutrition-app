@@ -247,6 +247,34 @@ export async function updateFridgeItem(
   return data.data;
 }
 
+// Saves the items confirmed after an AI photo scan in one go. Items without
+// a food_id are matched by name, or added to the food database.
+export async function addFridgeItemsBatch(items: {
+  food_id?: string | null;
+  name: string;
+  name_uk?: string | null;
+  quantity?: number | null;
+  unit?: string;
+  expiry_date?: string | null;
+}[]): Promise<FridgeItem[]> {
+  const { data } = await apiClient.post('/fridge/batch', { items });
+  return data.data;
+}
+
+export interface RecognizedIngredient {
+  name:       string;   // English, singular ("tomato")
+  name_uk:    string;
+  confidence: 'high' | 'medium' | 'low';
+  food_id:    string | null;   // a matching food in the database, if any
+}
+
+// image: a data URL. The first scan after a quiet spell also waits for the
+// AI to wake up, hence the long timeout.
+export async function recognizeIngredients(image: string): Promise<RecognizedIngredient[]> {
+  const { data } = await apiClient.post('/ai/recognize', { image }, { timeout: 150_000 });
+  return data.data;
+}
+
 export async function removeFridgeItem(id: string): Promise<void> {
   await apiClient.delete(`/fridge/${id}`);
 }

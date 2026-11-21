@@ -18,7 +18,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { AlertTriangle, Camera, Loader2, Plus, Search } from "lucide-react";
+import { AlertTriangle, Barcode, Loader2, Plus, Search, Sparkles } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { AiScanTab } from "./AiScanTab";
 import {
   useFoodSearch,
   getFoodByBarcode,
@@ -54,7 +56,9 @@ export function AddIngredientDialog({
   onAdded: () => void;
 }) {
   const { t } = useI18n();
-  const [mode, setMode] = useState<"search" | "scan">("search");
+  // Camera features (barcode, AI photo scan) only on phones; desktop searches
+  const isMobile = useIsMobile();
+  const [mode, setMode] = useState<"search" | "scan" | "ai">("search");
   const [step, setStep] = useState<Step>("pick");
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
@@ -162,11 +166,23 @@ export function AddIngredientDialog({
           <DialogTitle>{t("addIng.title")}</DialogTitle>
         </DialogHeader>
 
-        {step === "pick" && (
-          <Tabs value={mode} onValueChange={(v) => setMode(v as "search" | "scan")}>
-            <TabsList className="grid w-full grid-cols-2">
+        {step === "pick" && !isMobile && (
+          <SearchTab
+            query={query}
+            setQuery={setQuery}
+            results={results ?? []}
+            loading={searching}
+            onPick={pickFood}
+            onCreateNew={() => startCreateNew()}
+          />
+        )}
+
+        {step === "pick" && isMobile && (
+          <Tabs value={mode} onValueChange={(v) => setMode(v as "search" | "scan" | "ai")}>
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="search"><Search className="h-4 w-4" /> {t("addIng.search")}</TabsTrigger>
-              <TabsTrigger value="scan"><Camera className="h-4 w-4" /> {t("addIng.scan")}</TabsTrigger>
+              <TabsTrigger value="scan"><Barcode className="h-4 w-4" /> {t("addIng.barcodeShort")}</TabsTrigger>
+              <TabsTrigger value="ai"><Sparkles className="h-4 w-4" /> {t("addIng.aiScan")}</TabsTrigger>
             </TabsList>
 
             <TabsContent value="search" className="mt-4">
@@ -182,6 +198,15 @@ export function AddIngredientDialog({
 
             <TabsContent value="scan" className="mt-4">
               <ScanTab onDetected={handleBarcodeDetected} />
+            </TabsContent>
+
+            <TabsContent value="ai" className="mt-4">
+              <AiScanTab
+                onSaved={() => {
+                  onAdded();
+                  onOpenChange(false);
+                }}
+              />
             </TabsContent>
           </Tabs>
         )}
