@@ -428,7 +428,7 @@ export const en = {
   "ai.intro": "I know your goals, allergies and what's in your fridge. Ask me in English or Ukrainian.",
   "ai.suggestion1": "What can I cook from my fridge today?",
   "ai.suggestion2": "Suggest a high-protein breakfast",
-  "ai.suggestion3": "Що приготувати на вечерю, щоб було легко?",
+  "ai.suggestion3": "What should I cook for a light dinner?",
   "ai.suggestion4": "How much protein should I eat per day?",
   "ai.typing": "Assistant is typing",
   "ai.slow": "The first answer after a break takes longer while the AI wakes up (up to a minute).",
