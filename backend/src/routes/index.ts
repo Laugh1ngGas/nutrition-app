@@ -12,6 +12,7 @@ import * as shoppingCtrl from '../controllers/shoppingList.controller';
 import * as recipesCtrl from '../controllers/recipes.controller';
 import * as aiCtrl from '../controllers/ai.controller';
 import * as waterCtrl from '../controllers/water.controller';
+import * as mealPlanCtrl from '../controllers/mealPlan.controller';
 
 const router = Router();
 
@@ -44,6 +45,11 @@ router.get('/logs', authenticate, foodLogsCtrl.getDailyLog);
 router.get('/logs/weekly', authenticate, foodLogsCtrl.getWeeklyStats);
 router.post('/logs', authenticate, foodLogsCtrl.logFoodValidation, validate, foodLogsCtrl.addFoodLog);
 router.delete('/logs/:id', authenticate, foodLogsCtrl.removeFoodLog);
+
+// ── Meal planner ─────────────────────────────────────────────────────
+router.get('/meal-plans/week', authenticate, mealPlanCtrl.getWeekValidation, validate, mealPlanCtrl.getWeek);
+router.post('/meal-plans/week', authenticate, mealPlanCtrl.generateWeekValidation, validate, mealPlanCtrl.generateWeek);
+router.put('/meal-plans/:planId/entries', authenticate, mealPlanCtrl.rearrangeValidation, validate, mealPlanCtrl.rearrange);
 
 // ── Water ────────────────────────────────────────────────────────────
 router.get('/water', authenticate, waterCtrl.getWaterValidation, validate, waterCtrl.getWater);
