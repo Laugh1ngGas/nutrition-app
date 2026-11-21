@@ -9,11 +9,11 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { Search, Heart, Flame, Clock, Users, Check, Loader2, Star, CircleCheck } from "lucide-react";
+import { Search, Heart, Flame, Clock, Users, Check, Loader2, Star, CircleCheck, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useRecipeSearch, useRecipe, toggleRecipeFavorite, addFoodLog } from "@/integrations/api/hooks";
-import type { DietType, Recipe, UnitType } from "@/integrations/api/types";
+import type { DietType, Recipe, RecipeIngredient, UnitType } from "@/integrations/api/types";
 import { toast } from "sonner";
 import { useI18n } from "@/lib/i18n";
 
@@ -120,7 +120,7 @@ function RecipesPage() {
 }
 
 function RecipeCard({ recipe: r, onView }: { recipe: Recipe; onView: () => void }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const matched = r.matched_ingredients ?? 0;
   const total = r.total_ingredients ?? 0;
   const needed = total - matched;
@@ -140,9 +140,14 @@ function RecipeCard({ recipe: r, onView }: { recipe: Recipe; onView: () => void 
             {t("recipes.matchBadge", { matched, total })}
           </span>
         )}
+        {r.source === "ai" && (
+          <span className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-card/90 px-2.5 py-1 text-xs font-semibold text-primary">
+            <Sparkles className="h-3 w-3" /> {t("recipes.mine")}
+          </span>
+        )}
       </div>
       <div className="p-4">
-        <h3 className="font-bold">{r.title}</h3>
+        <h3 className="font-bold">{(lang === "uk" && r.title_uk) || r.title}</h3>
         {hasMatchInfo && (
           <>
             <div className="mt-2 text-sm font-semibold text-secondary">{t("recipes.uses", { matched, total })}</div>
@@ -258,13 +263,21 @@ function LogMeal({ recipeId }: { recipeId: string }) {
 }
 
 function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => void }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const { data: recipe, isLoading } = useRecipe(id);
 
   const haveIngredients = recipe?.ingredients.filter((i) => i.in_fridge) ?? [];
   const needIngredients = recipe?.ingredients.filter((i) => !i.in_fridge) ?? [];
   // DECIMAL quantities arrive as "3.00"; show "3"
   const amount = (quantity: number | string, unit: UnitType) => `${Number(quantity)} ${t(`unit.${unit}`)}`;
+  // As the recipe wrote it ("1 1/2 cups", "pinch") in English. Those words
+  // can't be translated, so Ukrainian shows units it can translate, or grams.
+  const ingredientAmount = (ing: RecipeIngredient) => {
+    if (lang !== "uk" && ing.note) return ing.note;
+    if (ing.unit !== "piece" || ing.grams == null) return amount(ing.quantity, ing.unit);
+    const grams = Number(ing.grams);
+    return grams > 0 ? `${Math.round(grams * 10) / 10} ${t("unit.g")}` : "";
+  };
 
   return (
     <Sheet open={!!id} onOpenChange={(o) => !o && onClose()}>
@@ -276,7 +289,7 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
         ) : recipe ? (
           <>
             <SheetHeader>
-              <SheetTitle>{recipe.title}</SheetTitle>
+              <SheetTitle>{(lang === "uk" && recipe.title_uk) || recipe.title}</SheetTitle>
             </SheetHeader>
             {recipe.image_url && (
               <img src={recipe.image_url} className="mt-4 h-48 w-full rounded-xl object-cover" alt="" />
@@ -295,6 +308,12 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
               ))}
             </div>
 
+            {recipe.calories_per_serving != null && recipe.source && (
+              <p className="mt-2 text-[11px] text-muted-foreground">
+                {t(recipe.source === "ai" ? "recipes.nutritionSourceAi" : "recipes.nutritionSource")}
+              </p>
+            )}
+
             <div className="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
               <Users className="h-4 w-4" /> {t("recipes.serves", { n: recipe.servings })}
               {recipe.cuisine_type && <span>· {recipe.cuisine_type}</span>}
@@ -308,7 +327,7 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
                 <ul className="space-y-1.5">
                   {haveIngredients.map((ing) => (
                     <li key={ing.id} className="flex items-center gap-2 text-sm">
-                      <Check className="h-4 w-4 text-secondary" /> {amount(ing.quantity, ing.unit)} {ing.name}
+                      <Check className="h-4 w-4 text-secondary" /> {ingredientAmount(ing)} {(lang === "uk" && ing.name_uk) || ing.name}
                     </li>
                   ))}
                 </ul>
@@ -321,7 +340,7 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
                 <ul className="space-y-1.5">
                   {needIngredients.map((ing) => (
                     <li key={ing.id} className="flex items-center justify-between rounded-lg bg-warning/10 px-3 py-2 text-sm">
-                      <span>{amount(ing.quantity, ing.unit)} {ing.name}</span>
+                      <span>{ingredientAmount(ing)} {(lang === "uk" && ing.name_uk) || ing.name}</span>
                     </li>
                   ))}
                 </ul>

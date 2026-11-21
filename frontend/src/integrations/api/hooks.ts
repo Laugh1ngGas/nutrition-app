@@ -368,10 +368,17 @@ export async function getAiMessages(): Promise<AiChatMessage[]> {
 export async function sendAiMessage(
   message: string
 ): Promise<{ question: AiChatMessage; answer: AiChatMessage }> {
-  // An answer takes ~5-10 s, but the first one after a quiet spell also waits
-  // for the model to load (the backend waits up to 90 s for that)
+  // An answer takes ~5-10 s, or ~20-40 s when the assistant searches or
+  // writes recipes first; the first one after a quiet spell also waits for the
+  // model to load (the backend waits up to 90 s for that).
   // The user's local date, so "expires tomorrow" means the user's tomorrow
-  const { data } = await apiClient.post('/ai/chat', { message, today: localDate() }, { timeout: 150_000 });
+  const { data } = await apiClient.post('/ai/chat', { message, today: localDate() }, { timeout: 240_000 });
+  return data.data;
+}
+
+// Saves a recipe the assistant wrote to the user's own recipes
+export async function saveAiRecipe(messageId: string, index: number): Promise<{ recipe_id: string }> {
+  const { data } = await apiClient.post('/ai/recipes', { message_id: messageId, index });
   return data.data;
 }
 

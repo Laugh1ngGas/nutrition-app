@@ -519,6 +519,21 @@ export const en = {
   "progress.streak.best": "Longest logging streak",
   "progress.streak.water": "Days in a row with 8 cups of water",
   "progress.empty": "Nothing logged in this period yet. Log meals with “I ate this” on a recipe and tap the water cups on the dashboard.",
+  "aiRecipe.badge": "Recipe by the assistant",
+  "aiRecipe.kcal": "{n} kcal",
+  "aiRecipe.macros": "P {p} g · F {f} g · C {c} g",
+  "aiRecipe.perServing": "per serving",
+  "aiRecipe.details": "Ingredients and steps",
+  "aiRecipe.hide": "Hide",
+  "aiRecipe.missing": "Not counted, no nutrition data: {names}",
+  "aiRecipe.save": "Save to my recipes",
+  "aiRecipe.saving": "Saving…",
+  "aiRecipe.saved": "Saved to your recipes",
+  "aiRecipe.open": "Open",
+  "aiRecipe.saveError": "Couldn't save the recipe, please try again",
+  "recipes.mine": "Mine",
+  "recipes.nutritionSource": "Calories and macros per serving, calculated from USDA FoodData Central.",
+  "recipes.nutritionSourceAi": "Calories and macros per serving, calculated from USDA data for the amounts the assistant gave.",
 } as const satisfies Record<string, Message>;
 
 export type MessageKey = keyof typeof en;

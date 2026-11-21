@@ -26,6 +26,7 @@ import type { AiChatMessage, AiStatus } from "@/integrations/api/types";
 import { useI18n, type Translate } from "@/lib/i18n";
 import type { MessageKey } from "@/locales/en";
 import { ChatMarkdown } from "./ChatMarkdown";
+import { RecipeAttachments } from "./RecipeAttachments";
 
 // One of them is always in the other language, to show the chat speaks both
 const SUGGESTIONS: MessageKey[] = ["ai.suggestion1", "ai.suggestion2", "ai.suggestion3", "ai.suggestion4"];
@@ -132,6 +133,16 @@ export function AiChat({
     }
   };
 
+  // A drafted recipe the user saved shows "Saved · Open" from now on
+  const markSaved = (messageId: string, index: number, recipeId: string) =>
+    setMessages((prev) =>
+      (prev ?? []).map((m) =>
+        m.id === messageId && m.attachments
+          ? { ...m, attachments: m.attachments.map((a, i) => (i === index && a.type === "draft" ? { ...a, saved_recipe_id: recipeId } : a)) }
+          : m
+      )
+    );
+
   const clear = async () => {
     try {
       await clearAiMessages();
@@ -233,6 +244,13 @@ export function AiChat({
         {messages?.map((m, i) => (
           <div key={m.id} ref={i === lastUserIndex ? lastQuestionRef : undefined}>
             <MessageBubble role={m.role} content={m.content} />
+            {!!m.attachments?.length && (
+              <RecipeAttachments
+                messageId={m.id}
+                attachments={m.attachments}
+                onSaved={(index, recipeId) => markSaved(m.id, index, recipeId)}
+              />
+            )}
           </div>
         ))}
 

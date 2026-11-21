@@ -167,6 +167,7 @@ export interface Recipe {
   is_favorite?:             boolean;
   total_ingredients?:       number;
   matched_ingredients?:     number;
+  source?:                  'themealdb' | 'ai' | null;
 }
 
 export interface RecipeIngredient {
@@ -182,7 +183,8 @@ export interface RecipeIngredient {
   image_url?:  string;
   quantity:    number;
   unit:        UnitType;
-  note?:       string;
+  note?:       string;   // the amount as the recipe wrote it: "1 1/2 cups", "pinch"
+  grams?:      number | null;
   order_index: number;
   in_fridge?:  boolean;
 }
@@ -349,9 +351,46 @@ export interface Progress {
 // ready = model loaded; loading = waking up; offline = unreachable or crashed
 export type AiStatus = 'ready' | 'loading' | 'offline';
 
+// A recipe from the catalogue the assistant found for an answer
+export interface AiRecipeCard {
+  type:      'recipe';
+  id:        string;
+  title:     string;
+  title_uk:  string | null;
+  image_url: string | null;
+  calories:  number | null;
+  protein_g: number | null;
+  carbs_g:   number | null;
+  fat_g:     number | null;
+  time_min:  number | null;
+}
+
+// A recipe the assistant wrote; nutrition calculated by the backend
+export interface AiDraftCard {
+  type:            'draft';
+  title:           string;
+  title_uk:        string | null;
+  servings:        number;
+  meal_type:       MealType;
+  prep_time_min:   number;
+  cook_time_min:   number;
+  ingredients:     { name: string; grams: number }[];
+  steps:           string[];
+  calories:        number;
+  protein_g:       number;
+  carbs_g:         number;
+  fat_g:           number;
+  fiber_g:         number;
+  missing:         string[];
+  saved_recipe_id?: string;
+}
+
+export type AiAttachment = AiRecipeCard | AiDraftCard;
+
 export interface AiChatMessage {
-  id:         string;
-  role:       'user' | 'assistant';
-  content:    string;
-  created_at: string;
+  id:           string;
+  role:         'user' | 'assistant';
+  content:      string;
+  attachments?: AiAttachment[] | null;
+  created_at:   string;
 }
