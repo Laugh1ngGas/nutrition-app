@@ -287,6 +287,31 @@ export interface ShoppingList {
   items?:           ShoppingListItem[];
 }
 
+// ── Meal Planner ──────────────────────────────────────────────────────────────
+
+export type PlanSlot = 'breakfast' | 'lunch' | 'dinner';
+
+export interface MealPlanEntry {
+  id:                    string;
+  meal_type:             PlanSlot;
+  planned_date:          string;   // YYYY-MM-DD
+  recipe_id:             string;
+  title:                 string;
+  image_url?:            string;
+  prep_time_min?:        number;
+  cook_time_min?:        number;
+  calories_per_serving?: number;
+  total_ingredients:     number;
+  matched_ingredients:   number;
+}
+
+export interface MealPlanWeek {
+  id:         string;
+  start_date: string;
+  end_date:   string;
+  entries:    MealPlanEntry[];
+}
+
 // ── AI Assistant ──────────────────────────────────────────────────────────────
 
 // ready = model loaded; loading = waking up; offline = unreachable or crashed

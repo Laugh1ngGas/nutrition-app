@@ -10,6 +10,7 @@ import type {
   ShoppingList, ShoppingListItem,
   ProfileWithUser, Allergen,
   AiStatus, AiChatMessage,
+  MealPlanWeek, PlanSlot,
 } from './types';
 
 // ── Утиліта ───────────────────────────────────────────────────────────────────
@@ -320,6 +321,36 @@ export async function sendAiMessage(
 
 export async function clearAiMessages(): Promise<void> {
   await apiClient.delete('/ai/messages');
+}
+
+// ── Meal Planner ──────────────────────────────────────────────────────────────
+
+// Monday of the user's current local week (YYYY-MM-DD)
+export function currentWeekStart(): string {
+  const d = new Date();
+  d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  return localDate(d);
+}
+
+// null when the week has no plan yet
+export async function getMealPlanWeek(start: string): Promise<MealPlanWeek | null> {
+  const { data } = await apiClient.get(`/meal-plans/week?start=${start}`);
+  return data.data;
+}
+
+// Creates the week's plan, or replaces its meals if it already exists
+export async function generateMealPlanWeek(start: string): Promise<MealPlanWeek> {
+  const { data } = await apiClient.post('/meal-plans/week', { start });
+  return data.data;
+}
+
+// Saves a new arrangement after drag and drop: each moved meal's day and slot
+export async function rearrangeMealPlan(
+  planId: string,
+  entries: { id: string; planned_date: string; meal_type: PlanSlot }[]
+): Promise<MealPlanWeek> {
+  const { data } = await apiClient.put(`/meal-plans/${planId}/entries`, { entries });
+  return data.data;
 }
 
 // ── Water ─────────────────────────────────────────────────────────────────────
