@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { authenticate, optionalAuth } from '../middleware/auth';
+import rateLimit from 'express-rate-limit';
+import { authenticate, optionalAuth, AuthRequest } from '../middleware/auth';
 import { validate } from '../middleware/errorHandler';
 
 // Controllers
@@ -13,8 +14,22 @@ import * as recipesCtrl from '../controllers/recipes.controller';
 import * as aiCtrl from '../controllers/ai.controller';
 import * as waterCtrl from '../controllers/water.controller';
 import * as mealPlanCtrl from '../controllers/mealPlan.controller';
+import * as progressCtrl from '../controllers/progress.controller';
 
 const router = Router();
+
+// Password guessing through a stolen session: 10 wrong passwords per account
+// per 15 min for password change and account deletion (runs after
+// authenticate, so it can key by the signed-in user)
+const passwordCheckLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  skipSuccessfulRequests: true,
+  keyGenerator: (req) => `password-check:${(req as AuthRequest).user?.id ?? req.ip}`,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: 'Too many wrong passwords. Please try again in 15 minutes.' },
+});
 
 // ── Health check ────────────────────────────────────────────────────
 router.get('/health', (_req, res) => {
@@ -26,6 +41,8 @@ router.post('/auth/register', authCtrl.registerValidation, validate, authCtrl.re
 router.post('/auth/login', authCtrl.loginValidation, validate, authCtrl.login);
 router.post('/auth/refresh', authCtrl.refresh);
 router.post('/auth/logout', authCtrl.logout);
+router.post('/auth/change-password', authenticate, passwordCheckLimiter, authCtrl.changePasswordValidation, validate, authCtrl.changePassword);
+router.delete('/auth/account', authenticate, passwordCheckLimiter, authCtrl.deleteAccountValidation, validate, authCtrl.deleteAccount);
 
 // ── Profile ─────────────────────────────────────────────────────────
 router.get('/profile', authenticate, profileCtrl.getMyProfile);
@@ -45,6 +62,9 @@ router.get('/logs', authenticate, foodLogsCtrl.getDailyLog);
 router.get('/logs/weekly', authenticate, foodLogsCtrl.getWeeklyStats);
 router.post('/logs', authenticate, foodLogsCtrl.logFoodValidation, validate, foodLogsCtrl.addFoodLog);
 router.delete('/logs/:id', authenticate, foodLogsCtrl.removeFoodLog);
+
+// ── Progress ─────────────────────────────────────────────────────────
+router.get('/progress', authenticate, progressCtrl.progressValidation, validate, progressCtrl.getProgress);
 
 // ── Meal planner ─────────────────────────────────────────────────────
 router.get('/meal-plans/week', authenticate, mealPlanCtrl.getWeekValidation, validate, mealPlanCtrl.getWeek);

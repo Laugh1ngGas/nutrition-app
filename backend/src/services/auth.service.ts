@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { query } from '../config/database';
+import { getClient, query } from '../config/database';
 import { AppError } from '../middleware/errorHandler';
 import { AuthTokens, UserPublic, UserGoal, ActivityLevel, Gender } from '../types';
 
@@ -140,6 +140,51 @@ export async function refreshTokens(refreshToken: string): Promise<AuthTokens> {
 
 export async function logoutUser(refreshToken: string): Promise<void> {
   await query('UPDATE refresh_tokens SET is_revoked = TRUE WHERE token = $1', [refreshToken]);
+}
+
+// A wrong password is 400, not 401: the frontend reads 401 as "session
+// expired" and would refresh the token or even sign the user out
+async function checkPassword(userId: string, password: string): Promise<{ email: string }> {
+  const result = await query('SELECT email, password_hash FROM users WHERE id = $1', [userId]);
+  const user = result.rows[0];
+  if (!user) throw new AppError('User not found', 404);
+  if (!(await bcrypt.compare(password, user.password_hash))) {
+    throw new AppError('Current password is incorrect', 400);
+  }
+  return { email: user.email };
+}
+
+// Signs out every other device (all refresh tokens are revoked) and returns
+// fresh tokens so the device that changed the password stays signed in
+export async function changePassword(userId: string, currentPassword: string, newPassword: string): Promise<AuthTokens> {
+  const { email } = await checkPassword(userId, currentPassword);
+  if (currentPassword === newPassword) {
+    throw new AppError('The new password must be different from the current one', 400);
+  }
+  const hash = await bcrypt.hash(newPassword, 12);
+  await query('UPDATE users SET password_hash = $1 WHERE id = $2', [hash, userId]);
+  await query('UPDATE refresh_tokens SET is_revoked = TRUE WHERE user_id = $1', [userId]);
+  return generateTokens(userId, email);
+}
+
+// Everything personal is removed by ON DELETE CASCADE. Foods and recipes the
+// user added stay in the shared catalogue, only without their author, since
+// other users' fridges, logs and plans may point at them.
+export async function deleteAccount(userId: string, password: string): Promise<void> {
+  await checkPassword(userId, password);
+  const client = await getClient();
+  try {
+    await client.query('BEGIN');
+    await client.query('UPDATE foods SET created_by = NULL WHERE created_by = $1', [userId]);
+    await client.query('UPDATE recipes SET created_by = NULL WHERE created_by = $1', [userId]);
+    await client.query('DELETE FROM users WHERE id = $1', [userId]);
+    await client.query('COMMIT');
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
+  }
 }
 
 async function generateTokens(userId: string, email: string): Promise<AuthTokens> {

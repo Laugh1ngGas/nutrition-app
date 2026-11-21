@@ -15,6 +15,11 @@ export const profileValidation = [
   body('goal').optional().isIn(['weight_loss', 'weight_gain', 'muscle_gain', 'maintenance', 'healthy_eating']),
   body('activity_level').optional().isIn(['sedentary', 'lightly_active', 'moderately_active', 'very_active', 'extra_active']),
   body('diet_type').optional().isIn(['standard', 'vegetarian', 'vegan', 'pescatarian', 'keto', 'paleo', 'gluten_free', 'dairy_free', 'halal', 'kosher']),
+  body('household_size').optional().isInt({ min: 1, max: 12 }).toInt(),
+  body('cooking_skill').optional().isIn(['beginner', 'intermediate', 'advanced']),
+  body('cooking_time').optional().isIn(['under15', '15to30', '30to60', 'over60']),
+  // The user's local date, for the weight log entry
+  body('today').optional().isISO8601({ strict: true }).isLength({ min: 10, max: 10 }),
 ];
 
 export async function getMyProfile(req: AuthRequest, res: Response, next: NextFunction) {
@@ -44,6 +49,7 @@ export async function updateProfile(req: AuthRequest, res: Response, next: NextF
       first_name, last_name, gender, date_of_birth,
       height_cm, weight_kg, target_weight_kg,
       goal, activity_level, diet_type,
+      household_size, cooking_skill, cooking_time, today,
     } = req.body;
 
     // Update users table
@@ -102,6 +108,9 @@ export async function updateProfile(req: AuthRequest, res: Response, next: NextF
          daily_fat_g = COALESCE($11, daily_fat_g),
          daily_carbs_g = COALESCE($12, daily_carbs_g),
          daily_fiber_g = COALESCE($13, daily_fiber_g),
+         household_size = COALESCE($15, household_size),
+         cooking_skill = COALESCE($16, cooking_skill),
+         cooking_time = COALESCE($17, cooking_time),
          onboarding_completed = TRUE
        WHERE user_id = $14
        RETURNING *`,
@@ -114,8 +123,19 @@ export async function updateProfile(req: AuthRequest, res: Response, next: NextF
         nutritionTargets.carbs_g || null,
         nutritionTargets.fiber_g || null,
         req.user!.id,
+        household_size || null, cooking_skill || null, cooking_time || null,
       ]
     );
+
+    // Every weight change also goes into the weight history (one entry per
+    // day, the latest wins), which the progress page charts
+    if (weight_kg && Number(weight_kg) !== Number(currentProfile?.weight_kg)) {
+      const logDate = today || new Date().toISOString().slice(0, 10);
+      await query('DELETE FROM weight_logs WHERE user_id = $1 AND log_date = $2', [req.user!.id, logDate]);
+      await query('INSERT INTO weight_logs (user_id, weight_kg, log_date) VALUES ($1, $2, $3)', [
+        req.user!.id, weight_kg, logDate,
+      ]);
+    }
 
     res.json({ success: true, data: updated.rows[0] });
   } catch (err) {

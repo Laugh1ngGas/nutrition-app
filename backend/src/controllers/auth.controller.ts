@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { body } from 'express-validator';
 import * as authService from '../services/auth.service';
 import * as aiService from '../services/ai.service';
+import { AuthRequest } from '../middleware/auth';
 
 export const registerValidation = [
   body('email').isEmail().normalizeEmail().withMessage('Valid email is required'),
@@ -14,6 +15,31 @@ export const loginValidation = [
   body('email').isEmail().normalizeEmail(),
   body('password').notEmpty(),
 ];
+
+export const changePasswordValidation = [
+  body('current_password').isString().notEmpty(),
+  body('new_password').isString().isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
+];
+
+export const deleteAccountValidation = [body('password').isString().notEmpty()];
+
+export async function changePassword(req: AuthRequest, res: Response, next: NextFunction) {
+  try {
+    const tokens = await authService.changePassword(req.user!.id, req.body.current_password, req.body.new_password);
+    res.json({ success: true, data: tokens });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function deleteAccount(req: AuthRequest, res: Response, next: NextFunction) {
+  try {
+    await authService.deleteAccount(req.user!.id, req.body.password);
+    res.json({ success: true, message: 'Account deleted' });
+  } catch (err) {
+    next(err);
+  }
+}
 
 export async function register(req: Request, res: Response, next: NextFunction) {
   try {
