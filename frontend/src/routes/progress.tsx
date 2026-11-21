@@ -4,85 +4,104 @@ import {
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from "recharts";
 import { Flame, Target, ChefHat, PiggyBank, Sparkles, Trophy } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
+import type { MessageKey } from "@/locales/en";
 
 export const Route = createFileRoute("/progress")({ component: Progress });
 
-const calData = [
-  { d: "Mon", intake: 1850, goal: 2000 },
-  { d: "Tue", intake: 2100, goal: 2000 },
-  { d: "Wed", intake: 1750, goal: 2000 },
-  { d: "Thu", intake: 1920, goal: 2000 },
-  { d: "Fri", intake: 2200, goal: 2000 },
-  { d: "Sat", intake: 1980, goal: 2000 },
-  { d: "Sun", intake: 1700, goal: 2000 },
-];
+// Demo numbers until progress is computed from real logs; index 0 = Monday
+const calData = [1850, 2100, 1750, 1920, 2200, 1980, 1700].map((intake) => ({ intake, goal: 2000 }));
 const macroBars = [
-  { d: "Mon", P: 90, C: 180, F: 55 },
-  { d: "Tue", P: 110, C: 200, F: 60 },
-  { d: "Wed", P: 95, C: 170, F: 50 },
-  { d: "Thu", P: 100, C: 190, F: 58 },
-  { d: "Fri", P: 120, C: 220, F: 65 },
-  { d: "Sat", P: 105, C: 200, F: 60 },
-  { d: "Sun", P: 90, C: 160, F: 48 },
+  { P: 90, C: 180, F: 55 },
+  { P: 110, C: 200, F: 60 },
+  { P: 95, C: 170, F: 50 },
+  { P: 100, C: 190, F: 58 },
+  { P: 120, C: 220, F: 65 },
+  { P: 105, C: 200, F: 60 },
+  { P: 90, C: 160, F: 48 },
 ];
-const wasteDonut = [
-  { name: "Used in time", value: 87, fill: "var(--primary)" },
-  { name: "Wasted", value: 13, fill: "var(--muted)" },
+
+const RANGES: { id: "week" | "month" | "quarter"; label: MessageKey }[] = [
+  { id: "week", label: "progress.week" },
+  { id: "month", label: "progress.month" },
+  { id: "quarter", label: "progress.quarter" },
 ];
 
 function Progress() {
-  const [range, setRange] = useState<"Week" | "Month" | "3 Months">("Week");
+  const { t, locale } = useI18n();
+  const [range, setRange] = useState<"week" | "month" | "quarter">("week");
+
+  // Short weekday names in the interface language; 2024-01-01 was a Monday
+  const weekdays = useMemo(
+    () =>
+      Array.from({ length: 7 }, (_, i) =>
+        new Intl.DateTimeFormat(locale, { weekday: "short" }).format(new Date(2024, 0, 1 + i))
+      ),
+    [locale]
+  );
+  const calories = calData.map((d, i) => ({ d: weekdays[i], [t("progress.intake")]: d.intake, [t("progress.goal")]: d.goal }));
+  const macros = macroBars.map((m, i) => ({
+    d: weekdays[i],
+    [t("macro.protein")]: m.P,
+    [t("macro.carbs")]: m.C,
+    [t("macro.fat")]: m.F,
+  }));
+  const wasteDonut = [
+    { name: t("progress.usedInTime"), value: 87, fill: "var(--primary)" },
+    { name: t("progress.wasted"), value: 13, fill: "var(--muted)" },
+  ];
+
   return (
     <AppShell>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Progress & Analytics</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Your habits over time.</p>
+          <h1 className="text-2xl font-bold">{t("progress.title")}</h1>
+          <p className="mt-1 text-sm text-muted-foreground">{t("progress.subtitle")}</p>
         </div>
         <div className="inline-flex rounded-full border border-border bg-card p-1">
-          {(["Week", "Month", "3 Months"] as const).map((r) => (
+          {RANGES.map((r) => (
             <button
-              key={r}
-              onClick={() => setRange(r)}
+              key={r.id}
+              onClick={() => setRange(r.id)}
               className={cn(
                 "rounded-full px-4 py-1.5 text-sm font-medium transition",
-                range === r ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                range === r.id ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
               )}
             >
-              {r}
+              {t(r.label)}
             </button>
           ))}
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <Stat icon={Flame} label="Avg Daily Calories" value="1,929" />
-        <Stat icon={Target} label="Goal Adherence" value="84%" tone="primary" />
-        <Stat icon={ChefHat} label="Meals Cooked" value="18" />
+        <Stat icon={Flame} label={t("progress.avgCalories")} value={(1929).toLocaleString(locale)} />
+        <Stat icon={Target} label={t("progress.adherence")} value="84%" tone="primary" />
+        <Stat icon={ChefHat} label={t("progress.cooked")} value="18" />
         {/* <Stat icon={PiggyBank} label="Money Saved" value="€42.50" tone="secondary" /> */}
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 rounded-2xl border border-border bg-card p-5 shadow-card">
-          <h3 className="font-semibold">Calorie intake vs goal</h3>
+          <h3 className="font-semibold">{t("progress.caloriesVsGoal")}</h3>
           <div className="mt-4 h-64">
             <ResponsiveContainer>
-              <LineChart data={calData}>
+              <LineChart data={calories}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
                 <XAxis dataKey="d" stroke="var(--muted-foreground)" fontSize={12} />
                 <YAxis stroke="var(--muted-foreground)" fontSize={12} />
                 <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 8 }} />
-                <Line type="monotone" dataKey="goal" stroke="var(--muted-foreground)" strokeDasharray="4 4" dot={false} />
-                <Line type="monotone" dataKey="intake" stroke="var(--primary)" strokeWidth={3} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey={t("progress.goal")} stroke="var(--muted-foreground)" strokeDasharray="4 4" dot={false} />
+                <Line type="monotone" dataKey={t("progress.intake")} stroke="var(--primary)" strokeWidth={3} dot={{ r: 4 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         <div className="rounded-2xl border border-border bg-card p-5 shadow-card">
-          <h3 className="font-semibold">Ingredient waste reduction</h3>
+          <h3 className="font-semibold">{t("progress.waste")}</h3>
           <div className="relative mt-4 h-48">
             <ResponsiveContainer>
               <PieChart>
@@ -93,24 +112,24 @@ function Progress() {
             </ResponsiveContainer>
             <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-2xl font-bold text-primary">87%</span>
-              <span className="text-xs text-muted-foreground">used in time</span>
+              <span className="text-xs text-muted-foreground">{t("progress.usedInTime")}</span>
             </div>
           </div>
         </div>
       </div>
 
       <div className="mt-6 rounded-2xl border border-border bg-card p-5 shadow-card">
-        <h3 className="font-semibold">Weekly macros</h3>
+        <h3 className="font-semibold">{t("progress.weeklyMacros")}</h3>
         <div className="mt-4 h-64">
           <ResponsiveContainer>
-            <BarChart data={macroBars}>
+            <BarChart data={macros}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
               <XAxis dataKey="d" stroke="var(--muted-foreground)" fontSize={12} />
               <YAxis stroke="var(--muted-foreground)" fontSize={12} />
               <Tooltip contentStyle={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: 8 }} />
-              <Bar dataKey="P" fill="var(--primary)" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="C" fill="var(--secondary)" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="F" fill="var(--warning)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey={t("macro.protein")} fill="var(--primary)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey={t("macro.carbs")} fill="var(--secondary)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey={t("macro.fat")} fill="var(--warning)" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -126,16 +145,16 @@ function Progress() {
           </p>
         </div> */}
         <div className="rounded-2xl border border-border bg-card p-5 shadow-card">
-          <div className="flex items-center gap-2 font-semibold"><Trophy className="h-4 w-4 text-warning" /> Streaks</div>
+          <div className="flex items-center gap-2 font-semibold"><Trophy className="h-4 w-4 text-warning" /> {t("progress.streaks")}</div>
           <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-            {[
-              { l: "Cooking", v: 12 },
-              { l: "Zero-waste", v: 6 },
-              { l: "Goal hit", v: 5 },
-            ].map((s) => (
+            {([
+              { l: "progress.streak.cooking", v: 12 },
+              { l: "progress.streak.zeroWaste", v: 6 },
+              { l: "progress.streak.goal", v: 5 },
+            ] satisfies { l: MessageKey; v: number }[]).map((s) => (
               <div key={s.l} className="rounded-xl bg-accent/40 p-3">
                 <div className="text-2xl font-extrabold text-primary">{s.v}</div>
-                <div className="text-xs text-muted-foreground">{s.l} days</div>
+                <div className="text-xs text-muted-foreground">{t(s.l)}</div>
               </div>
             ))}
           </div>

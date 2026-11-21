@@ -13,8 +13,9 @@ import { Search, Heart, Flame, Clock, Users, Check, Loader2, Star, CircleCheck }
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useRecipeSearch, useRecipe, toggleRecipeFavorite, addFoodLog } from "@/integrations/api/hooks";
-import type { DietType, MealType, Recipe } from "@/integrations/api/types";
+import type { DietType, Recipe, UnitType } from "@/integrations/api/types";
 import { toast } from "sonner";
+import { useI18n } from "@/lib/i18n";
 
 // ?recipe=<id> opens that recipe's details, e.g. from the dashboard
 export const Route = createFileRoute("/recipes")({
@@ -23,15 +24,10 @@ export const Route = createFileRoute("/recipes")({
     typeof search.recipe === "string" ? { recipe: search.recipe } : {},
 });
 
-const DIET_FILTERS: { label: string; value: DietType }[] = [
-  { label: "Vegetarian", value: "vegetarian" },
-  { label: "Vegan", value: "vegan" },
-  { label: "Gluten-Free", value: "gluten_free" },
-  { label: "Keto", value: "keto" },
-  { label: "Paleo", value: "paleo" },
-];
+const DIET_FILTERS = ["vegetarian", "vegan", "gluten_free", "keto", "paleo"] as const satisfies readonly DietType[];
 
 function RecipesPage() {
+  const { t } = useI18n();
   const [rawQuery, setRawQuery] = useState("");
   const [query, setQuery] = useState("");
   const [matchOnly, setMatchOnly] = useState(false);
@@ -48,8 +44,8 @@ function RecipesPage() {
   };
 
   useEffect(() => {
-    const t = setTimeout(() => setQuery(rawQuery), 300);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setQuery(rawQuery), 300);
+    return () => clearTimeout(timer);
   }, [rawQuery]);
 
   const { data, isLoading } = useRecipeSearch(query, {
@@ -62,8 +58,8 @@ function RecipesPage() {
   return (
     <AppShell>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Recipes</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Find what to cook based on what you have.</p>
+        <h1 className="text-2xl font-bold">{t("recipes.title")}</h1>
+        <p className="mt-1 text-sm text-muted-foreground">{t("recipes.subtitle")}</p>
       </div>
 
       <div className="mb-6 rounded-2xl border border-border bg-card p-4 shadow-card">
@@ -71,7 +67,7 @@ function RecipesPage() {
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             className="pl-9 h-11"
-            placeholder="Search recipes..."
+            placeholder={t("recipes.search")}
             value={rawQuery}
             onChange={(e) => setRawQuery(e.target.value)}
           />
@@ -79,23 +75,23 @@ function RecipesPage() {
         <div className="mt-4 flex flex-wrap items-center gap-4">
           <label className="flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-sm font-semibold text-primary">
             <Switch checked={matchOnly} onCheckedChange={setMatchOnly} />
-            Use my ingredients only
+            {t("recipes.useMine")}
           </label>
           <label className="flex items-center gap-2 text-sm text-muted-foreground">
             <Switch checked={sortByMatch} onCheckedChange={setSortByMatch} />
-            Sort by best match
+            {t("recipes.sortMatch")}
           </label>
           <div className="flex flex-wrap gap-1.5">
             {DIET_FILTERS.map((d) => (
               <button
-                key={d.value}
-                onClick={() => setActiveDiet(activeDiet === d.value ? null : d.value)}
+                key={d}
+                onClick={() => setActiveDiet(activeDiet === d ? null : d)}
                 className={cn(
                   "rounded-full border px-3 py-1 text-xs font-semibold transition",
-                  activeDiet === d.value ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary/40"
+                  activeDiet === d ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary/40"
                 )}
               >
-                {d.label}
+                {t(`diet.${d}`)}
               </button>
             ))}
           </div>
@@ -108,7 +104,7 @@ function RecipesPage() {
         </div>
       ) : recipes.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-border bg-card p-16 text-center text-sm text-muted-foreground">
-          No recipes match your filters.
+          {t("recipes.none")}
         </div>
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -124,8 +120,11 @@ function RecipesPage() {
 }
 
 function RecipeCard({ recipe: r, onView }: { recipe: Recipe; onView: () => void }) {
-  const needed = (r.total_ingredients ?? 0) - (r.matched_ingredients ?? 0);
-  const hasMatchInfo = (r.total_ingredients ?? 0) > 0;
+  const { t } = useI18n();
+  const matched = r.matched_ingredients ?? 0;
+  const total = r.total_ingredients ?? 0;
+  const needed = total - matched;
+  const hasMatchInfo = total > 0;
 
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:shadow-card-lg">
@@ -138,7 +137,7 @@ function RecipeCard({ recipe: r, onView }: { recipe: Recipe; onView: () => void 
         <FavoriteButton recipeId={r.id} initialFavorite={!!r.is_favorite} />
         {hasMatchInfo && (
           <span className="absolute top-3 left-3 rounded-full bg-primary px-2.5 py-1 text-xs font-bold text-primary-foreground">
-            {r.matched_ingredients}/{r.total_ingredients} match
+            {t("recipes.matchBadge", { matched, total })}
           </span>
         )}
       </div>
@@ -146,11 +145,9 @@ function RecipeCard({ recipe: r, onView }: { recipe: Recipe; onView: () => void 
         <h3 className="font-bold">{r.title}</h3>
         {hasMatchInfo && (
           <>
-            <div className="mt-2 text-sm font-semibold text-secondary">
-              Uses {r.matched_ingredients}/{r.total_ingredients} of your ingredients
-            </div>
+            <div className="mt-2 text-sm font-semibold text-secondary">{t("recipes.uses", { matched, total })}</div>
             {needed > 0 && (
-              <div className="mt-1 text-xs font-medium text-warning-foreground">+ {needed} more needed</div>
+              <div className="mt-1 text-xs font-medium text-warning-foreground">{t("recipes.moreNeeded", { n: needed })}</div>
             )}
           </>
         )}
@@ -159,20 +156,21 @@ function RecipeCard({ recipe: r, onView }: { recipe: Recipe; onView: () => void 
             <span className="flex items-center gap-1"><Flame className="h-3 w-3" />{r.calories_per_serving}</span>
           )}
           {r.prep_time_min != null && (
-            <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{r.prep_time_min}m</span>
+            <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{t("common.minutes", { n: r.prep_time_min })}</span>
           )}
           <span className="flex items-center gap-1"><Users className="h-3 w-3" />{r.servings}</span>
           {!!r.rating_count && (
             <span className="flex items-center gap-1"><Star className="h-3 w-3" />{r.average_rating?.toFixed(1)}</span>
           )}
         </div>
-        <Button className="mt-4 w-full" onClick={onView}>View Recipe</Button>
+        <Button className="mt-4 w-full" onClick={onView}>{t("common.viewRecipe")}</Button>
       </div>
     </div>
   );
 }
 
 function FavoriteButton({ recipeId, initialFavorite }: { recipeId: string; initialFavorite: boolean }) {
+  const { t } = useI18n();
   const [fav, setFav] = useState(initialFavorite);
   const [busy, setBusy] = useState(false);
 
@@ -184,7 +182,7 @@ function FavoriteButton({ recipeId, initialFavorite }: { recipeId: string; initi
       const res = await toggleRecipeFavorite(recipeId);
       setFav(res.is_favorite);
     } catch {
-      toast.error("Couldn't update favorite");
+      toast.error(t("recipes.favoriteError"));
     } finally {
       setBusy(false);
     }
@@ -204,14 +202,10 @@ function FavoriteButton({ recipeId, initialFavorite }: { recipeId: string; initi
   );
 }
 
-const MEAL_TYPES: { value: MealType; label: string }[] = [
-  { value: "breakfast", label: "Breakfast" },
-  { value: "lunch", label: "Lunch" },
-  { value: "dinner", label: "Dinner" },
-  { value: "snack", label: "Snack" },
-];
+const MEAL_TYPES = ["breakfast", "lunch", "dinner", "snack"] as const;
+type LoggableMeal = (typeof MEAL_TYPES)[number];
 
-function mealTypeForNow(): MealType {
+function mealTypeForNow(): LoggableMeal {
   const hour = new Date().getHours();
   if (hour < 11) return "breakfast";
   if (hour < 16) return "lunch";
@@ -221,17 +215,19 @@ function mealTypeForNow(): MealType {
 
 // "I ate this": logs one serving for today, shown on the dashboard
 function LogMeal({ recipeId }: { recipeId: string }) {
-  const [mealType, setMealType] = useState<MealType>(mealTypeForNow);
+  const { t } = useI18n();
+  const [mealType, setMealType] = useState<LoggableMeal>(mealTypeForNow);
   const [busy, setBusy] = useState(false);
 
   const log = async () => {
     setBusy(true);
     try {
       await addFoodLog({ recipe_id: recipeId, meal_type: mealType, servings: 1 });
-      const label = MEAL_TYPES.find((m) => m.value === mealType)!.label.toLowerCase();
-      toast.success(`Logged as ${label}`, { description: "You'll find it under Today's Meals on the dashboard." });
+      toast.success(t("recipes.logged", { meal: t(`meal.${mealType}`).toLowerCase() }), {
+        description: t("recipes.loggedHint"),
+      });
     } catch {
-      toast.error("Couldn't log this meal — please try again");
+      toast.error(t("recipes.logError"));
     } finally {
       setBusy(false);
     }
@@ -239,33 +235,36 @@ function LogMeal({ recipeId }: { recipeId: string }) {
 
   return (
     <div className="mt-5 rounded-xl border border-border p-3">
-      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Ate this today?</p>
+      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">{t("recipes.ateToday")}</p>
       <div className="mt-2 flex flex-wrap gap-1.5">
         {MEAL_TYPES.map((m) => (
           <button
-            key={m.value}
-            onClick={() => setMealType(m.value)}
+            key={m}
+            onClick={() => setMealType(m)}
             className={cn(
               "rounded-full border px-3 py-1 text-xs font-semibold transition",
-              mealType === m.value ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary/40"
+              mealType === m ? "border-primary bg-primary text-primary-foreground" : "border-border hover:border-primary/40"
             )}
           >
-            {m.label}
+            {t(`meal.${m}`)}
           </button>
         ))}
       </div>
       <Button className="mt-3 w-full" onClick={log} disabled={busy}>
-        {busy ? <Loader2 className="animate-spin" /> : <CircleCheck />} I ate this
+        {busy ? <Loader2 className="animate-spin" /> : <CircleCheck />} {t("recipes.ateThis")}
       </Button>
     </div>
   );
 }
 
 function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => void }) {
+  const { t } = useI18n();
   const { data: recipe, isLoading } = useRecipe(id);
 
   const haveIngredients = recipe?.ingredients.filter((i) => i.in_fridge) ?? [];
   const needIngredients = recipe?.ingredients.filter((i) => !i.in_fridge) ?? [];
+  // DECIMAL quantities arrive as "3.00"; show "3"
+  const amount = (quantity: number | string, unit: UnitType) => `${Number(quantity)} ${t(`unit.${unit}`)}`;
 
   return (
     <Sheet open={!!id} onOpenChange={(o) => !o && onClose()}>
@@ -284,10 +283,10 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
             )}
             <div className="mt-4 grid grid-cols-4 gap-2 text-center">
               {[
-                { l: "Kcal", v: recipe.calories_per_serving ?? "—" },
-                { l: "Prep", v: recipe.prep_time_min != null ? `${recipe.prep_time_min}m` : "—" },
-                { l: "Protein", v: recipe.protein_per_serving_g != null ? `${recipe.protein_per_serving_g}g` : "—" },
-                { l: "Carbs", v: recipe.carbs_per_serving_g != null ? `${recipe.carbs_per_serving_g}g` : "—" },
+                { l: t("recipes.stat.kcal"), v: recipe.calories_per_serving ?? "—" },
+                { l: t("recipes.stat.prep"), v: recipe.prep_time_min != null ? t("common.minutes", { n: recipe.prep_time_min }) : "—" },
+                { l: t("recipes.stat.protein"), v: recipe.protein_per_serving_g != null ? `${recipe.protein_per_serving_g} ${t("unit.g")}` : "—" },
+                { l: t("recipes.stat.carbs"), v: recipe.carbs_per_serving_g != null ? `${recipe.carbs_per_serving_g} ${t("unit.g")}` : "—" },
               ].map((s) => (
                 <div key={s.l} className="rounded-lg bg-muted p-2">
                   <div className="text-sm font-bold">{s.v}</div>
@@ -297,7 +296,7 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
             </div>
 
             <div className="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
-              <Users className="h-4 w-4" /> Serves {recipe.servings}
+              <Users className="h-4 w-4" /> {t("recipes.serves", { n: recipe.servings })}
               {recipe.cuisine_type && <span>· {recipe.cuisine_type}</span>}
             </div>
 
@@ -305,11 +304,11 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
 
             {haveIngredients.length > 0 && (
               <div className="mt-6">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-secondary mb-2">✓ You have</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-secondary mb-2">{t("recipes.have")}</h4>
                 <ul className="space-y-1.5">
                   {haveIngredients.map((ing) => (
                     <li key={ing.id} className="flex items-center gap-2 text-sm">
-                      <Check className="h-4 w-4 text-secondary" /> {ing.quantity} {ing.unit} {ing.name}
+                      <Check className="h-4 w-4 text-secondary" /> {amount(ing.quantity, ing.unit)} {ing.name}
                     </li>
                   ))}
                 </ul>
@@ -318,11 +317,11 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
 
             {needIngredients.length > 0 && (
               <div className="mt-5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-warning-foreground mb-2">🛒 You need to buy</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-warning-foreground mb-2">{t("recipes.buy")}</h4>
                 <ul className="space-y-1.5">
                   {needIngredients.map((ing) => (
                     <li key={ing.id} className="flex items-center justify-between rounded-lg bg-warning/10 px-3 py-2 text-sm">
-                      <span>{ing.quantity} {ing.unit} {ing.name}</span>
+                      <span>{amount(ing.quantity, ing.unit)} {ing.name}</span>
                     </li>
                   ))}
                 </ul>
@@ -331,7 +330,7 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
 
             {recipe.instructions && (
               <div className="mt-6">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Instructions</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">{t("recipes.instructions")}</h4>
                 <p className="whitespace-pre-line text-sm leading-relaxed">{recipe.instructions}</p>
               </div>
             )}

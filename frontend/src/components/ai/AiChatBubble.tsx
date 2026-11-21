@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Maximize2, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useI18n } from "@/lib/i18n";
 import { AiChat } from "./AiChat";
 
 // Floating chat button on every app page except /assistant itself. The panel
 // is only mounted while open, so a closed bubble never touches the AI service.
 export function AiChatBubble() {
   const [open, setOpen] = useState(false);
+  const { t } = useI18n();
 
   return (
     <>
@@ -18,12 +20,12 @@ export function AiChatBubble() {
             className="flex-1"
             headerActions={
               <>
-                <Button variant="ghost" size="icon" asChild title="Open full page">
-                  <Link to="/assistant" aria-label="Open the assistant as a full page">
+                <Button variant="ghost" size="icon" asChild title={t("ai.openFullPageTooltip")}>
+                  <Link to="/assistant" aria-label={t("ai.openFullPage")}>
                     <Maximize2 />
                   </Link>
                 </Button>
-                <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label="Close chat">
+                <Button variant="ghost" size="icon" onClick={() => setOpen(false)} aria-label={t("ai.closeChat")}>
                   <X />
                 </Button>
               </>
@@ -33,7 +35,7 @@ export function AiChatBubble() {
       )}
       <button
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Close AI assistant" : "Open AI assistant"}
+        aria-label={open ? t("ai.closeBubble") : t("ai.openBubble")}
         className="fixed bottom-6 right-6 z-40 grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg transition hover:scale-105 hover:bg-primary/90"
       >
         {open ? <X className="h-6 w-6" /> : <Sparkles className="h-6 w-6" />}

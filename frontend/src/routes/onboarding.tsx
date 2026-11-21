@@ -19,22 +19,26 @@ import {
   ArrowRight,
   Check,
 } from "lucide-react";
+import { LanguageSwitch, useI18n } from "@/lib/i18n";
+import type { MessageKey } from "@/locales/en";
 
 export const Route = createFileRoute("/onboarding")({ component: Onboarding });
 
-const goals = [
-  { id: "lose", label: "Lose Weight", icon: TrendingDown },
-  { id: "muscle", label: "Gain Muscle", icon: Dumbbell },
-  { id: "maintain", label: "Maintain Weight", icon: Scale },
-  { id: "save", label: "Save Money", icon: PiggyBank },
-  { id: "waste", label: "Reduce Food Waste", icon: Recycle },
+const goals: { id: string; label: MessageKey; icon: typeof Scale }[] = [
+  { id: "lose", label: "onb.goal.lose", icon: TrendingDown },
+  { id: "muscle", label: "onb.goal.muscle", icon: Dumbbell },
+  { id: "maintain", label: "onb.goal.maintain", icon: Scale },
+  { id: "save", label: "onb.goal.save", icon: PiggyBank },
+  { id: "waste", label: "onb.goal.waste", icon: Recycle },
 ];
 
-const diets = ["Vegetarian", "Vegan", "Gluten-Free", "Dairy-Free", "Keto", "Paleo", "No restrictions"];
-const skills = ["Beginner", "Intermediate", "Advanced"];
-const times = ["<15 min", "15–30 min", "30–60 min", "60+ min"];
+const diets = ["vegetarian", "vegan", "gluten_free", "dairy_free", "keto", "paleo", "none"] as const;
+const genders = ["female", "male", "other"] as const;
+const skills = ["beginner", "intermediate", "advanced"] as const;
+const times = ["under15", "15to30", "30to60", "over60"] as const;
 
 function Onboarding() {
+  const { t } = useI18n();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [data, setData] = useState({
@@ -44,13 +48,13 @@ function Onboarding() {
     height: "",
     weight: "",
     goal: "waste",
-    diets: new Set<string>(["No restrictions"]),
+    diets: new Set<string>(["none"]),
     allergyInput: "",
     allergies: [] as string[],
     // budget: "",
     people: 2,
-    skill: "Intermediate",
-    time: "15–30 min",
+    skill: "intermediate",
+    time: "15to30",
   });
 
   const setField = <K extends keyof typeof data>(k: K, v: (typeof data)[K]) =>
@@ -76,11 +80,14 @@ function Onboarding() {
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-2xl px-6 py-10">
+        <div className="mb-4 flex justify-end">
+          <LanguageSwitch />
+        </div>
         {/* Progress */}
         <div className="mb-10">
           <div className="mb-2 flex justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            <span>Step {step} of 4</span>
-            <span className="text-primary">{Math.round(progress)}% complete</span>
+            <span>{t("onb.step", { step })}</span>
+            <span className="text-primary">{t("onb.complete", { n: Math.round(progress) })}</span>
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-muted">
             <div
@@ -94,8 +101,8 @@ function Onboarding() {
           {step === 1 && (
             <div className="space-y-6">
               <div>
-                <h1 className="text-2xl font-bold">Tell us about yourself</h1>
-                <p className="mt-1 text-sm text-muted-foreground">Helps us calculate your nutrition targets.</p>
+                <h1 className="text-2xl font-bold">{t("onb.aboutTitle")}</h1>
+                <p className="mt-1 text-sm text-muted-foreground">{t("onb.aboutText")}</p>
               </div>
               <div className="grid gap-4">
                 {/* <div>
@@ -104,25 +111,25 @@ function Onboarding() {
                 </div> */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="age">Age</Label>
+                    <Label htmlFor="age">{t("onb.age")}</Label>
                     <Input id="age" type="number" value={data.age} onChange={(e) => setField("age", e.target.value)} placeholder="30" />
                   </div>
                   <div>
-                    <Label>Gender</Label>
+                    <Label>{t("onb.gender")}</Label>
                     <div className="mt-2 flex gap-2">
-                      {["female", "male", "other"].map((g) => (
+                      {genders.map((g) => (
                         <button
                           key={g}
                           type="button"
                           onClick={() => setField("gender", g)}
                           className={cn(
-                            "flex-1 rounded-lg border px-3 py-2 text-sm font-medium capitalize transition",
+                            "flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition",
                             data.gender === g
                               ? "border-primary bg-primary/10 text-primary"
                               : "border-border hover:border-primary/40"
                           )}
                         >
-                          {g}
+                          {t(`gender.${g}`)}
                         </button>
                       ))}
                     </div>
@@ -130,11 +137,11 @@ function Onboarding() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="height">Height (cm)</Label>
+                    <Label htmlFor="height">{t("onb.height")}</Label>
                     <Input id="height" type="number" value={data.height} onChange={(e) => setField("height", e.target.value)} placeholder="170" />
                   </div>
                   <div>
-                    <Label htmlFor="weight">Weight (kg)</Label>
+                    <Label htmlFor="weight">{t("onb.weight")}</Label>
                     <Input id="weight" type="number" value={data.weight} onChange={(e) => setField("weight", e.target.value)} placeholder="65" />
                   </div>
                 </div>
@@ -145,8 +152,8 @@ function Onboarding() {
           {step === 2 && (
             <div className="space-y-6">
               <div>
-                <h1 className="text-2xl font-bold">What's your goal?</h1>
-                <p className="mt-1 text-sm text-muted-foreground">Pick the one that matters most right now.</p>
+                <h1 className="text-2xl font-bold">{t("onb.goalTitle")}</h1>
+                <p className="mt-1 text-sm text-muted-foreground">{t("onb.goalText")}</p>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {goals.map((g) => {
@@ -165,7 +172,7 @@ function Onboarding() {
                       <div className={cn("grid h-11 w-11 place-items-center rounded-xl", active ? "bg-primary text-primary-foreground" : "bg-accent text-primary")}>
                         <g.icon className="h-5 w-5" />
                       </div>
-                      <span className="font-semibold">{g.label}</span>
+                      <span className="font-semibold">{t(g.label)}</span>
                     </button>
                   );
                 })}
@@ -176,11 +183,11 @@ function Onboarding() {
           {step === 3 && (
             <div className="space-y-6">
               <div>
-                <h1 className="text-2xl font-bold">Dietary preferences</h1>
-                <p className="mt-1 text-sm text-muted-foreground">Anything we should know?</p>
+                <h1 className="text-2xl font-bold">{t("onb.dietTitle")}</h1>
+                <p className="mt-1 text-sm text-muted-foreground">{t("onb.dietText")}</p>
               </div>
               <div>
-                <Label>Diets</Label>
+                <Label>{t("onb.diets")}</Label>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {diets.map((d) => {
                     const active = data.diets.has(d);
@@ -195,19 +202,19 @@ function Onboarding() {
                             : "border-border hover:border-primary/40"
                         )}
                       >
-                        {d}
+                        {t(`diet.${d}`)}
                       </button>
                     );
                   })}
                 </div>
               </div>
               <div>
-                <Label>Allergies</Label>
+                <Label>{t("onb.allergies")}</Label>
                 <Input
                   value={data.allergyInput}
                   onChange={(e) => setField("allergyInput", e.target.value)}
                   onKeyDown={addAllergy}
-                  placeholder="Type an allergy and press Enter"
+                  placeholder={t("onb.allergyPlaceholder")}
                 />
                 {data.allergies.length > 0 && (
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -235,11 +242,11 @@ function Onboarding() {
           {step === 4 && (
             <div className="space-y-6">
               <div>
-                <h1 className="text-2xl font-bold">Your household</h1>
-                <p className="mt-1 text-sm text-muted-foreground">So we plan the right portions.</p>
+                <h1 className="text-2xl font-bold">{t("onb.householdTitle")}</h1>
+                <p className="mt-1 text-sm text-muted-foreground">{t("onb.householdText")}</p>
               </div>
               <div>
-                <Label>People in household</Label>
+                <Label>{t("onb.people")}</Label>
                 <div className="mt-2 inline-flex items-center gap-3 rounded-xl border border-border bg-background p-2">
                   <button
                     className="grid h-9 w-9 place-items-center rounded-lg bg-muted hover:bg-accent"
@@ -257,7 +264,7 @@ function Onboarding() {
                 </div>
               </div>
               <div>
-                <Label>Cooking skill</Label>
+                <Label>{t("onb.skill")}</Label>
                 <div className="mt-2 grid grid-cols-3 gap-2">
                   {skills.map((s) => {
                     const active = data.skill === s;
@@ -271,28 +278,28 @@ function Onboarding() {
                         )}
                       >
                         <ChefHat className="h-5 w-5" />
-                        {s}
+                        {t(`onb.skill.${s}`)}
                       </button>
                     );
                   })}
                 </div>
               </div>
               <div>
-                <Label>Preferred cooking time</Label>
+                <Label>{t("onb.time")}</Label>
                 <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
-                  {times.map((t) => {
-                    const active = data.time === t;
+                  {times.map((tm) => {
+                    const active = data.time === tm;
                     return (
                       <button
-                        key={t}
-                        onClick={() => setField("time", t)}
+                        key={tm}
+                        onClick={() => setField("time", tm)}
                         className={cn(
                           "flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-sm font-medium transition",
                           active ? "border-primary bg-primary/10 text-primary" : "border-border hover:border-primary/40"
                         )}
                       >
                         <Clock className="h-4 w-4" />
-                        {t}
+                        {t(`onb.time.${tm}`)}
                       </button>
                     );
                   })}
@@ -306,15 +313,15 @@ function Onboarding() {
               variant="outline"
               onClick={() => (step === 1 ? navigate({ to: "/" }) : setStep(step - 1))}
             >
-              <ArrowLeft className="mr-1 h-4 w-4" /> Back
+              <ArrowLeft className="mr-1 h-4 w-4" /> {t("common.back")}
             </Button>
             {step < 4 ? (
               <Button onClick={() => setStep(step + 1)}>
-                Continue <ArrowRight className="ml-1 h-4 w-4" />
+                {t("common.continue")} <ArrowRight className="ml-1 h-4 w-4" />
               </Button>
             ) : (
               <Button onClick={() => navigate({ to: "/dashboard" })}>
-                <Check className="mr-1 h-4 w-4" /> Complete Setup
+                <Check className="mr-1 h-4 w-4" /> {t("onb.finish")}
               </Button>
             )}
           </div>

@@ -27,16 +27,18 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { AiChatBubble } from "@/components/ai/AiChatBubble";
+import { LanguageSwitch, useI18n } from "@/lib/i18n";
+import type { MessageKey } from "@/locales/en";
 
-const nav = [
-  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/fridge", label: "My Fridge", icon: Refrigerator, dot: true },
-  { to: "/planner", label: "Meal Planner", icon: CalendarDays },
-  { to: "/recipes", label: "Recipes", icon: UtensilsCrossed },
+const nav: { to: string; label: MessageKey; icon: typeof LayoutDashboard; dot?: boolean }[] = [
+  { to: "/dashboard", label: "nav.dashboard", icon: LayoutDashboard },
+  { to: "/fridge", label: "nav.fridge", icon: Refrigerator, dot: true },
+  { to: "/planner", label: "nav.planner", icon: CalendarDays },
+  { to: "/recipes", label: "nav.recipes", icon: UtensilsCrossed },
   // { to: "/shopping", label: "Shopping List", icon: ShoppingCart, dot: true },
-  { to: "/progress", label: "Progress", icon: TrendingUp },
-  { to: "/assistant", label: "AI Assistant", icon: Sparkles },
-  { to: "/profile", label: "Profile", icon: UserIcon },
+  { to: "/progress", label: "nav.progress", icon: TrendingUp },
+  { to: "/assistant", label: "nav.assistant", icon: Sparkles },
+  { to: "/profile", label: "nav.profile", icon: UserIcon },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -44,6 +46,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { isAuthenticated, hydrated, user } = useAuth();
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   useEffect(() => {
     if (hydrated && !isAuthenticated) {
@@ -54,7 +57,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   if (!hydrated || !isAuthenticated) {
     return (
       <div className="grid min-h-screen place-items-center bg-background text-sm text-muted-foreground">
-        Loading...
+        {t("common.loading")}
       </div>
     );
   }
@@ -73,7 +76,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <button
           className="lg:hidden rounded-md p-2 hover:bg-muted"
           onClick={() => setMobileOpen((v) => !v)}
-          aria-label="Toggle menu"
+          aria-label={t("shell.toggleMenu")}
         >
           <Menu className="h-5 w-5" />
         </button>
@@ -81,18 +84,20 @@ export function AppShell({ children }: { children: ReactNode }) {
           <div className="grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground">
             <Leaf className="h-5 w-5" />
           </div>
-          <span className="text-lg font-bold tracking-tight">NutritionApp</span>
+          {/* Text hidden on phones so the language switch fits in the bar */}
+          <span className="hidden text-lg font-bold tracking-tight sm:inline">NutritionApp</span>
         </Link>
         <div className="ml-4 hidden flex-1 max-w-xl md:flex">
           <div className="relative w-full">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               className="h-10 w-full rounded-full border border-border bg-background pl-10 pr-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-              placeholder="Search recipes, ingredients..."
+              placeholder={t("shell.search")}
             />
           </div>
         </div>
         <div className="ml-auto flex items-center gap-3">
+          <LanguageSwitch />
           <button className="relative rounded-full p-2 hover:bg-muted">
             <Bell className="h-5 w-5" />
             <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-secondary" />
@@ -129,7 +134,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                     <span className="absolute left-0 top-2 bottom-2 w-1 rounded-r-full bg-primary" />
                   )}
                   <Icon className="h-5 w-5" />
-                  <span className="flex-1">{item.label}</span>
+                  <span className="flex-1">{t(item.label)}</span>
                   {item.dot && <span className="h-2 w-2 rounded-full bg-secondary" />}
                 </Link>
               );
@@ -158,6 +163,7 @@ function UserMenu({ initials }: { initials: string }) {
   const [open, setOpen] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [dark, setDark] = useState(false);
+  const { t } = useI18n();
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -201,11 +207,11 @@ function UserMenu({ initials }: { initials: string }) {
           <>
             <div className="h-px bg-border" />
             <div className="p-1.5">
-              <MenuItem icon={UserIcon} label="My Profile" onClick={() => { setOpen(false); navigate({ to: "/profile" }); }} />
-              <MenuItem icon={Settings} label="Account Settings" onClick={() => { setOpen(false); navigate({ to: "/profile" }); }} />
-              <MenuItem icon={TrendingUp} label="My Progress" onClick={() => { setOpen(false); navigate({ to: "/progress" }); }} />
+              <MenuItem icon={UserIcon} label={t("shell.myProfile")} onClick={() => { setOpen(false); navigate({ to: "/profile" }); }} />
+              <MenuItem icon={Settings} label={t("shell.settings")} onClick={() => { setOpen(false); navigate({ to: "/profile" }); }} />
+              <MenuItem icon={TrendingUp} label={t("shell.myProgress")} onClick={() => { setOpen(false); navigate({ to: "/progress" }); }} />
               <div className="flex items-center justify-between rounded-md px-3 py-2 text-sm">
-                <span className="flex items-center gap-3"><Moon className="h-4 w-4" /> Dark Mode</span>
+                <span className="flex items-center gap-3"><Moon className="h-4 w-4" /> {t("shell.darkMode")}</span>
                 <Switch checked={dark} onCheckedChange={setDark} />
               </div>
             </div>
@@ -215,21 +221,21 @@ function UserMenu({ initials }: { initials: string }) {
                 onClick={() => setConfirming(true)}
                 className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-destructive hover:bg-destructive/5"
               >
-                <LogOut className="h-4 w-4" /> Log Out
+                <LogOut className="h-4 w-4" /> {t("shell.logout")}
               </button>
             </div>
           </>
         ) : (
           <div className="p-4 animate-in fade-in slide-in-from-top-2 duration-200">
-            <p className="text-sm font-medium">Are you sure you want to log out?</p>
+            <p className="text-sm font-medium">{t("shell.logoutConfirm")}</p>
             <div className="mt-3 flex gap-2">
-              <Button variant="ghost" size="sm" className="flex-1" onClick={() => setConfirming(false)}>Cancel</Button>
+              <Button variant="ghost" size="sm" className="flex-1" onClick={() => setConfirming(false)}>{t("common.cancel")}</Button>
               <Button
                 size="sm"
                 className="flex-1 bg-destructive text-destructive-foreground hover:bg-destructive/90"
                 onClick={handleLogout}
               >
-                Log Out
+                {t("shell.logout")}
               </Button>
             </div>
           </div>

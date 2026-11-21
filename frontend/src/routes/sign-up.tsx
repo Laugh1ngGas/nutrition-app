@@ -8,6 +8,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/lib/auth-context";
 import { OAuthButton } from "@/routes/sign-in";
+import { LanguageSwitch, useI18n } from "@/lib/i18n";
+import type { MessageKey } from "@/locales/en";
 
 export const Route = createFileRoute("/sign-up")({ component: SignUp });
 
@@ -21,15 +23,16 @@ function strengthScore(pw: string): 0 | 1 | 2 | 3 | 4 {
   return Math.min(s, 4) as 0 | 1 | 2 | 3 | 4;
 }
 
-const STRENGTH = [
-  { label: "", color: "" },
-  { label: "Weak",   color: "bg-[#EF4444]" },
-  { label: "Fair",   color: "bg-[#F59E0B]" },
-  { label: "Good",   color: "bg-[#86EFAC]" },
-  { label: "Strong", color: "bg-primary"   },
-] as const;
+const STRENGTH: { label: MessageKey | null; color: string }[] = [
+  { label: null,        color: "" },
+  { label: "pw.weak",   color: "bg-[#EF4444]" },
+  { label: "pw.fair",   color: "bg-[#F59E0B]" },
+  { label: "pw.good",   color: "bg-[#86EFAC]" },
+  { label: "pw.strong", color: "bg-primary"   },
+];
 
 function SignUp() {
+  const { t } = useI18n();
   const { isAuthenticated, hydrated, signUp } = useAuth();
   const navigate = useNavigate();
 
@@ -54,13 +57,13 @@ function SignUp() {
 
     // Валідація
     const next: Record<string, string> = {};
-    if (!first)   next.first    = "Required";
-    if (!last)    next.last     = "Required";
-    if (!email)   next.email    = "This field is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = "Please enter a valid email address";
-    if (password.length < 8)    next.password = "Password must be at least 8 characters";
-    if (confirm !== password)   next.confirm  = "Passwords do not match";
-    if (!terms)                 next.terms    = "You must accept the terms to continue";
+    if (!first)   next.first    = t("common.requiredShort");
+    if (!last)    next.last     = t("common.requiredShort");
+    if (!email)   next.email    = t("common.required");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = t("common.invalidEmail");
+    if (password.length < 8)    next.password = t("auth.passwordTooShort");
+    if (confirm !== password)   next.confirm  = t("auth.passwordMismatch");
+    if (!terms)                 next.terms    = t("auth.mustAccept");
     setErrors(next);
     if (Object.keys(next).length) return;
 
@@ -70,10 +73,10 @@ function SignUp() {
       setStatus("success");
     } catch (err: unknown) {
       const apiError = err as { response?: { data?: { message?: string } } };
-      const message = apiError?.response?.data?.message || "Registration failed. Please try again.";
+      const message = apiError?.response?.data?.message || t("auth.registerFailed");
 
       if (message.toLowerCase().includes("email already")) {
-        setErrors({ banner: "An account with this email already exists." });
+        setErrors({ banner: t("auth.emailExists") });
       } else {
         setErrors({ banner: message });
       }
@@ -86,7 +89,8 @@ function SignUp() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-[linear-gradient(135deg,#F0FAF4_0%,#E8F5EE_100%)] px-4 py-10">
+    <div className="relative min-h-screen w-full bg-[linear-gradient(135deg,#F0FAF4_0%,#E8F5EE_100%)] px-4 py-10">
+      <LanguageSwitch className="absolute right-4 top-4" />
       <div className="mx-auto flex w-full max-w-[480px] flex-col items-center">
         <Link to="/" className="flex items-center gap-2">
           <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-primary-foreground shadow-card">
@@ -94,11 +98,11 @@ function SignUp() {
           </div>
           <span className="text-2xl font-bold tracking-tight">NutritionApp</span>
         </Link>
-        <p className="mt-2 text-sm text-muted-foreground">Your smart kitchen companion</p>
+        <p className="mt-2 text-sm text-muted-foreground">{t("common.tagline")}</p>
 
         <div className="mt-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-300 rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
-          <h1 className="text-2xl font-bold">Create your account</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Start planning smarter meals today — it's free</p>
+          <h1 className="text-2xl font-bold">{t("auth.createTitle")}</h1>
+          <p className="mt-1 text-sm text-muted-foreground">{t("auth.createSubtitle")}</p>
 
           {errors.banner && (
             <div className="mt-5 flex items-start gap-2 rounded-lg border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
@@ -109,12 +113,12 @@ function SignUp() {
 
           <form onSubmit={onSubmit} className="mt-6 space-y-4" noValidate>
             <div className="grid grid-cols-2 gap-3">
-              <NameField label="First name" value={first} onChange={setFirst} error={errors.first} />
-              <NameField label="Last name"  value={last}  onChange={setLast}  error={errors.last}  />
+              <NameField label={t("auth.firstName")} value={first} onChange={setFirst} error={errors.first} />
+              <NameField label={t("auth.lastName")}  value={last}  onChange={setLast}  error={errors.last}  />
             </div>
 
             <div>
-              <Label htmlFor="su-email">Email</Label>
+              <Label htmlFor="su-email">{t("common.email")}</Label>
               <div className="relative mt-1.5">
                 <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -130,7 +134,7 @@ function SignUp() {
             </div>
 
             <div>
-              <Label htmlFor="su-pw">Password</Label>
+              <Label htmlFor="su-pw">{t("common.password")}</Label>
               <div className="relative mt-1.5">
                 <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -139,11 +143,12 @@ function SignUp() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className={cn("pl-9 pr-10", errors.password && "border-destructive")}
-                  placeholder="At least 8 characters"
+                  placeholder={t("auth.passwordPlaceholder")}
                 />
                 <button
                   type="button"
                   onClick={() => setShow((v) => !v)}
+                  aria-label={t("auth.togglePassword")}
                   className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-muted-foreground hover:text-foreground"
                 >
                   {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -154,7 +159,7 @@ function SignUp() {
             </div>
 
             <div>
-              <Label htmlFor="su-cpw">Confirm password</Label>
+              <Label htmlFor="su-cpw">{t("auth.confirmPassword")}</Label>
               <div className="relative mt-1.5">
                 <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -171,8 +176,8 @@ function SignUp() {
             <div className="flex items-start gap-2 pt-1">
               <Checkbox id="terms" checked={terms} onCheckedChange={(v) => setTerms(!!v)} className="mt-0.5" />
               <label htmlFor="terms" className="text-sm text-muted-foreground leading-relaxed">
-                I agree to the <a className="underline text-foreground" href="#">Terms of Service</a> and{" "}
-                <a className="underline text-foreground" href="#">Privacy Policy</a>
+                {t("auth.agree")} <a className="underline text-foreground" href="#">{t("auth.terms")}</a> {t("auth.and")}{" "}
+                <a className="underline text-foreground" href="#">{t("auth.privacy")}</a>
               </label>
             </div>
             {errors.terms && (
@@ -183,14 +188,14 @@ function SignUp() {
 
             <Button type="submit" className="w-full" disabled={status !== "idle"}>
               {status === "loading"
-                ? (<><Loader2 className="h-4 w-4 animate-spin" /> Creating account...</>)
-                : "Create Account"}
+                ? (<><Loader2 className="h-4 w-4 animate-spin" /> {t("auth.creating")}</>)
+                : t("auth.createButton")}
             </Button>
           </form>
 
           <div className="my-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-border" />
-            <span className="text-xs uppercase tracking-wider text-muted-foreground">or continue with</span>
+            <span className="text-xs uppercase tracking-wider text-muted-foreground">{t("common.orContinueWith")}</span>
             <div className="h-px flex-1 bg-border" />
           </div>
           <div className="space-y-2">
@@ -199,8 +204,8 @@ function SignUp() {
           </div>
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
-            <Link to="/sign-in" className="font-semibold text-primary hover:underline">Sign in</Link>
+            {t("auth.haveAccount")}{" "}
+            <Link to="/sign-in" className="font-semibold text-primary hover:underline">{t("auth.signInLink")}</Link>
           </p>
         </div>
       </div>
@@ -222,6 +227,7 @@ function NameField({ label, value, onChange, error }: { label: string; value: st
 }
 
 function StrengthBar({ score }: { score: 0 | 1 | 2 | 3 | 4 }) {
+  const { t } = useI18n();
   const widths = ["0%", "25%", "50%", "75%", "100%"] as const;
   const meta = STRENGTH[score];
   return (
@@ -229,12 +235,13 @@ function StrengthBar({ score }: { score: 0 | 1 | 2 | 3 | 4 }) {
       <div className="h-1 flex-1 overflow-hidden rounded-full bg-muted">
         <div className={cn("h-full rounded-full transition-all duration-300 ease-out", meta.color)} style={{ width: widths[score] }} />
       </div>
-      <span className="w-12 text-right text-xs text-muted-foreground">{meta.label}</span>
+      <span className="w-16 text-right text-xs text-muted-foreground">{meta.label ? t(meta.label) : ""}</span>
     </div>
   );
 }
 
 function SuccessScreen({ email }: { email: string }) {
+  const { t } = useI18n();
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-[linear-gradient(135deg,#F0FAF4_0%,#E8F5EE_100%)] px-4 py-10">
       <Confetti />
@@ -250,12 +257,12 @@ function SuccessScreen({ email }: { email: string }) {
           <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-primary/10 animate-in zoom-in duration-500">
             <CheckCircle2 className="h-10 w-10 text-primary" strokeWidth={2.2} />
           </div>
-          <h1 className="mt-5 text-2xl font-bold">Account created!</h1>
+          <h1 className="mt-5 text-2xl font-bold">{t("auth.created")}</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Welcome to NutritionApp, <span className="font-medium text-foreground">{email}</span>
+            {t("auth.welcomeTo")} <span className="font-medium text-foreground">{email}</span>
           </p>
           <Link to="/onboarding" className="mt-6 inline-block">
-            <Button className="w-full">Continue to setup →</Button>
+            <Button className="w-full">{t("auth.continueSetup")}</Button>
           </Link>
         </div>
       </div>

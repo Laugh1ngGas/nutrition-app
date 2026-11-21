@@ -23,32 +23,30 @@ import {
   clearAiMessages,
 } from "@/integrations/api/hooks";
 import type { AiChatMessage, AiStatus } from "@/integrations/api/types";
+import { useI18n, type Translate } from "@/lib/i18n";
+import type { MessageKey } from "@/locales/en";
 import { ChatMarkdown } from "./ChatMarkdown";
 
-const SUGGESTIONS = [
-  "What can I cook from my fridge today?",
-  "Suggest a high-protein breakfast",
-  "Що приготувати на вечерю, щоб було легко?",
-  "How much protein should I eat per day?",
-];
+// One of them is always in the other language, to show the chat speaks both
+const SUGGESTIONS: MessageKey[] = ["ai.suggestion1", "ai.suggestion2", "ai.suggestion3", "ai.suggestion4"];
 
 // After this long without an answer the model is probably waking up
 const SLOW_ANSWER_MS = 12_000;
 
-const STATUS: Record<AiStatus | "connecting", { label: string; dot: string }> = {
-  ready: { label: "Ready", dot: "bg-success" },
-  loading: { label: "Waking up…", dot: "bg-warning animate-pulse" },
-  offline: { label: "Offline", dot: "bg-destructive" },
-  connecting: { label: "Connecting…", dot: "bg-muted-foreground animate-pulse" },
+const STATUS: Record<AiStatus | "connecting", { label: MessageKey; dot: string }> = {
+  ready: { label: "ai.status.ready", dot: "bg-success" },
+  loading: { label: "ai.status.loading", dot: "bg-warning animate-pulse" },
+  offline: { label: "ai.status.offline", dot: "bg-destructive" },
+  connecting: { label: "ai.status.connecting", dot: "bg-muted-foreground animate-pulse" },
 };
 
-function errorMessage(err: unknown): string {
+function errorMessage(err: unknown, t: Translate): string {
   if (isAxiosError(err)) {
-    if (err.code === "ECONNABORTED") return "The assistant took too long to answer. Please try again.";
+    if (err.code === "ECONNABORTED") return t("ai.timeout");
     const message = (err.response?.data as { message?: string } | undefined)?.message;
     if (message) return message;
   }
-  return "Couldn't reach the assistant. Please try again.";
+  return t("ai.unreachable");
 }
 
 export function AiChat({
@@ -64,6 +62,7 @@ export function AiChat({
   initialInput?: string;
 }) {
   const { user } = useAuth();
+  const { t } = useI18n();
   const { status, setStatus } = useAiStatus();
   const [messages, setMessages] = useState<AiChatMessage[] | null>(null);
   const [input, setInput] = useState(initialInput);
@@ -79,8 +78,9 @@ export function AiChat({
       .then(setMessages)
       .catch(() => {
         setMessages([]);
-        toast.error("Couldn't load your chat history");
+        toast.error(t("ai.historyError"));
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Keep the newest message in view. A fresh answer is shown from the question
@@ -117,7 +117,7 @@ export function AiChat({
       setMessages((prev) => [...(prev ?? []), question, answer]);
       setStatus("ready"); // an answer proves the model is up, whatever the last check said
     } catch (err) {
-      toast.error(errorMessage(err));
+      toast.error(errorMessage(err, t));
       setInput(message); // nothing was saved, so let the user resend as is
     } finally {
       setPending(null);
@@ -137,7 +137,7 @@ export function AiChat({
       await clearAiMessages();
       setMessages([]);
     } catch {
-      toast.error("Couldn't clear the chat — please try again");
+      toast.error(t("ai.clearError"));
     }
   };
 
@@ -159,29 +159,27 @@ export function AiChat({
           <Sparkles className="h-5 w-5" />
         </div>
         <div className="min-w-0 flex-1">
-          <p className={cn("font-semibold leading-tight", variant === "page" && "text-lg")}>AI Assistant</p>
+          <p className={cn("font-semibold leading-tight", variant === "page" && "text-lg")}>{t("ai.title")}</p>
           <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <span className={cn("h-2 w-2 rounded-full", shownStatus.dot)} />
-            {shownStatus.label}
+            {t(shownStatus.label)}
           </p>
         </div>
         {!!messages?.length && (
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant="ghost" size="sm" disabled={!!pending} title="Start a new chat">
-                <RotateCcw /> <span className="hidden sm:inline">New chat</span>
+              <Button variant="ghost" size="sm" disabled={!!pending} title={t("ai.newChatTooltip")}>
+                <RotateCcw /> <span className="hidden sm:inline">{t("ai.newChat")}</span>
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Start a new chat?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  This deletes your conversation with the assistant. Your profile and fridge stay as they are.
-                </AlertDialogDescription>
+                <AlertDialogTitle>{t("ai.newChatConfirm")}</AlertDialogTitle>
+                <AlertDialogDescription>{t("ai.newChatText")}</AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={clear}>Delete chat</AlertDialogAction>
+                <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
+                <AlertDialogAction onClick={clear}>{t("ai.deleteChat")}</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
@@ -191,12 +189,12 @@ export function AiChat({
 
       {status === "loading" && (
         <div className="border-b border-border bg-warning/15 px-4 py-2 text-xs text-warning-foreground">
-          The AI is waking up after a break. This takes about 30 seconds; you can already type your question.
+          {t("ai.wakingBanner")}
         </div>
       )}
       {status === "offline" && (
         <div className="border-b border-border bg-destructive/10 px-4 py-2 text-xs text-destructive">
-          The AI assistant can't be reached right now. You can still try sending a message.
+          {t("ai.offlineBanner")}
         </div>
       )}
 
@@ -215,19 +213,17 @@ export function AiChat({
               <Sparkles className="h-7 w-7" />
             </div>
             <h2 className="mt-4 text-lg font-semibold">
-              Hi{user?.first_name ? `, ${user.first_name}` : ""}! I'm your nutrition assistant.
+              {user?.first_name ? t("ai.helloName", { name: user.first_name }) : t("ai.hello")}
             </h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              I know your goals, allergies and what's in your fridge. Ask me in English or Ukrainian.
-            </p>
+            <p className="mt-1 text-sm text-muted-foreground">{t("ai.intro")}</p>
             <div className="mt-5 flex flex-wrap justify-center gap-2">
-              {SUGGESTIONS.map((s) => (
+              {SUGGESTIONS.map((key) => (
                 <button
-                  key={s}
-                  onClick={() => send(s)}
+                  key={key}
+                  onClick={() => send(t(key))}
                   className="rounded-full border border-border bg-background px-3 py-1.5 text-left text-sm transition hover:border-primary hover:bg-primary/5"
                 >
-                  {s}
+                  {t(key)}
                 </button>
               ))}
             </div>
@@ -246,7 +242,7 @@ export function AiChat({
             <div className="flex items-start gap-2.5">
               <AssistantAvatar />
               <div className="rounded-2xl rounded-tl-sm bg-muted px-4 py-3">
-                <div className="flex gap-1" aria-label="Assistant is typing">
+                <div className="flex gap-1" aria-label={t("ai.typing")}>
                   {[0, 150, 300].map((delay) => (
                     <span
                       key={delay}
@@ -256,9 +252,7 @@ export function AiChat({
                   ))}
                 </div>
                 {slow && (
-                  <p className="mt-2 max-w-xs text-xs text-muted-foreground">
-                    The first answer after a break takes longer while the AI wakes up (up to a minute).
-                  </p>
+                  <p className="mt-2 max-w-xs text-xs text-muted-foreground">{t("ai.slow")}</p>
                 )}
               </div>
             </div>
@@ -274,7 +268,7 @@ export function AiChat({
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onKeyDown}
-            placeholder="Ask about meals, recipes, nutrition…"
+            placeholder={t("ai.placeholder")}
             rows={1}
             maxLength={4000}
             className="max-h-36 min-h-9 flex-1 resize-none bg-transparent py-2 text-sm outline-none [field-sizing:content] placeholder:text-muted-foreground"
@@ -284,14 +278,12 @@ export function AiChat({
             className="shrink-0 rounded-xl"
             onClick={() => send(input)}
             disabled={!input.trim() || !!pending}
-            aria-label="Send message"
+            aria-label={t("ai.send")}
           >
             {pending ? <Loader2 className="animate-spin" /> : <SendHorizontal />}
           </Button>
         </div>
-        <p className="mt-1.5 px-1 text-[11px] text-muted-foreground">
-          AI answers can be wrong. Check allergens and medical advice yourself.
-        </p>
+        <p className="mt-1.5 px-1 text-[11px] text-muted-foreground">{t("ai.disclaimer")}</p>
       </div>
     </div>
   );

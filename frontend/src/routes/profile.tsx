@@ -37,46 +37,23 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useI18n, type Translate } from "@/lib/i18n";
+import type { MessageKey } from "@/locales/en";
 
 export const Route = createFileRoute("/profile")({ component: Profile });
 
-const GOAL_OPTIONS: { value: UserGoal; label: string }[] = [
-  { value: "weight_loss", label: "Lose weight" },
-  { value: "weight_gain", label: "Gain weight" },
-  { value: "muscle_gain", label: "Build muscle" },
-  { value: "maintenance", label: "Maintain weight" },
-  { value: "healthy_eating", label: "Eat healthier" },
+const GOALS: UserGoal[] = ["weight_loss", "weight_gain", "muscle_gain", "maintenance", "healthy_eating"];
+const ACTIVITIES: ActivityLevel[] = ["sedentary", "lightly_active", "moderately_active", "very_active", "extra_active"];
+const DIETS: DietType[] = [
+  "standard", "vegetarian", "vegan", "pescatarian", "keto", "paleo", "gluten_free", "dairy_free", "halal", "kosher",
 ];
+const GENDERS: Gender[] = ["male", "female", "other"];
 
-const ACTIVITY_OPTIONS: { value: ActivityLevel; label: string }[] = [
-  { value: "sedentary", label: "Sedentary (little to no exercise)" },
-  { value: "lightly_active", label: "Lightly active (1-3 days/week)" },
-  { value: "moderately_active", label: "Moderately active (3-5 days/week)" },
-  { value: "very_active", label: "Very active (6-7 days/week)" },
-  { value: "extra_active", label: "Extra active (hard training or physical job)" },
-];
-
-const DIET_OPTIONS: { value: DietType; label: string }[] = [
-  { value: "standard", label: "Standard" },
-  { value: "vegetarian", label: "Vegetarian" },
-  { value: "vegan", label: "Vegan" },
-  { value: "pescatarian", label: "Pescatarian" },
-  { value: "keto", label: "Keto" },
-  { value: "paleo", label: "Paleo" },
-  { value: "gluten_free", label: "Gluten-free" },
-  { value: "dairy_free", label: "Dairy-free" },
-  { value: "halal", label: "Halal" },
-  { value: "kosher", label: "Kosher" },
-];
-
-const GENDER_OPTIONS: { value: Gender; label: string }[] = [
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
-  { value: "other", label: "Other" },
-];
-
-function formatAllergenName(name: string) {
-  return name.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+// Known allergens are translated; anything new in the database shows as stored
+function allergenLabel(name: string, t: Translate) {
+  const key = `allergen.${name}` as MessageKey;
+  const translated = t(key);
+  return translated !== key ? translated : name.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 type Form = {
@@ -108,6 +85,7 @@ function buildForm(profile?: ProfileWithUser | null): Form {
 }
 
 function Profile() {
+  const { t } = useI18n();
   const { logout } = useAuth();
   const { data: profile, isLoading, refetch } = useProfile();
   const { data: allergensList } = useAllergens();
@@ -171,9 +149,9 @@ function Profile() {
 
       await refetch();
       setEditing(false);
-      toast.success("Profile updated successfully");
+      toast.success(t("profile.saved"));
     } catch {
-      toast.error("Couldn't save changes — please try again");
+      toast.error(t("profile.saveError"));
     } finally {
       setSaving(false);
     }
@@ -188,6 +166,11 @@ function Profile() {
   const displayName = `${profile?.first_name ?? ""} ${profile?.last_name ?? ""}`.trim() || profile?.email || "";
   const initials = (displayName || "?").split(" ").map((s) => s[0]).filter(Boolean).slice(0, 2).join("").toUpperCase();
 
+  const goalOptions = GOALS.map((value) => ({ value, label: t(`goal.${value}`) }));
+  const activityOptions = ACTIVITIES.map((value) => ({ value, label: t(`activity.${value}`) }));
+  const dietOptions = DIETS.map((value) => ({ value, label: t(`diet.${value}`) }));
+  const genderOptions = GENDERS.map((value) => ({ value, label: t(`gender.${value}`) }));
+
   if (isLoading) {
     return (
       <AppShell>
@@ -201,18 +184,18 @@ function Profile() {
   return (
     <AppShell>
       <div className="mb-6 flex items-center justify-between gap-4">
-        <h1 className="text-2xl font-bold">Profile & Settings</h1>
+        <h1 className="text-2xl font-bold">{t("profile.title")}</h1>
         {!editing ? (
           <div className="relative">
             <Button variant="outline" onClick={() => setEditing(true)}>
-              <Pencil className="h-4 w-4" /> Edit Profile
+              <Pencil className="h-4 w-4" /> {t("profile.edit")}
             </Button>
           </div>
         ) : (
           <div className="flex items-center gap-2">
-            <Button variant="ghost" onClick={onCancel} disabled={saving}>Cancel</Button>
+            <Button variant="ghost" onClick={onCancel} disabled={saving}>{t("common.cancel")}</Button>
             <Button onClick={onSave} disabled={saving || !dirty}>
-              {saving ? (<><Loader2 className="h-4 w-4 animate-spin" /> Saving...</>) : "Save Changes"}
+              {saving ? (<><Loader2 className="h-4 w-4 animate-spin" /> {t("common.saving")}</>) : t("common.saveChanges")}
             </Button>
           </div>
         )}
@@ -225,36 +208,36 @@ function Profile() {
             {editing && (
               <button className="absolute inset-0 hidden h-24 w-24 place-items-center rounded-full bg-foreground/60 text-xs font-medium text-white group-hover:grid">
                 <Camera className="h-5 w-5" />
-                Change photo
+                {t("profile.changePhoto")}
               </button>
             )}
             <button className="absolute bottom-0 right-0 grid h-8 w-8 place-items-center rounded-full bg-primary text-primary-foreground shadow-card">
               <Camera className="h-4 w-4" />
             </button>
           </div>
-          <h2 className="mt-4 font-bold">{displayName || "Your profile"}</h2>
+          <h2 className="mt-4 font-bold">{displayName || t("profile.yours")}</h2>
           <p className="text-xs text-muted-foreground">{profile?.email}</p>
           <p className="mt-1 text-xs text-muted-foreground">
-            Goal: {GOAL_OPTIONS.find((g) => g.value === profile?.goal)?.label ?? "—"}
+            {t("profile.goalLine", { goal: profile?.goal ? t(`goal.${profile.goal}`) : "—" })}
           </p>
         </div>
 
         <div className="lg:col-span-2 rounded-2xl border border-border bg-card p-6 shadow-card">
-          <h3 className="font-semibold">Personal info</h3>
+          <h3 className="font-semibold">{t("profile.personal")}</h3>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <Field label="First name" value={form.first_name} editing={editing} onChange={(v) => update("first_name", v)} />
-            <Field label="Last name" value={form.last_name} editing={editing} onChange={(v) => update("last_name", v)} />
+            <Field label={t("auth.firstName")} value={form.first_name} editing={editing} onChange={(v) => update("first_name", v)} />
+            <Field label={t("auth.lastName")} value={form.last_name} editing={editing} onChange={(v) => update("last_name", v)} />
             {/* <Field label="Date of birth" type="date" value={form.date_of_birth} editing={editing} onChange={(v) => update("date_of_birth", v)} /> */}
             <SelectField
-              label="Gender"
+              label={t("profile.gender")}
               editing={editing}
               value={form.gender}
               onChange={(v) => update("gender", v as Gender)}
-              options={GENDER_OPTIONS}
+              options={genderOptions}
             />
-            <Field label="Height (cm)" type="number" value={form.height_cm} editing={editing} onChange={(v) => update("height_cm", v)} />
-            <Field label="Weight (kg)" type="number" value={form.weight_kg} editing={editing} onChange={(v) => update("weight_kg", v)} />
-            <Field label="Target weight (kg)" type="number" value={form.target_weight_kg} editing={editing} onChange={(v) => update("target_weight_kg", v)} />
+            <Field label={t("profile.height")} type="number" value={form.height_cm} editing={editing} onChange={(v) => update("height_cm", v)} />
+            <Field label={t("profile.weight")} type="number" value={form.weight_kg} editing={editing} onChange={(v) => update("weight_kg", v)} />
+            <Field label={t("profile.targetWeight")} type="number" value={form.target_weight_kg} editing={editing} onChange={(v) => update("target_weight_kg", v)} />
           </div>
         </div>
 
@@ -271,22 +254,27 @@ function Profile() {
         </div> */}
 
         <div className="lg:col-span-3 rounded-2xl border border-border bg-card p-6 shadow-card">
-          <h3 className="font-semibold">Nutrition preferences</h3>
+          <h3 className="font-semibold">{t("profile.nutrition")}</h3>
           <div className="mt-4 grid gap-4 sm:grid-cols-3">
-            <SelectField label="Goal" editing={editing} value={form.goal} onChange={(v) => update("goal", v as UserGoal)} options={GOAL_OPTIONS} />
-            <SelectField label="Activity level" editing={editing} value={form.activity_level} onChange={(v) => update("activity_level", v as ActivityLevel)} options={ACTIVITY_OPTIONS} />
-            <SelectField label="Diet type" editing={editing} value={form.diet_type} onChange={(v) => update("diet_type", v as DietType)} options={DIET_OPTIONS} />
+            <SelectField label={t("profile.goal")} editing={editing} value={form.goal} onChange={(v) => update("goal", v as UserGoal)} options={goalOptions} />
+            <SelectField label={t("profile.activity")} editing={editing} value={form.activity_level} onChange={(v) => update("activity_level", v as ActivityLevel)} options={activityOptions} />
+            <SelectField label={t("profile.diet")} editing={editing} value={form.diet_type} onChange={(v) => update("diet_type", v as DietType)} options={dietOptions} />
           </div>
           {!!profile?.daily_calories && (
             <p className="mt-4 text-xs text-muted-foreground">
-              Daily target: {profile.daily_calories} kcal · {profile.daily_protein_g}g protein · {profile.daily_carbs_g}g carbs · {profile.daily_fat_g}g fat
+              {t("profile.dailyTarget", {
+                kcal: profile.daily_calories,
+                p: profile.daily_protein_g ?? "—",
+                c: profile.daily_carbs_g ?? "—",
+                f: profile.daily_fat_g ?? "—",
+              })}
             </p>
           )}
         </div>
 
         <div className="lg:col-span-3 rounded-2xl border border-border bg-card p-6 shadow-card">
-          <h3 className="font-semibold">Allergens & restrictions</h3>
-          <p className="mt-1 text-xs text-muted-foreground">We'll filter recipes and flag ingredients that contain these.</p>
+          <h3 className="font-semibold">{t("profile.allergens")}</h3>
+          <p className="mt-1 text-xs text-muted-foreground">{t("profile.allergensText")}</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {(allergensList ?? []).map((a) => {
               const active = selectedAllergens.has(a.name);
@@ -302,7 +290,7 @@ function Profile() {
                     !editing && "opacity-70"
                   )}
                 >
-                  {formatAllergenName(a.name)}
+                  {allergenLabel(a.name, t)}
                 </button>
               );
             })}
@@ -312,7 +300,7 @@ function Profile() {
         <div className="lg:col-span-3 rounded-2xl border border-border bg-card p-2 shadow-card">
           <Accordion type="single" collapsible>
             <AccordionItem value="pw" className="border-none">
-              <AccordionTrigger className="px-4 hover:no-underline">Change Password</AccordionTrigger>
+              <AccordionTrigger className="px-4 hover:no-underline">{t("profile.changePassword")}</AccordionTrigger>
               <AccordionContent className="px-4 pb-4">
                 <PasswordChange />
               </AccordionContent>
@@ -339,17 +327,15 @@ function Profile() {
           <div className="flex items-start gap-3">
             <AlertTriangle className="h-5 w-5 text-destructive shrink-0" />
             <div className="flex-1">
-              <h3 className="font-semibold text-destructive">Danger Zone</h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Permanently delete your account and all associated data. This action cannot be undone.
-              </p>
+              <h3 className="font-semibold text-destructive">{t("profile.danger")}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{t("profile.dangerText")}</p>
             </div>
             <Button
               variant="outline"
               onClick={() => setDeleteOpen(true)}
               className="border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground"
             >
-              Delete Account
+              {t("profile.deleteAccount")}
             </Button>
           </div>
         </div>
@@ -358,11 +344,11 @@ function Profile() {
       {editing && dirty && (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#F59E0B]/40 bg-[#FFFBEB] px-4 py-3 text-sm text-[#92400E] shadow-card-lg">
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-3">
-            <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#F59E0B]" /> You have unsaved changes</span>
+            <span className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#F59E0B]" /> {t("profile.unsaved")}</span>
             <div className="flex gap-2">
-              <Button size="sm" variant="ghost" onClick={onCancel}><X className="h-4 w-4" /> Discard</Button>
+              <Button size="sm" variant="ghost" onClick={onCancel}><X className="h-4 w-4" /> {t("profile.discard")}</Button>
               <Button size="sm" onClick={onSave} disabled={saving}>
-                {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save Changes"}
+                {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : t("common.saveChanges")}
               </Button>
             </div>
           </div>
@@ -376,7 +362,7 @@ function Profile() {
         onConfirm={() => {
           setDeleteOpen(false);
           logout();
-          toast.success("Account deleted");
+          toast.success(t("profile.deleted"));
         }}
       />
     </AppShell>
@@ -427,13 +413,14 @@ function SelectField<T extends string>({
   onChange: (v: T) => void;
   options: { value: T; label: string }[];
 }) {
+  const { t } = useI18n();
   return (
     <div>
       <Label>{label}</Label>
       {editing ? (
         <Select value={value || undefined} onValueChange={(v) => onChange(v as T)}>
           <SelectTrigger className="mt-1.5">
-            <SelectValue placeholder={`Select ${label.toLowerCase()}`} />
+            <SelectValue placeholder={t("profile.select")} />
           </SelectTrigger>
           <SelectContent>
             {options.map((o) => (
@@ -450,7 +437,16 @@ function SelectField<T extends string>({
   );
 }
 
+const STRENGTH: { label: MessageKey | null; color: string }[] = [
+  { label: null, color: "" },
+  { label: "pw.weak", color: "bg-[#EF4444]" },
+  { label: "pw.fair", color: "bg-[#F59E0B]" },
+  { label: "pw.good", color: "bg-[#86EFAC]" },
+  { label: "pw.strong", color: "bg-primary" },
+];
+
 function PasswordChange() {
+  const { t } = useI18n();
   const [cur, setCur] = useState("");
   const [next, setNext] = useState("");
   const [conf, setConf] = useState("");
@@ -464,51 +460,45 @@ function PasswordChange() {
     if (/[^A-Za-z0-9]/.test(next)) s++;
     return s;
   })();
-  const meta = [
-    { l: "", c: "" },
-    { l: "Weak", c: "bg-[#EF4444]" },
-    { l: "Fair", c: "bg-[#F59E0B]" },
-    { l: "Good", c: "bg-[#86EFAC]" },
-    { l: "Strong", c: "bg-primary" },
-  ][score];
+  const meta = STRENGTH[score];
   const widths = ["0%", "25%", "50%", "75%", "100%"][score];
 
   const submit = () => {
     if (!cur || next.length < 8 || next !== conf) {
-      toast.error("Please complete all fields correctly");
+      toast.error(t("profile.completeFields"));
       return;
     }
     setBusy(true);
     setTimeout(() => {
       setBusy(false);
       setCur(""); setNext(""); setConf("");
-      toast.success("Password updated");
+      toast.success(t("profile.passwordUpdated"));
     }, 700);
   };
 
   return (
     <div className="grid gap-4 sm:grid-cols-3">
       <div>
-        <Label>Current Password</Label>
+        <Label>{t("profile.currentPassword")}</Label>
         <Input type="password" value={cur} onChange={(e) => setCur(e.target.value)} className="mt-1.5" />
       </div>
       <div>
-        <Label>New Password</Label>
+        <Label>{t("profile.newPassword")}</Label>
         <Input type="password" value={next} onChange={(e) => setNext(e.target.value)} className="mt-1.5" />
         <div className="mt-2 flex items-center gap-2">
           <div className="h-1 flex-1 overflow-hidden rounded-full bg-muted">
-            <div className={cn("h-full transition-all duration-300", meta.c)} style={{ width: widths }} />
+            <div className={cn("h-full transition-all duration-300", meta.color)} style={{ width: widths }} />
           </div>
-          <span className="w-12 text-right text-xs text-muted-foreground">{meta.l}</span>
+          <span className="w-16 text-right text-xs text-muted-foreground">{meta.label ? t(meta.label) : ""}</span>
         </div>
       </div>
       <div>
-        <Label>Confirm New Password</Label>
+        <Label>{t("profile.confirmNewPassword")}</Label>
         <Input type="password" value={conf} onChange={(e) => setConf(e.target.value)} className="mt-1.5" />
       </div>
       <div className="sm:col-span-3">
         <Button onClick={submit} disabled={busy}>
-          {busy ? (<><Loader2 className="h-4 w-4 animate-spin" /> Updating...</>) : "Update Password"}
+          {busy ? (<><Loader2 className="h-4 w-4 animate-spin" /> {t("profile.updating")}</>) : t("profile.updatePassword")}
         </Button>
       </div>
     </div>
@@ -526,6 +516,7 @@ function DeleteAccountDialog({
   email: string;
   onConfirm: () => void;
 }) {
+  const { t } = useI18n();
   const [typed, setTyped] = useState("");
   useEffect(() => { if (!open) setTyped(""); }, [open]);
   const enabled = typed.trim().toLowerCase() === email.toLowerCase();
@@ -536,23 +527,21 @@ function DeleteAccountDialog({
           <div className="mx-auto mb-2 grid h-12 w-12 place-items-center rounded-full bg-destructive/10">
             <AlertTriangle className="h-6 w-6 text-destructive" />
           </div>
-          <DialogTitle className="text-center">Delete your account?</DialogTitle>
-          <DialogDescription className="text-center">
-            This permanently deletes your account and all data. Type your email to confirm.
-          </DialogDescription>
+          <DialogTitle className="text-center">{t("profile.deleteTitle")}</DialogTitle>
+          <DialogDescription className="text-center">{t("profile.deleteText")}</DialogDescription>
         </DialogHeader>
         <div>
-          <Label>Email</Label>
+          <Label>{t("common.email")}</Label>
           <Input className="mt-1.5" value={typed} onChange={(e) => setTyped(e.target.value)} placeholder={email} />
         </div>
         <DialogFooter className="sm:justify-between">
-          <Button variant="ghost" onClick={onClose}>Cancel</Button>
+          <Button variant="ghost" onClick={onClose}>{t("common.cancel")}</Button>
           <Button
             disabled={!enabled}
             onClick={onConfirm}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90 disabled:opacity-50"
           >
-            Yes, delete my account
+            {t("profile.deleteConfirm")}
           </Button>
         </DialogFooter>
       </DialogContent>

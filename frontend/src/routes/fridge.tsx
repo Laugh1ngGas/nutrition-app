@@ -10,25 +10,33 @@ import { useFridge, removeFridgeItem } from "@/integrations/api/hooks";
 import type { FridgeItem } from "@/integrations/api/types";
 import { toast } from "sonner";
 import { categoryEmoji, daysUntil } from "@/lib/fridge";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/fridge")({ component: FridgePage });
 
+// Tab ids; categories themselves are data and shown as stored
+const ALL = "All";
+const OTHER = "Other";
+
 function FridgePage() {
+  const { t } = useI18n();
   const { data: items, isLoading, refetch } = useFridge();
-  const [tab, setTab] = useState("All");
+  const [tab, setTab] = useState(ALL);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
 
   const categories = useMemo(() => {
     const set = new Set<string>();
-    (items ?? []).forEach((i) => set.add(i.category || "Other"));
-    return ["All", ...Array.from(set).sort()];
+    (items ?? []).forEach((i) => set.add(i.category || OTHER));
+    return [ALL, ...Array.from(set).sort()];
   }, [items]);
 
   const filtered = useMemo(() => {
     const list = items ?? [];
-    return tab === "All" ? list : list.filter((i) => (i.category || "Other") === tab);
+    return tab === ALL ? list : list.filter((i) => (i.category || OTHER) === tab);
   }, [items, tab]);
+
+  const categoryLabel = (c: string) => (c === ALL ? t("fridge.all") : c === OTHER ? t("fridge.other") : c);
 
   const handleRemove = async (item: FridgeItem) => {
     setRemovingId(item.id);
@@ -36,7 +44,7 @@ function FridgePage() {
       await removeFridgeItem(item.id);
       await refetch();
     } catch {
-      toast.error("Couldn't remove item — please try again");
+      toast.error(t("fridge.removeError"));
     } finally {
       setRemovingId(null);
     }
@@ -48,13 +56,13 @@ function FridgePage() {
     <AppShell>
       <div className="mb-6 flex items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold">My Fridge & Pantry</h1>
+          <h1 className="text-2xl font-bold">{t("fridge.title")}</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            {isLoading ? "Loading…" : `${count} ingredient${count === 1 ? "" : "s"} tracked`}
+            {isLoading ? t("common.loading") : t("fridge.count", { count })}
           </p>
         </div>
         <Button onClick={() => setDialogOpen(true)}>
-          <Plus className="mr-1 h-4 w-4" /> Add Ingredient
+          <Plus className="mr-1 h-4 w-4" /> {t("fridge.add")}
         </Button>
       </div>
 
@@ -71,7 +79,7 @@ function FridgePage() {
                 tab === c ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card hover:border-primary/40"
               )}
             >
-              {c}
+              {categoryLabel(c)}
             </button>
           ))}
         </div>
@@ -84,9 +92,9 @@ function FridgePage() {
       ) : count === 0 ? (
         <div className="rounded-2xl border border-dashed border-border bg-card p-16 text-center">
           <Refrigerator className="mx-auto h-12 w-12 text-muted-foreground" />
-          <h2 className="mt-4 font-semibold">Nothing here yet</h2>
-          <p className="mt-1 text-sm text-muted-foreground">Add your first ingredient to get started.</p>
-          <Button className="mt-4" onClick={() => setDialogOpen(true)}><Plus className="mr-1 h-4 w-4" />Add Ingredient</Button>
+          <h2 className="mt-4 font-semibold">{t("fridge.emptyTitle")}</h2>
+          <p className="mt-1 text-sm text-muted-foreground">{t("fridge.emptyText")}</p>
+          <Button className="mt-4" onClick={() => setDialogOpen(true)}><Plus className="mr-1 h-4 w-4" />{t("fridge.add")}</Button>
         </div>
       ) : (
         <div className="grid gap-4 pb-24 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -99,7 +107,7 @@ function FridgePage() {
                   <button
                     onClick={() => handleRemove(item)}
                     disabled={removingId === item.id}
-                    aria-label={`Remove ${item.name}`}
+                    aria-label={t("fridge.remove", { name: item.name })}
                     className="rounded-md p-1.5 text-muted-foreground transition hover:bg-destructive/10 hover:text-destructive"
                   >
                     {removingId === item.id ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
@@ -107,11 +115,11 @@ function FridgePage() {
                 </div>
                 <div className="mt-2 font-semibold">{item.name}</div>
                 <div className="mt-1 text-sm text-muted-foreground">
-                  {item.quantity != null ? `${item.quantity} ${item.unit}` : item.unit}
+                  {item.quantity != null ? `${Number(item.quantity)} ${t(`unit.${item.unit}`)}` : t(`unit.${item.unit}`)}
                 </div>
                 <div className="mt-3 flex items-center justify-between">
-                  {days != null ? <ExpiryBadge days={days} /> : <span className="text-xs text-muted-foreground">No expiry set</span>}
-                  <span className="text-xs text-muted-foreground">{item.category || "Other"}</span>
+                  {days != null ? <ExpiryBadge days={days} /> : <span className="text-xs text-muted-foreground">{t("fridge.noExpiry")}</span>}
+                  <span className="text-xs text-muted-foreground">{categoryLabel(item.category || OTHER)}</span>
                 </div>
               </div>
             );
@@ -122,9 +130,9 @@ function FridgePage() {
       {count > 0 && (
         <div className="fixed bottom-0 left-0 right-0 z-10 border-t border-border bg-card/95 p-4 backdrop-blur lg:left-60">
           <div className="mx-auto flex max-w-4xl items-center justify-between gap-3">
-            <span className="text-sm text-muted-foreground hidden sm:block">{count} items ready to plan</span>
+            <span className="text-sm text-muted-foreground hidden sm:block">{t("fridge.ready", { count })}</span>
             <Button className="w-full sm:w-auto" asChild>
-              <a href="/recipes">Find recipes using these ingredients <ArrowRight className="ml-1 h-4 w-4" /></a>
+              <a href="/recipes">{t("fridge.findRecipes")} <ArrowRight className="ml-1 h-4 w-4" /></a>
             </Button>
           </div>
         </div>

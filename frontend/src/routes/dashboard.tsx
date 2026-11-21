@@ -19,6 +19,8 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { categoryEmoji, daysUntil } from "@/lib/fridge";
 import { expiryStatus } from "@/lib/mock-data";
+import { useI18n } from "@/lib/i18n";
+import type { MessageKey } from "@/locales/en";
 import {
   useFridge,
   useDailyLog,
@@ -35,35 +37,31 @@ const WATER_GOAL_CUPS = 8;
 const EXPIRING_DAYS = 3;
 const FRIDGE_CHIPS = 8;
 
-const MEAL_SLOTS: { type: MealType; label: string }[] = [
-  { type: "breakfast", label: "Breakfast" },
-  { type: "lunch", label: "Lunch" },
-  { type: "dinner", label: "Dinner" },
-  { type: "snack", label: "Snack" },
-];
+const MEAL_SLOTS = ["breakfast", "lunch", "dinner", "snack"] as const satisfies readonly MealType[];
 
-function greeting(): string {
+function greetingKey(): MessageKey {
   const hour = new Date().getHours();
-  if (hour >= 5 && hour < 12) return "Good morning";
-  if (hour >= 12 && hour < 18) return "Good afternoon";
-  return "Good evening";
+  if (hour >= 5 && hour < 12) return "dash.morning";
+  if (hour >= 12 && hour < 18) return "dash.afternoon";
+  return "dash.evening";
 }
 
 function Dashboard() {
   const { user } = useAuth();
-  const firstName = user?.first_name || user?.name?.split(" ")[0] || "there";
+  const { t } = useI18n();
+  const firstName = user?.first_name || user?.name?.split(" ")[0] || t("dash.friend");
   const { data: fridge, isLoading: fridgeLoading } = useFridge();
   // Shared by the meals and nutrition cards, so removing a meal updates both
   const daily = useDailyLog();
 
-  const items =(fridge ?? []).map((i) => ({ ...i, days: daysUntil(i.expiry_date) }));
+  const items = (fridge ?? []).map((i) => ({ ...i, days: daysUntil(i.expiry_date) }));
   const expiring = items.filter((i) => i.days !== null && i.days <= EXPIRING_DAYS);
 
   return (
     <AppShell>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold">{greeting()}, {firstName}</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Here's your kitchen for today.</p>
+        <h1 className="text-2xl font-bold">{t(greetingKey(), { name: firstName })}</h1>
+        <p className="mt-1 text-sm text-muted-foreground">{t("dash.subtitle")}</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[320px_1fr_340px]">
@@ -71,20 +69,18 @@ function Dashboard() {
         <div className="space-y-6">
           <Card>
             <CardHeader
-              title="My Fridge"
+              title={t("dash.fridge.title")}
               icon={<Refrigerator className="h-4 w-4" />}
               right={
                 <Link to="/fridge" className="text-xs font-semibold text-primary hover:underline">
-                  Open
+                  {t("dash.fridge.open")}
                 </Link>
               }
             />
             {fridgeLoading ? (
               <Spinner />
             ) : items.length === 0 ? (
-              <p className="text-sm text-muted-foreground">
-                Your fridge is empty. Add what you have to get recipe matches and tips from the AI.
-              </p>
+              <p className="text-sm text-muted-foreground">{t("dash.fridge.empty")}</p>
             ) : (
               <div className="flex flex-wrap gap-2">
                 {items.slice(0, FRIDGE_CHIPS).map((i) => {
@@ -103,13 +99,13 @@ function Dashboard() {
                 })}
                 {items.length > FRIDGE_CHIPS && (
                   <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
-                    +{items.length - FRIDGE_CHIPS} more
+                    {t("dash.fridge.more", { n: items.length - FRIDGE_CHIPS })}
                   </span>
                 )}
               </div>
             )}
             <Button variant="outline" className="mt-4 w-full" asChild>
-              <Link to="/fridge">{items.length === 0 ? "Add ingredients" : "Update Fridge"}</Link>
+              <Link to="/fridge">{items.length === 0 ? t("dash.fridge.add") : t("dash.fridge.update")}</Link>
             </Button>
           </Card>
 
@@ -127,12 +123,18 @@ function Dashboard() {
                   <AlertTriangle className="h-5 w-5" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold">Use these soon</h3>
+                  <h3 className="font-semibold">{t("dash.soon.title")}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">
                     {expiring
-                      .map((e) => (e.days! < 0 ? `${e.name} (expired)` : e.days === 0 ? `${e.name} (today)` : e.name))
+                      .map((e) =>
+                        e.days! < 0
+                          ? t("dash.soon.expired", { name: e.name })
+                          : e.days === 0
+                          ? t("dash.soon.today", { name: e.name })
+                          : e.name
+                      )
                       .join(", ")}{" "}
-                    — use them first to avoid waste.
+                    {t("dash.soon.text")}
                   </p>
                   <ExpiringAskButton names={expiring.filter((e) => e.days! >= 0).map((e) => e.name)} />
                 </div>
@@ -153,12 +155,14 @@ function Dashboard() {
 }
 
 function ExpiringAskButton({ names }: { names: string[] }) {
+  const { t } = useI18n();
   if (names.length === 0) return null;
-  const ask = `What can I cook with ${names.join(", ")} before ${names.length === 1 ? "it goes" : "they go"} off?`;
+  // Asked in the interface language, so the AI answers in it too
+  const ask = t("dash.soon.question", { items: names.join(", "), count: names.length });
   return (
     <Button size="sm" className="mt-3" asChild>
       <Link to="/assistant" search={{ ask }}>
-        <Sparkles className="mr-1 h-4 w-4" /> Ask the AI what to cook
+        <Sparkles className="mr-1 h-4 w-4" /> {t("dash.soon.ask")}
       </Link>
     </Button>
   );
@@ -169,28 +173,29 @@ function ExpiringAskButton({ names }: { names: string[] }) {
 type DailyLog = ReturnType<typeof useDailyLog>;
 
 function NutritionCard({ daily }: { daily: DailyLog }) {
+  const { t, locale } = useI18n();
   const { data: day, isLoading } = daily;
   const targets = day?.targets;
   const eaten = day?.total_calories ?? 0;
   const target = targets?.daily_calories ?? 0;
   const loggedSomething = !!day?.meals.length;
 
-  const macros = [
-    { label: "Protein", value: day?.total_protein_g ?? 0, target: targets?.daily_protein_g, color: "bg-primary" },
-    { label: "Carbs", value: day?.total_carbs_g ?? 0, target: targets?.daily_carbs_g, color: "bg-secondary" },
-    { label: "Fat", value: day?.total_fat_g ?? 0, target: targets?.daily_fat_g, color: "bg-warning" },
-    { label: "Fiber", value: day?.total_fiber_g ?? 0, target: targets?.daily_fiber_g, color: "bg-accent" },
+  const macros: { label: MessageKey; value: number; target?: number; color: string }[] = [
+    { label: "macro.protein", value: day?.total_protein_g ?? 0, target: targets?.daily_protein_g, color: "bg-primary" },
+    { label: "macro.carbs", value: day?.total_carbs_g ?? 0, target: targets?.daily_carbs_g, color: "bg-secondary" },
+    { label: "macro.fat", value: day?.total_fat_g ?? 0, target: targets?.daily_fat_g, color: "bg-warning" },
+    { label: "macro.fiber", value: day?.total_fiber_g ?? 0, target: targets?.daily_fiber_g, color: "bg-accent" },
   ];
   const donut = target
     ? [
-        { name: "Eaten", value: Math.min(eaten, target), fill: eaten > target ? "var(--warning)" : "var(--primary)" },
-        { name: "Remaining", value: Math.max(target - eaten, 0), fill: "var(--muted)" },
+        { name: "eaten", value: Math.min(eaten, target), fill: eaten > target ? "var(--warning)" : "var(--primary)" },
+        { name: "remaining", value: Math.max(target - eaten, 0), fill: "var(--muted)" },
       ]
-    : [{ name: "No target", value: 1, fill: "var(--muted)" }];
+    : [{ name: "no-target", value: 1, fill: "var(--muted)" }];
 
   return (
     <Card>
-      <CardHeader title="Today's Nutrition" icon={<Flame className="h-4 w-4" />} />
+      <CardHeader title={t("dash.nutrition.title")} icon={<Flame className="h-4 w-4" />} />
       {isLoading ? (
         <Spinner />
       ) : (
@@ -206,9 +211,9 @@ function NutritionCard({ daily }: { daily: DailyLog }) {
               </PieChart>
             </ResponsiveContainer>
             <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-2xl font-bold">{eaten.toLocaleString()}</span>
+              <span className="text-2xl font-bold">{eaten.toLocaleString(locale)}</span>
               <span className="text-xs text-muted-foreground">
-                {target ? `/ ${target.toLocaleString()} kcal` : "kcal"}
+                {target ? t("dash.nutrition.ofTarget", { target: target.toLocaleString(locale) }) : t("common.kcal")}
               </span>
             </div>
           </div>
@@ -218,9 +223,9 @@ function NutritionCard({ daily }: { daily: DailyLog }) {
               {macros.map((m) => (
                 <div key={m.label}>
                   <div className="mb-1 flex justify-between text-xs font-medium">
-                    <span>{m.label}</span>
+                    <span>{t(m.label)}</span>
                     <span className="text-muted-foreground">
-                      {Math.round(m.value)}/{m.target ?? "—"}g
+                      {Math.round(m.value)}/{m.target ?? "—"} {t("unit.g")}
                     </span>
                   </div>
                   <div className="h-2 rounded-full bg-muted">
@@ -234,16 +239,16 @@ function NutritionCard({ daily }: { daily: DailyLog }) {
             </div>
           ) : (
             <p className="mt-4 text-center text-sm text-muted-foreground">
-              <Link to="/profile" className="font-semibold text-primary hover:underline">Complete your profile</Link>{" "}
-              to get daily calorie and macro targets.
+              <Link to="/profile" className="font-semibold text-primary hover:underline">
+                {t("dash.nutrition.completeProfile")}
+              </Link>{" "}
+              {t("dash.nutrition.toGetTargets")}
             </p>
           )}
 
           {/* Recipes and their ingredients come from TheMealDB, which has no nutrition data */}
           {loggedSomething && eaten === 0 && (
-            <p className="mt-4 rounded-lg bg-muted px-3 py-2 text-xs text-muted-foreground">
-              Nutrition data for most recipes and foods isn't available yet, so they count as 0 kcal for now.
-            </p>
+            <p className="mt-4 rounded-lg bg-muted px-3 py-2 text-xs text-muted-foreground">{t("dash.nutrition.noData")}</p>
           )}
         </>
       )}
@@ -254,6 +259,7 @@ function NutritionCard({ daily }: { daily: DailyLog }) {
 // ── Today's Meals ─────────────────────────────────────────────────────────────
 
 function MealsCard({ daily }: { daily: DailyLog }) {
+  const { t } = useI18n();
   const { data: day, isLoading, refetch } = daily;
   const [removingId, setRemovingId] = useState<string | null>(null);
 
@@ -266,7 +272,7 @@ function MealsCard({ daily }: { daily: DailyLog }) {
       await removeFoodLog(log.id);
       await refetch();
     } catch {
-      toast.error("Couldn't remove it — please try again");
+      toast.error(t("dash.meals.removeError"));
     } finally {
       setRemovingId(null);
     }
@@ -275,10 +281,10 @@ function MealsCard({ daily }: { daily: DailyLog }) {
   return (
     <Card>
       <CardHeader
-        title="Today's Meals"
+        title={t("dash.meals.title")}
         right={
           <Link to="/recipes" className="text-xs font-semibold text-primary hover:underline">
-            Log a meal
+            {t("dash.meals.log")}
           </Link>
         }
       />
@@ -287,35 +293,38 @@ function MealsCard({ daily }: { daily: DailyLog }) {
       ) : (
         <div className="grid gap-3 sm:grid-cols-2">
           {MEAL_SLOTS.map((slot) => {
-            const entries = entriesFor(slot.type);
+            const entries = entriesFor(slot);
             return (
-              <div key={slot.type} className="rounded-xl border border-border bg-background p-4">
-                <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{slot.label}</div>
+              <div key={slot} className="rounded-xl border border-border bg-background p-4">
+                <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{t(`meal.${slot}`)}</div>
                 {entries.length === 0 ? (
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Nothing logged.{" "}
-                    <Link to="/recipes" className="font-medium text-primary hover:underline">Find a recipe</Link>
+                    {t("dash.meals.nothing")}{" "}
+                    <Link to="/recipes" className="font-medium text-primary hover:underline">{t("dash.meals.find")}</Link>
                   </p>
                 ) : (
                   <ul className="mt-1 space-y-1">
-                    {entries.map((e) => (
-                      <li key={e.id} className="group flex items-start justify-between gap-2">
-                        <span className="font-semibold leading-snug">{e.recipe_title || e.food_name}</span>
-                        <button
-                          onClick={() => remove(e)}
-                          disabled={removingId === e.id}
-                          className="mt-0.5 shrink-0 rounded p-0.5 text-muted-foreground transition hover:bg-muted hover:text-destructive"
-                          aria-label={`Remove ${e.recipe_title || e.food_name}`}
-                        >
-                          {removingId === e.id ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <X className="h-3.5 w-3.5" />}
-                        </button>
-                      </li>
-                    ))}
+                    {entries.map((e) => {
+                      const name = e.recipe_title || e.food_name || "";
+                      return (
+                        <li key={e.id} className="group flex items-start justify-between gap-2">
+                          <span className="font-semibold leading-snug">{name}</span>
+                          <button
+                            onClick={() => remove(e)}
+                            disabled={removingId === e.id}
+                            className="mt-0.5 shrink-0 rounded p-0.5 text-muted-foreground transition hover:bg-muted hover:text-destructive"
+                            aria-label={t("dash.meals.remove", { name })}
+                          >
+                            {removingId === e.id ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <X className="h-3.5 w-3.5" />}
+                          </button>
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
                 {entries.some((e) => Number(e.calories) > 0) && (
                   <span className="mt-2 inline-block rounded-full bg-accent px-2 py-0.5 text-xs font-semibold text-accent-foreground">
-                    {Math.round(entries.reduce((s, e) => s + Number(e.calories || 0), 0))} kcal
+                    {Math.round(entries.reduce((s, e) => s + Number(e.calories || 0), 0))} {t("common.kcal")}
                   </span>
                 )}
               </div>
@@ -330,6 +339,7 @@ function MealsCard({ daily }: { daily: DailyLog }) {
 // ── Water ─────────────────────────────────────────────────────────────────────
 
 function WaterCard() {
+  const { t } = useI18n();
   const { data } = useWater();
   const [cups, setCups] = useState<number | null>(null);
   useEffect(() => {
@@ -345,16 +355,20 @@ function WaterCard() {
       setCups((await setWater(next)).cups);
     } catch {
       setCups(previous);
-      toast.error("Couldn't save your water — please try again");
+      toast.error(t("dash.water.error"));
     }
   };
 
   return (
     <Card>
       <CardHeader
-        title="Water Intake"
+        title={t("dash.water.title")}
         icon={<Droplet className="h-4 w-4" />}
-        right={<span className="text-xs text-muted-foreground">{cups ?? "–"}/{WATER_GOAL_CUPS} cups</span>}
+        right={
+          <span className="text-xs text-muted-foreground">
+            {t("dash.water.progress", { n: cups ?? "–", goal: WATER_GOAL_CUPS })}
+          </span>
+        }
       />
       <div className="grid grid-cols-8 gap-1.5">
         {Array.from({ length: WATER_GOAL_CUPS }).map((_, i) => {
@@ -364,7 +378,7 @@ function WaterCard() {
               key={i}
               onClick={() => tap(i)}
               disabled={cups === null}
-              aria-label={`${i + 1} cup${i ? "s" : ""}`}
+              aria-label={t("dash.water.cup", { count: i + 1 })}
               className={cn(
                 "grid aspect-square w-full max-w-11 place-items-center rounded-xl border transition",
                 full
@@ -377,7 +391,7 @@ function WaterCard() {
           );
         })}
       </div>
-      <p className="mt-3 text-xs text-muted-foreground">1 cup = 250 ml</p>
+      <p className="mt-3 text-xs text-muted-foreground">{t("dash.water.cupSize")}</p>
     </Card>
   );
 }
@@ -385,21 +399,18 @@ function WaterCard() {
 // ── Recipes ranked by what's in the fridge ────────────────────────────────────
 
 function FridgeRecipesCard({ fridgeEmpty }: { fridgeEmpty: boolean }) {
+  const { t } = useI18n();
   // Ranked in SQL by how many of each recipe's ingredients are in the fridge
   const { data, isLoading } = useRecipeSearch("", { sort: "match" });
   const top = (data?.items ?? []).filter((r) => (r.matched_ingredients ?? 0) > 0).slice(0, 3);
 
   return (
     <Card>
-      <CardHeader title="Cook from your fridge" icon={<ChefHat className="h-4 w-4" />} />
+      <CardHeader title={t("dash.cook.title")} icon={<ChefHat className="h-4 w-4" />} />
       {isLoading ? (
         <Spinner />
       ) : top.length === 0 ? (
-        <p className="text-sm text-muted-foreground">
-          {fridgeEmpty
-            ? "Add ingredients to your fridge to see recipes you can make with them."
-            : "None of our recipes use your ingredients yet. Try the AI assistant for ideas."}
-        </p>
+        <p className="text-sm text-muted-foreground">{fridgeEmpty ? t("dash.cook.emptyFridge") : t("dash.cook.none")}</p>
       ) : (
         <div className="space-y-3">
           {top.map((r) => {
@@ -411,14 +422,12 @@ function FridgeRecipesCard({ fridgeEmpty }: { fridgeEmpty: boolean }) {
                 <div className="relative h-24 bg-accent">
                   {r.image_url && <img src={r.image_url} alt={r.title} className="h-full w-full object-cover" />}
                   <span className="absolute top-2 right-2 rounded-full bg-primary px-2 py-0.5 text-xs font-bold text-primary-foreground">
-                    {Math.round((matched / total) * 100)}% match
+                    {t("dash.cook.match", { n: Math.round((matched / total) * 100) })}
                   </span>
                 </div>
                 <div className="p-3">
                   <div className="text-sm font-semibold">{r.title}</div>
-                  <div className="mt-1 text-xs font-medium text-secondary">
-                    You have {matched} of {total} ingredients
-                  </div>
+                  <div className="mt-1 text-xs font-medium text-secondary">{t("common.youHave", { matched, total })}</div>
                   <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
                     {r.calories_per_serving != null ? (
                       <span className="flex items-center gap-1"><Flame className="h-3 w-3" /> {r.calories_per_serving}</span>
@@ -426,11 +435,11 @@ function FridgeRecipesCard({ fridgeEmpty }: { fridgeEmpty: boolean }) {
                       <span />
                     )}
                     {minutes > 0 && (
-                      <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {minutes}m</span>
+                      <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {t("common.minutes", { n: minutes })}</span>
                     )}
                   </div>
                   <Button size="sm" className="mt-3 w-full" asChild>
-                    <Link to="/recipes" search={{ recipe: r.id }}>View recipe</Link>
+                    <Link to="/recipes" search={{ recipe: r.id }}>{t("common.viewRecipe")}</Link>
                   </Button>
                 </div>
               </div>

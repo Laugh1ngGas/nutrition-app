@@ -6,10 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { useAuth, DEMO_USER } from "@/lib/auth-context";
+import { LanguageSwitch, useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/sign-in")({ component: SignIn });
 
 function SignIn() {
+  const { t } = useI18n();
   const { isAuthenticated, hydrated, signIn } = useAuth();
   const navigate = useNavigate();
   const search = useRouterState({ select: (s) => s.location.search }) as { from?: string };
@@ -29,9 +31,9 @@ function SignIn() {
 
     // Валідація
     const next: typeof errors = {};
-    if (!email) next.email = "This field is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = "Please enter a valid email address";
-    if (!password) next.password = "This field is required";
+    if (!email) next.email = t("common.required");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = t("common.invalidEmail");
+    if (!password) next.password = t("common.required");
     setErrors(next);
     if (Object.keys(next).length) return;
 
@@ -43,8 +45,8 @@ function SignIn() {
     } catch (err: unknown) {
       const message =
         err instanceof Error && (err as { response?: { data?: { message?: string } } }).response?.data?.message
-          ? (err as { response: { data: { message: string } } }).response.data.message
-          : "Invalid email or password. Please try again.";
+          ? (err as unknown as { response: { data: { message: string } } }).response.data.message
+          : t("auth.invalidLogin");
       setErrors({ banner: message });
       setStatus("idle");
     }
@@ -56,7 +58,8 @@ function SignIn() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[linear-gradient(135deg,#F0FAF4_0%,#E8F5EE_100%)] px-4 py-10">
+    <div className="relative min-h-screen w-full bg-[linear-gradient(135deg,#F0FAF4_0%,#E8F5EE_100%)] px-4 py-10">
+      <LanguageSwitch className="absolute right-4 top-4" />
       <div className="mx-auto flex w-full max-w-[480px] flex-col items-center">
         <Link to="/" className="flex items-center gap-2">
           <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-primary-foreground shadow-card">
@@ -64,17 +67,17 @@ function SignIn() {
           </div>
           <span className="text-2xl font-bold tracking-tight">NutritionApp</span>
         </Link>
-        <p className="mt-2 text-sm text-muted-foreground">Your smart kitchen companion</p>
+        <p className="mt-2 text-sm text-muted-foreground">{t("common.tagline")}</p>
 
         {search?.from && (
           <div className="mt-4 w-full rounded-lg border border-primary/30 bg-primary/5 px-4 py-2 text-center text-xs text-primary">
-            Please sign in to access NutritionApp
+            {t("auth.signInRequired")}
           </div>
         )}
 
         <div className="mt-6 w-full animate-in fade-in slide-in-from-bottom-4 duration-300 rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
-          <h1 className="text-2xl font-bold">Welcome back</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Sign in to continue your nutrition journey</p>
+          <h1 className="text-2xl font-bold">{t("auth.welcomeBack")}</h1>
+          <p className="mt-1 text-sm text-muted-foreground">{t("auth.signInSubtitle")}</p>
 
           {errors.banner && (
             <div className="mt-5 flex items-start gap-2 rounded-lg border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive">
@@ -85,7 +88,7 @@ function SignIn() {
 
           <form onSubmit={onSubmit} className="mt-6 space-y-4" noValidate>
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("common.email")}</Label>
               <div className="relative mt-1.5">
                 <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
@@ -102,9 +105,9 @@ function SignIn() {
 
             <div>
               <div className="flex items-center justify-between">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t("common.password")}</Label>
                 <button type="button" className="text-xs text-muted-foreground hover:text-primary">
-                  Forgot password?
+                  {t("auth.forgot")}
                 </button>
               </div>
               <div className="relative mt-1.5">
@@ -121,7 +124,7 @@ function SignIn() {
                   type="button"
                   onClick={() => setShow((v) => !v)}
                   className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1.5 text-muted-foreground transition-opacity hover:text-foreground"
-                  aria-label="Toggle password visibility"
+                  aria-label={t("auth.togglePassword")}
                 >
                   {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
@@ -130,13 +133,13 @@ function SignIn() {
             </div>
 
             <Button type="submit" className="w-full" disabled={status !== "idle"}>
-              {status === "loading" && (<><Loader2 className="h-4 w-4 animate-spin" /> Signing in...</>)}
-              {status === "success" && (<><Check className="h-4 w-4" /> Signed in!</>)}
-              {status === "idle" && "Sign In"}
+              {status === "loading" && (<><Loader2 className="h-4 w-4 animate-spin" /> {t("auth.signingIn")}</>)}
+              {status === "success" && (<><Check className="h-4 w-4" /> {t("auth.signedIn")}</>)}
+              {status === "idle" && t("auth.signIn")}
             </Button>
 
             <button type="button" onClick={fillDemo} className="block w-full text-center text-xs text-muted-foreground hover:text-primary">
-              Use demo account
+              {t("auth.demo")}
             </button>
           </form>
 
@@ -148,8 +151,8 @@ function SignIn() {
           </div>
 
           <p className="mt-6 text-center text-sm text-muted-foreground">
-            Don't have an account?{" "}
-            <Link to="/sign-up" className="font-semibold text-primary hover:underline">Sign up</Link>
+            {t("auth.noAccount")}{" "}
+            <Link to="/sign-up" className="font-semibold text-primary hover:underline">{t("auth.signUpLink")}</Link>
           </p>
         </div>
       </div>
@@ -158,16 +161,18 @@ function SignIn() {
 }
 
 function Divider() {
+  const { t } = useI18n();
   return (
     <div className="my-6 flex items-center gap-3">
       <div className="h-px flex-1 bg-border" />
-      <span className="text-xs uppercase tracking-wider text-muted-foreground">or continue with</span>
+      <span className="text-xs uppercase tracking-wider text-muted-foreground">{t("common.orContinueWith")}</span>
       <div className="h-px flex-1 bg-border" />
     </div>
   );
 }
 
 export function OAuthButton({ provider }: { provider: "google" | "github" }) {
+  const { t } = useI18n();
   if (provider === "google") {
     return (
       <button
@@ -175,7 +180,7 @@ export function OAuthButton({ provider }: { provider: "google" | "github" }) {
         className="flex h-10 w-full items-center justify-center gap-3 rounded-md border border-border bg-white text-sm font-medium text-[#1A1A2E] transition hover:bg-muted"
       >
         <GoogleIcon />
-        Continue with Google
+        {t("common.continueWithGoogle")}
       </button>
     );
   }
@@ -185,7 +190,7 @@ export function OAuthButton({ provider }: { provider: "google" | "github" }) {
       className="flex h-10 w-full items-center justify-center gap-3 rounded-md bg-[#1A1A2E] text-sm font-medium text-white transition hover:bg-[#1A1A2E]/90"
     >
       <GithubIcon />
-      Continue with GitHub
+      {t("common.continueWithGithub")}
     </button>
   );
 }
