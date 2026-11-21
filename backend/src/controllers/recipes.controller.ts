@@ -14,14 +14,18 @@ export async function searchRecipes(req: AuthRequest, res: Response, next: NextF
     const limitNum = Math.min(50, parseInt(limit));
     const offset = (pageNum - 1) * limitNum;
 
-    let whereClause = 'WHERE is_public = TRUE';
-    const params: unknown[] = [];
+    // Public recipes plus the caller's own (saved from the AI assistant).
+    // Also used for the fridge-match counts (0/0 when logged out).
+    const params: unknown[] = [req.user?.id || null];
+    const userIdParam = 1;
+    let whereClause = `WHERE (r.is_public = TRUE OR r.created_by = $${userIdParam})`;
 
     if (q.trim()) {
       params.push(q.trim());
       whereClause += ` AND (
         to_tsvector('simple', title) @@ plainto_tsquery('simple', $${params.length})
         OR title ILIKE '%' || $${params.length} || '%'
+        OR title_uk ILIKE '%' || $${params.length} || '%'
       )`;
     }
     if (meal_type) {
@@ -36,10 +40,6 @@ export async function searchRecipes(req: AuthRequest, res: Response, next: NextF
       params.push(diet_type);
       whereClause += ` AND $${params.length} = ANY(diet_types)`;
     }
-
-    // Ingredient-match counts against the caller's fridge (0/0 when logged out).
-    params.push(req.user?.id || null);
-    const userIdParam = params.length;
 
     const joinClause = `
        LEFT JOIN recipe_ingredients ri ON ri.recipe_id = r.id
@@ -67,7 +67,7 @@ export async function searchRecipes(req: AuthRequest, res: Response, next: NextF
     const result = await query(
       `SELECT r.id, r.title, r.title_uk, r.description, r.image_url,
               r.prep_time_min, r.cook_time_min, r.servings, r.difficulty,
-              r.cuisine_type, r.meal_type, r.diet_types,
+              r.cuisine_type, r.meal_type, r.diet_types, r.source,
               r.calories_per_serving, r.protein_per_serving_g, r.carbs_per_serving_g,
               r.fat_per_serving_g, r.fiber_per_serving_g,
               COALESCE(AVG(rr.rating), 0)::float AS average_rating,
@@ -118,7 +118,7 @@ export async function getRecipeById(req: AuthRequest, res: Response, next: NextF
       recipe = result.rows[0];
 
       const ingredients = await query(
-        `SELECT ri.id, ri.quantity, ri.unit, ri.note, ri.order_index,
+        `SELECT ri.id, ri.quantity, ri.unit, ri.note, ri.grams, ri.order_index,
                 f.id AS food_id, f.name, f.name_uk, f.category, f.calories,
                 f.protein_g, f.carbs_g, f.fat_g, f.image_url
          FROM recipe_ingredients ri
@@ -131,6 +131,8 @@ export async function getRecipeById(req: AuthRequest, res: Response, next: NextF
 
       await setCache(cacheKey, recipe, 3600);
     }
+    // A private (AI-saved) recipe is only visible to its owner
+    if (!recipe.is_public && recipe.created_by !== req.user?.id) throw new AppError('Recipe not found', 404);
 
     let isFavorite = false;
     let fridgeFoodIds = new Set<string>();

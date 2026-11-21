@@ -63,19 +63,34 @@ async function post<T>(path: string, body: string | FormData, contentType?: stri
   return res.json() as Promise<T>;
 }
 
+export interface ToolCall {
+  id?: string;
+  type?: 'function';
+  function: { name: string; arguments: string };
+}
+
 export interface ChatMessage {
-  role: 'user' | 'assistant';
-  content: string;
+  role: 'user' | 'assistant' | 'tool';
+  content: string | null;
+  // An assistant turn that called tools, and each tool's answer to it
+  tool_calls?: ToolCall[];
+  tool_call_id?: string;
+}
+
+export interface ChatResult {
+  reply: string;
+  tool_calls: ToolCall[];
 }
 
 // context: the user's profile and fridge (see aiContext.service.ts)
-export async function chat(messages: ChatMessage[], context?: string): Promise<string> {
-  const { reply } = await post<{ reply: string }>(
+// tools: OpenAI-style definitions the model may call instead of answering
+export async function chat(messages: ChatMessage[], context?: string, tools?: unknown[]): Promise<ChatResult> {
+  const result = await post<{ reply?: string; tool_calls?: ToolCall[] }>(
     '/v1/chat',
-    JSON.stringify({ messages, context }),
+    JSON.stringify({ messages, context, tools }),
     'application/json'
   );
-  return reply;
+  return { reply: result.reply ?? '', tool_calls: result.tool_calls ?? [] };
 }
 
 export interface RecognizedIngredient {

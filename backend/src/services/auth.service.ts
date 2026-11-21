@@ -167,17 +167,24 @@ export async function changePassword(userId: string, currentPassword: string, ne
   return generateTokens(userId, email);
 }
 
-// Everything personal is removed by ON DELETE CASCADE. Foods and recipes the
-// user added stay in the shared catalogue, only without their author, since
-// other users' fridges, logs and plans may point at them.
+// Everything personal is removed by ON DELETE CASCADE. Foods and public
+// recipes the user added stay in the shared catalogue, only without their
+// author, since other users' fridges, logs and plans may point at them.
+// Private recipes (saved from the AI assistant) are deleted.
 export async function deleteAccount(userId: string, password: string): Promise<void> {
   await checkPassword(userId, password);
   const client = await getClient();
   try {
     await client.query('BEGIN');
+    const own = await client.query(
+      'SELECT id FROM recipes WHERE created_by = $1 AND is_public = FALSE',
+      [userId]
+    );
     await client.query('UPDATE foods SET created_by = NULL WHERE created_by = $1', [userId]);
     await client.query('UPDATE recipes SET created_by = NULL WHERE created_by = $1', [userId]);
+    // Removes the user's logs and plans, which may point at the private recipes
     await client.query('DELETE FROM users WHERE id = $1', [userId]);
+    await client.query('DELETE FROM recipes WHERE id = ANY($1)', [own.rows.map((r) => r.id)]);
     await client.query('COMMIT');
   } catch (err) {
     await client.query('ROLLBACK');

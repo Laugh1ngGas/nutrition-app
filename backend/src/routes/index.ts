@@ -103,5 +103,6 @@ router.get('/ai/messages', authenticate, aiCtrl.getMessages);
 router.delete('/ai/messages', authenticate, aiCtrl.clearMessages);
 router.post('/ai/chat', authenticate, aiCtrl.chatValidation, validate, aiCtrl.chat);
 router.post('/ai/recognize', authenticate, aiCtrl.recognizeValidation, validate, aiCtrl.recognize);
+router.post('/ai/recipes', authenticate, aiCtrl.saveDraftValidation, validate, aiCtrl.saveDraft);
 
 export default router;

@@ -61,7 +61,10 @@ interface Candidate {
   eaten_recently: boolean;
 }
 
-function fitsUser(r: Candidate, diet: string | null, allergens: string[]): boolean {
+// Also used by the AI assistant's recipe tools
+export function fitsUser(
+  r: Pick<Candidate, 'ingredients' | 'diet_types'>, diet: string | null, allergens: string[]
+): boolean {
   const has = (re: RegExp) => r.ingredients.some((name) => re.test(name));
   const tagged = (d: string) => r.diet_types?.includes(d) ?? false;
 
@@ -134,7 +137,7 @@ async function loadCandidates(userId: string, weekStart: string): Promise<Candid
      LEFT JOIN foods f ON f.id = ri.food_id
      LEFT JOIN fridge_items fi ON fi.food_id = ri.food_id AND fi.user_id = $1
      LEFT JOIN user_favorites uf ON uf.recipe_id = r.id AND uf.user_id = $1
-     WHERE r.is_public
+     WHERE r.is_public OR r.created_by = $1
      GROUP BY r.id`,
     [userId, weekStart]
   );
