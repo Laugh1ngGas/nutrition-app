@@ -9,6 +9,8 @@ from contextlib import asynccontextmanager
 from fastapi import Depends, FastAPI, File, Header, HTTPException, UploadFile
 from fastapi.responses import JSONResponse, StreamingResponse
 from PIL import Image, ImageOps
+from typing import Literal
+
 from pydantic import BaseModel
 
 from .llm import llama
@@ -63,9 +65,13 @@ SYSTEM_PROMPTS = {
 # about optional details ("what kind of breakfast?") instead of calling a tool.
 TOOL_RULES = {
     "en": "\n- When one of the available tools fits the request, call it right away. "
-          "Don't ask about optional details first: leave them out or take them from the user's words.",
+          "Don't ask about optional details first: leave them out or take them from the user's words."
+          "\n- Calories and macros in tool results are calculated from USDA data: quote them as given. "
+          "Recipes found by tools are shown to the user as cards, so don't repeat ids or links.",
     "uk": "\n- Якщо запит відповідає одному з доступних інструментів, одразу виклич його. "
-          "Не перепитуй про необов'язкові деталі: пропусти їх або візьми зі слів користувача.",
+          "Не перепитуй про необов'язкові деталі: пропусти їх або візьми зі слів користувача."
+          "\n- Калорії та БЖВ у результатах інструментів розраховані за даними USDA: наводь їх як є. "
+          "Знайдені рецепти користувач бачить картками, тож не повторюй їхні id чи посилання.",
 }
 
 # Added when the backend sends the user's profile and fridge. Allergies are
@@ -162,8 +168,12 @@ async def health():
 
 
 class ChatMessage(BaseModel):
-    role: str
-    content: str
+    role: Literal["user", "assistant", "tool"]
+    content: str | None = None
+    # An assistant turn that called tools, and the tool results answering it
+    # (OpenAI format, which llama-server turns into the model's own template)
+    tool_calls: list[dict] | None = None
+    tool_call_id: str | None = None
 
 
 class ChatRequest(BaseModel):
@@ -187,7 +197,9 @@ async def chat(body: ChatRequest):
         system += TOOL_RULES[lang]
     if body.context:
         system += CONTEXT_HEADER[lang] + body.context.strip()
-    messages = [{**prompt[0], "content": system}] + prompt[1:] + [m.model_dump() for m in body.messages]
+    messages = [{**prompt[0], "content": system}] + prompt[1:] + [
+        m.model_dump(exclude_none=True) for m in body.messages
+    ]
 
     if not body.stream:
         result = await llama.chat(messages, **extra)
@@ -206,6 +218,32 @@ async def chat(body: ChatRequest):
                 yield chunk
 
     return StreamingResponse(relay(), media_type="text/event-stream")
+
+
+class CompleteRequest(BaseModel):
+    messages: list[dict]
+    # Constrains the answer to JSON matching this schema
+    json_schema: dict | None = None
+    max_tokens: int = 1024
+    temperature: float = 0.2
+
+
+# For data tasks (matching ingredients, estimating servings): the caller's own
+# prompt, without the assistant persona and its answer-length rules
+@app.post("/v1/complete", dependencies=[Depends(require_key), Depends(require_ready)])
+async def complete(body: CompleteRequest):
+    extra = {"max_tokens": min(body.max_tokens, 4096), "temperature": body.temperature}
+    if body.json_schema:
+        extra["response_format"] = {"type": "json_schema", "json_schema": {"schema": body.json_schema}}
+    result = await llama.chat(body.messages, **extra)
+    content = result["choices"][0]["message"].get("content") or ""
+    if body.json_schema:
+        try:
+            return {"data": json.loads(content), "timings": result.get("timings")}
+        except json.JSONDecodeError:
+            logger.error("Model returned invalid JSON: %s", content[:500])
+            raise HTTPException(status_code=502, detail="Model returned invalid JSON")
+    return {"content": content, "timings": result.get("timings")}
 
 
 def to_data_url(raw: bytes) -> str:
