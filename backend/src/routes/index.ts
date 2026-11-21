@@ -79,6 +79,7 @@ router.put('/water', authenticate, waterCtrl.setWaterValidation, validate, water
 router.get('/fridge', authenticate, fridgeCtrl.getFridgeItems);
 router.get('/fridge/expiring', authenticate, fridgeCtrl.getExpiringItems);
 router.post('/fridge', authenticate, fridgeCtrl.fridgeItemValidation, validate, fridgeCtrl.addFridgeItem);
+router.post('/fridge/batch', authenticate, fridgeCtrl.fridgeBatchValidation, validate, fridgeCtrl.addFridgeItemsBatch);
 router.patch('/fridge/:id', authenticate, fridgeCtrl.updateFridgeItem);
 router.delete('/fridge/:id', authenticate, fridgeCtrl.removeFridgeItem);
 

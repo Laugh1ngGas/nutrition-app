@@ -1,15 +1,93 @@
 import { Response, NextFunction } from 'express';
 import { body } from 'express-validator';
 import { AuthRequest } from '../middleware/auth';
-import { query } from '../config/database';
+import { getClient, query } from '../config/database';
 import { AppError } from '../middleware/errorHandler';
+
+const UNITS = ['g', 'kg', 'ml', 'l', 'cup', 'tbsp', 'tsp', 'piece', 'slice', 'serving'];
 
 export const fridgeItemValidation = [
   body('food_id').isUUID(),
   body('quantity').optional().isFloat({ min: 0 }),
-  body('unit').optional().isIn(['g', 'kg', 'ml', 'l', 'cup', 'tbsp', 'tsp', 'piece', 'slice', 'serving']),
+  body('unit').optional().isIn(UNITS),
   body('expiry_date').optional().isISO8601(),
 ];
+
+// Items confirmed after an AI photo scan: each has a matched food_id, or a
+// name to look up (and create if it's new)
+export const fridgeBatchValidation = [
+  body('items').isArray({ min: 1, max: 30 }),
+  body('items.*.food_id').optional({ values: 'null' }).isUUID(),
+  body('items.*.name').isString().trim().isLength({ min: 1, max: 100 }),
+  body('items.*.name_uk').optional({ values: 'null' }).isString().trim().isLength({ max: 100 }),
+  body('items.*.quantity').optional({ values: 'null' }).isFloat({ min: 0 }),
+  body('items.*.unit').optional().isIn(UNITS),
+  body('items.*.expiry_date').optional({ values: 'null' }).isISO8601(),
+];
+
+interface BatchItem {
+  food_id?: string | null;
+  name: string;
+  name_uk?: string | null;
+  quantity?: number | null;
+  unit?: string;
+  expiry_date?: string | null;
+}
+
+// All or nothing, so a failed save never leaves half the scan in the fridge
+export async function addFridgeItemsBatch(req: AuthRequest, res: Response, next: NextFunction) {
+  const client = await getClient();
+  try {
+    const items = req.body.items as BatchItem[];
+    await client.query('BEGIN');
+    const added = [];
+    for (const item of items) {
+      let foodId = item.food_id ?? null;
+      if (foodId) {
+        const exists = await client.query('SELECT 1 FROM foods WHERE id = $1', [foodId]);
+        if (!exists.rowCount) foodId = null;
+      }
+      if (!foodId) {
+        // Reuse a food with the same name before adding a new one, so the
+        // shared catalogue doesn't fill up with duplicates
+        const found = await client.query(
+          `SELECT id FROM foods
+           WHERE LOWER(name) = LOWER($1) OR (CAST($2 AS TEXT) IS NOT NULL AND LOWER(name_uk) = LOWER($2))
+           ORDER BY is_verified DESC, created_at LIMIT 1`,
+          [item.name, item.name_uk || null]
+        );
+        foodId = found.rows[0]?.id;
+      }
+      if (!foodId) {
+        // Capitalised like the rest of the catalogue ("Tomato", not "tomato")
+        const capital = (s?: string | null) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : null);
+        const created = await client.query(
+          `INSERT INTO foods (name, name_uk, calories, source, created_by)
+           VALUES ($1, $2, 0, 'ai_photo', $3) RETURNING id`,
+          [capital(item.name), capital(item.name_uk), req.user!.id]
+        );
+        foodId = created.rows[0].id;
+      }
+      const result = await client.query(
+        `INSERT INTO fridge_items (user_id, food_id, quantity, unit, expiry_date)
+         VALUES ($1, $2, $3, $4, $5)
+         ON CONFLICT (user_id, food_id)
+         DO UPDATE SET quantity = EXCLUDED.quantity, unit = EXCLUDED.unit,
+                       expiry_date = EXCLUDED.expiry_date, updated_at = NOW()
+         RETURNING *`,
+        [req.user!.id, foodId, item.quantity || null, item.unit || 'piece', item.expiry_date || null]
+      );
+      added.push(result.rows[0]);
+    }
+    await client.query('COMMIT');
+    res.status(201).json({ success: true, data: added });
+  } catch (err) {
+    await client.query('ROLLBACK');
+    next(err);
+  } finally {
+    client.release();
+  }
+}
 
 export async function getFridgeItems(req: AuthRequest, res: Response, next: NextFunction) {
   try {
