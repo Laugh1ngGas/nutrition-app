@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { isAxiosError } from "axios";
 import { AppShell } from "@/components/layout/AppShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,8 +21,13 @@ import {
   updateProfile as apiUpdateProfile,
   useAllergens,
   updateUserAllergens,
+  changePassword,
+  deleteAccount,
 } from "@/integrations/api/hooks";
-import type { UserGoal, ActivityLevel, DietType, Gender, ProfileWithUser } from "@/integrations/api/types";
+import { tokenStorage } from "@/integrations/api/client";
+import type {
+  UserGoal, ActivityLevel, DietType, Gender, ProfileWithUser, CookingSkill, CookingTime,
+} from "@/integrations/api/types";
 import { toast } from "sonner";
 import {
   Accordion,
@@ -37,8 +43,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useI18n, type Translate } from "@/lib/i18n";
+import { useI18n } from "@/lib/i18n";
 import type { MessageKey } from "@/locales/en";
+import { allergenLabel } from "@/lib/allergens";
 
 export const Route = createFileRoute("/profile")({ component: Profile });
 
@@ -48,12 +55,13 @@ const DIETS: DietType[] = [
   "standard", "vegetarian", "vegan", "pescatarian", "keto", "paleo", "gluten_free", "dairy_free", "halal", "kosher",
 ];
 const GENDERS: Gender[] = ["male", "female", "other"];
+const HOUSEHOLD = ["1", "2", "3", "4", "5", "6"];
+const SKILLS: CookingSkill[] = ["beginner", "intermediate", "advanced"];
+const TIMES: CookingTime[] = ["under15", "15to30", "30to60", "over60"];
 
-// Known allergens are translated; anything new in the database shows as stored
-function allergenLabel(name: string, t: Translate) {
-  const key = `allergen.${name}` as MessageKey;
-  const translated = t(key);
-  return translated !== key ? translated : name.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+// The server's message when it sent one (e.g. "Current password is incorrect")
+function serverMessage(err: unknown): string | undefined {
+  return isAxiosError(err) ? (err.response?.data as { message?: string } | undefined)?.message : undefined;
 }
 
 type Form = {
@@ -67,6 +75,9 @@ type Form = {
   goal: UserGoal;
   activity_level: ActivityLevel;
   diet_type: DietType;
+  household_size: string;
+  cooking_skill: CookingSkill | "";
+  cooking_time: CookingTime | "";
 };
 
 function buildForm(profile?: ProfileWithUser | null): Form {
@@ -75,18 +86,23 @@ function buildForm(profile?: ProfileWithUser | null): Form {
     last_name: profile?.last_name ?? "",
     gender: profile?.gender ?? "",
     date_of_birth: profile?.date_of_birth?.slice(0, 10) ?? "",
-    height_cm: profile?.height_cm != null ? String(profile.height_cm) : "",
-    weight_kg: profile?.weight_kg != null ? String(profile.weight_kg) : "",
-    target_weight_kg: profile?.target_weight_kg != null ? String(profile.target_weight_kg) : "",
+    // Number() drops the database's trailing zeros ("68.90" → "68.9")
+    height_cm: profile?.height_cm != null ? String(Number(profile.height_cm)) : "",
+    weight_kg: profile?.weight_kg != null ? String(Number(profile.weight_kg)) : "",
+    target_weight_kg: profile?.target_weight_kg != null ? String(Number(profile.target_weight_kg)) : "",
     goal: profile?.goal ?? "maintenance",
     activity_level: profile?.activity_level ?? "moderately_active",
     diet_type: profile?.diet_type ?? "standard",
+    household_size: profile?.household_size != null ? String(profile.household_size) : "",
+    cooking_skill: profile?.cooking_skill ?? "",
+    cooking_time: profile?.cooking_time ?? "",
   };
 }
 
 function Profile() {
   const { t } = useI18n();
   const { logout } = useAuth();
+  const navigate = useNavigate();
   const { data: profile, isLoading, refetch } = useProfile();
   const { data: allergensList } = useAllergens();
 
@@ -140,6 +156,9 @@ function Profile() {
         goal: form.goal,
         activity_level: form.activity_level,
         diet_type: form.diet_type,
+        household_size: form.household_size ? Number(form.household_size) : undefined,
+        cooking_skill: form.cooking_skill || undefined,
+        cooking_time: form.cooking_time || undefined,
       });
 
       if (allergensList) {
@@ -170,6 +189,9 @@ function Profile() {
   const activityOptions = ACTIVITIES.map((value) => ({ value, label: t(`activity.${value}`) }));
   const dietOptions = DIETS.map((value) => ({ value, label: t(`diet.${value}`) }));
   const genderOptions = GENDERS.map((value) => ({ value, label: t(`gender.${value}`) }));
+  const householdOptions = HOUSEHOLD.map((value) => ({ value, label: value === "6" ? "6+" : value }));
+  const skillOptions = SKILLS.map((value) => ({ value, label: t(`onb.skill.${value}`) }));
+  const timeOptions = TIMES.map((value) => ({ value, label: t(`onb.time.${value}`) }));
 
   if (isLoading) {
     return (
@@ -273,6 +295,15 @@ function Profile() {
         </div>
 
         <div className="lg:col-span-3 rounded-2xl border border-border bg-card p-6 shadow-card">
+          <h3 className="font-semibold">{t("profile.cooking")}</h3>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <SelectField label={t("profile.household")} editing={editing} value={form.household_size} onChange={(v) => update("household_size", v)} options={householdOptions} />
+            <SelectField label={t("profile.skill")} editing={editing} value={form.cooking_skill} onChange={(v) => update("cooking_skill", v as CookingSkill)} options={skillOptions} />
+            <SelectField label={t("profile.time")} editing={editing} value={form.cooking_time} onChange={(v) => update("cooking_time", v as CookingTime)} options={timeOptions} />
+          </div>
+        </div>
+
+        <div className="lg:col-span-3 rounded-2xl border border-border bg-card p-6 shadow-card">
           <h3 className="font-semibold">{t("profile.allergens")}</h3>
           <p className="mt-1 text-xs text-muted-foreground">{t("profile.allergensText")}</p>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -358,11 +389,13 @@ function Profile() {
       <DeleteAccountDialog
         open={deleteOpen}
         onClose={() => setDeleteOpen(false)}
-        email={profile?.email ?? ""}
-        onConfirm={() => {
+        onDeleted={async () => {
           setDeleteOpen(false);
-          logout();
           toast.success(t("profile.deleted"));
+          // Leave the app pages first: once signed out, their guard would
+          // send the user to sign-in instead of the home page
+          await navigate({ to: "/" });
+          await logout().catch(() => {}); // clears the saved session; the server side is already gone
         }}
       />
     </AppShell>
@@ -463,28 +496,33 @@ function PasswordChange() {
   const meta = STRENGTH[score];
   const widths = ["0%", "25%", "50%", "75%", "100%"][score];
 
-  const submit = () => {
-    if (!cur || next.length < 8 || next !== conf) {
-      toast.error(t("profile.completeFields"));
-      return;
-    }
+  const submit = async () => {
+    if (!cur || !next || !conf) return toast.error(t("profile.completeFields"));
+    if (next.length < 8) return toast.error(t("auth.passwordTooShort"));
+    if (next !== conf) return toast.error(t("auth.passwordMismatch"));
     setBusy(true);
-    setTimeout(() => {
-      setBusy(false);
+    try {
+      // The server signs out every other device and sends this one new tokens
+      const tokens = await changePassword(cur, next);
+      tokenStorage.setTokens(tokens.accessToken, tokens.refreshToken);
       setCur(""); setNext(""); setConf("");
-      toast.success(t("profile.passwordUpdated"));
-    }, 700);
+      toast.success(t("profile.passwordUpdated"), { description: t("profile.passwordSignedOut") });
+    } catch (err) {
+      toast.error(serverMessage(err) ?? t("profile.passwordError"));
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
     <div className="grid gap-4 sm:grid-cols-3">
       <div>
-        <Label>{t("profile.currentPassword")}</Label>
-        <Input type="password" value={cur} onChange={(e) => setCur(e.target.value)} className="mt-1.5" />
+        <Label htmlFor="pw-current">{t("profile.currentPassword")}</Label>
+        <Input id="pw-current" type="password" autoComplete="current-password" value={cur} onChange={(e) => setCur(e.target.value)} className="mt-1.5" />
       </div>
       <div>
-        <Label>{t("profile.newPassword")}</Label>
-        <Input type="password" value={next} onChange={(e) => setNext(e.target.value)} className="mt-1.5" />
+        <Label htmlFor="pw-new">{t("profile.newPassword")}</Label>
+        <Input id="pw-new" type="password" autoComplete="new-password" value={next} onChange={(e) => setNext(e.target.value)} className="mt-1.5" />
         <div className="mt-2 flex items-center gap-2">
           <div className="h-1 flex-1 overflow-hidden rounded-full bg-muted">
             <div className={cn("h-full transition-all duration-300", meta.color)} style={{ width: widths }} />
@@ -493,8 +531,8 @@ function PasswordChange() {
         </div>
       </div>
       <div>
-        <Label>{t("profile.confirmNewPassword")}</Label>
-        <Input type="password" value={conf} onChange={(e) => setConf(e.target.value)} className="mt-1.5" />
+        <Label htmlFor="pw-confirm">{t("profile.confirmNewPassword")}</Label>
+        <Input id="pw-confirm" type="password" autoComplete="new-password" value={conf} onChange={(e) => setConf(e.target.value)} className="mt-1.5" />
       </div>
       <div className="sm:col-span-3">
         <Button onClick={submit} disabled={busy}>
@@ -508,18 +546,28 @@ function PasswordChange() {
 function DeleteAccountDialog({
   open,
   onClose,
-  email,
-  onConfirm,
+  onDeleted,
 }: {
   open: boolean;
   onClose: () => void;
-  email: string;
-  onConfirm: () => void;
+  onDeleted: () => void;
 }) {
   const { t } = useI18n();
-  const [typed, setTyped] = useState("");
-  useEffect(() => { if (!open) setTyped(""); }, [open]);
-  const enabled = typed.trim().toLowerCase() === email.toLowerCase();
+  const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { if (!open) setPassword(""); }, [open]);
+
+  const confirm = async () => {
+    setBusy(true);
+    try {
+      await deleteAccount(password);
+      onDeleted();
+    } catch (err) {
+      toast.error(serverMessage(err) ?? t("profile.deleteError"));
+    } finally {
+      setBusy(false);
+    }
+  };
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
       <DialogContent>
@@ -531,17 +579,24 @@ function DeleteAccountDialog({
           <DialogDescription className="text-center">{t("profile.deleteText")}</DialogDescription>
         </DialogHeader>
         <div>
-          <Label>{t("common.email")}</Label>
-          <Input className="mt-1.5" value={typed} onChange={(e) => setTyped(e.target.value)} placeholder={email} />
+          <Label htmlFor="delete-password">{t("common.password")}</Label>
+          <Input
+            id="delete-password"
+            type="password"
+            autoComplete="current-password"
+            className="mt-1.5"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <DialogFooter className="sm:justify-between">
-          <Button variant="ghost" onClick={onClose}>{t("common.cancel")}</Button>
+          <Button variant="ghost" onClick={onClose} disabled={busy}>{t("common.cancel")}</Button>
           <Button
-            disabled={!enabled}
-            onClick={onConfirm}
+            disabled={!password || busy}
+            onClick={confirm}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90 disabled:opacity-50"
           >
-            {t("profile.deleteConfirm")}
+            {busy ? (<><Loader2 className="h-4 w-4 animate-spin" /> {t("profile.deleting")}</>) : t("profile.deleteConfirm")}
           </Button>
         </DialogFooter>
       </DialogContent>

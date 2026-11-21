@@ -106,7 +106,13 @@ export interface UserProfile {
   daily_fiber_g?:      number;
   onboarding_completed: boolean;
   allergens:           string[];
+  household_size?:     number;
+  cooking_skill?:      CookingSkill;
+  cooking_time?:       CookingTime;
 }
+
+export type CookingSkill = 'beginner' | 'intermediate' | 'advanced';
+export type CookingTime  = 'under15' | '15to30' | '30to60' | 'over60';
 
 export type ProfileWithUser = User & UserProfile;
 
@@ -310,6 +316,32 @@ export interface MealPlanWeek {
   start_date: string;
   end_date:   string;
   entries:    MealPlanEntry[];
+}
+
+// ── Progress ──────────────────────────────────────────────────────────────────
+
+export interface ProgressDay {
+  date:      string;
+  calories:  number;
+  protein_g: number;
+  carbs_g:   number;
+  fat_g:     number;
+  meals:     number;
+  water_ml:  number;
+}
+
+export interface Progress {
+  days:    ProgressDay[];
+  targets: {
+    daily_calories:  number | null;
+    daily_protein_g: number | null;
+    daily_carbs_g:   number | null;
+    daily_fat_g:     number | null;
+  };
+  weight:  { entries: { date: string; weight_kg: number }[]; current: number | null; target: number | null };
+  plan:    { planned: number; followed: number };
+  streaks: { logging: number; logging_best: number; water: number };
+  water_goal_ml: number;
 }
 
 // ── AI Assistant ──────────────────────────────────────────────────────────────

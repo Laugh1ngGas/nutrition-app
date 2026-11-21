@@ -11,6 +11,7 @@ import type {
   ProfileWithUser, Allergen,
   AiStatus, AiChatMessage,
   MealPlanWeek, PlanSlot,
+  Progress, AuthTokens,
 } from './types';
 
 // ── Утиліта ───────────────────────────────────────────────────────────────────
@@ -51,8 +52,35 @@ export function useProfile() {
 }
 
 export async function updateProfile(payload: Partial<ProfileWithUser>) {
-  const { data } = await apiClient.patch('/profile', payload);
+  // today: the date a weight change is recorded under in the weight history
+  const { data } = await apiClient.patch('/profile', { today: localDate(), ...payload });
   return data.data;
+}
+
+// Returns new tokens: every other device is signed out
+export async function changePassword(currentPassword: string, newPassword: string): Promise<AuthTokens> {
+  const { data } = await apiClient.post('/auth/change-password', {
+    current_password: currentPassword,
+    new_password: newPassword,
+  });
+  return data.data;
+}
+
+export async function deleteAccount(password: string): Promise<void> {
+  await apiClient.delete('/auth/account', { data: { password } });
+}
+
+// ── Progress ──────────────────────────────────────────────────────────────────
+
+// The last `days` days up to today, as local dates
+export function useProgress(days: number) {
+  return useApiCall<Progress>(async () => {
+    const today = localDate();
+    const from = new Date();
+    from.setDate(from.getDate() - (days - 1));
+    const { data } = await apiClient.get(`/progress?from=${localDate(from)}&to=${today}&today=${today}`);
+    return data.data;
+  }, [days]);
 }
 
 export function useAllergens() {
