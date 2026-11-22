@@ -396,7 +396,7 @@ export const en = {
   "planner.hint": "Drag a meal onto another to swap them, or drag a day by its handle.",
   "planner.regenerate": "Regenerate week",
   "planner.regenTitle": "Regenerate this week?",
-  "planner.regenText": "All meals of this week are replaced with new ones that fit your diet, allergies and fridge. Any changes you made by dragging are lost.",
+  "planner.regenText": "All meals of this week are replaced with new ones that fit your diet, allergies, fridge and daily calorie goal. Any changes you made by dragging are lost.",
   "planner.regenConfirm": "Regenerate",
   "planner.regenDone": "Your week has new meals",
   "planner.regenError": "Couldn't generate a new week",
@@ -409,6 +409,12 @@ export const en = {
   "planner.dragMeal": "{slot}: {title}. Drag to swap.",
   "planner.nothing": "Nothing planned",
   "planner.coverage": "Ingredients you already have for this day",
+  "planner.dayCalories": "Calories for this day",
+  "planner.dayKcal": "{kcal} kcal",
+  "planner.kcalOfGoal": "{kcal} of {goal} kcal",
+  "planner.portion": "{n}× portion",
+  "planner.noGoal": "Set a daily calorie goal and new plans will fit it.",
+  "planner.setGoal": "Set goal",
 
   // ── AI assistant ──
   "ai.title": "AI Assistant",

@@ -255,6 +255,8 @@ function Planner() {
                   isToday={date === today}
                   selected={date === selected}
                   onSelect={() => setSelected(date)}
+                  kcal={dayCalories(SLOTS.map((slot) => entryAt(date, slot)))}
+                  goal={plan?.daily_calories ?? null}
                 >
                   {SLOTS.map((slot) => (
                     <MealSlot key={slot} date={date} slot={slot} entry={entryAt(date, slot)} />
@@ -276,27 +278,47 @@ function Planner() {
             </DragOverlay>
           </DndContext>
 
-          <DayDetail date={selected} entries={SLOTS.map((slot) => entryAt(selected, slot))} />
+          <DayDetail
+            date={selected}
+            entries={SLOTS.map((slot) => entryAt(selected, slot))}
+            goal={plan?.daily_calories ?? null}
+          />
         </>
       )}
     </AppShell>
   );
 }
 
+// The day's planned calories (each meal's portion); null if none are known
+function dayCalories(entries: (MealPlanEntry | undefined)[]): number | null {
+  const known = entries.filter((e) => e?.calories != null);
+  return known.length ? known.reduce((sum, e) => sum + (e!.calories ?? 0), 0) : null;
+}
+
+// "2,716" in English, "2 716" in Ukrainian, whatever the browser's own locale
+const numberLocale = (lang: string) => (lang === "uk" ? "uk-UA" : "en-US");
+
+// Within 10% of the goal counts as on target (same as the generator)
+const onTarget = (kcal: number, goal: number) => Math.abs(kcal - goal) <= goal * 0.1;
+
 function DayColumn({
   date,
   isToday,
   selected,
   onSelect,
+  kcal,
+  goal,
   children,
 }: {
   date: string;
   isToday: boolean;
   selected: boolean;
   onSelect: () => void;
+  kcal: number | null;
+  goal: number | null;
   children: ReactNode;
 }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const fmt = useDateFormat();
   const data: DropData & DragData = { kind: "day", date };
   const { setNodeRef: dropRef, isOver } = useDroppable({ id: `day:${date}`, data });
@@ -338,6 +360,17 @@ function DayColumn({
         </div>
       </div>
       <div className="mt-3 space-y-2">{children}</div>
+      {kcal != null && (
+        <div
+          data-day-kcal={kcal}
+          className={cn(
+            "mt-2 text-center text-xs font-medium",
+            goal ? (onTarget(kcal, goal) ? "text-success" : "text-warning-foreground") : "text-muted-foreground"
+          )}
+        >
+          {t("planner.dayKcal", { kcal: kcal.toLocaleString(numberLocale(lang)) })}
+        </div>
+      )}
     </div>
   );
 }
@@ -376,13 +409,23 @@ function MealSlot({ date, slot, entry }: { date: string; slot: PlanSlot; entry?:
   );
 }
 
-function DayDetail({ date, entries }: { date: string; entries: (MealPlanEntry | undefined)[] }) {
-  const { t } = useI18n();
+function DayDetail({
+  date,
+  entries,
+  goal,
+}: {
+  date: string;
+  entries: (MealPlanEntry | undefined)[];
+  goal: number | null;
+}) {
+  const { t, lang } = useI18n();
   const fmt = useDateFormat();
   const planned = entries.filter((e): e is MealPlanEntry => !!e);
   const total = planned.reduce((s, e) => s + e.total_ingredients, 0);
   const matched = planned.reduce((s, e) => s + e.matched_ingredients, 0);
   const coverage = total ? Math.round((matched / total) * 100) : 0;
+  const kcal = dayCalories(entries);
+  const kcalShare = goal && kcal != null ? Math.min(100, Math.round((kcal / goal) * 100)) : 0;
 
   return (
     <div className="mt-8 rounded-2xl border border-border bg-card p-6 shadow-card">
@@ -413,8 +456,11 @@ function DayDetail({ date, entries }: { date: string; entries: (MealPlanEntry | 
                           <Clock className="h-3 w-3" /> {t("common.minutes", { n: minutes })}
                         </span>
                       )}
-                      {e.calories_per_serving != null && (
-                        <span>{Math.round(Number(e.calories_per_serving))} {t("common.kcal")}</span>
+                      {e.calories != null && (
+                        <span data-meal-kcal={e.calories}>
+                          {e.calories.toLocaleString(numberLocale(lang))} {t("common.kcal")}
+                          {e.servings !== 1 && <> · {t("planner.portion", { n: e.servings })}</>}
+                        </span>
                       )}
                     </div>
                     <Button size="sm" variant="outline" className="mt-3 w-full" asChild>
@@ -428,7 +474,33 @@ function DayDetail({ date, entries }: { date: string; entries: (MealPlanEntry | 
         })}
       </div>
 
-      <div className="mt-6 rounded-xl bg-accent/40 p-4">
+      {kcal != null && (
+        <div className="mt-6 rounded-xl bg-muted/60 p-4">
+          <div className="mb-1 flex justify-between text-xs font-medium">
+            <span>{t("planner.dayCalories")}</span>
+            <span data-day-total={kcal}>
+              {goal
+                ? t("planner.kcalOfGoal", { kcal: kcal.toLocaleString(numberLocale(lang)), goal: goal.toLocaleString(numberLocale(lang)) })
+                : t("planner.dayKcal", { kcal: kcal.toLocaleString(numberLocale(lang)) })}
+            </span>
+          </div>
+          {goal ? (
+            <div className="h-2 rounded-full bg-card">
+              <div
+                className={cn("h-full rounded-full transition-all", onTarget(kcal, goal) ? "bg-success" : "bg-warning")}
+                style={{ width: `${kcalShare}%` }}
+              />
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground">
+              {t("planner.noGoal")}{" "}
+              <Link to="/profile" className="font-medium text-primary hover:underline">{t("planner.setGoal")}</Link>
+            </p>
+          )}
+        </div>
+      )}
+
+      <div className="mt-3 rounded-xl bg-accent/40 p-4">
         <div className="mb-1 flex justify-between text-xs font-medium">
           <span>{t("planner.coverage")}</span>
           <span>{matched}/{total} · {coverage}%</span>

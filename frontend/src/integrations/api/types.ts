@@ -309,15 +309,18 @@ export interface MealPlanEntry {
   prep_time_min?:        number;
   cook_time_min?:        number;
   calories_per_serving?: number;
+  servings:              number;          // planned portion, in servings
+  calories:              number | null;   // of that portion
   total_ingredients:     number;
   matched_ingredients:   number;
 }
 
 export interface MealPlanWeek {
-  id:         string;
-  start_date: string;
-  end_date:   string;
-  entries:    MealPlanEntry[];
+  id:             string;
+  start_date:     string;
+  end_date:       string;
+  daily_calories: number | null;  // the user's goal; null = not set
+  entries:        MealPlanEntry[];
 }
 
 // ── Progress ──────────────────────────────────────────────────────────────────
