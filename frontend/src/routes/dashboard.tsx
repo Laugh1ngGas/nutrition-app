@@ -430,7 +430,7 @@ function FridgeRecipesCard({ fridgeEmpty }: { fridgeEmpty: boolean }) {
                   <div className="mt-1 text-xs font-medium text-secondary">{t("common.youHave", { matched, total })}</div>
                   <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
                     {r.calories_per_serving != null ? (
-                      <span className="flex items-center gap-1"><Flame className="h-3 w-3" /> {r.calories_per_serving}</span>
+                      <span className="flex items-center gap-1"><Flame className="h-3 w-3" /> {Math.round(Number(r.calories_per_serving))}</span>
                     ) : (
                       <span />
                     )}

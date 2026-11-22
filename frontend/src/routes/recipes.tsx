@@ -158,7 +158,7 @@ function RecipeCard({ recipe: r, onView }: { recipe: Recipe; onView: () => void 
         )}
         <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
           {r.calories_per_serving != null && (
-            <span className="flex items-center gap-1"><Flame className="h-3 w-3" />{r.calories_per_serving}</span>
+            <span className="flex items-center gap-1"><Flame className="h-3 w-3" />{Math.round(Number(r.calories_per_serving))}</span>
           )}
           {r.prep_time_min != null && (
             <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{t("common.minutes", { n: r.prep_time_min })}</span>
@@ -296,10 +296,11 @@ function RecipeDetailSheet({ id, onClose }: { id: string | null; onClose: () => 
             )}
             <div className="mt-4 grid grid-cols-4 gap-2 text-center">
               {[
-                { l: t("recipes.stat.kcal"), v: recipe.calories_per_serving ?? "—" },
+                // DECIMAL columns arrive as "618.00"
+                { l: t("recipes.stat.kcal"), v: recipe.calories_per_serving != null ? Math.round(Number(recipe.calories_per_serving)) : "—" },
                 { l: t("recipes.stat.prep"), v: recipe.prep_time_min != null ? t("common.minutes", { n: recipe.prep_time_min }) : "—" },
-                { l: t("recipes.stat.protein"), v: recipe.protein_per_serving_g != null ? `${recipe.protein_per_serving_g} ${t("unit.g")}` : "—" },
-                { l: t("recipes.stat.carbs"), v: recipe.carbs_per_serving_g != null ? `${recipe.carbs_per_serving_g} ${t("unit.g")}` : "—" },
+                { l: t("recipes.stat.protein"), v: recipe.protein_per_serving_g != null ? `${Number(recipe.protein_per_serving_g)} ${t("unit.g")}` : "—" },
+                { l: t("recipes.stat.carbs"), v: recipe.carbs_per_serving_g != null ? `${Number(recipe.carbs_per_serving_g)} ${t("unit.g")}` : "—" },
               ].map((s) => (
                 <div key={s.l} className="rounded-lg bg-muted p-2">
                   <div className="text-sm font-bold">{s.v}</div>

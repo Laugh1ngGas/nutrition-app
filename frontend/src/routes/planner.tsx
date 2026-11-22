@@ -414,7 +414,7 @@ function DayDetail({ date, entries }: { date: string; entries: (MealPlanEntry | 
                         </span>
                       )}
                       {e.calories_per_serving != null && (
-                        <span>{e.calories_per_serving} {t("common.kcal")}</span>
+                        <span>{Math.round(Number(e.calories_per_serving))} {t("common.kcal")}</span>
                       )}
                     </div>
                     <Button size="sm" variant="outline" className="mt-3 w-full" asChild>
