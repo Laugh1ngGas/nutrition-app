@@ -68,7 +68,7 @@ const UNITS: [string, RegExp][] = [
   ['splash', /^splash(es)?\b/],
   ['drizzle', /^drizzle\b/],
   ['knob', /^knobs?\b/],
-  ['handful', /^handfuls?\b/],
+  ['handful', /^handfull?s?\b/],
   ['bunch', /^bunch(es)?\b/],
   ['sprig', /^sprigs?\b/],
   ['clove', /^cloves?\b/],
@@ -80,11 +80,27 @@ const UNITS: [string, RegExp][] = [
   ['bulb', /^bulbs?\b/],
   ['leaf', /^lea(f|ves)\b/],
   ['stalk', /^stalks?\b/],
+  ['quart', /^(quarts?|qts?)\b/],
+  ['pint', /^pints?\b/],
+  ['shot', /^shots?\b/],
+  ['scoop', /^scoops?\b/],
+  ['drop', /^drops?\b/],
+  ['pod', /^pods?\b/],
+  ['floret', /^florets?\b/],
+  ['strip', /^strips?\b/],
+  ['piece', /^(pieces?|whole|parts?)\b/],
+  ['cm', /^cm\b/],
+  ['inch', /^(inch|inches|in)\b/],
+  ['thumb', /^thumb/],
 ];
 const SIZES: Record<string, number> = { large: 1.25, big: 1.25, medium: 1, small: 0.75 };
 
 // No amount: seasoning to taste, a garnish or a side served with the dish
-const NEGLIGIBLE = /\b(to taste|garnish|to serve|serving|dusting|sprinkl|topping|as required|as needed|optional|decorat|to glaze)/;
+const NEGLIGIBLE = /\b(to taste|garnish|to serve|serving|dusting|sprinkl|sprink|spinkl|topping|top\b|as required|as needed|optional|decorat|to glaze)/;
+// Only says how it's prepared ("Chopped", "Steamed"): one piece if it's
+// counted in pieces, otherwise a garnish or a side, like "to serve"
+const PREPARATION = /^(chopped|sliced|diced|grated|grating|shaved|minced|crushed|ground|beaten|halved|melted|boiled|steamed|fry|fried|peeled|white|cubed|shredded)\b/;
+const WORD_AMOUNTS: Record<string, string> = { half: '0.5', a: '1', an: '1', one: '1', two: '2', three: '3', four: '4' };
 const FOR_COOKING = /\b(for frying|for brushing|for greasing|for the pan|for cooking|drizzle)/;
 
 function parseAmount(text: string): { value: number | null; rest: string } {
@@ -106,8 +122,10 @@ export interface ParsedMeasure {
 }
 
 export function parseMeasure(measure: string | null | undefined): ParsedMeasure {
-  let text = (measure || '').toLowerCase();
+  let text = (measure || '').toLowerCase().trim();
   for (const [f, v] of Object.entries(FRACTIONS)) text = text.split(f).join(v);
+  // "Half", "a handful", "two cloves"
+  text = text.replace(/^(half|an?|one|two|three|four)\b/, (w) => WORD_AMOUNTS[w]);
   // "250g/9oz", "1 cup (240ml)": the first measure is enough. A slash after
   // a letter starts the second measure; one between digits is a fraction.
   text = text
@@ -151,6 +169,8 @@ export function measureToGrams(measure: string | null | undefined, info: Ingredi
 
   const { amount, unit } = parseMeasure(raw);
   const qty = amount ?? 1;
+  // "1 whole" chicken is the bird, not one piece of it
+  if (/\bwhole\b/.test(raw) && /chicken|duck|turkey|goose/i.test(info?.name ?? '')) return qty * 1500;
   let grams: number | null;
   switch (unit) {
     case 'g': grams = qty; break;
@@ -179,12 +199,27 @@ export function measureToGrams(measure: string | null | undefined, info: Ingredi
     case 'can': grams = qty * (g.can ?? 400); break;
     case 'pack': grams = qty * (piece ?? 200); break;
     case 'head': case 'bulb': grams = qty * (g.head ?? piece ?? 300); break;
+    case 'quart': grams = (qty * 946 * cup) / 240; break;
+    case 'pint': grams = (qty * 473 * cup) / 240; break;
+    case 'shot': grams = (qty * 30 * cup) / 240; break;
+    case 'scoop': grams = qty * 70; break;
+    case 'drop': grams = qty * 0.05; break;
+    case 'pod': grams = qty * (piece ?? 0.3); break;
+    case 'floret': grams = qty * 10; break;
+    case 'strip': grams = qty * (g.slice ?? 2); break;
+    case 'piece': grams = qty * (piece ?? 15); break;
+    case 'cm': grams = qty * 5; break; // ginger, galangal, cinnamon: ~5 g per cm
+    case 'inch': grams = qty * 12; break;
+    case 'thumb': grams = qty * 15; break;
     case 'large': case 'big': case 'medium': case 'small':
       grams = piece ? qty * piece * SIZES[unit] : null; break;
     default:
       if (amount != null) grams = piece ? qty * piece : null;
       else if (FOR_COOKING.test(raw)) grams = tbsp;
-      else if (NEGLIGIBLE.test(raw) || !raw) grams = raw ? 0 : piece ?? null;
+      else if (NEGLIGIBLE.test(raw)) grams = 0;
+      else if (PREPARATION.test(raw)) grams = piece ?? 0;
+      // No measure at all: one piece, or about a tablespoon of it
+      else if (!raw) grams = piece ?? tbsp;
       else grams = null;
   }
   return grams == null || !isFinite(grams) ? null : Math.min(Math.round(grams * 10) / 10, 5000);
@@ -207,6 +242,15 @@ export interface NutritionLine {
   name: string;
   grams: number | null;
   info: IngredientInfo | null;
+  measure?: string | null;
+}
+
+// Oil for deep frying mostly stays in the pan: food takes up roughly a tenth
+// of it. Counting it all made fried dishes 3-4x too high.
+const FRYING_ABSORBED = 0.1;
+function isFryingOil(line: NutritionLine): boolean {
+  if (!/\boil\b|lard|shortening/i.test(line.name)) return false;
+  return /fry|frying|deep/i.test(line.measure ?? '') || (line.grams ?? 0) > 250;
 }
 
 export interface RecipeNutrition {
@@ -230,7 +274,7 @@ export function recipeNutrition(lines: NutritionLine[], servings: number): Recip
       if (line.grams !== 0) missing.push(line.name);
       continue;
     }
-    const k = line.grams / 100;
+    const k = (line.grams * (isFryingOil(line) ? FRYING_ABSORBED : 1)) / 100;
     for (const key of Object.keys(total) as (keyof Per100)[]) total[key] += (line.info.per100[key] ?? 0) * k;
   }
   const s = Math.max(1, servings || 1);

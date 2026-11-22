@@ -28,12 +28,13 @@ interface RecipeMeta {
   prep_time_min: number;
   cook_time_min: number;
   difficulty: 'easy' | 'medium' | 'hard';
-  title_uk: string;
+  title_uk?: string; // Ukrainian titles are paused for now
 }
 
 // Estimated once per recipe by the AI model (scripts/recipe-data/meta.py),
-// since TheMealDB doesn't say how many servings a recipe makes
-const RECIPE_META = recipeMetaData as Record<string, RecipeMeta>;
+// since TheMealDB doesn't say how many servings a recipe makes. The JSON's
+// strings are typed as plain string, hence the unknown step.
+const RECIPE_META = recipeMetaData as unknown as Record<string, RecipeMeta>;
 
 async function mealDb<T>(path: string): Promise<T> {
   const res = await fetch(`${MEALDB}/${path}`, { signal: AbortSignal.timeout(15_000) });
@@ -77,8 +78,9 @@ export function mealIngredients(meal: MealDbMeal): { name: string; measure: stri
   return out;
 }
 
-// TheMealDB has a few broken characters ("Chop Up and �Saltfish")
-const clean = (s: string | null | undefined) => (s || '').replace(/�/g, '').replace(/\s+/g, ' ').trim();
+// TheMealDB has a few broken characters (U+FFFD, "Chop Up and ?Saltfish")
+const BROKEN_CHAR = /�/g;
+const clean = (s: string | null | undefined) => (s || '').replace(BROKEN_CHAR, '').replace(/\s+/g, ' ').trim();
 
 function defaultMeta(meal: MealDbMeal): RecipeMeta {
   const category = meal.strCategory || '';
@@ -149,7 +151,7 @@ export async function writeIngredients(
        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [recipeId, foodId, Math.min(quantity, 999999), unit, line.measure.slice(0, 255) || null, line.grams, index]
     );
-    nutritionLines.push({ name: line.name, grams: line.grams, info });
+    nutritionLines.push({ name: line.name, grams: line.grams, info, measure: line.measure });
   }
   const nutrition = recipeNutrition(nutritionLines, servings);
   await client.query(
@@ -181,7 +183,7 @@ export async function importMeal(client: PoolClient, meal: MealDbMeal): Promise<
     [meal.idMeal, title]
   );
   const values = [
-    title, meta.title_uk || null, (meal.strInstructions || '').replace(/�/g, '').trim() || null,
+    title, meta.title_uk || null, (meal.strInstructions || '').replace(BROKEN_CHAR, '').trim() || null,
     meal.strMealThumb || null, meta.prep_time_min, meta.cook_time_min, meta.servings, meta.difficulty,
     meal.strArea && meal.strArea !== 'Unknown' ? meal.strArea : null, meta.meal_type, diet ? [diet] : null, meal.idMeal,
   ];

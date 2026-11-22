@@ -1,0 +1,4917 @@
+{
+"Achiote Paste": {
+"fdc": 170459,
+"piece_g": null,
+"cup_g": 230
+},
+"Achiote Seeds": {
+"fdc": 170150,
+"piece_g": null,
+"cup_g": 150
+},
+"Ackee": {
+"fdc": 167761,
+"piece_g": null,
+"cup_g": 160
+},
+"Alinos Sauce": {
+"fdc": 171174,
+"piece_g": null,
+"cup_g": 220
+},
+"All purpose flour": {
+"fdc": 169761,
+"piece_g": null,
+"cup_g": 125
+},
+"All-purpose Seasoning": {
+"fdc": 172242,
+"piece_g": null,
+"cup_g": 180
+},
+"allspice": {
+"fdc": 171315,
+"piece_g": null,
+"cup_g": 110
+},
+"Allspice Berries": {
+"fdc": 171315,
+"piece_g": null,
+"cup_g": 160
+},
+"Almond Essence": {
+"fdc": 173471,
+"piece_g": null,
+"cup_g": 240
+},
+"Almond Flour": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 100
+},
+"Almond Paste": {
+"fdc": 170160,
+"piece_g": null,
+"cup_g": 220
+},
+"Almonds": {
+"fdc": 170567,
+"piece_g": 1,
+"cup_g": 140
+},
+"Ancho Chillies": {
+"fdc": 169396,
+"piece_g": 5,
+"cup_g": 50
+},
+"Apple Cider Vinegar": {
+"fdc": 173469,
+"piece_g": null,
+"cup_g": 240
+},
+"Apples": {
+"fdc": 171688,
+"piece_g": 180,
+"cup_g": 125
+},
+"Appleton rum": {
+"fdc": 174817,
+"piece_g": null,
+"cup_g": 240
+},
+"Apricot": {
+"fdc": 171697,
+"piece_g": 35,
+"cup_g": 150
+},
+"Apricot Jam": {
+"fdc": 170645,
+"piece_g": null,
+"cup_g": 280
+},
+"Arabic Rice": {
+"fdc": 168877,
+"piece_g": null,
+"cup_g": 185
+},
+"Aubergine": {
+"fdc": 169228,
+"piece_g": 400,
+"cup_g": 120
+},
+"Avacado Hass Pulp": {
+"fdc": 171705,
+"piece_g": null,
+"cup_g": 225
+},
+"avocado": {
+"fdc": 171705,
+"piece_g": 200,
+"cup_g": 225
+},
+"Baby Aubergine": {
+"fdc": 169228,
+"piece_g": 60,
+"cup_g": 120
+},
+"Baby Lettuce Leaves": {
+"fdc": 169249,
+"piece_g": null,
+"cup_g": 60
+},
+"Baby New Potatoes": {
+"fdc": 170026,
+"piece_g": 50,
+"cup_g": 150
+},
+"Baby Pak Koi": {
+"fdc": 170390,
+"piece_g": null,
+"cup_g": 130
+},
+"baby plum tomatoes": {
+"fdc": 170457,
+"piece_g": 20,
+"cup_g": 140
+},
+"Baby Squid": {
+"fdc": 174223,
+"piece_g": 30,
+"cup_g": 160
+},
+"Bacon": {
+"fdc": 168277,
+"piece_g": 30,
+"cup_g": 0
+},
+"Bacon lardon": {
+"fdc": 168277,
+"piece_g": null,
+"cup_g": 150
+},
+"Baguette": {
+"fdc": 174913,
+"piece_g": 250,
+"cup_g": 120
+},
+"Baked Beans": {
+"fdc": 175182,
+"piece_g": null,
+"cup_g": 250
+},
+"Baking Powder": {
+"fdc": 172804,
+"piece_g": null,
+"cup_g": 240
+},
+"Balsamic Vinegar": {
+"fdc": 172241,
+"piece_g": null,
+"cup_g": 240
+},
+"Bamboo Shoot": {
+"fdc": 169210,
+"piece_g": null,
+"cup_g": 160
+},
+"Banana": {
+"fdc": 173944,
+"piece_g": 120,
+"cup_g": 150
+},
+"Banana Leaves": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Banana Pepper": {
+"fdc": 169394,
+"piece_g": 40,
+"cup_g": 120
+},
+"Barbeque Sauce": {
+"fdc": 174523,
+"piece_g": null,
+"cup_g": 280
+},
+"barramundi": {
+"fdc": null,
+"piece_g": 175,
+"cup_g": 0
+},
+"basmati rice": {
+"fdc": 169756,
+"piece_g": null,
+"cup_g": 185
+},
+"Bay Leaves": {
+"fdc": 170917,
+"piece_g": 1,
+"cup_g": 0
+},
+"Bean Sprouts": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 100
+},
+"Beef": {
+"fdc": 174036,
+"piece_g": null,
+"cup_g": 250
+},
+"Beef Brisket": {
+"fdc": 168664,
+"piece_g": null,
+"cup_g": 250
+},
+"Beef Cutlet": {
+"fdc": 168728,
+"piece_g": 175,
+"cup_g": 250
+},
+"Beef Fillet": {
+"fdc": 169547,
+"piece_g": 175,
+"cup_g": 250
+},
+"Beef Flank Steak": {
+"fdc": 169563,
+"piece_g": 175,
+"cup_g": 250
+},
+"Beef Gravy": {
+"fdc": 171564,
+"piece_g": null,
+"cup_g": 240
+},
+"Beef Kidney": {
+"fdc": 169449,
+"piece_g": null,
+"cup_g": 0
+},
+"Beef Shin": {
+"fdc": 169441,
+"piece_g": null,
+"cup_g": 0
+},
+"Beef Shoulder": {
+"fdc": 168693,
+"piece_g": null,
+"cup_g": 0
+},
+"Beef Stock Concentrate": {
+"fdc": 172883,
+"piece_g": null,
+"cup_g": 240
+},
+"Beef Stock Cubes": {
+"fdc": 171560,
+"piece_g": 10,
+"cup_g": 0
+},
+"Beef Tenderloin": {
+"fdc": 169547,
+"piece_g": null,
+"cup_g": 0
+},
+"Beef tomatoes": {
+"fdc": 170457,
+"piece_g": 120,
+"cup_g": 160
+},
+"Beer": {
+"fdc": 168746,
+"piece_g": null,
+"cup_g": 240
+},
+"Beetroot": {
+"fdc": 169145,
+"piece_g": 150,
+"cup_g": 130
+},
+"Beets": {
+"fdc": 169145,
+"piece_g": 150,
+"cup_g": 130
+},
+"Bicarbonate Of Soda": {
+"fdc": 175040,
+"piece_g": null,
+"cup_g": 240
+},
+"Birds-eye Chillies": {
+"fdc": 170106,
+"piece_g": 5,
+"cup_g": 100
+},
+"Biryani Masala": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Black Beans": {
+"fdc": 173734,
+"piece_g": null,
+"cup_g": 190
+},
+"Black Cardamom Pods": {
+"fdc": 170919,
+"piece_g": 1,
+"cup_g": 100
+},
+"Black Eyed Peas": {
+"fdc": 173734,
+"piece_g": null,
+"cup_g": 200
+},
+"Black Olives": {
+"fdc": 169094,
+"piece_g": 5,
+"cup_g": 150
+},
+"Black Pudding": {
+"fdc": 171618,
+"piece_g": null,
+"cup_g": 0
+},
+"Blackberries": {
+"fdc": 173946,
+"piece_g": 5,
+"cup_g": 140
+},
+"Blackcurrant Jam": {
+"fdc": 169641,
+"piece_g": null,
+"cup_g": 300
+},
+"Blue Food Colouring": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Blueberries": {
+"fdc": 171711,
+"piece_g": 1,
+"cup_g": 150
+},
+"Boiling Water": {
+"fdc": 173647,
+"piece_g": null,
+"cup_g": 240
+},
+"Bok Choi": {
+"fdc": 170390,
+"piece_g": null,
+"cup_g": 150
+},
+"Borlotti Beans": {
+"fdc": 173748,
+"piece_g": null,
+"cup_g": 190
+},
+"Bouillon Cubes": {
+"fdc": 171563,
+"piece_g": 10,
+"cup_g": 0
+},
+"Bouquet Garni": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"bowtie pasta": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Braeburn Apples": {
+"fdc": 171688,
+"piece_g": 170,
+"cup_g": 125
+},
+"Brandy": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Bread Flour": {
+"fdc": 168896,
+"piece_g": null,
+"cup_g": 125
+},
+"Bread Rolls": {
+"fdc": 172795,
+"piece_g": 60,
+"cup_g": 150
+},
+"Breadcrumbs": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 120
+},
+"Breadfruit": {
+"fdc": 171714,
+"piece_g": 1000,
+"cup_g": 170
+},
+"Brie": {
+"fdc": 172177,
+"piece_g": null,
+"cup_g": 110
+},
+"Broad Beans": {
+"fdc": 175205,
+"piece_g": null,
+"cup_g": 170
+},
+"Broccoli": {
+"fdc": 170379,
+"piece_g": null,
+"cup_g": 90
+},
+"Brown Lentils": {
+"fdc": 172420,
+"piece_g": null,
+"cup_g": 190
+},
+"Brown Rice Noodle": {
+"fdc": 169742,
+"piece_g": null,
+"cup_g": 100
+},
+"Brussels Sprouts": {
+"fdc": 170383,
+"piece_g": 20,
+"cup_g": 160
+},
+"Bryndza cheese": {
+"fdc": 172175,
+"piece_g": null,
+"cup_g": 110
+},
+"Buckwheat": {
+"fdc": 170685,
+"piece_g": null,
+"cup_g": 170
+},
+"Buckwheat Flour": {
+"fdc": 170687,
+"piece_g": null,
+"cup_g": 120
+},
+"Bulgur Wheat": {
+"fdc": 170688,
+"piece_g": null,
+"cup_g": 160
+},
+"Bun": {
+"fdc": null,
+"piece_g": 60,
+"cup_g": 0
+},
+"Buns": {
+"fdc": null,
+"piece_g": 60,
+"cup_g": 0
+},
+"Butter Beans": {
+"fdc": 174252,
+"piece_g": null,
+"cup_g": 200
+},
+"Buttermilk": {
+"fdc": 172225,
+"piece_g": null,
+"cup_g": 240
+},
+"Butternut Squash": {
+"fdc": 169295,
+"piece_g": 1200,
+"cup_g": 240
+},
+"Cabbage": {
+"fdc": 169975,
+"piece_g": 800,
+"cup_g": 160
+},
+"Cabbage Leaves": {
+"fdc": 169975,
+"piece_g": null,
+"cup_g": 160
+},
+"Cafe La Llave": {
+"fdc": 171893,
+"piece_g": null,
+"cup_g": 120
+},
+"Callaloo": {
+"fdc": 168487,
+"piece_g": null,
+"cup_g": 150
+},
+"Can of chickpeas": {
+"fdc": 173800,
+"piece_g": 400,
+"cup_g": 250
+},
+"Candied Peel": {
+"fdc": 167781,
+"piece_g": null,
+"cup_g": 150
+},
+"Canned Beans": {
+"fdc": 174286,
+"piece_g": 400,
+"cup_g": 250
+},
+"Canned tomatoes": {
+"fdc": 170051,
+"piece_g": 400,
+"cup_g": 240
+},
+"Cannellini Beans": {
+"fdc": 173745,
+"piece_g": null,
+"cup_g": 200
+},
+"Canola Oil": {
+"fdc": 172336,
+"piece_g": null,
+"cup_g": 220
+},
+"Capers": {
+"fdc": 172238,
+"piece_g": null,
+"cup_g": 240
+},
+"Caramel": {
+"fdc": 167974,
+"piece_g": null,
+"cup_g": 200
+},
+"Caramel Sauce": {
+"fdc": 171833,
+"piece_g": null,
+"cup_g": 280
+},
+"Caramelized Sugar Sauce": {
+"fdc": 169655,
+"piece_g": null,
+"cup_g": 200
+},
+"Caraway Seed": {
+"fdc": 170918,
+"piece_g": null,
+"cup_g": 100
+},
+"Cardamom": {
+"fdc": 170919,
+"piece_g": null,
+"cup_g": 100
+},
+"carrot": {
+"fdc": 170393,
+"piece_g": 60,
+"cup_g": 130
+},
+"Carrots": {
+"fdc": 170393,
+"piece_g": 60,
+"cup_g": 130
+},
+"Casabe": {
+"fdc": 167529,
+"piece_g": null,
+"cup_g": 60
+},
+"Cashews": {
+"fdc": 170162,
+"piece_g": null,
+"cup_g": 130
+},
+"Cassaba": {
+"fdc": 169093,
+"piece_g": null,
+"cup_g": 160
+},
+"Cassava": {
+"fdc": 169985,
+"piece_g": null,
+"cup_g": 160
+},
+"Cassava Flour": {
+"fdc": 168446,
+"piece_g": null,
+"cup_g": 125
+},
+"cayenne pepper": {
+"fdc": 170932,
+"piece_g": null,
+"cup_g": 110
+},
+"Celery": {
+"fdc": 169988,
+"piece_g": 100,
+"cup_g": 100
+},
+"Challots": {
+"fdc": 170499,
+"piece_g": 25,
+"cup_g": 160
+},
+"charlotte potatoes": {
+"fdc": 170028,
+"piece_g": 150,
+"cup_g": 160
+},
+"Cheese": {
+"fdc": 171241,
+"piece_g": null,
+"cup_g": 110
+},
+"Cheese Curds": {
+"fdc": 172179,
+"piece_g": null,
+"cup_g": 220
+},
+"Cheese Slices": {
+"fdc": 171241,
+"piece_g": 20,
+"cup_g": 110
+},
+"Cherry": {
+"fdc": 171719,
+"piece_g": 8,
+"cup_g": 150
+},
+"cherry tomatoes": {
+"fdc": 170457,
+"piece_g": 17,
+"cup_g": 150
+},
+"Chestnuts": {
+"fdc": 170575,
+"piece_g": 15,
+"cup_g": 130
+},
+"Chicken": {
+"fdc": 173636,
+"piece_g": 175,
+"cup_g": 0
+},
+"Chicken Bouillon Powder": {
+"fdc": 171562,
+"piece_g": 10,
+"cup_g": 200
+},
+"Chicken drumsticks": {
+"fdc": 172373,
+"piece_g": 100,
+"cup_g": 0
+},
+"Chicken Legs": {
+"fdc": 172378,
+"piece_g": 150,
+"cup_g": 0
+},
+"Chicken Liver": {
+"fdc": 171060,
+"piece_g": null,
+"cup_g": 0
+},
+"Chicken Stock Concentrate": {
+"fdc": 171562,
+"piece_g": null,
+"cup_g": 240
+},
+"Chicken Stock Cube": {
+"fdc": 171562,
+"piece_g": 10,
+"cup_g": 0
+},
+"Chicken Wings": {
+"fdc": 172390,
+"piece_g": 100,
+"cup_g": 0
+},
+"Chickpea Flour": {
+"fdc": 174288,
+"piece_g": null,
+"cup_g": 120
+},
+"Chickpeas": {
+"fdc": 173756,
+"piece_g": null,
+"cup_g": 160
+},
+"Chili Powder": {
+"fdc": 171319,
+"piece_g": null,
+"cup_g": 110
+},
+"chilli": {
+"fdc": 168570,
+"piece_g": 10,
+"cup_g": 0
+},
+"Chilli Bean Paste": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 220
+},
+"Chilli Flakes": {
+"fdc": 171319,
+"piece_g": null,
+"cup_g": 110
+},
+"Chilli Sauce": {
+"fdc": 171186,
+"piece_g": null,
+"cup_g": 220
+},
+"Chimichurri sauce": {
+"fdc": 171174,
+"piece_g": null,
+"cup_g": 210
+},
+"Chinese Cabbage": {
+"fdc": 169979,
+"piece_g": null,
+"cup_g": 150
+},
+"Chinese five spice powder": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Chinese Leaf": {
+"fdc": 169979,
+"piece_g": null,
+"cup_g": 150
+},
+"Chinese Long Beans": {
+"fdc": 169222,
+"piece_g": null,
+"cup_g": 130
+},
+"Chinese Sesame Sauce": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 230
+},
+"Chives": {
+"fdc": 169994,
+"piece_g": null,
+"cup_g": 45
+},
+"Chocolate Chips": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 175
+},
+"Chopped Chive": {
+"fdc": 169994,
+"piece_g": null,
+"cup_g": 45
+},
+"chopped parsley": {
+"fdc": 170416,
+"piece_g": null,
+"cup_g": 60
+},
+"Chorizo": {
+"fdc": 173859,
+"piece_g": null,
+"cup_g": 225
+},
+"Christmas Pudding": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 250
+},
+"Chuck Roast": {
+"fdc": 169493,
+"piece_g": 1300,
+"cup_g": 250
+},
+"Ciabatta": {
+"fdc": 174913,
+"piece_g": null,
+"cup_g": 150
+},
+"Cider": {
+"fdc": 174146,
+"piece_g": null,
+"cup_g": 240
+},
+"Cider Vinegar": {
+"fdc": 173469,
+"piece_g": null,
+"cup_g": 240
+},
+"Cilantro": {
+"fdc": 169997,
+"piece_g": null,
+"cup_g": 15
+},
+"Cilantro Leaves": {
+"fdc": 169997,
+"piece_g": null,
+"cup_g": 15
+},
+"Cinnamon stick": {
+"fdc": 171320,
+"piece_g": 5,
+"cup_g": 0
+},
+"Clams": {
+"fdc": 174214,
+"piece_g": null,
+"cup_g": 200
+},
+"Clear Honey": {
+"fdc": 169640,
+"piece_g": null,
+"cup_g": 340
+},
+"Clotted Cream": {
+"fdc": 170858,
+"piece_g": null,
+"cup_g": 230
+},
+"clove": {
+"fdc": 171321,
+"piece_g": 1,
+"cup_g": 0
+},
+"Cloves": {
+"fdc": 171321,
+"piece_g": null,
+"cup_g": 100
+},
+"Coarse Salt": {
+"fdc": 173468,
+"piece_g": null,
+"cup_g": 270
+},
+"Cocoa": {
+"fdc": 169593,
+"piece_g": null,
+"cup_g": 100
+},
+"Cocoa Powder": {
+"fdc": 169593,
+"piece_g": null,
+"cup_g": 100
+},
+"Coconut": {
+"fdc": 170169,
+"piece_g": null,
+"cup_g": 150
+},
+"Coconut Flakes": {
+"fdc": 168586,
+"piece_g": null,
+"cup_g": 60
+},
+"Coconut Oil": {
+"fdc": 171412,
+"piece_g": null,
+"cup_g": 220
+},
+"Cocoy Banana": {
+"fdc": 173944,
+"piece_g": 120,
+"cup_g": 150
+},
+"Cod": {
+"fdc": 171955,
+"piece_g": 175,
+"cup_g": 140
+},
+"Codfish Bulljaw": {
+"fdc": 171955,
+"piece_g": 175,
+"cup_g": 140
+},
+"Colby Jack Cheese": {
+"fdc": 173416,
+"piece_g": null,
+"cup_g": 113
+},
+"Cold Water": {
+"fdc": 173647,
+"piece_g": null,
+"cup_g": 240
+},
+"Conchs": {
+"fdc": 173720,
+"piece_g": null,
+"cup_g": 160
+},
+"Condensed Milk": {
+"fdc": 171275,
+"piece_g": null,
+"cup_g": 300
+},
+"Cooked Beetroot": {
+"fdc": 169146,
+"piece_g": 150,
+"cup_g": 150
+},
+"Cooked Chestnut": {
+"fdc": 170168,
+"piece_g": 15,
+"cup_g": 160
+},
+"Cooking Apples": {
+"fdc": 171688,
+"piece_g": 150,
+"cup_g": 125
+},
+"Cooking wine": {
+"fdc": 169070,
+"piece_g": null,
+"cup_g": 240
+},
+"coriander": {
+"fdc": 170922,
+"piece_g": null,
+"cup_g": 60
+},
+"Coriander Leaves": {
+"fdc": 169997,
+"piece_g": null,
+"cup_g": 20
+},
+"Corn Arepa Filled With Mozarella Cheese": {
+"fdc": null,
+"piece_g": 100,
+"cup_g": 0
+},
+"Corn Flour": {
+"fdc": 169695,
+"piece_g": null,
+"cup_g": 120
+},
+"Corn On The Cob": {
+"fdc": 169998,
+"piece_g": 200,
+"cup_g": 0
+},
+"Corn Tortillas": {
+"fdc": 175036,
+"piece_g": 45,
+"cup_g": 0
+},
+"Corned Beef": {
+"fdc": 170199,
+"piece_g": null,
+"cup_g": 0
+},
+"Cornmeal": {
+"fdc": 169697,
+"piece_g": null,
+"cup_g": 160
+},
+"Cornstarch": {
+"fdc": 169698,
+"piece_g": null,
+"cup_g": 128
+},
+"Cottage Cheese": {
+"fdc": 172182,
+"piece_g": null,
+"cup_g": 230
+},
+"Courgettes": {
+"fdc": 169291,
+"piece_g": 200,
+"cup_g": 120
+},
+"Couscous": {
+"fdc": 169699,
+"piece_g": null,
+"cup_g": 175
+},
+"Crab Meay": {
+"fdc": 174205,
+"piece_g": null,
+"cup_g": 180
+},
+"Cranberry": {
+"fdc": 171722,
+"piece_g": 5,
+"cup_g": 120
+},
+"Cream": {
+"fdc": 170858,
+"piece_g": null,
+"cup_g": 235
+},
+"Cream Cheese": {
+"fdc": 173418,
+"piece_g": null,
+"cup_g": 225
+},
+"Cream Of Tartar": {
+"fdc": 175041,
+"piece_g": null,
+"cup_g": 140
+},
+"Creamed Corn": {
+"fdc": 169215,
+"piece_g": null,
+"cup_g": 245
+},
+"Creme Fraiche": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 230
+},
+"Crusty Bread": {
+"fdc": 172675,
+"piece_g": null,
+"cup_g": 150
+},
+"Cuban Bread": {
+"fdc": 174924,
+"piece_g": null,
+"cup_g": 150
+},
+"Cucumber": {
+"fdc": 168409,
+"piece_g": 300,
+"cup_g": 150
+},
+"Cumin": {
+"fdc": 170923,
+"piece_g": null,
+"cup_g": 100
+},
+"Currants": {
+"fdc": 171724,
+"piece_g": null,
+"cup_g": 150
+},
+"Curry Powder": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 100
+},
+"Custard": {
+"fdc": 169595,
+"piece_g": null,
+"cup_g": 240
+},
+"Custard Powder": {
+"fdc": 168772,
+"piece_g": null,
+"cup_g": 125
+},
+"Daikon Radish": {
+"fdc": null,
+"piece_g": 200,
+"cup_g": 120
+},
+"Dark Beer": {
+"fdc": 168746,
+"piece_g": null,
+"cup_g": 240
+},
+"Dark Brown Soft Sugar": {
+"fdc": 168833,
+"piece_g": null,
+"cup_g": 200
+},
+"Dark Brown Sugar": {
+"fdc": 168833,
+"piece_g": null,
+"cup_g": 200
+},
+"Dark Chocolate": {
+"fdc": 170274,
+"piece_g": null,
+"cup_g": 170
+},
+"Dark Chocolate Chips": {
+"fdc": 170253,
+"piece_g": null,
+"cup_g": 170
+},
+"Dark Rum": {
+"fdc": 174817,
+"piece_g": null,
+"cup_g": 240
+},
+"Date Molasses": {
+"fdc": 168820,
+"piece_g": null,
+"cup_g": 340
+},
+"Deli Ham": {
+"fdc": 173863,
+"piece_g": null,
+"cup_g": 160
+},
+"Demerara Sugar": {
+"fdc": 170674,
+"piece_g": null,
+"cup_g": 200
+},
+"Desiccated Coconut": {
+"fdc": 170170,
+"piece_g": null,
+"cup_g": 100
+},
+"Dessert Rice": {
+"fdc": 168877,
+"piece_g": null,
+"cup_g": 185
+},
+"Diced Tomatoes": {
+"fdc": 170052,
+"piece_g": null,
+"cup_g": 240
+},
+"Dijon Mustard": {
+"fdc": 172234,
+"piece_g": null,
+"cup_g": 210
+},
+"Dill": {
+"fdc": 172233,
+"piece_g": null,
+"cup_g": 15
+},
+"Dill Pickles": {
+"fdc": 168558,
+"piece_g": 80,
+"cup_g": 160
+},
+"Doner Meat": {
+"fdc": 174323,
+"piece_g": null,
+"cup_g": 150
+},
+"Doubanjiang": {
+"fdc": 175207,
+"piece_g": null,
+"cup_g": 220
+},
+"Dried Apricots": {
+"fdc": 173941,
+"piece_g": null,
+"cup_g": 135
+},
+"Dried Cherries": {
+"fdc": 171708,
+"piece_g": null,
+"cup_g": 150
+},
+"Dried Chillies": {
+"fdc": 168570,
+"piece_g": 5,
+"cup_g": 30
+},
+"Dried cranberries": {
+"fdc": 171723,
+"piece_g": null,
+"cup_g": 130
+},
+"Dried Dill": {
+"fdc": 171322,
+"piece_g": null,
+"cup_g": 15
+},
+"Dried Fruit": {
+"fdc": 167781,
+"piece_g": null,
+"cup_g": 160
+},
+"Dried Leaves Of Summer Savoury": {
+"fdc": 170936,
+"piece_g": null,
+"cup_g": 15
+},
+"Dried Mint": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 15
+},
+"dried oregano": {
+"fdc": 171328,
+"piece_g": null,
+"cup_g": 100
+},
+"Dried Red Chillies": {
+"fdc": 170932,
+"piece_g": null,
+"cup_g": 120
+},
+"Dried Shrimp": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 150
+},
+"Dried Sorrel": {
+"fdc": 170937,
+"piece_g": null,
+"cup_g": 100
+},
+"Dried white beans": {
+"fdc": 175202,
+"piece_g": null,
+"cup_g": 200
+},
+"Dried white corn": {
+"fdc": 168920,
+"piece_g": null,
+"cup_g": 200
+},
+"Dried White Navy Beans": {
+"fdc": 173745,
+"piece_g": null,
+"cup_g": 200
+},
+"Dry sherry": {
+"fdc": 175112,
+"piece_g": null,
+"cup_g": 240
+},
+"Dry White Wine": {
+"fdc": 174837,
+"piece_g": null,
+"cup_g": 240
+},
+"Duck": {
+"fdc": 172408,
+"piece_g": 175,
+"cup_g": 0
+},
+"Duck Fat": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 220
+},
+"Duck Legs": {
+"fdc": 172408,
+"piece_g": 150,
+"cup_g": 0
+},
+"Duck Sauce": {
+"fdc": 171823,
+"piece_g": null,
+"cup_g": 250
+},
+"Dulce de leche": {
+"fdc": 173461,
+"piece_g": null,
+"cup_g": 280
+},
+"Dutch Stroop": {
+"fdc": 168839,
+"piece_g": null,
+"cup_g": 340
+},
+"egg": {
+"fdc": 171287,
+"piece_g": 50,
+"cup_g": 0
+},
+"Egg Noodles": {
+"fdc": 169731,
+"piece_g": null,
+"cup_g": 100
+},
+"Egg Plants": {
+"fdc": 169228,
+"piece_g": 400,
+"cup_g": 120
+},
+"Egg Roll Wrappers": {
+"fdc": 172802,
+"piece_g": 10,
+"cup_g": 0
+},
+"Egg Rolls": {
+"fdc": 172103,
+"piece_g": 120,
+"cup_g": 0
+},
+"Egg Wash": {
+"fdc": 171287,
+"piece_g": null,
+"cup_g": 240
+},
+"Egg White": {
+"fdc": 172183,
+"piece_g": null,
+"cup_g": 240
+},
+"Egg Yolks": {
+"fdc": 172184,
+"piece_g": null,
+"cup_g": 240
+},
+"Emmentaler Cheese": {
+"fdc": 171251,
+"piece_g": null,
+"cup_g": 110
+},
+"English Muffins": {
+"fdc": 172761,
+"piece_g": 95,
+"cup_g": 0
+},
+"English Mustard": {
+"fdc": 172234,
+"piece_g": null,
+"cup_g": 240
+},
+"Evaporated Milk": {
+"fdc": 172194,
+"piece_g": null,
+"cup_g": 240
+},
+"fajita seasoning": {
+"fdc": 172243,
+"piece_g": null,
+"cup_g": 120
+},
+"Falafel": {
+"fdc": 172455,
+"piece_g": 25,
+"cup_g": 160
+},
+"Farine": {
+"fdc": 168894,
+"piece_g": null,
+"cup_g": 125
+},
+"Farmers Cheese": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 220
+},
+"Fast action yeast": {
+"fdc": 175043,
+"piece_g": null,
+"cup_g": 130
+},
+"Feather blade beef": {
+"fdc": 169493,
+"piece_g": 175,
+"cup_g": 250
+},
+"Fennel": {
+"fdc": 169385,
+"piece_g": 250,
+"cup_g": 160
+},
+"Fermented Black Beans": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 200
+},
+"Feta": {
+"fdc": 173420,
+"piece_g": null,
+"cup_g": 150
+},
+"Fettuccine": {
+"fdc": 169731,
+"piece_g": null,
+"cup_g": 100
+},
+"Fideo": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Figs": {
+"fdc": 173021,
+"piece_g": 50,
+"cup_g": 160
+},
+"Fillet Of Steak": {
+"fdc": 169542,
+"piece_g": 200,
+"cup_g": 250
+},
+"Filo Pastry": {
+"fdc": 172790,
+"piece_g": null,
+"cup_g": 150
+},
+"Fine Yellow Cornmeal": {
+"fdc": 168867,
+"piece_g": null,
+"cup_g": 160
+},
+"Fish fillet": {
+"fdc": 171964,
+"piece_g": 175,
+"cup_g": 0
+},
+"Fish Seasoning": {
+"fdc": 171331,
+"piece_g": null,
+"cup_g": 120
+},
+"Fish Stock": {
+"fdc": 171606,
+"piece_g": null,
+"cup_g": 240
+},
+"Five Spice Powder": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 110
+},
+"Flaked Almonds": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 110
+},
+"Flank Steak": {
+"fdc": 169563,
+"piece_g": 450,
+"cup_g": 0
+},
+"Flat Rice Noodles": {
+"fdc": 169742,
+"piece_g": null,
+"cup_g": 120
+},
+"Flour": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 125
+},
+"Floury Potatoes": {
+"fdc": 170027,
+"piece_g": 170,
+"cup_g": 160
+},
+"free-range eggs, beaten": {
+"fdc": 171287,
+"piece_g": 50,
+"cup_g": 240
+},
+"Freekeh": {
+"fdc": 169743,
+"piece_g": null,
+"cup_g": 190
+},
+"French Lentils": {
+"fdc": 172420,
+"piece_g": null,
+"cup_g": 190
+},
+"Fried Ripe Bananas": {
+"fdc": 173944,
+"piece_g": 120,
+"cup_g": 150
+},
+"Fries": {
+"fdc": 169267,
+"piece_g": null,
+"cup_g": 130
+},
+"Frogs Legs": {
+"fdc": 168148,
+"piece_g": null,
+"cup_g": 0
+},
+"Fromage Frais": {
+"fdc": 171246,
+"piece_g": null,
+"cup_g": 240
+},
+"Frozen Mixed Berries": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 150
+},
+"Frozen Peas": {
+"fdc": 170016,
+"piece_g": null,
+"cup_g": 160
+},
+"Frozen Seafood mix": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 160
+},
+"Fruit Mix": {
+"fdc": 168178,
+"piece_g": null,
+"cup_g": 160
+},
+"Full fat sour cream": {
+"fdc": 171257,
+"piece_g": null,
+"cup_g": 230
+},
+"Galangal": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Galangal Paste": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Garam Masala": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Garlic": {
+"fdc": 169230,
+"piece_g": 5,
+"cup_g": 160
+},
+"Garlic Bulb": {
+"fdc": 169230,
+"piece_g": 50,
+"cup_g": 160
+},
+"Garlic Clove": {
+"fdc": 169230,
+"piece_g": 5,
+"cup_g": 160
+},
+"Garlic Granules": {
+"fdc": 171325,
+"piece_g": null,
+"cup_g": 150
+},
+"Gelatine Leafs": {
+"fdc": 169599,
+"piece_g": 2,
+"cup_g": 120
+},
+"German Sausages": {
+"fdc": 171617,
+"piece_g": 60,
+"cup_g": 180
+},
+"Ghee": {
+"fdc": 171314,
+"piece_g": null,
+"cup_g": 227
+},
+"Gherkin Relish": {
+"fdc": 169386,
+"piece_g": null,
+"cup_g": 230
+},
+"Gingerbread Spice": {
+"fdc": 170926,
+"piece_g": null,
+"cup_g": 115
+},
+"Glace Cherry": {
+"fdc": 167766,
+"piece_g": 5,
+"cup_g": 160
+},
+"Glutinous Rice": {
+"fdc": 168883,
+"piece_g": null,
+"cup_g": 185
+},
+"Goat Meat": {
+"fdc": 175303,
+"piece_g": 175,
+"cup_g": 250
+},
+"Goats Cheese": {
+"fdc": 173435,
+"piece_g": null,
+"cup_g": 140
+},
+"Gochujang": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 220
+},
+"Golden Caster Sugar": {
+"fdc": 169655,
+"piece_g": null,
+"cup_g": 200
+},
+"Goose Fat": {
+"fdc": 173572,
+"piece_g": null,
+"cup_g": 220
+},
+"Graham Cracker Crumbs": {
+"fdc": 174957,
+"piece_g": null,
+"cup_g": 120
+},
+"Grand Marnier": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Grape leaves": {
+"fdc": 168575,
+"piece_g": 2,
+"cup_g": 30
+},
+"Grape Nut Cereal": {
+"fdc": 171647,
+"piece_g": null,
+"cup_g": 100
+},
+"Grape Tomatoes": {
+"fdc": 170457,
+"piece_g": 15,
+"cup_g": 150
+},
+"Grapefruit": {
+"fdc": 173033,
+"piece_g": 400,
+"cup_g": 180
+},
+"Great Northern Beans": {
+"fdc": 175190,
+"piece_g": null,
+"cup_g": 200
+},
+"Greek yogurt": {
+"fdc": 171304,
+"piece_g": null,
+"cup_g": 245
+},
+"green beans": {
+"fdc": 169961,
+"piece_g": null,
+"cup_g": 125
+},
+"Green Cardamom Pods": {
+"fdc": 170919,
+"piece_g": null,
+"cup_g": 100
+},
+"Green Olives": {
+"fdc": 169096,
+"piece_g": null,
+"cup_g": 150
+},
+"Green Papaya": {
+"fdc": 169926,
+"piece_g": null,
+"cup_g": 160
+},
+"Green Pepper": {
+"fdc": 170427,
+"piece_g": 120,
+"cup_g": 150
+},
+"Green Salsa": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Grits": {
+"fdc": 171670,
+"piece_g": null,
+"cup_g": 160
+},
+"Ground Allspice": {
+"fdc": 171315,
+"piece_g": null,
+"cup_g": 110
+},
+"ground almonds": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 100
+},
+"Ground Annatto": {
+"fdc": 172242,
+"piece_g": null,
+"cup_g": 110
+},
+"Ground Beef": {
+"fdc": 174036,
+"piece_g": null,
+"cup_g": 225
+},
+"Ground Black Pepper": {
+"fdc": 170931,
+"piece_g": null,
+"cup_g": 110
+},
+"Ground Cardomom": {
+"fdc": 170919,
+"piece_g": null,
+"cup_g": 110
+},
+"Ground Chicken": {
+"fdc": 171116,
+"piece_g": null,
+"cup_g": 225
+},
+"Ground Cinnamon": {
+"fdc": 171320,
+"piece_g": null,
+"cup_g": 125
+},
+"Ground Clove": {
+"fdc": 171321,
+"piece_g": null,
+"cup_g": 110
+},
+"Ground Coriander": {
+"fdc": 170922,
+"piece_g": null,
+"cup_g": 100
+},
+"Ground Mahleb": {
+"fdc": 171326,
+"piece_g": null,
+"cup_g": 110
+},
+"Ground Mustard": {
+"fdc": 170929,
+"piece_g": null,
+"cup_g": 110
+},
+"Ground Nut Oil": {
+"fdc": 171030,
+"piece_g": null,
+"cup_g": 220
+},
+"Ground Nutmeg": {
+"fdc": 171326,
+"piece_g": null,
+"cup_g": 110
+},
+"Ground Oats": {
+"fdc": 169741,
+"piece_g": null,
+"cup_g": 120
+},
+"Ground Onion": {
+"fdc": 170002,
+"piece_g": null,
+"cup_g": 100
+},
+"Ground Pistachios": {
+"fdc": 170184,
+"piece_g": null,
+"cup_g": 130
+},
+"Ground Poppy seeds": {
+"fdc": 171330,
+"piece_g": null,
+"cup_g": 140
+},
+"Ground Pork": {
+"fdc": 167902,
+"piece_g": null,
+"cup_g": 225
+},
+"Ground Sugar": {
+"fdc": 169655,
+"piece_g": null,
+"cup_g": 200
+},
+"Ground Turmeric": {
+"fdc": 172231,
+"piece_g": null,
+"cup_g": 100
+},
+"Ground Walnuts": {
+"fdc": 170187,
+"piece_g": null,
+"cup_g": 120
+},
+"Gruyere": {
+"fdc": 171242,
+"piece_g": null,
+"cup_g": 110
+},
+"Gruyere cheese": {
+"fdc": 171242,
+"piece_g": null,
+"cup_g": 113
+},
+"Gruyère": {
+"fdc": 171242,
+"piece_g": null,
+"cup_g": 113
+},
+"Habanero Pepper": {
+"fdc": 170106,
+"piece_g": 10,
+"cup_g": 120
+},
+"Haddock": {
+"fdc": 171964,
+"piece_g": 175,
+"cup_g": 0
+},
+"Hail": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Hake": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Ham": {
+"fdc": 168224,
+"piece_g": null,
+"cup_g": 0
+},
+"Hard Taco Shells": {
+"fdc": 172800,
+"piece_g": 20,
+"cup_g": 0
+},
+"Haricot Beans": {
+"fdc": 173745,
+"piece_g": null,
+"cup_g": 200
+},
+"Harissa Spice": {
+"fdc": 171329,
+"piece_g": null,
+"cup_g": 110
+},
+"Hazlenuts": {
+"fdc": 170581,
+"piece_g": 1,
+"cup_g": 130
+},
+"Herring": {
+"fdc": 175116,
+"piece_g": 150,
+"cup_g": 0
+},
+"High Heat Cooking Oil": {
+"fdc": 172336,
+"piece_g": null,
+"cup_g": 220
+},
+"Hind Shank": {
+"fdc": 174454,
+"piece_g": 400,
+"cup_g": 0
+},
+"Hispi (sweetheart) Cabbage": {
+"fdc": 169975,
+"piece_g": 500,
+"cup_g": 70
+},
+"Hoisin Sauce": {
+"fdc": 172886,
+"piece_g": null,
+"cup_g": 210
+},
+"Honey": {
+"fdc": 169640,
+"piece_g": null,
+"cup_g": 340
+},
+"Horseradish": {
+"fdc": 173472,
+"piece_g": null,
+"cup_g": 230
+},
+"Hot Chilli Powder": {
+"fdc": 171319,
+"piece_g": null,
+"cup_g": 115
+},
+"Hot Mint": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Hot Smoked Flaked Salmon": {
+"fdc": 169813,
+"piece_g": null,
+"cup_g": 160
+},
+"Hot smoked paprika": {
+"fdc": 171329,
+"piece_g": null,
+"cup_g": 115
+},
+"Hotsauce": {
+"fdc": 174527,
+"piece_g": null,
+"cup_g": 220
+},
+"Hummus": {
+"fdc": 174289,
+"piece_g": null,
+"cup_g": 240
+},
+"Ice Cream": {
+"fdc": 167575,
+"piece_g": null,
+"cup_g": 145
+},
+"Ice Cubes": {
+"fdc": 174158,
+"piece_g": null,
+"cup_g": 240
+},
+"Iceberg Lettuce": {
+"fdc": 169248,
+"piece_g": null,
+"cup_g": 30
+},
+"Icing Sugar": {
+"fdc": 169656,
+"piece_g": null,
+"cup_g": 120
+},
+"Instant Yeast": {
+"fdc": 175043,
+"piece_g": null,
+"cup_g": 130
+},
+"Italian fennel sausages": {
+"fdc": 172952,
+"piece_g": 100,
+"cup_g": 0
+},
+"italian seasoning": {
+"fdc": 171331,
+"piece_g": null,
+"cup_g": 110
+},
+"Jalapeno": {
+"fdc": 168576,
+"piece_g": 15,
+"cup_g": 100
+},
+"Jam": {
+"fdc": 169641,
+"piece_g": null,
+"cup_g": 330
+},
+"Jamaican Curry Powder": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"jamón ibérico": {
+"fdc": 168287,
+"piece_g": null,
+"cup_g": 0
+},
+"Jasmine Rice": {
+"fdc": 169756,
+"piece_g": null,
+"cup_g": 185
+},
+"Jerk": {
+"fdc": 173476,
+"piece_g": null,
+"cup_g": 110
+},
+"Jersey Royal Potatoes": {
+"fdc": 170026,
+"piece_g": 150,
+"cup_g": 160
+},
+"Jerusalem Artichokes": {
+"fdc": 169236,
+"piece_g": 40,
+"cup_g": 150
+},
+"Jumbo Shrimp": {
+"fdc": 175179,
+"piece_g": 30,
+"cup_g": 150
+},
+"Juniper Berries": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 140
+},
+"Kabanos Sausages": {
+"fdc": 172954,
+"piece_g": 50,
+"cup_g": 150
+},
+"Kabse Spice": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Kaffir Lime": {
+"fdc": 168155,
+"piece_g": 85,
+"cup_g": 160
+},
+"Kaffir Lime Leaves": {
+"fdc": 169997,
+"piece_g": 1,
+"cup_g": 20
+},
+"Kale": {
+"fdc": 168421,
+"piece_g": null,
+"cup_g": 40
+},
+"Kampot Pepper": {
+"fdc": 170931,
+"piece_g": null,
+"cup_g": 110
+},
+"Kidney Beans": {
+"fdc": 175193,
+"piece_g": null,
+"cup_g": 200
+},
+"Kielbasa": {
+"fdc": 173879,
+"piece_g": null,
+"cup_g": 0
+},
+"King Prawns": {
+"fdc": 175179,
+"piece_g": 20,
+"cup_g": 150
+},
+"Knafeh": {
+"fdc": 172791,
+"piece_g": null,
+"cup_g": 0
+},
+"Lamb": {
+"fdc": 174370,
+"piece_g": null,
+"cup_g": 0
+},
+"Lamb Fat": {
+"fdc": 172572,
+"piece_g": null,
+"cup_g": 0
+},
+"Lamb Kidney": {
+"fdc": 174442,
+"piece_g": null,
+"cup_g": 0
+},
+"Lamb Leg": {
+"fdc": 174311,
+"piece_g": null,
+"cup_g": 0
+},
+"Lamb Mince": {
+"fdc": 174370,
+"piece_g": null,
+"cup_g": 0
+},
+"Lamb Shanks": {
+"fdc": 174315,
+"piece_g": 400,
+"cup_g": 0
+},
+"Lamb Shoulder": {
+"fdc": 172496,
+"piece_g": null,
+"cup_g": 0
+},
+"Lamb Stock": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Lard": {
+"fdc": 171401,
+"piece_g": null,
+"cup_g": 200
+},
+"Lasagne Sheets": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"lean minced beef": {
+"fdc": 174030,
+"piece_g": null,
+"cup_g": 225
+},
+"Lean Minced Steak": {
+"fdc": 174030,
+"piece_g": null,
+"cup_g": 225
+},
+"Leek": {
+"fdc": 169246,
+"piece_g": 150,
+"cup_g": 160
+},
+"Lemon": {
+"fdc": 167746,
+"piece_g": 85,
+"cup_g": 160
+},
+"Lemon Zest": {
+"fdc": 167749,
+"piece_g": null,
+"cup_g": 60
+},
+"Lemongrass": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Lemongrass Stalks": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"lemons": {
+"fdc": 167746,
+"piece_g": 85,
+"cup_g": 160
+},
+"Lentils": {
+"fdc": 172420,
+"piece_g": null,
+"cup_g": 190
+},
+"Lettuce": {
+"fdc": 169247,
+"piece_g": null,
+"cup_g": 70
+},
+"Light Brown Soft Sugar": {
+"fdc": 168833,
+"piece_g": null,
+"cup_g": 200
+},
+"Light Raisins": {
+"fdc": 168164,
+"piece_g": null,
+"cup_g": 150
+},
+"Light Rum": {
+"fdc": 174817,
+"piece_g": null,
+"cup_g": 230
+},
+"Lima Beans": {
+"fdc": 174252,
+"piece_g": null,
+"cup_g": 170
+},
+"Lime": {
+"fdc": 168155,
+"piece_g": 85,
+"cup_g": 160
+},
+"Lime juice": {
+"fdc": 168156,
+"piece_g": null,
+"cup_g": 240
+},
+"Lime Leaves": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Linguine Pasta": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Liquid Cheese": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Lobster": {
+"fdc": 174208,
+"piece_g": null,
+"cup_g": 0
+},
+"Longan": {
+"fdc": 169089,
+"piece_g": 15,
+"cup_g": 150
+},
+"Mackerel": {
+"fdc": 175119,
+"piece_g": null,
+"cup_g": 0
+},
+"Madras Paste": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 0
+},
+"makrut lime leaves": {
+"fdc": 169997,
+"piece_g": 1,
+"cup_g": 0
+},
+"Malai": {
+"fdc": 170859,
+"piece_g": null,
+"cup_g": 235
+},
+"Malt Vinegar": {
+"fdc": 172237,
+"piece_g": null,
+"cup_g": 240
+},
+"manchego": {
+"fdc": 171241,
+"piece_g": null,
+"cup_g": 0
+},
+"Mango": {
+"fdc": 169910,
+"piece_g": 350,
+"cup_g": 160
+},
+"Maple Syrup": {
+"fdc": 169661,
+"piece_g": null,
+"cup_g": 320
+},
+"Maria Cookies": {
+"fdc": 171867,
+"piece_g": 10,
+"cup_g": 120
+},
+"Marinated Tofu": {
+"fdc": 172475,
+"piece_g": null,
+"cup_g": 240
+},
+"marjoram": {
+"fdc": 170928,
+"piece_g": null,
+"cup_g": 10
+},
+"Mars Bar": {
+"fdc": null,
+"piece_g": 50,
+"cup_g": 0
+},
+"Marzipan": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 200
+},
+"Mascarpone": {
+"fdc": 171246,
+"piece_g": null,
+"cup_g": 220
+},
+"Mature Cheddar": {
+"fdc": 170899,
+"piece_g": null,
+"cup_g": 113
+},
+"Mayonnaise": {
+"fdc": 171009,
+"piece_g": null,
+"cup_g": 220
+},
+"Melted Butter": {
+"fdc": 173430,
+"piece_g": null,
+"cup_g": 227
+},
+"Meringue Nests": {
+"fdc": null,
+"piece_g": 15,
+"cup_g": 60
+},
+"milk": {
+"fdc": 171266,
+"piece_g": null,
+"cup_g": 245
+},
+"Milk Chocolate": {
+"fdc": 167587,
+"piece_g": null,
+"cup_g": 170
+},
+"Minced Beef": {
+"fdc": 174036,
+"piece_g": null,
+"cup_g": 225
+},
+"Minced Pork": {
+"fdc": 167902,
+"piece_g": null,
+"cup_g": 220
+},
+"Mincemeat": {
+"fdc": 174939,
+"piece_g": null,
+"cup_g": 250
+},
+"Miniature Marshmallows": {
+"fdc": 167995,
+"piece_g": null,
+"cup_g": 50
+},
+"Mint": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 20
+},
+"Mirin": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Mixed Beef Cuts": {
+"fdc": 171206,
+"piece_g": null,
+"cup_g": 250
+},
+"Mixed Grain": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 200
+},
+"Mixed Peel": {
+"fdc": 167781,
+"piece_g": null,
+"cup_g": 150
+},
+"Mixed peppers": {
+"fdc": 170427,
+"piece_g": 120,
+"cup_g": 150
+},
+"Mixed Spice": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Mixture Powder": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Molasses": {
+"fdc": 168820,
+"piece_g": null,
+"cup_g": 340
+},
+"Monkfish": {
+"fdc": 173676,
+"piece_g": 175,
+"cup_g": 0
+},
+"Monterey Jack Cheese": {
+"fdc": 170844,
+"piece_g": null,
+"cup_g": 113
+},
+"Morcilla": {
+"fdc": 171618,
+"piece_g": null,
+"cup_g": 0
+},
+"Morning Glory": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Mozzarella": {
+"fdc": 170845,
+"piece_g": null,
+"cup_g": 113
+},
+"mozzarella balls": {
+"fdc": 170845,
+"piece_g": null,
+"cup_g": 220
+},
+"Muffins": {
+"fdc": 175002,
+"piece_g": 70,
+"cup_g": 150
+},
+"Mulukhiyah": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 100
+},
+"Mung Bean Paste": {
+"fdc": 174257,
+"piece_g": null,
+"cup_g": 200
+},
+"Mung Bean Sprouts": {
+"fdc": 169957,
+"piece_g": null,
+"cup_g": 100
+},
+"Mung Beans": {
+"fdc": 174256,
+"piece_g": null,
+"cup_g": 200
+},
+"mushrooms": {
+"fdc": 169251,
+"piece_g": 15,
+"cup_g": 80
+},
+"Mussels": {
+"fdc": 174216,
+"piece_g": 20,
+"cup_g": 160
+},
+"Mustard Powder": {
+"fdc": 170929,
+"piece_g": null,
+"cup_g": 100
+},
+"Mustard Seeds": {
+"fdc": 170929,
+"piece_g": null,
+"cup_g": 160
+},
+"Naan Bread": {
+"fdc": 171845,
+"piece_g": 70,
+"cup_g": 0
+},
+"Napa Cabbage": {
+"fdc": 169979,
+"piece_g": null,
+"cup_g": 150
+},
+"Natural Yoghurt": {
+"fdc": 171284,
+"piece_g": null,
+"cup_g": 240
+},
+"New Potatoes": {
+"fdc": 170026,
+"piece_g": 150,
+"cup_g": 160
+},
+"Noodles": {
+"fdc": 169731,
+"piece_g": null,
+"cup_g": 100
+},
+"Nougatine": {
+"fdc": 169060,
+"piece_g": null,
+"cup_g": 0
+},
+"Nutella": {
+"fdc": 168000,
+"piece_g": null,
+"cup_g": 280
+},
+"Nutmeg": {
+"fdc": 171326,
+"piece_g": null,
+"cup_g": 110
+},
+"Oatmeal": {
+"fdc": 172972,
+"piece_g": null,
+"cup_g": 80
+},
+"Oats": {
+"fdc": 169705,
+"piece_g": null,
+"cup_g": 80
+},
+"Oil": {
+"fdc": 172336,
+"piece_g": null,
+"cup_g": 220
+},
+"Orange": {
+"fdc": 169097,
+"piece_g": 130,
+"cup_g": 160
+},
+"Orange Blossom Water": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Orange Juice": {
+"fdc": 169100,
+"piece_g": null,
+"cup_g": 240
+},
+"Orange Zest": {
+"fdc": 169103,
+"piece_g": null,
+"cup_g": 100
+},
+"Oreo Cream Biscuits": {
+"fdc": 171866,
+"piece_g": 11,
+"cup_g": 150
+},
+"Oxtail": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Oyster Mushrooms": {
+"fdc": 168580,
+"piece_g": null,
+"cup_g": 30
+},
+"Oysters": {
+"fdc": 174219,
+"piece_g": 50,
+"cup_g": 200
+},
+"Paccheri Pasta": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Padron peppers": {
+"fdc": 170427,
+"piece_g": 15,
+"cup_g": 120
+},
+"Paella Rice": {
+"fdc": 168931,
+"piece_g": null,
+"cup_g": 185
+},
+"Pak Choi": {
+"fdc": 170390,
+"piece_g": 250,
+"cup_g": 150
+},
+"Palm Butter": {
+"fdc": 171015,
+"piece_g": null,
+"cup_g": 220
+},
+"Palm Hearts": {
+"fdc": 167714,
+"piece_g": null,
+"cup_g": 160
+},
+"Palm Sugar": {
+"fdc": 168833,
+"piece_g": null,
+"cup_g": 200
+},
+"Panang Curry Paste": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 230
+},
+"Panch Poran": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Pandan Leaves": {
+"fdc": null,
+"piece_g": 1,
+"cup_g": 20
+},
+"Paneer": {
+"fdc": 171241,
+"piece_g": null,
+"cup_g": 110
+},
+"Panquehue Cheese": {
+"fdc": 171241,
+"piece_g": null,
+"cup_g": 110
+},
+"Papelon": {
+"fdc": 168833,
+"piece_g": null,
+"cup_g": 200
+},
+"Pappardelle Pasta": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Parmigiano-Reggiano": {
+"fdc": 170848,
+"piece_g": null,
+"cup_g": 100
+},
+"Parsley": {
+"fdc": 170416,
+"piece_g": null,
+"cup_g": 60
+},
+"Parsnips": {
+"fdc": 170417,
+"piece_g": 100,
+"cup_g": 150
+},
+"Passata": {
+"fdc": 170460,
+"piece_g": null,
+"cup_g": 240
+},
+"Passion Fruit Pulp": {
+"fdc": 169108,
+"piece_g": null,
+"cup_g": 240
+},
+"Peach Juice": {
+"fdc": 168185,
+"piece_g": null,
+"cup_g": 240
+},
+"Peaches": {
+"fdc": 169928,
+"piece_g": 150,
+"cup_g": 165
+},
+"Peanut Brittle": {
+"fdc": 169586,
+"piece_g": null,
+"cup_g": 150
+},
+"Peanut Butter": {
+"fdc": 172470,
+"piece_g": null,
+"cup_g": 250
+},
+"Peanut Cookies": {
+"fdc": 172727,
+"piece_g": 25,
+"cup_g": 130
+},
+"Peanuts": {
+"fdc": 172430,
+"piece_g": null,
+"cup_g": 140
+},
+"Pears": {
+"fdc": 169118,
+"piece_g": 175,
+"cup_g": 160
+},
+"Peas": {
+"fdc": 170419,
+"piece_g": null,
+"cup_g": 150
+},
+"Pecan Nuts": {
+"fdc": 170182,
+"piece_g": null,
+"cup_g": 135
+},
+"pecorino": {
+"fdc": 171249,
+"piece_g": null,
+"cup_g": 120
+},
+"Penne Pasta": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 200
+},
+"pepper": {
+"fdc": 170427,
+"piece_g": 120,
+"cup_g": 160
+},
+"Peppercorns": {
+"fdc": 170106,
+"piece_g": null,
+"cup_g": 100
+},
+"Persian Cucumber": {
+"fdc": 168409,
+"piece_g": 100,
+"cup_g": 120
+},
+"Petit Pois": {
+"fdc": 170419,
+"piece_g": null,
+"cup_g": 150
+},
+"Phyllo Dough": {
+"fdc": 172791,
+"piece_g": null,
+"cup_g": 50
+},
+"Pickle Juice": {
+"fdc": 168558,
+"piece_g": null,
+"cup_g": 240
+},
+"Pickled Garlics": {
+"fdc": 169230,
+"piece_g": 5,
+"cup_g": 150
+},
+"Pickled Grape Leaves": {
+"fdc": 169393,
+"piece_g": 5,
+"cup_g": 50
+},
+"Pickled Scallion Head Brine": {
+"fdc": 168558,
+"piece_g": null,
+"cup_g": 240
+},
+"Pickled Scallion Heads": {
+"fdc": 170005,
+"piece_g": 10,
+"cup_g": 100
+},
+"Pico De Gallo Sauce": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 200
+},
+"Pigs Trotters": {
+"fdc": 167859,
+"piece_g": 400,
+"cup_g": 0
+},
+"Pilchards": {
+"fdc": 175139,
+"piece_g": null,
+"cup_g": 200
+},
+"Pimento Stuffed Olives": {
+"fdc": 169096,
+"piece_g": null,
+"cup_g": 150
+},
+"Pineapple Chunks": {
+"fdc": 169124,
+"piece_g": null,
+"cup_g": 165
+},
+"Pineapple Juice": {
+"fdc": 168187,
+"piece_g": null,
+"cup_g": 245
+},
+"Pink Food Colouring": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Pinto Beans": {
+"fdc": 175199,
+"piece_g": null,
+"cup_g": 200
+},
+"Pistachio": {
+"fdc": 170184,
+"piece_g": null,
+"cup_g": 130
+},
+"Pistachio Paste": {
+"fdc": 170184,
+"piece_g": null,
+"cup_g": 230
+},
+"Pita Bread": {
+"fdc": 174915,
+"piece_g": 60,
+"cup_g": 60
+},
+"Pitted Black Olives": {
+"fdc": 169094,
+"piece_g": null,
+"cup_g": 150
+},
+"Pitted Dates": {
+"fdc": 168191,
+"piece_g": 20,
+"cup_g": 160
+},
+"Plantain": {
+"fdc": 169130,
+"piece_g": 150,
+"cup_g": 120
+},
+"Plum Jam": {
+"fdc": 169641,
+"piece_g": null,
+"cup_g": 250
+},
+"Plum Sauce": {
+"fdc": 172879,
+"piece_g": null,
+"cup_g": 240
+},
+"Plum Tomatoes": {
+"fdc": 170051,
+"piece_g": null,
+"cup_g": 200
+},
+"Polish Kabanos": {
+"fdc": 172954,
+"piece_g": 40,
+"cup_g": 120
+},
+"Polish Sausage": {
+"fdc": 174577,
+"piece_g": 150,
+"cup_g": 120
+},
+"Pomegranate": {
+"fdc": 169134,
+"piece_g": 281,
+"cup_g": 164
+},
+"Pomegranate Molasses": {
+"fdc": 167787,
+"piece_g": null,
+"cup_g": 320
+},
+"Poppy Seeds": {
+"fdc": 171330,
+"piece_g": null,
+"cup_g": 144
+},
+"Pork": {
+"fdc": 167902,
+"piece_g": null,
+"cup_g": 250
+},
+"Pork Back Ribs": {
+"fdc": 168242,
+"piece_g": null,
+"cup_g": 250
+},
+"Pork belly slices": {
+"fdc": 167812,
+"piece_g": null,
+"cup_g": 250
+},
+"Pork Cheeks": {
+"fdc": 168219,
+"piece_g": null,
+"cup_g": 250
+},
+"Pork Chops": {
+"fdc": 168286,
+"piece_g": 150,
+"cup_g": 250
+},
+"Pork knuckle": {
+"fdc": 168219,
+"piece_g": 450,
+"cup_g": 0
+},
+"Pork Shoulder": {
+"fdc": 167843,
+"piece_g": 1000,
+"cup_g": 0
+},
+"Pork Shoulder Steaks": {
+"fdc": 167849,
+"piece_g": 200,
+"cup_g": 0
+},
+"Pork Tenderloin": {
+"fdc": 168249,
+"piece_g": 500,
+"cup_g": 0
+},
+"Porridge oats": {
+"fdc": 169705,
+"piece_g": null,
+"cup_g": 80
+},
+"Potatoe Buns": {
+"fdc": null,
+"piece_g": 60,
+"cup_g": 0
+},
+"Potatoes": {
+"fdc": 170026,
+"piece_g": 150,
+"cup_g": 0
+},
+"Powdered Sugar": {
+"fdc": 169656,
+"piece_g": null,
+"cup_g": 120
+},
+"Prahok": {
+"fdc": 168023,
+"piece_g": null,
+"cup_g": 250
+},
+"Prawns": {
+"fdc": 175179,
+"piece_g": 15,
+"cup_g": 120
+},
+"Pre-fried Tequeños": {
+"fdc": null,
+"piece_g": 40,
+"cup_g": 150
+},
+"Pretzels": {
+"fdc": 167555,
+"piece_g": 5,
+"cup_g": 100
+},
+"Prosciutto": {
+"fdc": 173864,
+"piece_g": null,
+"cup_g": 150
+},
+"Prunes": {
+"fdc": 168162,
+"piece_g": 10,
+"cup_g": 150
+},
+"Puff Pastry": {
+"fdc": 172790,
+"piece_g": null,
+"cup_g": 120
+},
+"Pul Biber": {
+"fdc": 171329,
+"piece_g": null,
+"cup_g": 110
+},
+"Pumpkin": {
+"fdc": 168448,
+"piece_g": 1500,
+"cup_g": 240
+},
+"Pumpkin Puree": {
+"fdc": 168450,
+"piece_g": null,
+"cup_g": 240
+},
+"Purple Sprouting Broccoli": {
+"fdc": 170379,
+"piece_g": 150,
+"cup_g": 90
+},
+"Queso Fresco": {
+"fdc": 172223,
+"piece_g": null,
+"cup_g": 110
+},
+"Quinoa": {
+"fdc": 168874,
+"piece_g": null,
+"cup_g": 170
+},
+"Radish": {
+"fdc": 169276,
+"piece_g": 15,
+"cup_g": 120
+},
+"Rainbow Trout": {
+"fdc": 173717,
+"piece_g": 175,
+"cup_g": 0
+},
+"Raisins": {
+"fdc": 168165,
+"piece_g": null,
+"cup_g": 150
+},
+"Rapeseed Oil": {
+"fdc": 172336,
+"piece_g": null,
+"cup_g": 220
+},
+"Ras el hanout": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Raspberries": {
+"fdc": 167755,
+"piece_g": 5,
+"cup_g": 125
+},
+"raspberry jam": {
+"fdc": 169641,
+"piece_g": null,
+"cup_g": 330
+},
+"Raw Frozen Prawns": {
+"fdc": 175179,
+"piece_g": 20,
+"cup_g": 150
+},
+"Raw King Prawns": {
+"fdc": 175179,
+"piece_g": 30,
+"cup_g": 150
+},
+"Raw tiger prawns": {
+"fdc": 175179,
+"piece_g": 25,
+"cup_g": 150
+},
+"Raw Vegetables": {
+"fdc": 170471,
+"piece_g": null,
+"cup_g": 150
+},
+"Raw Yucca": {
+"fdc": 169985,
+"piece_g": null,
+"cup_g": 150
+},
+"Ready rolled shortcrust pastry": {
+"fdc": 172790,
+"piece_g": null,
+"cup_g": 120
+},
+"Red Cabbage": {
+"fdc": 169977,
+"piece_g": null,
+"cup_g": 160
+},
+"Red Chilli": {
+"fdc": 170106,
+"piece_g": 5,
+"cup_g": 100
+},
+"Red Curry Paste": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 200
+},
+"Red Food Colouring": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"red onions": {
+"fdc": 170000,
+"piece_g": 110,
+"cup_g": 160
+},
+"red pepper": {
+"fdc": 170108,
+"piece_g": 120,
+"cup_g": 90
+},
+"red pepper flakes": {
+"fdc": 170106,
+"piece_g": null,
+"cup_g": 110
+},
+"Red Pepper Paste": {
+"fdc": 168546,
+"piece_g": null,
+"cup_g": 240
+},
+"Red Pepper Sauce": {
+"fdc": 171604,
+"piece_g": null,
+"cup_g": 240
+},
+"Red Potatoes": {
+"fdc": 170029,
+"piece_g": 150,
+"cup_g": 160
+},
+"Red Snapper": {
+"fdc": 173698,
+"piece_g": 175,
+"cup_g": 0
+},
+"Red Wine Jelly": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 280
+},
+"Red Wine Vinegar": {
+"fdc": 172240,
+"piece_g": null,
+"cup_g": 240
+},
+"Redcurrants": {
+"fdc": 173964,
+"piece_g": null,
+"cup_g": 160
+},
+"Refried Beans": {
+"fdc": 172438,
+"piece_g": 400,
+"cup_g": 250
+},
+"Rhubarb": {
+"fdc": 167758,
+"piece_g": null,
+"cup_g": 125
+},
+"Rice Flour": {
+"fdc": 169714,
+"piece_g": null,
+"cup_g": 125
+},
+"Rice Flour Pancakes": {
+"fdc": 174086,
+"piece_g": 60,
+"cup_g": 0
+},
+"Rice Krispies": {
+"fdc": 173912,
+"piece_g": null,
+"cup_g": 30
+},
+"Rice Noodles": {
+"fdc": 169742,
+"piece_g": null,
+"cup_g": 100
+},
+"Rice Paper Sheets": {
+"fdc": 169742,
+"piece_g": 10,
+"cup_g": 0
+},
+"rice stick noodles": {
+"fdc": 169742,
+"piece_g": null,
+"cup_g": 100
+},
+"almond extract": {
+"fdc": 173471,
+"piece_g": null,
+"cup_g": 240
+},
+"almond milk": {
+"fdc": 174832,
+"piece_g": null,
+"cup_g": 240
+},
+"Anchovy Fillet": {
+"fdc": 174182,
+"piece_g": 10,
+"cup_g": 160
+},
+"Asparagus": {
+"fdc": 168389,
+"piece_g": 20,
+"cup_g": 130
+},
+"basil": {
+"fdc": 172232,
+"piece_g": null,
+"cup_g": 25
+},
+"Basil Leaves": {
+"fdc": 172232,
+"piece_g": null,
+"cup_g": 25
+},
+"Bay Leaf": {
+"fdc": 170917,
+"piece_g": 1,
+"cup_g": 5
+},
+"Bramley apples": {
+"fdc": 168203,
+"piece_g": 150,
+"cup_g": 160
+},
+"Brown Rice": {
+"fdc": 169703,
+"piece_g": null,
+"cup_g": 195
+},
+"Cajun": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Caster Sugar": {
+"fdc": 169655,
+"piece_g": null,
+"cup_g": 200
+},
+"celeriac": {
+"fdc": 170400,
+"piece_g": null,
+"cup_g": 150
+},
+"celery salt": {
+"fdc": 173468,
+"piece_g": null,
+"cup_g": 270
+},
+"cheddar cheese": {
+"fdc": 173414,
+"piece_g": null,
+"cup_g": 113
+},
+"Chicken Breast": {
+"fdc": 171077,
+"piece_g": 175,
+"cup_g": 140
+},
+"Chicken Breasts": {
+"fdc": 171077,
+"piece_g": 175,
+"cup_g": 140
+},
+"Chicken Thighs": {
+"fdc": 172385,
+"piece_g": 175,
+"cup_g": 0
+},
+"coco sugar": {
+"fdc": 168833,
+"piece_g": null,
+"cup_g": 200
+},
+"Cubed Feta Cheese": {
+"fdc": 173420,
+"piece_g": null,
+"cup_g": 150
+},
+"dark soy sauce": {
+"fdc": 174277,
+"piece_g": null,
+"cup_g": 240
+},
+"double cream": {
+"fdc": 170859,
+"piece_g": null,
+"cup_g": 240
+},
+"Eggs": {
+"fdc": 171287,
+"piece_g": 50,
+"cup_g": 0
+},
+"Enchilada sauce": {
+"fdc": 174074,
+"piece_g": null,
+"cup_g": 240
+},
+"Extra Virgin Olive Oil": {
+"fdc": 171413,
+"piece_g": null,
+"cup_g": 220
+},
+"fennel bulb": {
+"fdc": 169385,
+"piece_g": 250,
+"cup_g": 100
+},
+"fennel seeds": {
+"fdc": 171323,
+"piece_g": null,
+"cup_g": 210
+},
+"fenugreek": {
+"fdc": 171324,
+"piece_g": null,
+"cup_g": 150
+},
+"flour tortilla": {
+"fdc": 175082,
+"piece_g": 45,
+"cup_g": 0
+},
+"Free-range Egg, Beaten": {
+"fdc": 171287,
+"piece_g": 50,
+"cup_g": 240
+},
+"Fresh Thyme": {
+"fdc": 173470,
+"piece_g": null,
+"cup_g": 40
+},
+"Freshly chopped parsley": {
+"fdc": 170416,
+"piece_g": null,
+"cup_g": 60
+},
+"Garlic sauce": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 220
+},
+"Ginger Cordial": {
+"fdc": 167957,
+"piece_g": null,
+"cup_g": 300
+},
+"Ginger Garlic Paste": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 230
+},
+"Golden Syrup": {
+"fdc": 167743,
+"piece_g": null,
+"cup_g": 340
+},
+"Gouda cheese": {
+"fdc": 171241,
+"piece_g": null,
+"cup_g": 110
+},
+"Granulated sugar": {
+"fdc": 169655,
+"piece_g": null,
+"cup_g": 200
+},
+"Green chilli": {
+"fdc": null,
+"piece_g": 5,
+"cup_g": 100
+},
+"Green Red Lentils": {
+"fdc": 174284,
+"piece_g": null,
+"cup_g": 190
+},
+"ground cumin": {
+"fdc": 170923,
+"piece_g": null,
+"cup_g": 110
+},
+"Ground Ginger": {
+"fdc": 170926,
+"piece_g": null,
+"cup_g": 100
+},
+"hot beef stock": {
+"fdc": 171538,
+"piece_g": null,
+"cup_g": 240
+},
+"Khus khus": {
+"fdc": 171330,
+"piece_g": null,
+"cup_g": 140
+},
+"Lamb Loin Chops": {
+"fdc": 172517,
+"piece_g": 120,
+"cup_g": 0
+},
+"Lemon Juice": {
+"fdc": 167747,
+"piece_g": null,
+"cup_g": 240
+},
+"little gem lettuce": {
+"fdc": 169247,
+"piece_g": 150,
+"cup_g": 70
+},
+"macaroni": {
+"fdc": 168903,
+"piece_g": null,
+"cup_g": 200
+},
+"Minced Garlic": {
+"fdc": 169230,
+"piece_g": null,
+"cup_g": 160
+},
+"Muscovado Sugar": {
+"fdc": 168833,
+"piece_g": null,
+"cup_g": 200
+},
+"Mustard": {
+"fdc": 172234,
+"piece_g": null,
+"cup_g": 240
+},
+"Onion": {
+"fdc": 170000,
+"piece_g": 110,
+"cup_g": 160
+},
+"Onion Salt": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"oregano": {
+"fdc": 171328,
+"piece_g": null,
+"cup_g": 10
+},
+"Paprika": {
+"fdc": 171329,
+"piece_g": null,
+"cup_g": 110
+},
+"Parma ham": {
+"fdc": 173864,
+"piece_g": null,
+"cup_g": 150
+},
+"Parmesan": {
+"fdc": 170848,
+"piece_g": null,
+"cup_g": 100
+},
+"peanut oil": {
+"fdc": 171410,
+"piece_g": null,
+"cup_g": 218
+},
+"Pine nuts": {
+"fdc": 170591,
+"piece_g": null,
+"cup_g": 135
+},
+"Plain chocolate": {
+"fdc": 170274,
+"piece_g": null,
+"cup_g": 170
+},
+"Red Chilli Flakes": {
+"fdc": 171319,
+"piece_g": null,
+"cup_g": 110
+},
+"Rice": {
+"fdc": 168877,
+"piece_g": null,
+"cup_g": 185
+},
+"Rice Vermicelli": {
+"fdc": 169742,
+"piece_g": null,
+"cup_g": 85
+},
+"Rice Vinegar": {
+"fdc": 172237,
+"piece_g": null,
+"cup_g": 240
+},
+"Rice wine": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Ricotta": {
+"fdc": 170851,
+"piece_g": null,
+"cup_g": 235
+},
+"Roasted Peanut": {
+"fdc": 175258,
+"piece_g": null,
+"cup_g": 140
+},
+"Roasted pepper": {
+"fdc": 168550,
+"piece_g": null,
+"cup_g": 150
+},
+"Roasted Vegetables": {
+"fdc": 170472,
+"piece_g": null,
+"cup_g": 150
+},
+"Rocket": {
+"fdc": 169387,
+"piece_g": null,
+"cup_g": 20
+},
+"Romano Pepper": {
+"fdc": 170108,
+"piece_g": 120,
+"cup_g": 150
+},
+"Rose water": {
+"fdc": 174158,
+"piece_g": null,
+"cup_g": 240
+},
+"Rosemary": {
+"fdc": 173473,
+"piece_g": null,
+"cup_g": 15
+},
+"Rum": {
+"fdc": 174817,
+"piece_g": null,
+"cup_g": 240
+},
+"Runner Beans": {
+"fdc": 169222,
+"piece_g": null,
+"cup_g": 125
+},
+"Russet Potato": {
+"fdc": 170027,
+"piece_g": 170,
+"cup_g": 150
+},
+"Rye": {
+"fdc": 168884,
+"piece_g": null,
+"cup_g": 200
+},
+"Rye Bread": {
+"fdc": 172684,
+"piece_g": null,
+"cup_g": 150
+},
+"Rye Flour": {
+"fdc": 168886,
+"piece_g": null,
+"cup_g": 120
+},
+"Rye Grain": {
+"fdc": 168884,
+"piece_g": null,
+"cup_g": 200
+},
+"Saffron": {
+"fdc": 170934,
+"piece_g": null,
+"cup_g": 50
+},
+"Sage": {
+"fdc": 170935,
+"piece_g": null,
+"cup_g": 10
+},
+"Sake": {
+"fdc": 167723,
+"piece_g": null,
+"cup_g": 240
+},
+"Salsa": {
+"fdc": 174524,
+"piece_g": null,
+"cup_g": 240
+},
+"Salsa Lizano": {
+"fdc": 171610,
+"piece_g": null,
+"cup_g": 240
+},
+"Salt Cod": {
+"fdc": 174190,
+"piece_g": null,
+"cup_g": 0
+},
+"salted butter": {
+"fdc": 173410,
+"piece_g": null,
+"cup_g": 227
+},
+"Sardines": {
+"fdc": 175139,
+"piece_g": null,
+"cup_g": 240
+},
+"Saskatoon Berries": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 150
+},
+"Sauerkraut": {
+"fdc": 169279,
+"piece_g": null,
+"cup_g": 240
+},
+"sausages": {
+"fdc": 171631,
+"piece_g": 50,
+"cup_g": 0
+},
+"Savoy Cabbage": {
+"fdc": 170388,
+"piece_g": null,
+"cup_g": 170
+},
+"Sazon": {
+"fdc": 172242,
+"piece_g": null,
+"cup_g": 120
+},
+"Sazon Goya With Azafran": {
+"fdc": 172242,
+"piece_g": null,
+"cup_g": 120
+},
+"Scallions": {
+"fdc": 170005,
+"piece_g": 15,
+"cup_g": 110
+},
+"Scotch Bonnet": {
+"fdc": 170106,
+"piece_g": 10,
+"cup_g": 0
+},
+"Sea Bass": {
+"fdc": 175142,
+"piece_g": 175,
+"cup_g": 0
+},
+"Sea Bass Fillets": {
+"fdc": 175142,
+"piece_g": 175,
+"cup_g": 225
+},
+"Sea Salt": {
+"fdc": 173468,
+"piece_g": null,
+"cup_g": 270
+},
+"Seafood stock": {
+"fdc": 172885,
+"piece_g": null,
+"cup_g": 240
+},
+"Seasoned Rice Vinegar": {
+"fdc": 172237,
+"piece_g": null,
+"cup_g": 240
+},
+"Seasoning": {
+"fdc": 171331,
+"piece_g": null,
+"cup_g": 110
+},
+"Seeds": {
+"fdc": 170150,
+"piece_g": null,
+"cup_g": 130
+},
+"Self-raising Flour": {
+"fdc": 168895,
+"piece_g": null,
+"cup_g": 125
+},
+"Semi-skimmed Milk": {
+"fdc": 171267,
+"piece_g": null,
+"cup_g": 240
+},
+"Semolina": {
+"fdc": 168933,
+"piece_g": null,
+"cup_g": 160
+},
+"Semolina Flour": {
+"fdc": 168933,
+"piece_g": null,
+"cup_g": 160
+},
+"Serrano Ham": {
+"fdc": 173864,
+"piece_g": null,
+"cup_g": 200
+},
+"Sesame Seed": {
+"fdc": 170150,
+"piece_g": null,
+"cup_g": 90
+},
+"Sesame Seed Burger Buns": {
+"fdc": null,
+"piece_g": 60,
+"cup_g": 0
+},
+"Sesame Seed Oil": {
+"fdc": 171016,
+"piece_g": null,
+"cup_g": 220
+},
+"Sevaiiya": {
+"fdc": 169742,
+"piece_g": null,
+"cup_g": 120
+},
+"Shaoxing Wine": {
+"fdc": 169070,
+"piece_g": null,
+"cup_g": 240
+},
+"Shatkora": {
+"fdc": 168155,
+"piece_g": 85,
+"cup_g": 160
+},
+"Shelled Hazelnuts": {
+"fdc": 170581,
+"piece_g": null,
+"cup_g": 130
+},
+"Sherry": {
+"fdc": 173185,
+"piece_g": null,
+"cup_g": 240
+},
+"Sherry vinegar": {
+"fdc": 172240,
+"piece_g": null,
+"cup_g": 240
+},
+"Shiitake Mushrooms": {
+"fdc": 169242,
+"piece_g": 20,
+"cup_g": 80
+},
+"Shortcrust Pastry": {
+"fdc": 172790,
+"piece_g": null,
+"cup_g": 150
+},
+"Shortening": {
+"fdc": 173584,
+"piece_g": null,
+"cup_g": 210
+},
+"Shredded Coconut": {
+"fdc": 170170,
+"piece_g": null,
+"cup_g": 100
+},
+"Shredded Meat": {
+"fdc": 172161,
+"piece_g": null,
+"cup_g": 150
+},
+"Shredded Mexican Cheese": {
+"fdc": 171288,
+"piece_g": null,
+"cup_g": 115
+},
+"Shrimp": {
+"fdc": 175179,
+"piece_g": 20,
+"cup_g": 125
+},
+"Shrimp Paste": {
+"fdc": 171972,
+"piece_g": null,
+"cup_g": 220
+},
+"Shrimp Stock": {
+"fdc": 172885,
+"piece_g": null,
+"cup_g": 240
+},
+"Sichuan pepper": {
+"fdc": 170931,
+"piece_g": null,
+"cup_g": 110
+},
+"Silken Tofu": {
+"fdc": 172476,
+"piece_g": null,
+"cup_g": 240
+},
+"Single Cream": {
+"fdc": 170857,
+"piece_g": null,
+"cup_g": 240
+},
+"Sirloin steak": {
+"fdc": 168726,
+"piece_g": 225,
+"cup_g": 0
+},
+"Sirloin Steak tips": {
+"fdc": 168726,
+"piece_g": 30,
+"cup_g": 0
+},
+"Sirop De Liège": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 300
+},
+"Skirty Steak": {
+"fdc": 172158,
+"piece_g": 200,
+"cup_g": 0
+},
+"Small Potatoes": {
+"fdc": 170026,
+"piece_g": 50,
+"cup_g": 150
+},
+"Smoked Haddock": {
+"fdc": 174199,
+"piece_g": 150,
+"cup_g": 0
+},
+"Smoked Ham": {
+"fdc": 174611,
+"piece_g": 100,
+"cup_g": 0
+},
+"Smoked Paprika": {
+"fdc": 171329,
+"piece_g": null,
+"cup_g": 110
+},
+"Smoked Salmon": {
+"fdc": 171985,
+"piece_g": null,
+"cup_g": 0
+},
+"Smoked Turkey Neck": {
+"fdc": 167713,
+"piece_g": null,
+"cup_g": 0
+},
+"Smoky Aïoli": {
+"fdc": 171009,
+"piece_g": null,
+"cup_g": 220
+},
+"smoky paprika": {
+"fdc": 171329,
+"piece_g": null,
+"cup_g": 110
+},
+"Snapper Fish": {
+"fdc": 173698,
+"piece_g": 175,
+"cup_g": 0
+},
+"Snow Peas": {
+"fdc": 170010,
+"piece_g": 5,
+"cup_g": 130
+},
+"Soda Water": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Sorrel Jam": {
+"fdc": 169641,
+"piece_g": null,
+"cup_g": 330
+},
+"Sour Milk": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Sour Pork Sausage": {
+"fdc": 172934,
+"piece_g": 50,
+"cup_g": 0
+},
+"Soured cream and chive dip": {
+"fdc": 171257,
+"piece_g": null,
+"cup_g": 230
+},
+"Soy sauce": {
+"fdc": 174277,
+"piece_g": null,
+"cup_g": 180
+},
+"Soya Bean": {
+"fdc": 174270,
+"piece_g": null,
+"cup_g": 160
+},
+"Soya Milk": {
+"fdc": 167730,
+"piece_g": null,
+"cup_g": 240
+},
+"Spaghetti": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Speculaas Spice Mix": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 110
+},
+"Spinach": {
+"fdc": 168462,
+"piece_g": null,
+"cup_g": 30
+},
+"Split Peas": {
+"fdc": 172428,
+"piece_g": null,
+"cup_g": 200
+},
+"Squash": {
+"fdc": 170489,
+"piece_g": 500,
+"cup_g": 160
+},
+"Squid": {
+"fdc": 174223,
+"piece_g": null,
+"cup_g": 150
+},
+"Sriracha": {
+"fdc": 171186,
+"piece_g": null,
+"cup_g": 220
+},
+"Stale bread": {
+"fdc": 167532,
+"piece_g": 50,
+"cup_g": 100
+},
+"Star Anise": {
+"fdc": 171316,
+"piece_g": null,
+"cup_g": 100
+},
+"Starch": {
+"fdc": 169698,
+"piece_g": null,
+"cup_g": 125
+},
+"Sticky Rice Flour": {
+"fdc": 168883,
+"piece_g": null,
+"cup_g": 150
+},
+"Stilton Cheese": {
+"fdc": 172175,
+"piece_g": null,
+"cup_g": 110
+},
+"Stir-fry Vegetables": {
+"fdc": 170471,
+"piece_g": null,
+"cup_g": 150
+},
+"Stoned Dates": {
+"fdc": 171726,
+"piece_g": 7,
+"cup_g": 160
+},
+"Stout": {
+"fdc": 168746,
+"piece_g": null,
+"cup_g": 240
+},
+"Strained Yoghurt": {
+"fdc": 171304,
+"piece_g": null,
+"cup_g": 240
+},
+"strawberries": {
+"fdc": 167762,
+"piece_g": 12,
+"cup_g": 160
+},
+"Streaky Bacon": {
+"fdc": 168277,
+"piece_g": 30,
+"cup_g": 0
+},
+"Strong white bread flour": {
+"fdc": 168913,
+"piece_g": null,
+"cup_g": 125
+},
+"Strong White Flour": {
+"fdc": 168913,
+"piece_g": null,
+"cup_g": 125
+},
+"Strong Wholemeal Flour": {
+"fdc": 168893,
+"piece_g": null,
+"cup_g": 130
+},
+"Suet": {
+"fdc": 170193,
+"piece_g": null,
+"cup_g": 200
+},
+"Sugar Snap Peas": {
+"fdc": 170010,
+"piece_g": null,
+"cup_g": 130
+},
+"Sugar Syrup": {
+"fdc": 167743,
+"piece_g": null,
+"cup_g": 340
+},
+"Sultanas": {
+"fdc": 168164,
+"piece_g": null,
+"cup_g": 150
+},
+"Sumac": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 110
+},
+"Summer Savoury": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 0
+},
+"Sun-Dried Tomatoes": {
+"fdc": 168567,
+"piece_g": null,
+"cup_g": 120
+},
+"Sunflower Oil": {
+"fdc": 171025,
+"piece_g": null,
+"cup_g": 218
+},
+"Sushi Rice": {
+"fdc": 168931,
+"piece_g": null,
+"cup_g": 185
+},
+"Swede": {
+"fdc": 168454,
+"piece_g": null,
+"cup_g": 150
+},
+"sweet chilli sauce": {
+"fdc": 171595,
+"piece_g": null,
+"cup_g": 280
+},
+"Sweet Peppadew Peppers": {
+"fdc": 170108,
+"piece_g": 15,
+"cup_g": 130
+},
+"Sweet Potatoes": {
+"fdc": 168482,
+"piece_g": 150,
+"cup_g": 130
+},
+"Sweet Quark": {
+"fdc": 171246,
+"piece_g": null,
+"cup_g": 240
+},
+"Sweet Red Peppers": {
+"fdc": 170108,
+"piece_g": 120,
+"cup_g": 150
+},
+"Sweet Sherry": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"sweet smoked paprika": {
+"fdc": 171329,
+"piece_g": null,
+"cup_g": 110
+},
+"Sweetcorn": {
+"fdc": 169998,
+"piece_g": null,
+"cup_g": 180
+},
+"Sweetened Condensed Milk": {
+"fdc": 171275,
+"piece_g": null,
+"cup_g": 300
+},
+"Swiss Cheese": {
+"fdc": 171251,
+"piece_g": null,
+"cup_g": 110
+},
+"Szechuan Peppercorns": {
+"fdc": 170931,
+"piece_g": null,
+"cup_g": 110
+},
+"Tabasco Sauce": {
+"fdc": 174528,
+"piece_g": null,
+"cup_g": 230
+},
+"Tagliatelle": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Tahini": {
+"fdc": 170189,
+"piece_g": null,
+"cup_g": 240
+},
+"Tahini Paste": {
+"fdc": 170189,
+"piece_g": null,
+"cup_g": 240
+},
+"Tamarind ball": {
+"fdc": 170281,
+"piece_g": null,
+"cup_g": 200
+},
+"Tamarind Pulp": {
+"fdc": 167763,
+"piece_g": null,
+"cup_g": 240
+},
+"Tapioca": {
+"fdc": 169717,
+"piece_g": null,
+"cup_g": 200
+},
+"Taro": {
+"fdc": 169308,
+"piece_g": null,
+"cup_g": 160
+},
+"Tarragon Leaves": {
+"fdc": 169997,
+"piece_g": null,
+"cup_g": 40
+},
+"Tempeh": {
+"fdc": 174272,
+"piece_g": null,
+"cup_g": 150
+},
+"Tempura Flour": {
+"fdc": 168894,
+"piece_g": null,
+"cup_g": 125
+},
+"Thai Chilli Jam": {
+"fdc": 169641,
+"piece_g": null,
+"cup_g": 300
+},
+"Thai Green Curry Paste": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 250
+},
+"Thai Red Curry Paste": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 250
+},
+"thyme": {
+"fdc": 173470,
+"piece_g": null,
+"cup_g": 40
+},
+"Tiger Prawns": {
+"fdc": 175179,
+"piece_g": 20,
+"cup_g": 150
+},
+"Tinned Tomatos": {
+"fdc": 170051,
+"piece_g": 400,
+"cup_g": 240
+},
+"Toast": {
+"fdc": 174925,
+"piece_g": 30,
+"cup_g": 0
+},
+"Tobasco Sauce": {
+"fdc": 174527,
+"piece_g": null,
+"cup_g": 220
+},
+"Toffee Popcorn": {
+"fdc": 167552,
+"piece_g": null,
+"cup_g": 40
+},
+"Tofu": {
+"fdc": 172475,
+"piece_g": null,
+"cup_g": 240
+},
+"Tomato": {
+"fdc": 170457,
+"piece_g": 120,
+"cup_g": 160
+},
+"Tomato Ketchup": {
+"fdc": 170054,
+"piece_g": null,
+"cup_g": 280
+},
+"tomato puree": {
+"fdc": 170460,
+"piece_g": null,
+"cup_g": 240
+},
+"Tomato Purée": {
+"fdc": 170459,
+"piece_g": null,
+"cup_g": 240
+},
+"Tomato Sauce": {
+"fdc": 170054,
+"piece_g": null,
+"cup_g": 240
+},
+"Toor Dal": {
+"fdc": 172436,
+"piece_g": null,
+"cup_g": 200
+},
+"Tortillas": {
+"fdc": 175037,
+"piece_g": 50,
+"cup_g": 0
+},
+"Treacle": {
+"fdc": 168820,
+"piece_g": null,
+"cup_g": 340
+},
+"Tripe": {
+"fdc": 170599,
+"piece_g": null,
+"cup_g": 0
+},
+"Trout": {
+"fdc": 175153,
+"piece_g": 175,
+"cup_g": 0
+},
+"Truffle Oil": {
+"fdc": 171413,
+"piece_g": null,
+"cup_g": 220
+},
+"Tuna": {
+"fdc": 175159,
+"piece_g": 175,
+"cup_g": 240
+},
+"Turkey": {
+"fdc": 171480,
+"piece_g": 175,
+"cup_g": 240
+},
+"Turkey Ham": {
+"fdc": 168092,
+"piece_g": null,
+"cup_g": 240
+},
+"Turkey Mince": {
+"fdc": 171505,
+"piece_g": null,
+"cup_g": 240
+},
+"Turkey Neck": {
+"fdc": 171086,
+"piece_g": 150,
+"cup_g": 240
+},
+"Turkish Delight": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Turnips": {
+"fdc": 170465,
+"piece_g": 110,
+"cup_g": 160
+},
+"Udon Noodles": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Unflavoured Gelatin": {
+"fdc": 169599,
+"piece_g": null,
+"cup_g": 100
+},
+"Unsalted Beef Stock": {
+"fdc": 172889,
+"piece_g": null,
+"cup_g": 240
+},
+"Unsalted Butter": {
+"fdc": 173430,
+"piece_g": null,
+"cup_g": 227
+},
+"Unsalted Peanuts": {
+"fdc": 172430,
+"piece_g": null,
+"cup_g": 140
+},
+"Unsalted Pistachio": {
+"fdc": 170184,
+"piece_g": null,
+"cup_g": 130
+},
+"Unsweetened Cocoa": {
+"fdc": 169593,
+"piece_g": null,
+"cup_g": 100
+},
+"Unsweetened Coconut Milk": {
+"fdc": 170173,
+"piece_g": null,
+"cup_g": 240
+},
+"Unwaxed Lemon": {
+"fdc": 167746,
+"piece_g": 85,
+"cup_g": 160
+},
+"Unwaxed Lime": {
+"fdc": 168155,
+"piece_g": 85,
+"cup_g": 160
+},
+"Vanilla Bean Paste": {
+"fdc": 173471,
+"piece_g": null,
+"cup_g": 240
+},
+"Vanilla Custard": {
+"fdc": 168773,
+"piece_g": null,
+"cup_g": 240
+},
+"vanilla pod": {
+"fdc": null,
+"piece_g": 3,
+"cup_g": 0
+},
+"Vanilla Powder": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 125
+},
+"vanilla sugar": {
+"fdc": 169655,
+"piece_g": null,
+"cup_g": 200
+},
+"Veal": {
+"fdc": 175290,
+"piece_g": 175,
+"cup_g": 0
+},
+"Vegan White Wine Vinegar": {
+"fdc": 172237,
+"piece_g": null,
+"cup_g": 240
+},
+"Vegetable Millk": {
+"fdc": 170861,
+"piece_g": null,
+"cup_g": 240
+},
+"Vegetable Shortening": {
+"fdc": 173584,
+"piece_g": null,
+"cup_g": 190
+},
+"vegetable stock": {
+"fdc": 171583,
+"piece_g": null,
+"cup_g": 240
+},
+"vegetable stock cube": {
+"fdc": null,
+"piece_g": 10,
+"cup_g": 0
+},
+"Vegetables": {
+"fdc": 170471,
+"piece_g": null,
+"cup_g": 150
+},
+"Vermicelli Pasta": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Vermicelli Rice Noodles": {
+"fdc": 169742,
+"piece_g": null,
+"cup_g": 100
+},
+"Vinaigrette Dressing": {
+"fdc": 168096,
+"piece_g": null,
+"cup_g": 220
+},
+"Vine Leaves": {
+"fdc": 168575,
+"piece_g": null,
+"cup_g": 50
+},
+"Vine Tomatoes": {
+"fdc": 170457,
+"piece_g": 120,
+"cup_g": 160
+},
+"Vinegar": {
+"fdc": 172237,
+"piece_g": null,
+"cup_g": 240
+},
+"västerbottensost cheese": {
+"fdc": 171242,
+"piece_g": null,
+"cup_g": 110
+},
+"Walnuts": {
+"fdc": 170187,
+"piece_g": null,
+"cup_g": 135
+},
+"Warm Water": {
+"fdc": 173647,
+"piece_g": null,
+"cup_g": 240
+},
+"Water Chestnut": {
+"fdc": 170164,
+"piece_g": null,
+"cup_g": 150
+},
+"Wheat Flour": {
+"fdc": 168894,
+"piece_g": null,
+"cup_g": 125
+},
+"Whipping Cream": {
+"fdc": 170859,
+"piece_g": null,
+"cup_g": 238
+},
+"White Asparagus": {
+"fdc": 168389,
+"piece_g": 20,
+"cup_g": 134
+},
+"White bread": {
+"fdc": 167532,
+"piece_g": 45,
+"cup_g": 110
+},
+"White Bread Mix": {
+"fdc": 168894,
+"piece_g": null,
+"cup_g": 125
+},
+"White Cabbage": {
+"fdc": 169975,
+"piece_g": 800,
+"cup_g": 70
+},
+"White Chocolate": {
+"fdc": 167571,
+"piece_g": null,
+"cup_g": 170
+},
+"White Chocolate Chips": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 170
+},
+"White Cornmeal": {
+"fdc": 168922,
+"piece_g": null,
+"cup_g": 150
+},
+"White Fish Fillets": {
+"fdc": 171964,
+"piece_g": 175,
+"cup_g": 200
+},
+"White Flour": {
+"fdc": 168894,
+"piece_g": null,
+"cup_g": 125
+},
+"White Masarepa": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 160
+},
+"White Sauerkraut": {
+"fdc": 169279,
+"piece_g": null,
+"cup_g": 110
+},
+"white vinegar": {
+"fdc": 172237,
+"piece_g": null,
+"cup_g": 240
+},
+"White Wine Vinegar": {
+"fdc": 172237,
+"piece_g": null,
+"cup_g": 240
+},
+"White Yam": {
+"fdc": 170071,
+"piece_g": 200,
+"cup_g": 150
+},
+"Whole black peppercorns": {
+"fdc": 170931,
+"piece_g": null,
+"cup_g": 100
+},
+"Whole Milk": {
+"fdc": 171265,
+"piece_g": null,
+"cup_g": 245
+},
+"Wholegrain Bread": {
+"fdc": 172688,
+"piece_g": 50,
+"cup_g": 100
+},
+"Wholegrain Mustard": {
+"fdc": 172234,
+"piece_g": null,
+"cup_g": 210
+},
+"Wild Garlic Leaves": {
+"fdc": 169997,
+"piece_g": null,
+"cup_g": 20
+},
+"Wild Mushrooms": {
+"fdc": 168422,
+"piece_g": null,
+"cup_g": 70
+},
+"Wonton Skin": {
+"fdc": 172802,
+"piece_g": 10,
+"cup_g": 0
+},
+"Wood Ear Mushrooms": {
+"fdc": 169237,
+"piece_g": null,
+"cup_g": 40
+},
+"Yautia": {
+"fdc": 169401,
+"piece_g": 200,
+"cup_g": 150
+},
+"Yeast": {
+"fdc": 175043,
+"piece_g": null,
+"cup_g": 140
+},
+"Yellow Food Colouring": {
+"fdc": null,
+"piece_g": null,
+"cup_g": 240
+},
+"Yellow Masarepa": {
+"fdc": 169697,
+"piece_g": null,
+"cup_g": 160
+},
+"Yellow Onion": {
+"fdc": 170000,
+"piece_g": 110,
+"cup_g": 160
+},
+"Yellow Pepper": {
+"fdc": 169383,
+"piece_g": 120,
+"cup_g": 90
+},
+"Yellow Split Peas": {
+"fdc": 172428,
+"piece_g": null,
+"cup_g": 200
+},
+"Yogurt": {
+"fdc": 171284,
+"piece_g": null,
+"cup_g": 240
+},
+"Yuca": {
+"fdc": 169985,
+"piece_g": null,
+"cup_g": 150
+},
+"Yukon Gold Potatoes": {
+"fdc": 170028,
+"piece_g": 170,
+"cup_g": 150
+},
+"Zapallo Squash": {
+"fdc": 170489,
+"piece_g": 1000,
+"cup_g": 200
+},
+"zucchini": {
+"fdc": 169291,
+"piece_g": 200,
+"cup_g": 120
+},
+"Black pepper": {
+"fdc": 170931,
+"piece_g": null,
+"cup_g": 230
+},
+"black treacle": {
+"fdc": 168820,
+"piece_g": null,
+"cup_g": 340
+},
+"bread": {
+"fdc": 167532,
+"piece_g": 50,
+"cup_g": 120
+},
+"Butter": {
+"fdc": 173430,
+"piece_g": null,
+"cup_g": 227
+},
+"Cashew nuts": {
+"fdc": 170162,
+"piece_g": null,
+"cup_g": 130
+},
+"chestnut mushroom": {
+"fdc": 168434,
+"piece_g": 20,
+"cup_g": 80
+},
+"chicken stock": {
+"fdc": 172884,
+"piece_g": null,
+"cup_g": 240
+},
+"chilled butter": {
+"fdc": 173430,
+"piece_g": null,
+"cup_g": 227
+},
+"Chilli Powder": {
+"fdc": 171319,
+"piece_g": null,
+"cup_g": 110
+},
+"Chinese Broccoli": {
+"fdc": 169404,
+"piece_g": null,
+"cup_g": 100
+},
+"Chopped Onion": {
+"fdc": 170000,
+"piece_g": 110,
+"cup_g": 160
+},
+"Coconut cream": {
+"fdc": 170580,
+"piece_g": null,
+"cup_g": 240
+},
+"coconut milk": {
+"fdc": 170173,
+"piece_g": null,
+"cup_g": 240
+},
+"Coriander Seeds": {
+"fdc": 170922,
+"piece_g": null,
+"cup_g": 150
+},
+"Cumin seeds": {
+"fdc": 170923,
+"piece_g": null,
+"cup_g": 150
+},
+"Digestive Biscuits": {
+"fdc": 171867,
+"piece_g": 15,
+"cup_g": 120
+},
+"Farfalle": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Fresh Basil": {
+"fdc": 172232,
+"piece_g": null,
+"cup_g": 25
+},
+"Garlic powder": {
+"fdc": 171325,
+"piece_g": null,
+"cup_g": 120
+},
+"Kosher salt": {
+"fdc": 173468,
+"piece_g": null,
+"cup_g": 185
+},
+"Massaman Curry Paste": {
+"fdc": 170924,
+"piece_g": null,
+"cup_g": 200
+},
+"Oyster Sauce": {
+"fdc": 174529,
+"piece_g": null,
+"cup_g": 220
+},
+"Parmesan cheese": {
+"fdc": 170848,
+"piece_g": null,
+"cup_g": 100
+},
+"penne rigate": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"Red Chilli Powder": {
+"fdc": 171319,
+"piece_g": null,
+"cup_g": 110
+},
+"rigatoni": {
+"fdc": 169736,
+"piece_g": null,
+"cup_g": 100
+},
+"shallots": {
+"fdc": 170499,
+"piece_g": 25,
+"cup_g": 160
+},
+"Shredded Monterey Jack Cheese": {
+"fdc": 170844,
+"piece_g": null,
+"cup_g": 113
+},
+"sour cream": {
+"fdc": 171257,
+"piece_g": null,
+"cup_g": 240
+},
+"Spring onions": {
+"fdc": 170005,
+"piece_g": 30,
+"cup_g": 100
+},
+"sugar": {
+"fdc": 169655,
+"piece_g": null,
+"cup_g": 200
+},
+"Thai Fish Sauce": {
+"fdc": 174531,
+"piece_g": null,
+"cup_g": 220
+},
+"Turmeric": {
+"fdc": 172231,
+"piece_g": null,
+"cup_g": 200
+},
+"Turmeric powder": {
+"fdc": 172231,
+"piece_g": null,
+"cup_g": 200
+},
+"vanilla extract": {
+"fdc": 173471,
+"piece_g": null,
+"cup_g": 240
+},
+"Vegetable oil": {
+"fdc": 172370,
+"piece_g": null,
+"cup_g": 220
+},
+"Whole Wheat": {
+"fdc": 168893,
+"piece_g": null,
+"cup_g": 120
+},
+"Beef Stock": {
+"fdc": 172883,
+"piece_g": null,
+"cup_g": 240
+},
+"Cacao": {
+"fdc": 169593,
+"piece_g": null,
+"cup_g": 100
+},
+"Ginger": {
+"fdc": 169231,
+"piece_g": null,
+"cup_g": 120
+},
+"Heavy Cream": {
+"fdc": 170859,
+"piece_g": null,
+"cup_g": 235
+},
+"Medjool Dates": {
+"fdc": 168191,
+"piece_g": 24,
+"cup_g": 160
+},
+"onions": {
+"fdc": 170000,
+"piece_g": 110,
+"cup_g": 160
+},
+"Potato Starch": {
+"fdc": 168446,
+"piece_g": null,
+"cup_g": 125
+},
+"rolled oats": {
+"fdc": 169705,
+"piece_g": null,
+"cup_g": 80
+},
+"Salmon": {
+"fdc": 173686,
+"piece_g": 175,
+"cup_g": 0
+},
+"Tomatoes": {
+"fdc": 170457,
+"piece_g": 110,
+"cup_g": 160
+},
+"Vanilla": {
+"fdc": 173471,
+"piece_g": null,
+"cup_g": 240
+},
+"Vegan Butter": {
+"fdc": 172349,
+"piece_g": null,
+"cup_g": 220
+},
+"water": {
+"fdc": 173647,
+"piece_g": null,
+"cup_g": 240
+},
+"White wine": {
+"fdc": 174837,
+"piece_g": null,
+"cup_g": 240
+},
+"worcestershire sauce": {
+"fdc": 171610,
+"piece_g": null,
+"cup_g": 240
+}
+}

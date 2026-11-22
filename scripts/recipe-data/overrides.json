@@ -1,0 +1,356 @@
+{
+ "flour": {
+  "fdc": 168894
+ },
+ "plain flour": {
+  "fdc": 168894,
+  "cup_g": 125
+ },
+ "coriander": {
+  "fdc": 169997,
+  "piece_g": 1
+ },
+ "chickpeas": {
+  "fdc": 175206
+ },
+ "kidney beans": {
+  "fdc": 175195
+ },
+ "red kidney beans": {
+  "fdc": 175195
+ },
+ "cannellini beans": {
+  "fdc": 175192
+ },
+ "white beans": {
+  "fdc": 175192
+ },
+ "black beans": {
+  "fdc": 175188
+ },
+ "butter beans": {
+  "fdc": 174254
+ },
+ "chilli": {
+  "fdc": 170106
+ },
+ "red pepper flakes": {
+  "fdc": 170932
+ },
+ "filo pastry": {
+  "fdc": 172791,
+  "piece_g": 19
+ },
+ "mascarpone": {
+  "fdc": 173418
+ },
+ "ham": {
+  "fdc": 173864
+ },
+ "mint": {
+  "fdc": 173475,
+  "piece_g": 1
+ },
+ "fresh mint": {
+  "fdc": 173475
+ },
+ "dried mint": {
+  "fdc": 172239
+ },
+ "breadcrumbs": {
+  "fdc": 174928
+ },
+ "creme fraiche": {
+  "fdc": 170859
+ },
+ "crème fraîche": {
+  "fdc": 170859
+ },
+ "bean sprouts": {
+  "fdc": 169957
+ },
+ "brandy": {
+  "fdc": 171919
+ },
+ "orange blossom water": {
+  "fdc": 173647
+ },
+ "ground almonds": {
+  "fdc": 170567
+ },
+ "flaked almonds": {
+  "fdc": 170567
+ },
+ "lemongrass": {
+  "fdc": 168573,
+  "piece_g": 20
+ },
+ "lemongrass stalks": {
+  "fdc": 168573,
+  "piece_g": 20
+ },
+ "galangal": {
+  "fdc": 169231
+ },
+ "chocolate chips": {
+  "fdc": 167976
+ },
+ "salt": {
+  "fdc": 173468,
+  "cup_g": 290,
+  "piece_g": 1
+ },
+ "onion salt": {
+  "fdc": 173468,
+  "cup_g": 290
+ },
+ "olive oil": {
+  "fdc": 171413,
+  "cup_g": 216
+ },
+ "fish sauce": {
+  "fdc": 174531,
+  "cup_g": 290
+ },
+ "brown sugar": {
+  "fdc": 168833,
+  "cup_g": 220
+ },
+ "dark soft brown sugar": {
+  "fdc": 168833,
+  "cup_g": 220
+ },
+ "cinnamon": {
+  "fdc": 171320,
+  "cup_g": 125,
+  "piece_g": 3
+ },
+ "tamarind paste": {
+  "fdc": 167763,
+  "cup_g": 260
+ },
+ "white fish": {
+  "fdc": 171955,
+  "piece_g": 150
+ },
+ "red wine": {
+  "fdc": 173190,
+  "cup_g": 240
+ },
+ "ginger paste": {
+  "fdc": 169231,
+  "cup_g": 230
+ },
+ "chopped tomatoes": {
+  "fdc": 170051,
+  "cup_g": 240,
+  "piece_g": 400
+ },
+ "full fat yogurt": {
+  "fdc": 171284,
+  "cup_g": 245
+ },
+ "flax eggs": {
+  "fdc": 169414,
+  "piece_g": 7
+ },
+ "green chilli": {
+  "fdc": 170497,
+  "piece_g": 5
+ },
+ "vegetable stock cube": {
+  "fdc": 171562,
+  "piece_g": 10
+ },
+ "thai green curry paste": {
+  "fdc": 170924,
+  "cup_g": 240
+ },
+ "vanilla pod": {
+  "fdc": 173471,
+  "piece_g": 2
+ },
+ "cardamom": {
+  "piece_g": 0.2
+ },
+ "cloves": {
+  "piece_g": 0.1
+ },
+ "star anise": {
+  "piece_g": 1
+ },
+ "allspice": {
+  "piece_g": 0.1
+ },
+ "allspice berries": {
+  "piece_g": 0.1
+ },
+ "juniper berries": {
+  "piece_g": 0.1
+ },
+ "dried apricots": {
+  "piece_g": 8
+ },
+ "phyllo dough": {
+  "piece_g": 19
+ },
+ "lasagne sheets": {
+  "piece_g": 20
+ },
+ "puff pastry": {
+  "piece_g": 320
+ },
+ "ginger": {
+  "piece_g": 15
+ },
+ "parsley": {
+  "piece_g": 1
+ },
+ "thyme": {
+  "piece_g": 1
+ },
+ "fresh thyme": {
+  "piece_g": 1
+ },
+ "dill": {
+  "piece_g": 1
+ },
+ "basil": {
+  "piece_g": 0.5
+ },
+ "basil leaves": {
+  "piece_g": 0.5
+ },
+ "lime leaves": {
+  "piece_g": 0.2
+ },
+ "tarragon leaves": {
+  "piece_g": 0.5
+ },
+ "lettuce": {
+  "piece_g": 300
+ },
+ "iceberg lettuce": {
+  "piece_g": 500
+ },
+ "red cabbage": {
+  "piece_g": 900
+ },
+ "chinese cabbage": {
+  "piece_g": 900
+ },
+ "napa cabbage": {
+  "piece_g": 900
+ },
+ "chinese leaf": {
+  "piece_g": 900
+ },
+ "cabbage leaves": {
+  "piece_g": 25
+ },
+ "beef stock": {
+  "piece_g": 10
+ },
+ "chicken stock": {
+  "piece_g": 10
+ },
+ "lamb stock": {
+  "piece_g": 10
+ },
+ "beef stock concentrate": {
+  "piece_g": 10
+ },
+ "lemon juice": {
+  "piece_g": 30
+ },
+ "lemon zest": {
+  "piece_g": 2
+ },
+ "orange zest": {
+  "piece_g": 3
+ },
+ "sweetcorn": {
+  "piece_g": 150
+ },
+ "soy sauce": {
+  "piece_g": 15
+ },
+ "sugar": {
+  "piece_g": 4
+ },
+ "rapeseed oil": {
+  "piece_g": 14
+ },
+ "cashew nuts": {
+  "piece_g": 1.5
+ },
+ "walnuts": {
+  "piece_g": 4
+ },
+ "shelled hazelnuts": {
+  "piece_g": 1.2
+ },
+ "noodles": {
+  "piece_g": 50
+ },
+ "crusty bread": {
+  "piece_g": 30
+ },
+ "ciabatta": {
+  "piece_g": 80
+ },
+ "pork": {
+  "piece_g": 150
+ },
+ "tofu": {
+  "piece_g": 400
+ },
+ "broccoli": {
+  "piece_g": 300
+ },
+ "banana leaves": {
+  "piece_g": 0.001
+ },
+ "vine leaves": {
+  "piece_g": 2
+ },
+ "cayenne pepper": {
+  "piece_g": 1
+ },
+ "dried red chillies": {
+  "piece_g": 0.5
+ },
+ "garlic powder": {
+  "piece_g": 3
+ },
+ "ground beef": {
+  "piece_g": 454
+ },
+ "beef brisket": {
+  "piece_g": 250
+ },
+ "hake": {
+  "piece_g": 150
+ },
+ "baby pak koi": {
+  "piece_g": 100
+ },
+ "turkish delight": {
+  "piece_g": 15
+ },
+ "morcilla": {
+  "piece_g": 100
+ },
+ "tamarind ball": {
+  "piece_g": 15
+ },
+ "squid": {
+  "piece_g": 150
+ },
+ "black pudding": {
+  "piece_g": 50
+ },
+ "cheese": {
+  "piece_g": 20
+ }
+}

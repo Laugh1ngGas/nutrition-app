@@ -1,0 +1,5539 @@
+{
+"53457": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 180,
+"difficulty": "hard"
+},
+"53242": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53103": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52995": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"52848": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"52928": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 110,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53317": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 60,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"52952": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53421": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53068": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 75,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53238": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53469": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 210,
+"difficulty": "easy"
+},
+"53053": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"52834": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"52824": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"52803": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"53438": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53311": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 210,
+"difficulty": "medium"
+},
+"53385": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53076": {
+"servings": 1,
+"meal_type": "breakfast",
+"prep_time_min": 2,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53533": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 200,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53458": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53454": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52965": {
+"servings": 2,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52913": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 420,
+"cook_time_min": 25,
+"difficulty": "hard"
+},
+"52842": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53126": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 80,
+"difficulty": "easy"
+},
+"53190": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52961": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"52939": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53428": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 8,
+"difficulty": "easy"
+},
+"53418": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53055": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 130,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52969": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53310": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 120,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53290": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"52846": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52796": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53459": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52934": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 25,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53261": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 60,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"53186": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"52870": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53319": {
+"servings": 8,
+"meal_type": "lunch",
+"prep_time_min": 10080,
+"cook_time_min": 30,
+"difficulty": "hard"
+},
+"53063": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52856": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 50,
+"difficulty": "medium"
+},
+"53289": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53136": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53168": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52788": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"52989": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53283": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"53154": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52988": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 180,
+"difficulty": "hard"
+},
+"53555": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53512": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 45,
+"cook_time_min": 210,
+"difficulty": "hard"
+},
+"52832": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"52977": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53158": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53525": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53169": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53138": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 75,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52891": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53080": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 80,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53100": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52914": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53036": {
+"servings": 6,
+"meal_type": "breakfast",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52826": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 150,
+"difficulty": "medium"
+},
+"53060": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53077": {
+"servings": 6,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53488": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"52920": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"52879": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53011": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53549": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53166": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53516": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53514": {
+"servings": 12,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53343": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53446": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53524": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53037": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 26,
+"difficulty": "easy"
+},
+"53561": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53523": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 4,
+"difficulty": "easy"
+},
+"52899": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"53386": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53393": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53379": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 55,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53031": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53134": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 60,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53518": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53399": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 130,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53043": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 40,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52802": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53341": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53464": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53413": {
+"servings": 8,
+"meal_type": "breakfast",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "hard"
+},
+"53180": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52951": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53381": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 1440,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53179": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53035": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53452": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 135,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53436": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53339": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 12,
+"difficulty": "easy"
+},
+"52890": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53354": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 250,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53362": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53355": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52974": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"52813": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53112": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53216": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53257": {
+"servings": 8,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 12,
+"difficulty": "easy"
+},
+"53027": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52946": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53414": {
+"servings": 20,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53128": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"52877": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"52805": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 60,
+"difficulty": "hard"
+},
+"53083": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 70,
+"cook_time_min": 80,
+"difficulty": "medium"
+},
+"52843": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 110,
+"difficulty": "medium"
+},
+"52782": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 30,
+"difficulty": "hard"
+},
+"53010": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 25,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52884": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"53427": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "hard"
+},
+"53426": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"52827": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 125,
+"difficulty": "medium"
+},
+"53400": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53140": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53132": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52968": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"52880": {
+"servings": 8,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 45,
+"difficulty": "hard"
+},
+"52777": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 40,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53048": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53086": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53377": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 45,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53051": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"52858": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53121": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 60,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53500": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53422": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 30,
+"difficulty": "hard"
+},
+"53172": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"52930": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52862": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"52861": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"52958": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52916": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53471": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53566": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53295": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 35,
+"difficulty": "hard"
+},
+"53298": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"53323": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"52780": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53489": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53499": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52922": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 55,
+"difficulty": "medium"
+},
+"53244": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53200": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53410": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 75,
+"difficulty": "easy"
+},
+"52921": {
+"servings": 6,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52857": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53574": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 130,
+"cook_time_min": 30,
+"difficulty": "hard"
+},
+"53173": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53108": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 5,
+"difficulty": "medium"
+},
+"52933": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 65,
+"difficulty": "medium"
+},
+"53303": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 180,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53124": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 210,
+"difficulty": "hard"
+},
+"53273": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"52942": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53268": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53498": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53503": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53337": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 50,
+"difficulty": "medium"
+},
+"52994": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53395": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53023": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 2880,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53260": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 1500,
+"cook_time_min": 240,
+"difficulty": "medium"
+},
+"53302": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 300,
+"difficulty": "medium"
+},
+"53259": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53264": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52784": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53479": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"52925": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 150,
+"difficulty": "easy"
+},
+"52886": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"53040": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"52866": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"53102": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52980": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53229": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53550": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53067": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53435": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"52869": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 12,
+"difficulty": "easy"
+},
+"53287": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"53119": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"53026": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 1470,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52806": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 70,
+"cook_time_min": 16,
+"difficulty": "medium"
+},
+"53312": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53208": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53195": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53212": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53198": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53214": {
+"servings": 6,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"52814": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53197": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53205": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53203": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53213": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53202": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52892": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53416": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"52975": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53243": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53241": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53235": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52948": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"52871": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53225": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52894": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 60,
+"difficulty": "hard"
+},
+"53366": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52874": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 150,
+"difficulty": "medium"
+},
+"53483": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53527": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 2,
+"cook_time_min": 8,
+"difficulty": "easy"
+},
+"53262": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 135,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53373": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 12,
+"difficulty": "medium"
+},
+"53284": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53282": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53288": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"53281": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53529": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53495": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53430": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53111": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53049": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52893": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53380": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52768": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53575": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53568": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 80,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53389": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53276": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53439": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53334": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53329": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 140,
+"difficulty": "medium"
+},
+"53392": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53406": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 5,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53156": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53147": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53522": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 100,
+"difficulty": "easy"
+},
+"53133": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53278": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53267": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53099": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53425": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 25,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53127": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"53107": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53050": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53094": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53396": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53481": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 75,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53496": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52807": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53456": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 110,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53460": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53559": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52959": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53548": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52767": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53279": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 50,
+"difficulty": "hard"
+},
+"53440": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 1460,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53441": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"52855": {
+"servings": 2,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53239": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53451": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 45,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"52878": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 150,
+"difficulty": "hard"
+},
+"53071": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"52997": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"52904": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 180,
+"difficulty": "medium"
+},
+"52812": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 240,
+"difficulty": "medium"
+},
+"53070": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 50,
+"difficulty": "medium"
+},
+"52873": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 150,
+"difficulty": "medium"
+},
+"53359": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 140,
+"difficulty": "medium"
+},
+"53307": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 7440,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53313": {
+"servings": 3,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53316": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53078": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53463": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53468": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53466": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53453": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"53013": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53018": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 25,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53300": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 130,
+"difficulty": "medium"
+},
+"53580": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53069": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 65,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52979": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 240,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"53482": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 140,
+"difficulty": "medium"
+},
+"53546": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53536": {
+"servings": 6,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 55,
+"difficulty": "easy"
+},
+"53401": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 60,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53305": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53485": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53476": {
+"servings": 20,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53475": {
+"servings": 15,
+"meal_type": "snack",
+"prep_time_min": 140,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52792": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53562": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52940": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 75,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53492": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53493": {
+"servings": 24,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53256": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 740,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53544": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52819": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 12,
+"difficulty": "easy"
+},
+"53361": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 864,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53420": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52923": {
+"servings": 18,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53141": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53360": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53576": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52897": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 25,
+"cook_time_min": 75,
+"difficulty": "medium"
+},
+"52976": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53564": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53508": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 210,
+"difficulty": "medium"
+},
+"53330": {
+"servings": 6,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53507": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 180,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53510": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"53442": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"52898": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 120,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53016": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 60,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53161": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 50,
+"difficulty": "medium"
+},
+"52956": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"52850": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52765": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"52818": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53367": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52875": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 50,
+"difficulty": "medium"
+},
+"52795": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53531": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"52831": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53455": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53565": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53358": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 60,
+"difficulty": "hard"
+},
+"53218": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 720,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53513": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53265": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 120,
+"cook_time_min": 6,
+"difficulty": "easy"
+},
+"52839": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53365": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53372": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52910": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53320": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"52853": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"52966": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53170": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53101": {
+"servings": 16,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53324": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 180,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"52776": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 55,
+"difficulty": "medium"
+},
+"52860": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"52905": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "hard"
+},
+"53157": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53185": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53159": {
+"servings": 2,
+"meal_type": "breakfast",
+"prep_time_min": 5,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53542": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52990": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53528": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 65,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53153": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53116": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 120,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53462": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 12,
+"difficulty": "medium"
+},
+"52840": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53477": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 260,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53526": {
+"servings": 5,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53505": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 1440,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53431": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52998": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 180,
+"difficulty": "easy"
+},
+"53350": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53096": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53291": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 25,
+"difficulty": "hard"
+},
+"53490": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"52779": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53480": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53532": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53569": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "medium"
+},
+"53530": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 55,
+"difficulty": "medium"
+},
+"52841": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53148": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53072": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53419": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52999": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53058": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53056": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"52830": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 240,
+"difficulty": "easy"
+},
+"53547": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53309": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53098": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 210,
+"difficulty": "hard"
+},
+"53473": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52785": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 65,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53556": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 110,
+"cook_time_min": 50,
+"difficulty": "medium"
+},
+"53338": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53411": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 60,
+"difficulty": "hard"
+},
+"53563": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53571": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53567": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53193": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52907": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 1440,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53137": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 5,
+"cook_time_min": 90,
+"difficulty": "easy"
+},
+"53543": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53387": {
+"servings": 10,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53382": {
+"servings": 14,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53285": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 300,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"53143": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 55,
+"difficulty": "easy"
+},
+"53486": {
+"servings": 6,
+"meal_type": "lunch",
+"prep_time_min": 260,
+"cook_time_min": 120,
+"difficulty": "easy"
+},
+"52888": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 60,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"52955": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53370": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53073": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52895": {
+"servings": 1,
+"meal_type": "breakfast",
+"prep_time_min": 5,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53149": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"52944": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52791": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53557": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53254": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53139": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 240,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53266": {
+"servings": 3,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 12,
+"difficulty": "easy"
+},
+"53091": {
+"servings": 6,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53123": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 180,
+"difficulty": "medium"
+},
+"53188": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53092": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52919": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"53030": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "hard"
+},
+"53064": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52835": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53342": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"53079": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"52918": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 45,
+"difficulty": "hard"
+},
+"53122": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52906": {
+"servings": 8,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53322": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 50,
+"difficulty": "medium"
+},
+"52815": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"52915": {
+"servings": 1,
+"meal_type": "breakfast",
+"prep_time_min": 5,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52996": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"52903": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53061": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53178": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53572": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53509": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53553": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53465": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 65,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"52957": {
+"servings": 18,
+"meal_type": "breakfast",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53025": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 150,
+"difficulty": "easy"
+},
+"52896": {
+"servings": 2,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53131": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 60,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"53541": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53144": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"52764": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53012": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 1440,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53578": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53021": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53346": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 375,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53274": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53272": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53255": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53478": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53074": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52829": {
+"servings": 8,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53041": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 180,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53450": {
+"servings": 1,
+"meal_type": "breakfast",
+"prep_time_min": 2,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53397": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 2880,
+"cook_time_min": 0,
+"difficulty": "medium"
+},
+"53340": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52967": {
+"servings": 12,
+"meal_type": "breakfast",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52993": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53579": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52773": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 12,
+"difficulty": "easy"
+},
+"53007": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 85,
+"difficulty": "medium"
+},
+"52954": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52787": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53258": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53269": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53552": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53253": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52781": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 1440,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53351": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52938": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 30,
+"difficulty": "hard"
+},
+"53353": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53363": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 5,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53345": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 70,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53356": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53352": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53349": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53357": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 23,
+"difficulty": "easy"
+},
+"53348": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53364": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53344": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "easy"
+},
+"53145": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53033": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53034": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52937": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53335": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 600,
+"cook_time_min": 150,
+"difficulty": "medium"
+},
+"53220": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53398": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52971": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52769": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53125": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53445": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 30,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52820": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"52887": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53449": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 60,
+"difficulty": "hard"
+},
+"53494": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52859": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 210,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53502": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53286": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"52868": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53434": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53015": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 120,
+"cook_time_min": 15,
+"difficulty": "hard"
+},
+"53408": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"52978": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"52945": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53412": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 165,
+"difficulty": "easy"
+},
+"53407": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"52821": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53277": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53009": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 130,
+"cook_time_min": 12,
+"difficulty": "easy"
+},
+"52808": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 75,
+"difficulty": "medium"
+},
+"53104": {
+"servings": 18,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 25,
+"difficulty": "hard"
+},
+"53424": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52987": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52844": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53570": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 260,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"52973": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53519": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 25,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53437": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 2880,
+"cook_time_min": 90,
+"difficulty": "medium"
+},
+"53211": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 95,
+"difficulty": "medium"
+},
+"53467": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53146": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 720,
+"cook_time_min": 180,
+"difficulty": "medium"
+},
+"52947": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53461": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"53504": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"52900": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53472": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53474": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53221": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53433": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53538": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53515": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 70,
+"difficulty": "medium"
+},
+"53402": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 80,
+"cook_time_min": 30,
+"difficulty": "hard"
+},
+"52865": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53423": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53135": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52991": {
+"servings": 18,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52876": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53304": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53560": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 120,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53109": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53336": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 1440,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"52927": {
+"servings": 8,
+"meal_type": "dinner",
+"prep_time_min": 5880,
+"cook_time_min": 240,
+"difficulty": "hard"
+},
+"53047": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53006": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53029": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53403": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 620,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"52864": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "hard"
+},
+"53059": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53038": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53223": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52924": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53347": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53497": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53245": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53117": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53129": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53501": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52851": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53331": {
+"servings": 2,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53551": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 60,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53554": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52810": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 180,
+"difficulty": "hard"
+},
+"52943": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53487": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53417": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 5,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"52774": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53191": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53150": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 5,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53151": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"53537": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 55,
+"difficulty": "medium"
+},
+"53152": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53192": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52854": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 35,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53534": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 42,
+"difficulty": "easy"
+},
+"53573": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53429": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 5,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52902": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53333": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53520": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53517": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53017": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"53539": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53292": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 55,
+"difficulty": "medium"
+},
+"53019": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"52837": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53039": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 75,
+"cook_time_min": 80,
+"difficulty": "medium"
+},
+"53293": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53224": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "hard"
+},
+"53160": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 52,
+"difficulty": "easy"
+},
+"53014": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 12,
+"difficulty": "medium"
+},
+"53299": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53162": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53540": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53022": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53297": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53301": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 80,
+"difficulty": "medium"
+},
+"52847": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 150,
+"difficulty": "medium"
+},
+"53306": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53521": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53044": {
+"servings": 5,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53046": {
+"servings": 24,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53045": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53042": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 120,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53081": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52932": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53280": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 90,
+"difficulty": "easy"
+},
+"52804": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53174": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53230": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53383": {
+"servings": 1,
+"meal_type": "lunch",
+"prep_time_min": 260,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52908": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52809": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 80,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53204": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 8,
+"difficulty": "easy"
+},
+"53115": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 70,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"52941": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 180,
+"cook_time_min": 120,
+"difficulty": "hard"
+},
+"52811": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53506": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53227": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52783": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"52816": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"52901": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52786": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53024": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 12,
+"difficulty": "medium"
+},
+"53118": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 5,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53545": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53315": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 110,
+"difficulty": "medium"
+},
+"53020": {
+"servings": 6,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 150,
+"difficulty": "easy"
+},
+"53052": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53388": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53308": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 130,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52960": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 8,
+"difficulty": "easy"
+},
+"52962": {
+"servings": 2,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53234": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53248": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52823": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53233": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53511": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 140,
+"difficulty": "medium"
+},
+"53171": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 45,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"52833": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 0,
+"difficulty": "medium"
+},
+"52936": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 860,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53443": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 180,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53577": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53296": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 25,
+"difficulty": "hard"
+},
+"53314": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53247": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52836": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "hard"
+},
+"53167": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53054": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 110,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53378": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53470": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 260,
+"difficulty": "medium"
+},
+"53215": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52963": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53219": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53028": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 1440,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53226": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53217": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 600,
+"difficulty": "easy"
+},
+"53409": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53491": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"52953": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 480,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53375": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 25,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53374": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53371": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 8,
+"difficulty": "easy"
+},
+"53369": {
+"servings": 2,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53484": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53368": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53432": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 1440,
+"cook_time_min": 270,
+"difficulty": "medium"
+},
+"52964": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"52981": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 90,
+"difficulty": "easy"
+},
+"52992": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 25,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"52982": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52770": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53177": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53181": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 240,
+"cook_time_min": 80,
+"difficulty": "medium"
+},
+"53164": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"53155": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53163": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 10080,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53183": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53184": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 16,
+"difficulty": "easy"
+},
+"53182": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53176": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"52872": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"53175": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 150,
+"difficulty": "medium"
+},
+"53105": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53142": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52771": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52797": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53209": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"52849": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"52881": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 110,
+"difficulty": "medium"
+},
+"52935": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53110": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 35,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"52883": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52793": {
+"servings": 7,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53201": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"52817": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53082": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 130,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"53005": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 75,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53008": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53558": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52931": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 50,
+"difficulty": "easy"
+},
+"53130": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 65,
+"difficulty": "medium"
+},
+"53113": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53187": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52911": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52889": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "medium"
+},
+"53065": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 30,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53376": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52949": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53275": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53089": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 120,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53095": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53093": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 70,
+"difficulty": "easy"
+},
+"52950": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53447": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 180,
+"difficulty": "medium"
+},
+"53535": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53246": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"52909": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53404": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 75,
+"difficulty": "medium"
+},
+"53405": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 70,
+"difficulty": "easy"
+},
+"53448": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"52772": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 35,
+"difficulty": "easy"
+},
+"53199": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"53206": {
+"servings": 3,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 8,
+"difficulty": "easy"
+},
+"53210": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52882": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"52912": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 25,
+"cook_time_min": 20,
+"difficulty": "hard"
+},
+"52929": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53444": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 40,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"52822": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"53240": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53207": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53196": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53194": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53032": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53415": {
+"servings": 6,
+"meal_type": "breakfast",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53165": {
+"servings": 2,
+"meal_type": "breakfast",
+"prep_time_min": 15,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"53318": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53075": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 10,
+"difficulty": "easy"
+},
+"52926": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53057": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 75,
+"cook_time_min": 120,
+"difficulty": "medium"
+},
+"53391": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 40,
+"difficulty": "hard"
+},
+"52852": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"52972": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52970": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53249": {
+"servings": 2,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 0,
+"difficulty": "easy"
+},
+"52845": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "medium"
+},
+"53251": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 60,
+"cook_time_min": 10,
+"difficulty": "hard"
+},
+"53263": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53252": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53270": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53114": {
+"servings": 4,
+"meal_type": "breakfast",
+"prep_time_min": 2,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53321": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 45,
+"cook_time_min": 12,
+"difficulty": "medium"
+},
+"53250": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 5,
+"difficulty": "easy"
+},
+"52794": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 15,
+"cook_time_min": 45,
+"difficulty": "easy"
+},
+"52775": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53000": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 60,
+"difficulty": "medium"
+},
+"52863": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "easy"
+},
+"52867": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"53222": {
+"servings": 2,
+"meal_type": "breakfast",
+"prep_time_min": 10,
+"cook_time_min": 30,
+"difficulty": "easy"
+},
+"52838": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 140,
+"difficulty": "medium"
+},
+"53325": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53327": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53326": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 30,
+"cook_time_min": 80,
+"difficulty": "medium"
+},
+"53328": {
+"servings": 6,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 40,
+"difficulty": "medium"
+},
+"53332": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 30,
+"cook_time_min": 30,
+"difficulty": "medium"
+},
+"53228": {
+"servings": 2,
+"meal_type": "dinner",
+"prep_time_min": 10,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"53232": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 20,
+"cook_time_min": 15,
+"difficulty": "easy"
+},
+"52828": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 75,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53231": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 20,
+"cook_time_min": 160,
+"difficulty": "medium"
+},
+"53237": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 1440,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53236": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53062": {
+"servings": 12,
+"meal_type": "snack",
+"prep_time_min": 160,
+"cook_time_min": 35,
+"difficulty": "medium"
+},
+"53271": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 60,
+"difficulty": "easy"
+},
+"53106": {
+"servings": 4,
+"meal_type": "dinner",
+"prep_time_min": 15,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"52917": {
+"servings": 6,
+"meal_type": "snack",
+"prep_time_min": 250,
+"cook_time_min": 20,
+"difficulty": "medium"
+},
+"53097": {
+"servings": 8,
+"meal_type": "snack",
+"prep_time_min": 10,
+"cook_time_min": 25,
+"difficulty": "easy"
+},
+"53294": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 15,
+"cook_time_min": 25,
+"difficulty": "medium"
+},
+"53394": {
+"servings": 10,
+"meal_type": "snack",
+"prep_time_min": 90,
+"cook_time_min": 15,
+"difficulty": "medium"
+},
+"53189": {
+"servings": 4,
+"meal_type": "snack",
+"prep_time_min": 20,
+"cook_time_min": 20,
+"difficulty": "easy"
+},
+"53085": {
+"servings": 4,
+"meal_type": "lunch",
+"prep_time_min": 10,
+"cook_time_min": 10,
+"difficulty": "easy"
+}
+}
