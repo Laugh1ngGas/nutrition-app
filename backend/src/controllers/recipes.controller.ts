@@ -3,6 +3,7 @@ import { AuthRequest } from '../middleware/auth';
 import { query } from '../config/database';
 import { AppError } from '../middleware/errorHandler';
 import { getCache, setCache } from '../config/redis';
+import { fridgeKeys } from '../services/fridgeMatch';
 
 export async function searchRecipes(req: AuthRequest, res: Response, next: NextFunction) {
   try {
@@ -43,12 +44,13 @@ export async function searchRecipes(req: AuthRequest, res: Response, next: NextF
 
     const joinClause = `
        LEFT JOIN recipe_ingredients ri ON ri.recipe_id = r.id
-       LEFT JOIN fridge_items fi ON fi.food_id = ri.food_id AND fi.user_id = $${userIdParam}`;
+       LEFT JOIN foods f ON f.id = ri.food_id
+       LEFT JOIN ${fridgeKeys(`$${userIdParam}`)} fi ON fi.match_key = f.match_key`;
 
     let havingClause = '';
     if (match_only === 'true' && req.user) {
       havingClause = `HAVING COUNT(DISTINCT ri.id) > 0
-        AND COUNT(DISTINCT ri.id) = COUNT(DISTINCT ri.id) FILTER (WHERE fi.food_id IS NOT NULL)`;
+        AND COUNT(DISTINCT ri.id) = COUNT(DISTINCT ri.id) FILTER (WHERE fi.match_key IS NOT NULL)`;
     }
 
     const orderBy = sort === 'match'
@@ -73,7 +75,7 @@ export async function searchRecipes(req: AuthRequest, res: Response, next: NextF
               COALESCE(AVG(rr.rating), 0)::float AS average_rating,
               COUNT(DISTINCT rr.id)::int AS rating_count,
               COUNT(DISTINCT ri.id)::int AS total_ingredients,
-              COUNT(DISTINCT ri.id) FILTER (WHERE fi.food_id IS NOT NULL)::int AS matched_ingredients,
+              COUNT(DISTINCT ri.id) FILTER (WHERE fi.match_key IS NOT NULL)::int AS matched_ingredients,
               EXISTS(SELECT 1 FROM user_favorites uf WHERE uf.user_id = $${userIdParam} AND uf.recipe_id = r.id) AS is_favorite
        FROM recipes r
        LEFT JOIN recipe_ratings rr ON rr.recipe_id = r.id
@@ -119,7 +121,7 @@ export async function getRecipeById(req: AuthRequest, res: Response, next: NextF
 
       const ingredients = await query(
         `SELECT ri.id, ri.quantity, ri.unit, ri.note, ri.grams, ri.order_index,
-                f.id AS food_id, f.name, f.name_uk, f.category, f.calories,
+                f.id AS food_id, f.match_key, f.name, f.name_uk, f.category, f.calories,
                 f.protein_g, f.carbs_g, f.fat_g, f.image_url
          FROM recipe_ingredients ri
          JOIN foods f ON ri.food_id = f.id
@@ -136,17 +138,27 @@ export async function getRecipeById(req: AuthRequest, res: Response, next: NextF
 
     let isFavorite = false;
     let fridgeFoodIds = new Set<string>();
+    let fridgeKeySet = new Set<string>();
     if (req.user) {
       const [favResult, fridgeResult] = await Promise.all([
         query('SELECT 1 FROM user_favorites WHERE user_id = $1 AND recipe_id = $2', [req.user.id, req.params.id]),
-        query('SELECT food_id FROM fridge_items WHERE user_id = $1', [req.user.id]),
+        query(
+          'SELECT fi.food_id, f.match_key FROM fridge_items fi JOIN foods f ON f.id = fi.food_id WHERE fi.user_id = $1',
+          [req.user.id]
+        ),
       ]);
       isFavorite = !!favResult.rowCount;
       fridgeFoodIds = new Set(fridgeResult.rows.map((r) => r.food_id));
+      fridgeKeySet = new Set(fridgeResult.rows.map((r) => r.match_key));
     }
 
+    // Same USDA food counts ("Onion" in the fridge for "Onions"); food_id
+    // also covers recipes cached before match_key existed
     const ingredientsWithFridgeStatus = (recipe.ingredients || []).map(
-      (ing: { food_id: string; [key: string]: unknown }) => ({ ...ing, in_fridge: fridgeFoodIds.has(ing.food_id) })
+      (ing: { food_id: string; match_key?: string; [key: string]: unknown }) => ({
+        ...ing,
+        in_fridge: fridgeFoodIds.has(ing.food_id) || (!!ing.match_key && fridgeKeySet.has(ing.match_key)),
+      })
     );
 
     res.json({

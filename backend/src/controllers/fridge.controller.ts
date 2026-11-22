@@ -3,6 +3,7 @@ import { body } from 'express-validator';
 import { AuthRequest } from '../middleware/auth';
 import { getClient, query } from '../config/database';
 import { AppError } from '../middleware/errorHandler';
+import { findIngredient } from '../services/recipeNutrition';
 
 const UNITS = ['g', 'kg', 'ml', 'l', 'cup', 'tbsp', 'tsp', 'piece', 'slice', 'serving'];
 
@@ -59,12 +60,21 @@ export async function addFridgeItemsBatch(req: AuthRequest, res: Response, next:
         foodId = found.rows[0]?.id;
       }
       if (!foodId) {
-        // Capitalised like the rest of the catalogue ("Tomato", not "tomato")
+        // Capitalised like the rest of the catalogue ("Tomato", not "tomato").
+        // USDA nutrition and match key when the name is a known ingredient,
+        // so it counts for recipes that use it.
         const capital = (s?: string | null) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : null);
+        const info = findIngredient(item.name);
         const created = await client.query(
-          `INSERT INTO foods (name, name_uk, calories, source, created_by)
-           VALUES ($1, $2, 0, 'ai_photo', $3) RETURNING id`,
-          [capital(item.name), capital(item.name_uk), req.user!.id]
+          `INSERT INTO foods (name, name_uk, calories, protein_g, carbs_g, fat_g, fiber_g, category,
+                              external_id, source, created_by)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'ai_photo', $10) RETURNING id`,
+          [
+            capital(item.name), capital(item.name_uk),
+            info?.per100?.kcal ?? 0, info?.per100?.protein ?? 0, info?.per100?.carbs ?? 0,
+            info?.per100?.fat ?? 0, info?.per100?.fiber ?? 0, info?.category ?? null,
+            info?.fdc ? `fdc:${info.fdc}` : null, req.user!.id,
+          ]
         );
         foodId = created.rows[0].id;
       }

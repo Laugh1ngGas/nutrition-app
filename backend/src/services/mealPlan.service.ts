@@ -1,6 +1,7 @@
 import { randomInt } from 'crypto';
 import { getClient, query } from '../config/database';
 import { AppError } from '../middleware/errorHandler';
+import { fridgeKeys } from './fridgeMatch';
 
 // Weekly meal plan generator. Deterministic rules plus a little randomness, so
 // "Regenerate" gives a different but still sensible week:
@@ -126,7 +127,7 @@ async function loadCandidates(userId: string, weekStart: string): Promise<Candid
     `SELECT r.id, r.meal_type, r.diet_types,
             array_remove(array_agg(DISTINCT lower(f.name)), NULL) AS ingredients,
             COUNT(DISTINCT ri.id)::int AS total,
-            COUNT(DISTINCT ri.id) FILTER (WHERE fi.food_id IS NOT NULL)::int AS matched,
+            COUNT(DISTINCT ri.id) FILTER (WHERE fi.match_key IS NOT NULL)::int AS matched,
             COUNT(DISTINCT ri.id) FILTER (
               WHERE fi.expiry_date BETWEEN $2::date AND $2::date + 3)::int AS expiring,
             bool_or(uf.recipe_id IS NOT NULL) AS favorite,
@@ -135,7 +136,7 @@ async function loadCandidates(userId: string, weekStart: string): Promise<Candid
      FROM recipes r
      LEFT JOIN recipe_ingredients ri ON ri.recipe_id = r.id
      LEFT JOIN foods f ON f.id = ri.food_id
-     LEFT JOIN fridge_items fi ON fi.food_id = ri.food_id AND fi.user_id = $1
+     LEFT JOIN ${fridgeKeys('$1')} fi ON fi.match_key = f.match_key
      LEFT JOIN user_favorites uf ON uf.recipe_id = r.id AND uf.user_id = $1
      WHERE r.is_public OR r.created_by = $1
      GROUP BY r.id`,
@@ -257,11 +258,12 @@ export async function getWeek(userId: string, weekStart: string) {
     `SELECT e.id, e.meal_type, to_char(e.planned_date, 'YYYY-MM-DD') AS planned_date,
             r.id AS recipe_id, r.title, r.image_url, r.prep_time_min, r.cook_time_min, r.calories_per_serving,
             COUNT(DISTINCT ri.id)::int AS total_ingredients,
-            COUNT(DISTINCT ri.id) FILTER (WHERE fi.food_id IS NOT NULL)::int AS matched_ingredients
+            COUNT(DISTINCT ri.id) FILTER (WHERE fi.match_key IS NOT NULL)::int AS matched_ingredients
      FROM meal_plan_entries e
      JOIN recipes r ON r.id = e.recipe_id
      LEFT JOIN recipe_ingredients ri ON ri.recipe_id = r.id
-     LEFT JOIN fridge_items fi ON fi.food_id = ri.food_id AND fi.user_id = $2
+     LEFT JOIN foods f ON f.id = ri.food_id
+     LEFT JOIN ${fridgeKeys('$2')} fi ON fi.match_key = f.match_key
      WHERE e.plan_id = $1
      GROUP BY e.id, r.id
      ORDER BY e.planned_date, e.order_index`,

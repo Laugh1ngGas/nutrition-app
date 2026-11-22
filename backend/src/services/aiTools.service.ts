@@ -10,6 +10,7 @@ import { fitsUser } from './mealPlan.service';
 import { findIngredient, IngredientInfo, recipeNutrition } from './recipeNutrition';
 import { filterMealDbByIngredient, importMeal, lookupMealDb, searchMealDb } from './recipeImport.service';
 import { logger } from '../utils/logger';
+import { fridgeKeys } from './fridgeMatch';
 
 export interface RecipeCard {
   type: 'recipe';
@@ -183,13 +184,12 @@ const RECIPE_SELECT = `
          r.prep_time_min, r.cook_time_min,
          array_remove(array_agg(DISTINCT lower(f.name)), NULL) AS ingredients,
          COUNT(DISTINCT ri.id)::int AS total,
-         COUNT(DISTINCT ri.id) FILTER (WHERE fi.food_id IS NOT NULL)::int AS matched,
-         array_remove(array_agg(DISTINCT f.name) FILTER (WHERE fi.food_id IS NULL), NULL) AS missing
+         COUNT(DISTINCT ri.id) FILTER (WHERE fi.match_key IS NOT NULL)::int AS matched,
+         array_remove(array_agg(DISTINCT f.name) FILTER (WHERE fi.match_key IS NULL), NULL) AS missing
   FROM recipes r
   LEFT JOIN recipe_ingredients ri ON ri.recipe_id = r.id
   LEFT JOIN foods f ON f.id = ri.food_id
-  LEFT JOIN fridge_items fi ON fi.food_id = ri.food_id AND fi.user_id = $1
-       AND (fi.expiry_date IS NULL OR fi.expiry_date >= CURRENT_DATE)`;
+  LEFT JOIN ${fridgeKeys('$1', { fresh: true })} fi ON fi.match_key = f.match_key`;
 
 function remember(ctx: ToolContext, r: RecipeRow) {
   // The same recipe keeps its reference if a later search finds it again
@@ -244,10 +244,13 @@ async function searchRecipes(ctx: ToolContext, args: Record<string, unknown>) {
     params.push(Number(args.min_protein_g));
     where += ` AND r.protein_per_serving_g >= $${params.length}`;
   }
-  const fridgeShare = 'COUNT(DISTINCT ri.id) FILTER (WHERE fi.food_id IS NOT NULL)::float / GREATEST(COUNT(DISTINCT ri.id), 1)';
-  const order = args.use_fridge
-    ? `${fridgeShare} DESC, ${titleHits} DESC`
-    : `${titleHits} DESC, ${fridgeShare} DESC`;
+  const fridgeShare = 'COUNT(DISTINCT ri.id) FILTER (WHERE fi.match_key IS NOT NULL)::float / GREATEST(COUNT(DISTINCT ri.id), 1)';
+  // Without search words there's nothing to rank titles by (and a bare "0"
+  // in ORDER BY would mean "column 0")
+  const byTitle = words.length ? `${titleHits} DESC` : null;
+  const order = (args.use_fridge ? [`${fridgeShare} DESC`, byTitle] : [byTitle, `${fridgeShare} DESC`])
+    .filter(Boolean)
+    .join(', ');
   // Extra rows, since diet and allergy filtering happens below
   const result = await query(
     `${RECIPE_SELECT} ${where} GROUP BY r.id ORDER BY ${order}, random() LIMIT 40`,

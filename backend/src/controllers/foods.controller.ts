@@ -3,6 +3,7 @@ import { query as dbQuery } from 'express-validator';
 import { query } from '../config/database';
 import { AuthRequest } from '../middleware/auth';
 import { AppError } from '../middleware/errorHandler';
+import { findIngredient } from '../services/recipeNutrition';
 import { getCache, setCache } from '../config/redis';
 
 export async function searchFoods(req: Request, res: Response, next: NextFunction) {
@@ -155,13 +156,17 @@ export async function createFood(req: AuthRequest, res: Response, next: NextFunc
       sugar_g, sodium_mg, image_url,
     } = req.body;
 
+    // The user's own nutrition values are kept; a known ingredient name only
+    // adds the USDA key, so this food counts for recipes that use it
+    const info = findIngredient(String(name ?? ''));
     const result = await query(
       `INSERT INTO foods (name, name_uk, brand, barcode, category, calories, protein_g,
-         carbs_g, fat_g, fiber_g, sugar_g, sodium_mg, image_url, source, created_by)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,'user',$14)
+         carbs_g, fat_g, fiber_g, sugar_g, sodium_mg, image_url, external_id, source, created_by)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,'user',$15)
        RETURNING *`,
-      [name, name_uk, brand, barcode, category, calories, protein_g,
-       carbs_g, fat_g, fiber_g || 0, sugar_g || 0, sodium_mg || 0, image_url, req.user!.id]
+      [name, name_uk, brand, barcode, category || info?.category || null, calories, protein_g,
+       carbs_g, fat_g, fiber_g || 0, sugar_g || 0, sodium_mg || 0, image_url,
+       info?.fdc ? `fdc:${info.fdc}` : null, req.user!.id]
     );
 
     res.status(201).json({ success: true, data: result.rows[0] });
