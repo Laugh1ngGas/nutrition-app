@@ -2,6 +2,7 @@ import { randomInt } from 'crypto';
 import { getClient, query } from '../config/database';
 import { AppError } from '../middleware/errorHandler';
 import { fridgeKeys } from './fridgeMatch';
+import { calculateDailyTargets } from './auth.service';
 
 // Weekly meal plan generator. Deterministic rules plus a little randomness, so
 // "Regenerate" gives a different but still sensible week:
@@ -60,6 +61,7 @@ interface Candidate {
   expiring: number;
   favorite: boolean;
   eaten_recently: boolean;
+  calories: number | null; // per serving
 }
 
 // Also used by the AI assistant's recipe tools
@@ -116,6 +118,96 @@ function score(r: Candidate, random: () => number): number {
   );
 }
 
+// ── Daily calorie goal ───────────────────────────────────────────────────
+// The day's goal is split between the planned meals; each meal then gets a
+// recipe and a portion that come close to its share.
+const SLOT_SHARE: Record<PlanSlot, number> = { breakfast: 0.25, lunch: 0.4, dinner: 0.35 };
+// Portions the planner suggests, in servings of the recipe
+const PORTIONS = [0.5, 0.75, 1, 1.25, 1.5, 2];
+// A day within 10% of the goal is on target
+const DAY_TOLERANCE = 0.1;
+// How much calorie fit counts against fridge use etc. when choosing a
+// recipe. Portions and balanceDay do most of the fitting, so it can stay
+// low. Measured (17 fridge items, 2,713 kcal goal, 8 weeks): weight 2 ->
+// 50% of ingredients from the fridge, days 1% off the goal; 1 -> 53%, 2.6%;
+// 0.5 -> 54%, 4.0%. Every day stayed within 10% in all three.
+const CALORIE_WEIGHT = Number(process.env.PLAN_CALORIE_WEIGHT) || 1;
+
+/** The portion of a recipe that comes closest to a calorie target */
+function bestPortion(kcal: number, target: number): number {
+  return PORTIONS.reduce((best, p) => (Math.abs(kcal * p - target) < Math.abs(kcal * best - target) ? p : best), 1);
+}
+
+/**
+ * How well a recipe can fill a meal's calorie target, for the score: 0 when a
+ * portion of it hits the target, more negative the further off it is. Odd
+ * portions (half, double) cost a little, so normal servings win a near tie.
+ */
+function calorieFit(r: Candidate, target: number | null): number {
+  if (!target) return 0;
+  if (!r.calories) return -0.6; // unknown calories: only when nothing else fits
+  const portion = bestPortion(r.calories, target);
+  const miss = Math.abs(r.calories * portion - target) / target;
+  return -CALORIE_WEIGHT * miss - 0.1 * Math.abs(Math.log2(portion));
+}
+
+interface PlannedMeal {
+  recipe: Candidate;
+  servings: number;
+}
+
+/**
+ * If the day's meals are more than 10% off the goal, nudges portions one step
+ * at a time (the step that helps most) until it fits or nothing helps.
+ */
+function balanceDay(meals: PlannedMeal[], goal: number) {
+  const total = () => meals.reduce((sum, m) => sum + (m.recipe.calories ?? 0) * m.servings, 0);
+  for (let step = 0; step < 6; step++) {
+    const error = total() - goal;
+    if (Math.abs(error) <= goal * DAY_TOLERANCE) return;
+    let best: { meal: PlannedMeal; servings: number } | null = null;
+    let bestError = Math.abs(error);
+    for (const meal of meals) {
+      if (!meal.recipe.calories) continue;
+      const i = PORTIONS.indexOf(meal.servings);
+      for (const next of [PORTIONS[i - 1], PORTIONS[i + 1]]) {
+        if (next === undefined) continue;
+        const e = Math.abs(error + meal.recipe.calories * (next - meal.servings));
+        if (e < bestError) {
+          bestError = e;
+          best = { meal, servings: next };
+        }
+      }
+    }
+    if (!best) return;
+    best.meal.servings = best.servings;
+  }
+}
+
+/**
+ * The user's daily calorie goal: the one in their profile, or worked out from
+ * weight, height, age, activity and goal (Mifflin-St Jeor) when only those are
+ * set. null when the profile has neither, and plans then ignore calories.
+ */
+export async function dailyCalorieGoal(userId: string): Promise<number | null> {
+  const result = await query(
+    `SELECT daily_calories, gender, weight_kg, height_cm, activity_level, goal,
+            date_part('year', age(date_of_birth))::int AS age
+     FROM user_profiles WHERE user_id = $1`,
+    [userId]
+  );
+  const p = result.rows[0];
+  if (!p) return null;
+  if (p.daily_calories) return Number(p.daily_calories);
+  if (p.gender && p.weight_kg && p.height_cm && p.age) {
+    return calculateDailyTargets(
+      p.gender, Number(p.weight_kg), Number(p.height_cm), p.age,
+      p.activity_level ?? 'moderately_active', p.goal ?? 'maintenance'
+    ).dailyCalories;
+  }
+  return null;
+}
+
 export function addDays(date: string, days: number): string {
   const d = new Date(`${date}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() + days);
@@ -124,7 +216,7 @@ export function addDays(date: string, days: number): string {
 
 async function loadCandidates(userId: string, weekStart: string): Promise<Candidate[]> {
   const result = await query(
-    `SELECT r.id, r.meal_type, r.diet_types,
+    `SELECT r.id, r.meal_type, r.diet_types, r.calories_per_serving::float AS calories,
             array_remove(array_agg(DISTINCT lower(f.name)), NULL) AS ingredients,
             COUNT(DISTINCT ri.id)::int AS total,
             COUNT(DISTINCT ri.id) FILTER (WHERE fi.match_key IS NOT NULL)::int AS matched,
@@ -148,30 +240,39 @@ async function loadCandidates(userId: string, weekStart: string): Promise<Candid
 // Fills the week day by day. A recipe never appears twice on the same day or in
 // the same slot on consecutive days, and repeats across the week only once the
 // pool runs out; with very few suitable recipes the rules relax in that order.
-function fillWeek(pools: Record<PlanSlot, Candidate[]>, random: () => number): Record<PlanSlot, Candidate[]> {
-  const plan: Record<PlanSlot, Candidate[]> = { breakfast: [], lunch: [], dinner: [] };
+// With a calorie goal, each meal also gets a portion, and each day is
+// balanced to within 10% of the goal where portions allow.
+function fillWeek(
+  pools: Record<PlanSlot, Candidate[]>, random: () => number, goal: number | null
+): Record<PlanSlot, PlannedMeal[]> {
+  const plan: Record<PlanSlot, PlannedMeal[]> = { breakfast: [], lunch: [], dinner: [] };
   const used = new Map<string, number>();
   for (let day = 0; day < 7; day++) {
     const today = new Set<string>();
+    const meals: PlannedMeal[] = [];
     for (const slot of PLAN_SLOTS) {
       const pool = pools[slot];
-      const yesterday = plan[slot][day - 1];
+      const target = goal ? goal * SLOT_SHARE[slot] : null;
+      const yesterday = plan[slot][day - 1]?.recipe;
       const notToday = pool.filter((r) => !today.has(r.id));
       const preferred = notToday.filter((r) => r !== yesterday);
       const options = preferred.length ? preferred : notToday.length ? notToday : pool;
       const best = options
-        .map((r) => ({ r, s: score(r, random) - 1.5 * (used.get(r.id) ?? 0) }))
+        .map((r) => ({ r, s: score(r, random) + calorieFit(r, target) - 1.5 * (used.get(r.id) ?? 0) }))
         .sort((a, b) => b.s - a.s)[0].r;
       used.set(best.id, (used.get(best.id) ?? 0) + 1);
       today.add(best.id);
-      plan[slot].push(best);
+      const meal = { recipe: best, servings: target && best.calories ? bestPortion(best.calories, target) : 1 };
+      meals.push(meal);
+      plan[slot].push(meal);
     }
+    if (goal) balanceDay(meals, goal);
   }
   return plan;
 }
 
 export async function generateWeek(userId: string, weekStart: string) {
-  const [profileResult, candidates] = await Promise.all([
+  const [profileResult, candidates, goal] = await Promise.all([
     query(
       `SELECT p.diet_type, array_remove(array_agg(a.name), NULL) AS allergens
        FROM users u
@@ -182,6 +283,7 @@ export async function generateWeek(userId: string, weekStart: string) {
       [userId]
     ),
     loadCandidates(userId, weekStart),
+    dailyCalorieGoal(userId),
   ]);
   const { diet_type: diet = null, allergens = [] } = profileResult.rows[0] ?? {};
   const allowed = candidates.filter((r) => fitsUser(r, diet, allergens));
@@ -200,7 +302,8 @@ export async function generateWeek(userId: string, weekStart: string) {
       lunch: mains,
       dinner: mains,
     },
-    mulberry32(randomInt(2 ** 31))
+    mulberry32(randomInt(2 ** 31)),
+    goal
   );
 
   // One plan row per week, reused on regenerate: shopping_lists.plan_id
@@ -225,11 +328,11 @@ export async function generateWeek(userId: string, weekStart: string) {
       planId = created.rows[0].id;
     }
     for (const [slotIndex, slot] of PLAN_SLOTS.entries()) {
-      for (const [day, recipe] of plan[slot].entries()) {
+      for (const [day, meal] of plan[slot].entries()) {
         await client.query(
-          `INSERT INTO meal_plan_entries (plan_id, recipe_id, meal_type, planned_date, order_index)
-           VALUES ($1, $2, $3, $4, $5)`,
-          [planId, recipe.id, slot, addDays(weekStart, day), slotIndex]
+          `INSERT INTO meal_plan_entries (plan_id, recipe_id, meal_type, planned_date, servings, order_index)
+           VALUES ($1, $2, $3, $4, $5, $6)`,
+          [planId, meal.recipe.id, slot, addDays(weekStart, day), meal.servings, slotIndex]
         );
       }
     }
@@ -253,10 +356,13 @@ export async function getWeek(userId: string, weekStart: string) {
   const plan = planResult.rows[0];
   if (!plan) return null;
 
-  // Fridge match is computed now, not stored, so it follows the fridge
-  const entries = await query(
+  // Fridge match is computed now, not stored, so it follows the fridge.
+  // calories = the planned portion's calories (servings x per serving).
+  const [entries, goal] = await Promise.all([query(
     `SELECT e.id, e.meal_type, to_char(e.planned_date, 'YYYY-MM-DD') AS planned_date,
+            COALESCE(e.servings, 1)::float AS servings,
             r.id AS recipe_id, r.title, r.image_url, r.prep_time_min, r.cook_time_min, r.calories_per_serving,
+            ROUND(r.calories_per_serving * COALESCE(e.servings, 1))::int AS calories,
             COUNT(DISTINCT ri.id)::int AS total_ingredients,
             COUNT(DISTINCT ri.id) FILTER (WHERE fi.match_key IS NOT NULL)::int AS matched_ingredients
      FROM meal_plan_entries e
@@ -268,8 +374,8 @@ export async function getWeek(userId: string, weekStart: string) {
      GROUP BY e.id, r.id
      ORDER BY e.planned_date, e.order_index`,
     [plan.id, userId]
-  );
-  return { ...plan, entries: entries.rows };
+  ), dailyCalorieGoal(userId)]);
+  return { ...plan, daily_calories: goal, entries: entries.rows };
 }
 
 // Saves a new arrangement after drag and drop: each entry's day and slot.
