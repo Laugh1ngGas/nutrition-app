@@ -127,6 +127,10 @@ export async function generateFromPlan(req: AuthRequest, res: Response, next: Ne
   try {
     const { plan_id, start_date, end_date } = req.body;
 
+    // Only from the caller's own plan: another user's would leak what they eat
+    const plan = await query('SELECT 1 FROM meal_plans WHERE id = $1 AND user_id = $2', [plan_id, req.user!.id]);
+    if (!plan.rowCount) throw new AppError('Meal plan not found', 404);
+
     const ingredientsResult = await query(
       `SELECT ri.food_id, SUM(ri.quantity) as total_quantity, ri.unit,
               f.category

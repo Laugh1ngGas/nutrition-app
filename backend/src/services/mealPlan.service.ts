@@ -25,7 +25,9 @@ const ALLERGEN_KEYWORDS: Record<string, RegExp> = {
   gluten: words('wheat', 'flour', 'bread', 'pasta', 'spaghetti', 'penne', 'noodle', 'couscous', 'barley', 'rye',
     'tortilla', 'pastry', 'biscuit', 'cracker', 'semolina', 'bulgur', 'beer', 'soy sauce', 'pitta', 'pita', 'bun',
     'baguette', 'lasagne', 'macaroni', 'fettuccine', 'linguine', 'tagliatelle', 'rigatoni', 'farfalle', 'breadcrumb'),
-  dairy: words('milk', 'cheese', 'butter', 'cream', 'yogh?urt', 'parmesan', 'mozzarella', 'cheddar', 'feta', 'ricotta',
+  // Not plant "milks", creams and butters (coconut milk, peanut butter), nor butternut squash
+  dairy: words('(?<!(?:coconut|almond|oat|soya?|rice|peanut|cocoa|cashew) )(?:milk|cream|butter(?!nut))',
+    'cheese', 'yogh?urt', 'parmesan', 'mozzarella', 'cheddar', 'feta', 'ricotta',
     'mascarpone', 'ghee', 'cr[eè]me fra[iî]che', 'halloumi', 'paneer', 'custard', 'gruy[eè]re', 'brie', 'stilton'),
   eggs: words('eggs?\\b', 'egg yolk', 'egg white', 'mayonnaise', 'meringue'),
   peanuts: words('peanut'),
@@ -69,7 +71,6 @@ export function fitsUser(
   r: Pick<Candidate, 'ingredients' | 'diet_types'>, diet: string | null, allergens: string[]
 ): boolean {
   const has = (re: RegExp) => r.ingredients.some((name) => re.test(name));
-  const tagged = (d: string) => r.diet_types?.includes(d) ?? false;
 
   for (const allergen of allergens) {
     const re = ALLERGEN_KEYWORDS[allergen];
@@ -78,10 +79,12 @@ export function fitsUser(
 
   const fish = has(ALLERGEN_KEYWORDS.fish) || has(ALLERGEN_KEYWORDS.shellfish);
   switch (diet) {
+    // Ingredients decide, not the recipe's "vegetarian"/"vegan" label: 11 of
+    // TheMealDB's 100 "Vegetarian" recipes contain meat or fish
     case 'vegan':
-      return tagged('vegan') || !(has(MEAT) || fish || has(ALLERGEN_KEYWORDS.dairy) || has(ALLERGEN_KEYWORDS.eggs) || has(HONEY));
+      return !(has(MEAT) || fish || has(ALLERGEN_KEYWORDS.dairy) || has(ALLERGEN_KEYWORDS.eggs) || has(HONEY));
     case 'vegetarian':
-      return tagged('vegan') || tagged('vegetarian') || !(has(MEAT) || fish);
+      return !(has(MEAT) || fish);
     case 'pescatarian':
       return !has(MEAT);
     case 'gluten_free':
@@ -98,7 +101,7 @@ export function fitsUser(
 }
 
 // Small seeded PRNG: one random seed per generation, reproducible within it
-function mulberry32(seed: number) {
+export function mulberry32(seed: number) {
   return () => {
     seed = (seed + 0x6d2b79f5) | 0;
     let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
@@ -107,7 +110,7 @@ function mulberry32(seed: number) {
   };
 }
 
-function score(r: Candidate, random: () => number): number {
+export function score(r: Candidate, random: () => number): number {
   const fridgeShare = r.total ? r.matched / r.total : 0;
   return (
     fridgeShare +
@@ -242,7 +245,7 @@ async function loadCandidates(userId: string, weekStart: string): Promise<Candid
 // pool runs out; with very few suitable recipes the rules relax in that order.
 // With a calorie goal, each meal also gets a portion, and each day is
 // balanced to within 10% of the goal where portions allow.
-function fillWeek(
+export function fillWeek(
   pools: Record<PlanSlot, Candidate[]>, random: () => number, goal: number | null
 ): Record<PlanSlot, PlannedMeal[]> {
   const plan: Record<PlanSlot, PlannedMeal[]> = { breakfast: [], lunch: [], dinner: [] };
