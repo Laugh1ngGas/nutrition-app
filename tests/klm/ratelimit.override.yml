@@ -1,0 +1,8 @@
+# Local docker stack only: the KLM run makes several hundred API calls in a
+# few minutes from one IP, more than the local rate limit allows.
+#   docker compose -f docker-compose.yml -f tests/klm/ratelimit.override.yml up -d backend
+# Back to normal afterwards:  docker compose up -d backend
+services:
+  backend:
+    environment:
+      RATE_LIMIT_MAX: 10000
