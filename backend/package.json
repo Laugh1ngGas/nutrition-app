@@ -9,7 +9,9 @@
     "start": "node dist/index.js",
     "db:migrate": "node -r ts-node/register src/utils/migrate.ts",
     "db:seed": "node -r ts-node/register src/utils/seed.ts",
-    "db:seed-recipes": "node -r ts-node/register src/utils/seedRecipes.ts"
+    "db:seed-recipes": "node -r ts-node/register src/utils/seedRecipes.ts",
+    "test": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -39,6 +41,7 @@
     "@types/uuid": "^9.0.7",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^3.2.4"
   }
 }
