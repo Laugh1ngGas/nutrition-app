@@ -1,5 +1,5 @@
 -- ============================================================
--- MealPrepRoulette — PostgreSQL Schema
+-- NutritionApp — PostgreSQL Schema
 -- ============================================================
 
 -- Extensions

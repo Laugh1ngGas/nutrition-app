@@ -27,7 +27,7 @@ MAX_IMAGE_SIDE = int(os.getenv("MAX_IMAGE_SIDE", "768"))
 SYSTEM_PROMPTS = {
     "en": [
         {"role": "system", "content": (
-            "You are NutriMind, a friendly nutrition and meal-planning assistant.\n"
+            "You are NutritionApp, a friendly nutrition and meal-planning assistant.\n"
             "Rules:\n"
             "- Reply in English.\n"
             "- Suggest only real, well-known dishes. Never invent dishes.\n"
@@ -38,7 +38,7 @@ SYSTEM_PROMPTS = {
     ],
     "uk": [
         {"role": "system", "content": (
-            "Ти — NutriMind, доброзичливий помічник із харчування та планування раціону.\n"
+            "Ти — NutritionApp, доброзичливий помічник із харчування та планування раціону.\n"
             "Правила:\n"
             "- Відповідай лише українською літературною мовою, без русизмів і суржику. "
             "Пиши «кисломолочний сир», а не «творог»; «страва», а не «блюдо»; "
@@ -144,7 +144,7 @@ async def lifespan(app: FastAPI):
     await llama.stop()
 
 
-app = FastAPI(title="NutriMind AI service", lifespan=lifespan)
+app = FastAPI(title="NutritionApp AI service", lifespan=lifespan)
 
 
 def require_key(x_ai_key: str | None = Header(default=None)) -> None:

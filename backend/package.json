@@ -1,7 +1,7 @@
 {
-  "name": "mealpreproulette-backend",
+  "name": "nutrition-app-backend",
   "version": "1.0.0",
-  "description": "Backend for MealPrepRoulette - Intelligent Meal Planning Platform",
+  "description": "Backend for NutritionApp - Intelligent Meal Planning Platform",
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",

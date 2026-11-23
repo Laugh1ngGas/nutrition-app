@@ -1,5 +1,5 @@
 # ──────────────────────────────────────────────────────────────────────────────
-# NutriMind AI service — CPU build for local development (docker-compose)
+# NutritionApp AI service — CPU build for local development (docker-compose)
 #
 # Production runs on a Modal GPU with Gemma 4 31B: see modal_app.py. This
 # image runs the small Gemma 4 E4B on CPU with the same FastAPI code and API.

@@ -165,7 +165,7 @@ def ensure_photos(cases):
         path = os.path.join(PHOTOS_DIR, photo["file"])
         if not os.path.exists(path):
             print(f"  downloading {photo['file']}")
-            req = urllib.request.Request(photo["url"], headers={"User-Agent": "NutriMindBench/1.0 (thesis research)"})
+            req = urllib.request.Request(photo["url"], headers={"User-Agent": "NutritionAppBench/1.0 (thesis research)"})
             with urllib.request.urlopen(req, timeout=60) as r, open(path, "wb") as f:
                 f.write(r.read())
 

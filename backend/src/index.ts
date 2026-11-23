@@ -89,7 +89,7 @@ async function bootstrap() {
     await connectRedis();
 
     app.listen(PORT, () => {
-      logger.info(`MealPrepRoulette API running on http://localhost:${PORT}/api/v1`);
+      logger.info(`NutritionApp API running on http://localhost:${PORT}/api/v1`);
       logger.info(`Health check: http://localhost:${PORT}/api/v1/health`);
       logger.info(`Environment: ${process.env.NODE_ENV}`);
     });

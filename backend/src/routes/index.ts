@@ -33,7 +33,7 @@ const passwordCheckLimiter = rateLimit({
 
 // ── Health check ────────────────────────────────────────────────────
 router.get('/health', (_req, res) => {
-  res.json({ success: true, message: 'MealPrepRoulette API is running 🚀', timestamp: new Date() });
+  res.json({ success: true, message: 'NutritionApp API is running 🚀', timestamp: new Date() });
 });
 
 // ── Auth ────────────────────────────────────────────────────────────

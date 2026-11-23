@@ -1,4 +1,4 @@
-# MealPrepRoulette — Backend API
+# NutritionApp — Backend API
 
 Node.js + Express + TypeScript + PostgreSQL + Redis
 

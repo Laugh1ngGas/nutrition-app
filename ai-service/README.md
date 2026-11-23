@@ -1,4 +1,4 @@
-# NutriMind AI service
+# NutritionApp AI service
 
 Self-hosted open model (Gemma 4 31B, IQ4_XS GGUF) served by llama.cpp and
 wrapped in FastAPI. One model handles chat, meal plans, tool calls and
